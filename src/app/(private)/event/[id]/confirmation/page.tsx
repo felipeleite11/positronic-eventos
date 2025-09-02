@@ -1,23 +1,28 @@
 'use client'
 
 import { Button } from "@/components/ui/button"
-import { GlobalContext } from "@/contexts/GlobalContext"
-import { people } from "@/seed-data"
-import { notify } from "@/util/notification"
-import { getEventById, subscribe } from "@/util/storage"
+import { getEventById, getPersonById, subscribe } from "@/util/storage"
 import { useQuery } from "@tanstack/react-query"
-import { Bell, Calendar, Check, LogIn, MapPin, MessageCircle, UploadCloud, User } from "lucide-react"
+import { Calendar, Check, LogIn, MapPin, MessageCircle, User } from "lucide-react"
 import Image from "next/image"
-import { useParams } from "next/navigation"
-import { useContext } from "react"
+import { useParams, useSearchParams, useRouter } from "next/navigation"
 import { toast } from "sonner"
 
 export default function Event() {
 	const { id } = useParams()
+	const searchParams  = useSearchParams()
 
-	const { person } = useContext(GlobalContext)
+	const router = useRouter()
 
-	const eventPageLink = `${process.env.NEXT_PUBLIC_BASE_URL}/event/${id}/confirmation?p=${person?.id}`
+	const personId = searchParams.get('p')
+
+	if(!personId) {
+		router.push('/')
+		
+		return null
+	}
+
+	const person = getPersonById(Number(personId))
 
 	const { data: event, refetch: refetchEvent } = useQuery({
 		queryKey: ['event'],
@@ -40,47 +45,24 @@ export default function Event() {
 		}
 	}
 
-	async function handleUpload() {
-		await new Promise(r => setTimeout(r, 800))
-		
-		toast.success('Carga concluída com sucesso!')
-	}
-
-	async function handleNotify() {
-		try {
-			if(!event) {
-				return
-			}
-
-			const guestsToNotify = people.filter(person => person.whatsapp && !event.participants?.some(pert => pert.id === person.id))
-				// TEMP:
-				.filter(item => item.id === 1)
-
-			for(const guest of guestsToNotify) {
-				notify(`Olá, ${guest.name}!\n\nVocê está convidado para o evento ${event.name}.\n\nConfirme sua presença na página do evento:\n${eventPageLink}\n\nTe aguardamos lá!`, guest.whatsapp!)
-			}
-			
-			toast.success('Os convidados foram notificados!')
-		} catch(e: any) {
-			toast.error(e.message)
-		}
-	}
-
 	if(event === null) {
 		return (
 			<div className="text-slate-800">Este evento não existe.</div>
 		)
 	}
 
-	if(!event) {
+	if(!event || !person) {
 		return null
 	}
 
 	const isSubscribed = event.participants?.some(part => part.id === person?.id)
-	const isCreator = event.creator.id === person?.id
 
 	return (
 		<div className="flex flex-col gap-10">
+			<span className="font-semibold text-xl">{`👋 Olá, ${person.name}!`}</span>
+
+			<p>Você está quase lá! Só precisa confirmar sua inscrição abaixo.</p>
+
 			<div>
 				{event.image && <Image src={event.image} alt="" width={1000} height={1000} className="float-left mr-10 mb-5 w-96 rounded-md object-contain shadow-sm" />}
 				
@@ -105,28 +87,10 @@ export default function Event() {
 					</div>
 
 					<div className="flex gap-6 mb-6 justify-end">
-						{!isCreator ? (
-							<Button onClick={handleSubscribe}>
-								Contatar a organização
-								<MessageCircle size={16} />
-							</Button>
-						) : (
-							<div className="flex gap-8">
-								<input type="file" className="hidden" id="file" onChange={handleUpload} />
-
-								<Button asChild>
-									<label htmlFor="file">
-										Carregar convidados
-										<UploadCloud size={16} />
-									</label>
-								</Button>
-
-								<Button className="bg-yellow-600 hover:bg-yellow-700 text-white" onClick={handleNotify}>
-									Notificar convidados
-									<Bell size={16} />
-								</Button>
-							</div>
-						)}
+						<Button onClick={handleSubscribe}>
+							Contatar a organização
+							<MessageCircle size={16} />
+						</Button>
 
 						{isSubscribed ? (
 							<Button onClick={handleSubscribe} className="bg-emerald-500 hover:bg-emerald-500 text-white cursor-default">

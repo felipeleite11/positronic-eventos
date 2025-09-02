@@ -1,10 +1,10 @@
 'use client'
 
-import { events } from "@/seed-data"
+import { events, people } from "@/seed-data"
 import { Event } from "@/types/Event"
 import { normalizeText } from "./string"
 
-const storageKey = 'positronic-eventos:seed-data'
+const storageKey = 'positronic-eventos:data'
 
 export function checkSeedDataOnStorage(): Event[] {
 	const seedData = localStorage.getItem(storageKey)
@@ -26,7 +26,9 @@ export function getNextEventId() {
 	if(dataString) {
 		const events = JSON.parse(dataString) as Event[]
 
-		return (events.at(-1)?.id || 0) + 1
+		const lastId = events.length ? Math.max(...events.map(event => event.id)) : 0
+
+		return lastId + 1
 	} else {
 		const events = checkSeedDataOnStorage()
 
@@ -129,4 +131,8 @@ export function subscribe(event: Event, person: Person) {
 	}
 
 	throw new Error('Este evento não foi encontrado.')
+}
+
+export function getPersonById(id: number) {
+	return people.find(person => person.id === id)
 }

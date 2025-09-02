@@ -38,9 +38,9 @@ export default function Home() {
 
 	return (
 		<Tabs defaultValue="events" className="w-full">
-			<TabsList className="bg-slate-850">
-				<TabsTrigger value="events" className="cursor-pointer">Meus eventos</TabsTrigger>
-				<TabsTrigger value="participations" className="cursor-pointer">Eventos que participo</TabsTrigger>
+			<TabsList className="bg-slate-850 mb-2">
+				<TabsTrigger value="events" className="cursor-pointer text-md p-4">Meus eventos</TabsTrigger>
+				<TabsTrigger value="participations" className="cursor-pointer text-md p-4">Eventos que participo</TabsTrigger>
 			</TabsList>
 
 			<TabsContent value="events">
@@ -67,7 +67,7 @@ export default function Home() {
 									<TableCell>{item.status}</TableCell>
 									<TableCell>
 										<div className="lg:w-80 truncate">
-											{item.place.address_text || ''}
+											{item.place.name}
 										</div>
 									</TableCell>
 									<TableCell className="text-right">{item.available_subscriptions}</TableCell>
@@ -104,7 +104,7 @@ export default function Home() {
 									<TableCell>{item.status}</TableCell>
 									<TableCell>
 										<div className="lg:w-80 truncate">
-											{item.place.address_text || ''}
+											{item.place.name}
 										</div>
 									</TableCell>
 									<TableCell className="text-right">{item.available_subscriptions}</TableCell>

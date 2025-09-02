@@ -42,7 +42,7 @@ export default function Add() {
 	} = useForm<EventSchema>({
 		resolver: zodResolver(eventSchema),
 		defaultValues: {
-			name: 'Palestra Prof. Dr. Carlos Nogueira',
+			name: 'Evento',
 			category: 'palestra',
 			description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi quo velit illum reiciendis praesentium nesciunt officia, voluptatum esse necessitatibus non rerum nemo iure eaque reprehenderit maiores a ex corporis suscipit.',
 			available_subscriptions: '50',
@@ -62,13 +62,13 @@ export default function Add() {
 
 			addEvent({
 				id: nextId,
-				creator: person!,
 				name: data.name,
-				description: data.description,
 				period: {
 					start: data.start,
 					end: data.end
 				},
+				creator: person!,
+				description: data.description,
 				place: {
 					name: data.place,
 					address_text: '-'
