@@ -53,8 +53,6 @@ export default function Event() {
 			}
 
 			const guestsToNotify = people.filter(person => person.whatsapp && !event.participants?.some(pert => pert.id === person.id))
-				// TEMP:
-				.filter(item => item.id === 1)
 
 			for(const guest of guestsToNotify) {
 				notify(`Olá, ${guest.name}!\n\nVocê está convidado para o evento ${event.name}.\n\nConfirme sua presença na página do evento:\n${eventPageLink}\n\nTe aguardamos lá!`, guest.whatsapp!)
