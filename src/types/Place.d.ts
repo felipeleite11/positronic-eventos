@@ -1,6 +1,6 @@
 interface Place {
 	id: number
 	name: string
-	address: Address
+	address: Partial<Address>
 	address_text?: string
 }

@@ -3,9 +3,14 @@ export interface Event {
 	name: string
 	description?: string
 	status: 'agendado' | 'em curso' | 'finalizado' | 'cancelado'
-	date: string
-	place: Place
+	period: {
+		start: string
+		end: string
+	}
+	place: Partial<Place>
 	category?: string
 	image?: string
 	available_subscriptions?: number
+	creator: Person
+	participants?: Person[]
 }

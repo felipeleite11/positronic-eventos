@@ -17,7 +17,7 @@ export default function ProfileContainer() {
 			<DropdownMenuTrigger>
 				<div className="flex items-center gap-2 dark:hover:bg-slate-900 h-13 px-3 cursor-pointer">
 					<Avatar className="w-7 h-7">
-						<AvatarImage src="/images/boy.jpg" />
+						{/* <AvatarImage src="/images/boy.jpg" /> */}
 						<AvatarFallback>FL</AvatarFallback>
 					</Avatar>
 

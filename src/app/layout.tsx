@@ -33,7 +33,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>
-            <div className="grid grid-cols-[18rem_auto] grid-rows-[auto_1fr] min-h-screen">
+            <div className="grid grid-cols-[14rem_auto] grid-rows-[auto_1fr] min-h-screen">
               <NavbarAuth />
 
               <MainMenu />

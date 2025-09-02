@@ -2,86 +2,71 @@
 
 import { useState } from "react";
 import { SearchIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useForm, SubmitHandler } from "react-hook-form"
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton"
 import { toast } from "sonner"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Event } from "@/types/Event.d"
+import { Event } from "@/types/Event"
+import { events } from "@/seed-data"
+import { normalizeText } from '@/util/string'
+import { searchEvent } from "@/util/storage";
+
+interface SearchProps {
+	search: string
+}
 
 export default function Search() {
+	const router = useRouter()
+
 	const [isSearching, setIsSearching] = useState(false)
 	const [searchResult, setSearchResult] = useState<null | Event[]>(null)
 
-	async function handleSearch() {
+	const {
+		handleSubmit,
+		register
+	} = useForm<SearchProps>({
+		defaultValues: {
+			search: ''
+		}
+	})
+
+	const handleSearch: SubmitHandler<SearchProps> = async (data: SearchProps) => {
 		try {
 			setIsSearching(true)
 
 			await new Promise(r => setTimeout(r, 2000))
 
-			const eventList: Event[] = [
-				{
-					id: 1,
-					name: 'Encontro Anual de Engenharia Civil do RJ',
-					date: '14/09/2025',
-					status: 'agendado',
-					place: {
-						id: 1,
-						name: 'Auditório Central da UFRJ',
-						address_text: 'Avenida Brasil, 2000 - Urca - Rio de Janeiro - RJ - 12345678',
-						address: {
-							country: 'Brasil',
-							state: 'Rio de Janeiro',
-							city: 'Rio de Janeiro',
-							district: 'Urca',
-							street: 'Avenida Brasil',
-							number: '2000',
-							zipcode: '12345678'
-						}
-					},
-					available_subscriptions: 120
-				},
-				{
-					id: 2,
-					name: 'Encontro Anual de Engenharia Civil da Barra',
-					date: '16/07/2025',
-					status: 'finalizado',
-					place: {
-						id: 1,
-						name: 'Sala de Palestras do Shopping da Barra',
-						address_text: 'Avenida Brasil, 4000 - Barra da Tijuca - Rio de Janeiro - RJ - 12345670',
-						address: {
-							country: 'Brasil',
-							state: 'Rio de Janeiro',
-							city: 'Rio de Janeiro',
-							district: 'Barra da Tijuca',
-							street: 'Avenida Brasil',
-							number: '4000',
-							zipcode: '12345670'
-						}
-					},
-					available_subscriptions: 450
-				}
-			]
-
+			const eventList = searchEvent(data.search)
+			
 			setSearchResult(eventList)
 		} catch (e: any) {
-			toast(e.message)
+			toast.error(e.message)
 		} finally {
 			setIsSearching(false)
 		}
 	}
 
+	function handleOpenEvent(event: Event) {
+		router.push(`/event/${event.id}`)
+	}
+
 	return (
 		<div className="flex flex-col gap-10">
-			<div className="flex gap-2">
-				<Input placeholder="Nome do evento" defaultValue="Encontro Anual de Engenharia Civil" />
+			<form className="flex gap-2" onSubmit={handleSubmit(handleSearch)}>
+				<Input 
+					placeholder="Nome do evento" 
+					className="w-96" 
+					{...register('search')}
+				/>
 
-				<Button onClick={handleSearch}>
+				<Button type="submit">
 					Buscar
 					<SearchIcon />
 				</Button>
-			</div>
+			</form>
 
 			{isSearching ? (
 				<div className="flex flex-col gap-6">
@@ -91,20 +76,28 @@ export default function Search() {
 				<Table>
 					<TableHeader>
 						<TableRow>
-							<TableHead>Evento</TableHead>
+							<TableHead className="lg:w-80">Evento</TableHead>
 							<TableHead>Data / hora</TableHead>
 							<TableHead>Status</TableHead>
-							<TableHead>Local</TableHead>
+							<TableHead className="lg:w-80">Local</TableHead>
 							<TableHead className="text-right">Vagas</TableHead>
 						</TableRow>
 					</TableHeader>
 					<TableBody>
 						{searchResult.map(item => (
-							<TableRow key={item.id}>
-								<TableCell className="font-semibold">{item.name}</TableCell>
-								<TableCell>{item.date}</TableCell>
+							<TableRow key={item.id} onClick={() => { handleOpenEvent(item) }} className="cursor-pointer">
+								<TableCell className="font-semibold">
+									<div className="lg:w-80 truncate">
+										{item.name}
+									</div>
+								</TableCell>
+								<TableCell>{item.period?.start}</TableCell>
 								<TableCell>{item.status}</TableCell>
-								<TableCell>{item.place.address_text || ''}</TableCell>
+								<TableCell>
+									<div className="lg:w-80 truncate">
+										{item.place.address_text || ''}
+									</div>
+								</TableCell>
 								<TableCell className="text-right">{item.available_subscriptions}</TableCell>
 							</TableRow>
 						))}
