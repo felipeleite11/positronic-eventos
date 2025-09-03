@@ -1,0 +1,1 @@
+console.log('TUDO OK PARA COMEÇAR A API')
