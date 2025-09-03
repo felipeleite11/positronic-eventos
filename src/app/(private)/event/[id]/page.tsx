@@ -2,15 +2,21 @@
 
 import { Button } from "@/components/ui/button"
 import { GlobalContext } from "@/contexts/GlobalContext"
+import { cn } from "@/lib/utils"
 import { people } from "@/seed-data"
 import { notify } from "@/util/notification"
-import { getEventById, subscribe } from "@/util/storage"
+import { getEventById, toggleLike, subscribe } from "@/util/storage"
 import { useQuery } from "@tanstack/react-query"
-import { Bell, Calendar, Check, LogIn, MapPin, MessageCircle, UploadCloud, User } from "lucide-react"
+import { Bell, BellOff, Calendar, Check, LogIn, MapPin, MessageCircle, UploadCloud, User } from "lucide-react"
 import Image from "next/image"
 import { useParams } from "next/navigation"
 import { useContext } from "react"
 import { toast } from "sonner"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 export default function Event() {
 	const { id } = useParams()
@@ -52,7 +58,12 @@ export default function Event() {
 				return
 			}
 
-			const guestsToNotify = people.filter(person => person.whatsapp && !event.participants?.some(pert => pert.id === person.id))
+			// people são todas as pessoas da base, devem ser filtradas apenas pessoas que foram convidadas pela planilha 
+
+			const guestsToNotify = people.filter(person => person.whatsapp && !event.participants?.some(part => part.id === person.id))
+				.filter(person => person.id === 1)
+
+			console.log('people', people)
 
 			for(const guest of guestsToNotify) {
 				notify(`Olá, ${guest.name}!\n\nVocê está convidado para o evento ${event.name}.\n\nConfirme sua presença na página do evento:\n${eventPageLink}\n\nTe aguardamos lá!`, guest.whatsapp!)
@@ -62,6 +73,12 @@ export default function Event() {
 		} catch(e: any) {
 			toast.error(e.message)
 		}
+	}
+
+	async function handleToggleLike() {
+		toggleLike(event!, person!)
+
+		refetchEvent()
 	}
 
 	if(event === null) {
@@ -76,6 +93,7 @@ export default function Event() {
 
 	const isSubscribed = event.participants?.some(part => part.id === person?.id)
 	const isCreator = event.creator.id === person?.id
+	const isLiked = event.likes?.some(like => like.id === person?.id)
 
 	return (
 		<div className="flex flex-col gap-10">
@@ -102,14 +120,33 @@ export default function Event() {
 						</div>
 					</div>
 
-					<div className="flex gap-6 mb-6 justify-end">
+					<div className="flex gap-4 mb-6 justify-end">
 						{!isCreator ? (
-							<Button onClick={handleSubscribe}>
-								Contatar a organização
-								<MessageCircle size={16} />
-							</Button>
+							<>
+								<Button onClick={handleSubscribe}>
+									Contatar a organização
+									<MessageCircle size={16} />
+								</Button>
+
+								<Tooltip>
+									<TooltipTrigger
+										asChild
+									>
+										<Button
+											className={cn('hover:bg-red-500 hover:text-white', { 'bg-red-500 hover:bg-red-400 text-white': isLiked })}
+											onClick={handleToggleLike}
+										>
+											{isLiked ? <BellOff size={16} /> : <Bell size={16} />}
+										</Button>
+									</TooltipTrigger>
+									
+									<TooltipContent>
+										<p>{isLiked ? 'Remover acompanhamento' : 'Acompanhar'}</p>
+									</TooltipContent>
+								</Tooltip>
+							</>
 						) : (
-							<div className="flex gap-8">
+							<div className="flex gap-4">
 								<input type="file" className="hidden" id="file" onChange={handleUpload} />
 
 								<Button asChild>

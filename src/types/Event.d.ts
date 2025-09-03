@@ -13,4 +13,5 @@ export interface Event {
 	available_subscriptions?: number
 	creator: Person
 	participants?: Person[]
+	likes?: Person[]
 }
