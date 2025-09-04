@@ -1,7 +1,8 @@
 import { Server as IOServer } from "socket.io"
 
 let io: IOServer | null = null
-const userSockets = new Map<number, SocketUser & { socket_id: string }>()
+type SocketData = SocketUser & { socket_id: string }
+const userSockets = new Map<number, SocketData>()
 
 export function initSocketIO(server: any) {
 	io = new IOServer(server, {
@@ -15,7 +16,7 @@ export function initSocketIO(server: any) {
 			userSockets.set(data.id, {
 				socket_id: socket.id,
 				...data
-			} as any)
+			} as SocketData)
 
 			console.log(data.person.name, 'está conectado com o ID:', socket.id)
 			// console.log(userSockets.size)
