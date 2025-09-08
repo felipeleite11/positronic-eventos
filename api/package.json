@@ -7,6 +7,7 @@
     "@aws-sdk/client-s3": "^3.405.0",
     "@fastify/cors": "^11.1.0",
     "@fastify/multipart": "^9.2.1",
+    "@prisma/client": "^6.15.0",
     "@types/axios": "^0.14.0",
     "@types/bcryptjs": "^2.4.3",
     "@types/cors": "^2.8.14",
@@ -38,6 +39,7 @@
     "numero-por-extenso": "^1.0.8",
     "openai": "^4.25.0",
     "pdfmake": "^0.2.7",
+    "prisma": "^6.15.0",
     "rabbitmq-client": "^5.0.5",
     "sequelize": "^6.32.1",
     "sequelize-cli": "^6.6.1",
@@ -48,7 +50,8 @@
     "uuid": "^9.0.0",
     "xlsx": "^0.18.5",
     "xlsx-populate": "^1.21.0",
-    "yup": "^1.2.0"
+    "yup": "^1.2.0",
+    "zod": "^4.1.5"
   },
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",

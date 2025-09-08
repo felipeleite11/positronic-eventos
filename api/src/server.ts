@@ -15,17 +15,15 @@ const fastify = Fastify({
 
 fastify.register(fastifyMultipart)
 
-console.log('registrou multipart')
-
 fastify.get('/', () => {
-	return { teste: 'ok' }
+	return { its_working: true }
 })
 
 fastify.register(testRoutes, { prefix: '/test_socket' })
 fastify.register(queueRoutes, { prefix: '/test_queue' })
 fastify.register(uploadRoutes, { prefix: '/test_upload' })
 
-fastify.listen({ port: +(process.env.PORT || 3333), host: '0.0.0.0' }, function (err, address) {
+fastify.listen({ port: +process.env.PORT!, host: '0.0.0.0' }, function (err, address) {
 	if (err) {
 		fastify.log.error(err)
 

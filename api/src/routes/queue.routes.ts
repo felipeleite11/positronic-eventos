@@ -19,7 +19,6 @@ export async function queueRoutes(app: FastifyInstance) {
 					message: 'Error: Item was NOT sent to queue.'
 				}
 			}
-	
 		}
 	)
 }
