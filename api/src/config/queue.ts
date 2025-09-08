@@ -20,10 +20,9 @@ export const publisher = rabbit.createPublisher()
 const subscriber = rabbit.createConsumer({
 	queue: process.env.QUEUE_NAME!,
 	queueOptions: { durable: true },
-
 	// qos: { prefetchCount: 2 }, // Informa quantas mensagens por vez serão tratadas.
 }, async ({ body: data }) => {
-	console.log('Received message:', data)
+	console.log('Consumed message:', data)
 
 	if(!data?.type) {
 		throw new Error('RabbitMQ messages must have "data" property.')

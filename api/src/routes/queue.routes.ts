@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify'
-import { publisher } from '../config/queue2'
+import { publisher } from '../config/queue'
 
 export async function queueRoutes(app: FastifyInstance) {
 	app.get<{Params: { id: string }}>(
