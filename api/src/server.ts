@@ -20,14 +20,14 @@ fastify.register(fastifyMultipart)
 
 fastify.register(fastifyCors, {
 	origin: process.env.WEB_URL || 'http://localhost:3000',
-	// methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+	methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 	// allowedHeaders: [
 	// 	"Content-Type",
 	// 	"Authorization",
 	// 	"X-Requested-With"
 	// ],
-	// credentials: true,
-	// maxAge: 86400
+	credentials: true,
+	maxAge: 86400
 })
 
 fastify.get('/', () => {

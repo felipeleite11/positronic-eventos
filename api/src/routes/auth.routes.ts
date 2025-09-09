@@ -1,48 +1,135 @@
 import { FastifyInstance } from 'fastify'
 import { auth } from '../lib/auth'
 
+interface SignUpProps {
+	name: string
+	email: string
+	password: string
+}
+
+interface SignInProps {
+	email: string
+	password: string
+}
+
 export async function authRoutes(app: FastifyInstance) {
 	app.route({
-		method: ["GET", "POST"],
-		url: "/*",
+		method: ["POST"],
+		url: '/sign-up/*',
 		async handler(request, reply) {
 			try {
-				console.log('input', request.body, request.url)
+				const { name, email, password } = request.body as SignUpProps
 
-				// Construct request URL
-				const url = new URL(request.url, `http://${request.headers.host}`)
-
-				// Convert Fastify headers to standard Headers object
-				const headers = new Headers()
-
-				Object.entries(request.headers).forEach(([key, value]) => {
-					if (value) headers.append(key, value.toString())
+				const data = await auth.api.signUpEmail({
+					body: {
+						name, 
+						email, 
+						password
+					}
 				})
 
-				// Create Fetch API-compatible request
-				const req = new Request(url.toString(), {
-					method: request.method,
-					headers,
-					body: request.body ? JSON.stringify(request.body) : undefined
-				})
-
-				// Process authentication request
-				const response = await auth.handler(req)
-				
-				// Forward response to client
-				reply.status(response.status)
-
-				response.headers.forEach((value, key) => reply.header(key, value))
-
-				console.log('response', response)
-
-				reply.send(response.body ? await response.text() : null)
-			} catch (error) {
+				reply.send(data)
+			} catch(error) {
 				console.log("Authentication Error:", error)
 
 				reply.status(500).send({
 					error: "Internal authentication error",
 					code: "AUTH_FAILURE"
+				})
+			}
+		}
+	})
+
+	app.route({
+		method: ["POST"],
+		url: '/sign-in/*',
+		async handler(request, reply) {
+			try {
+				const { email, password } = request.body as SignInProps
+
+				const data = await auth.api.signInEmail({
+					body: {
+						email, 
+						password
+					}
+				})
+
+				reply.send(data)
+			} catch(error: any) {
+				switch(error.body.code) {
+					case 'INVALID_EMAIL_OR_PASSWORD':
+						reply.status(error.statusCode).send({
+							error: "Usuário ou senha incorreta.",
+							code: error.body.code
+						})
+						break
+
+					default:
+						reply.status(error.statusCode).send({
+							error: "Usuário ou senha incorreta.",
+							code: "AUTH_FAILURE"
+						})
+						break
+				}
+			}
+		}
+	})
+
+	app.route({
+		method: ["GET"],
+		url: '/get-session',
+		async handler(request, reply) {
+			const headers = new Headers()
+
+			Object.entries(request.headers).forEach(([key, value]) => {
+				if (value) {
+					headers.append(key, value.toString())
+				}
+			})
+
+			// const headers = Object.fromEntries(
+			// 	Object.entries(request.headers).map(([k, v]) => [k, String(v)])
+			// )
+
+			const data = await auth.api.getSession({
+				headers
+			})
+
+			console.log('data', data)
+
+			reply.send(data)
+		}
+	})
+
+	app.route({
+		method: ["POST"],
+		url: '/sign-out',
+		async handler(request, reply) {
+			try {
+				const headers = new Headers()
+
+				Object.entries(request.headers).forEach(([key, value]) => {
+					if (value) {
+						headers.append(key, value.toString())
+					}
+				})
+
+				console.log('headers', headers)
+
+				// const data = await auth.api.signOut({
+				// 	headers,
+				// 	// method: 'POST'
+				// })
+
+				// console.log('data', data)
+
+				// reply.send(data)
+
+				reply.send('ok')
+			} catch(error: any) {
+				reply.status(error.statusCode).send({
+					error: "Erro ao fazer signout.",
+					code: "SIGNOUT_FAILURE"
 				})
 			}
 		}
