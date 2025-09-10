@@ -22,7 +22,7 @@ export const auth = betterAuth({
                 }
             }
         },
-        useSecureCookies: false
+        useSecureCookies: false // Deve ser true em produção
     },
 
     trustedOrigins: [process.env.WEB_URL || 'http://localhost:3000']

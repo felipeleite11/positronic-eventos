@@ -1,23 +1,31 @@
 'use client'
 
-import { ReactNode } from "react"
-import { redirect } from 'next/navigation'
+import { ReactNode, useEffect } from "react"
+import { useRouter } from 'next/navigation'
 import MainMenu from "@/components/MainMenu"
 import NavbarAuth from "@/components/NavbarAuth"
 import { authClient } from "@/lib/auth"
 
 export default function PrivateLayout({ children }: { children: ReactNode }) {
-	const { 
-        data: session,
+	const {
+		data: session,
 		isPending
-    } = authClient.useSession() 
+	} = authClient.useSession()
+
+	const router = useRouter()
 
 	// const { data: session, error } = await authClient.getSession()
 
-	console.log('session', session)
+	console.log('useSession', session)
 
-	if(!isPending && !session) {
-		redirect('/signin')
+	useEffect(() => {
+		if (!isPending && !session) {
+			router.replace('/signin')
+		}
+	}, [isPending, session, router])
+
+	if (isPending) {
+		return <p className="text-yellow-500 text-2xl font-bold">Aguarde...</p>
 	}
 
 	return (

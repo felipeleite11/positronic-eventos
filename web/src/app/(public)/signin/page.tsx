@@ -42,7 +42,10 @@ export default function SignIn() {
 
 	async function handleSignIn(values: LoginFormValues) {
 		try {
-			const data = await authClient.signIn.email(values, {
+			const data = await authClient.signIn.email({
+				...values,
+				callbackURL: '/home'
+			}, {
 				onRequest: () => {
 					setIsLoading(true)
 				},
@@ -51,7 +54,7 @@ export default function SignIn() {
 
 					console.log('onSuccess.ctx', ctx.data)
 
-					router.replace('/')
+					router.replace('/home')
 				},
 				onError: ctx => {
 					setIsLoading(false)

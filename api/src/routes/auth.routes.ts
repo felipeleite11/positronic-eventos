@@ -33,7 +33,7 @@ export async function authRoutes(app: FastifyInstance) {
 				console.log("Authentication Error:", error)
 
 				reply.status(500).send({
-					error: "Internal authentication error",
+					error: "Erro ao criar conta.",
 					code: "AUTH_FAILURE"
 				})
 			}
@@ -56,18 +56,22 @@ export async function authRoutes(app: FastifyInstance) {
 
 				reply.send(data)
 			} catch(error: any) {
-				switch(error.body.code) {
+				console.log('error', error)
+
+				const code = error.body?.code || 'AUTH_FAILURE'
+
+				switch(code) {
 					case 'INVALID_EMAIL_OR_PASSWORD':
 						reply.status(error.statusCode).send({
 							error: "Usuário ou senha incorreta.",
-							code: error.body.code
+							code
 						})
 						break
 
 					default:
 						reply.status(error.statusCode).send({
 							error: "Usuário ou senha incorreta.",
-							code: "AUTH_FAILURE"
+							code
 						})
 						break
 				}
@@ -95,7 +99,7 @@ export async function authRoutes(app: FastifyInstance) {
 				headers
 			})
 
-			console.log('data', data)
+			console.log('get-session : data', data)
 
 			reply.send(data)
 		}
