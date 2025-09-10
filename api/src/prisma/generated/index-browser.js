@@ -166,6 +166,128 @@ exports.Prisma.VerificationScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.PersonScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  gender: 'gender',
+  birthdate: 'birthdate',
+  cpf: 'cpf',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+};
+
+exports.Prisma.AddressScalarFieldEnum = {
+  id: 'id',
+  mapLink: 'mapLink',
+  state: 'state',
+  city: 'city',
+  district: 'district',
+  street: 'street',
+  number: 'number',
+  complement: 'complement',
+  zipcode: 'zipcode',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MeetupScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  datetime: 'datetime',
+  addressId: 'addressId',
+  image: 'image',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MeetupRoleScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  subscriptionPrice: 'subscriptionPrice',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MeetupAdminScalarFieldEnum = {
+  id: 'id',
+  meetupId: 'meetupId',
+  personId: 'personId',
+  role: 'role',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SubscriptionScalarFieldEnum = {
+  id: 'id',
+  personId: 'personId',
+  meetupId: 'meetupId',
+  meetupRoleId: 'meetupRoleId',
+  presenceConfirmation: 'presenceConfirmation',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.InviteScalarFieldEnum = {
+  id: 'id',
+  personId: 'personId',
+  meetupId: 'meetupId',
+  link: 'link',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PaymentScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SubscriptionPaymentScalarFieldEnum = {
+  id: 'id',
+  subscriptionId: 'subscriptionId',
+  paymentId: 'paymentId',
+  price: 'price',
+  paymentStatus: 'paymentStatus',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CertificateScalarFieldEnum = {
+  id: 'id',
+  personId: 'personId',
+  meetupId: 'meetupId',
+  link: 'link',
+  securityCode: 'securityCode',
+  datetime: 'datetime',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MeetupMediaScalarFieldEnum = {
+  id: 'id',
+  meetupId: 'meetupId',
+  personId: 'personId',
+  link: 'link',
+  datetime: 'datetime',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.GuestLoadScalarFieldEnum = {
+  id: 'id',
+  link: 'link',
+  meetupId: 'meetupId',
+  personId: 'personId',
+  datetime: 'datetime',
+  count: 'count',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -209,12 +331,112 @@ exports.Prisma.VerificationOrderByRelevanceFieldEnum = {
   value: 'value'
 };
 
+exports.Prisma.PersonOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  gender: 'gender',
+  cpf: 'cpf',
+  userId: 'userId'
+};
+
+exports.Prisma.AddressOrderByRelevanceFieldEnum = {
+  id: 'id',
+  mapLink: 'mapLink',
+  state: 'state',
+  city: 'city',
+  district: 'district',
+  street: 'street',
+  number: 'number',
+  complement: 'complement',
+  zipcode: 'zipcode'
+};
+
+exports.Prisma.MeetupOrderByRelevanceFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  addressId: 'addressId',
+  image: 'image'
+};
+
+exports.Prisma.MeetupRoleOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.MeetupAdminOrderByRelevanceFieldEnum = {
+  id: 'id',
+  meetupId: 'meetupId',
+  personId: 'personId',
+  role: 'role'
+};
+
+exports.Prisma.SubscriptionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  personId: 'personId',
+  meetupId: 'meetupId',
+  meetupRoleId: 'meetupRoleId'
+};
+
+exports.Prisma.InviteOrderByRelevanceFieldEnum = {
+  id: 'id',
+  personId: 'personId',
+  meetupId: 'meetupId',
+  link: 'link'
+};
+
+exports.Prisma.PaymentOrderByRelevanceFieldEnum = {
+  id: 'id'
+};
+
+exports.Prisma.SubscriptionPaymentOrderByRelevanceFieldEnum = {
+  id: 'id',
+  subscriptionId: 'subscriptionId',
+  paymentId: 'paymentId'
+};
+
+exports.Prisma.CertificateOrderByRelevanceFieldEnum = {
+  id: 'id',
+  personId: 'personId',
+  meetupId: 'meetupId',
+  link: 'link',
+  securityCode: 'securityCode'
+};
+
+exports.Prisma.MeetupMediaOrderByRelevanceFieldEnum = {
+  id: 'id',
+  meetupId: 'meetupId',
+  personId: 'personId',
+  link: 'link'
+};
+
+exports.Prisma.GuestLoadOrderByRelevanceFieldEnum = {
+  id: 'id',
+  link: 'link',
+  meetupId: 'meetupId',
+  personId: 'personId'
+};
+
 
 exports.Prisma.ModelName = {
   User: 'User',
   Session: 'Session',
   Account: 'Account',
-  Verification: 'Verification'
+  Verification: 'Verification',
+  Person: 'Person',
+  Address: 'Address',
+  Meetup: 'Meetup',
+  MeetupRole: 'MeetupRole',
+  MeetupAdmin: 'MeetupAdmin',
+  Subscription: 'Subscription',
+  Invite: 'Invite',
+  Payment: 'Payment',
+  SubscriptionPayment: 'SubscriptionPayment',
+  Certificate: 'Certificate',
+  MeetupMedia: 'MeetupMedia',
+  GuestLoad: 'GuestLoad'
 };
 
 /**

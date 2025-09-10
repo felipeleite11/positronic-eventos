@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/prisma/generated"
@@ -19,6 +18,7 @@ model User {
   updatedAt     DateTime  @default(now()) @updatedAt
   sessions      Session[]
   accounts      Account[]
+  person        Person?
 
   @@unique([email])
   @@map("user")
@@ -67,4 +67,212 @@ model Verification {
   updatedAt  DateTime @default(now()) @updatedAt
 
   @@map("verification")
+}
+
+model Person {
+  id        String    @id @default(cuid())
+  name      String
+  email     String    @unique
+  phone     String?
+  gender    String?
+  birthdate DateTime?
+  cpf       String?   @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  userId    String    @unique @map("user_id")
+
+  // Relacionamentos
+  meetupAdmins  MeetupAdmin[]
+  subscriptions Subscription[]
+  invites       Invite[]
+  certificates  Certificate[]
+  meetupMedias  MeetupMedia[]
+  guestLoads    GuestLoad[]
+  user          User           @relation(fields: [userId], references: [id])
+
+  @@map("person")
+}
+
+model Address {
+  id         String   @id @default(cuid())
+  mapLink    String?  @map("map_link")
+  state      String
+  city       String
+  district   String
+  street     String
+  number     String
+  complement String?
+  zipcode    String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relacionamentos
+  meetups Meetup[]
+
+  @@map("address")
+}
+
+model Meetup {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  datetime    DateTime
+  addressId   String   @map("address_id")
+  image       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relacionamentos
+  address       Address        @relation(fields: [addressId], references: [id], onDelete: Cascade)
+  meetupAdmins  MeetupAdmin[]
+  subscriptions Subscription[]
+  invites       Invite[]
+  certificates  Certificate[]
+  meetupMedias  MeetupMedia[]
+  guestLoads    GuestLoad[]
+
+  @@map("meetup")
+}
+
+model MeetupRole {
+  id                String   @id @default(cuid())
+  name              String
+  subscriptionPrice Decimal  @map("subscription_price") @db.Decimal(10, 2)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relacionamentos
+  subscriptions Subscription[]
+
+  @@map("meetup_role")
+}
+
+model MeetupAdmin {
+  id        String   @id @default(cuid())
+  meetupId  String   @map("meetup_id")
+  personId  String   @map("person_id")
+  role      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relacionamentos
+  meetup Meetup @relation(fields: [meetupId], references: [id], onDelete: Cascade)
+  person Person @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@unique([meetupId, personId])
+  @@map("meetup_admin")
+}
+
+model Subscription {
+  id                   String   @id @default(cuid())
+  personId             String   @map("person_id")
+  meetupId             String   @map("meetup_id")
+  meetupRoleId         String   @map("meetup_role_id")
+  presenceConfirmation Boolean? @map("presence_confirmation")
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  // Relacionamentos
+  person               Person                @relation(fields: [personId], references: [id], onDelete: Cascade)
+  meetup               Meetup                @relation(fields: [meetupId], references: [id], onDelete: Cascade)
+  meetupRole           MeetupRole            @relation(fields: [meetupRoleId], references: [id], onDelete: Restrict)
+  subscriptionPayments SubscriptionPayment[]
+
+  @@unique([personId, meetupId])
+  @@map("subscription")
+}
+
+model Invite {
+  id        String   @id @default(cuid())
+  personId  String   @map("person_id")
+  meetupId  String   @map("meetup_id")
+  link      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relacionamentos
+  person Person @relation(fields: [personId], references: [id], onDelete: Cascade)
+  meetup Meetup @relation(fields: [meetupId], references: [id], onDelete: Cascade)
+
+  @@unique([personId, meetupId])
+  @@map("invite")
+}
+
+model Payment {
+  id        String   @id @default(cuid())
+  // Adicione aqui outras colunas específicas do pagamento se necessário
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relacionamentos
+  subscriptionPayments SubscriptionPayment[]
+
+  @@map("payment")
+}
+
+model SubscriptionPayment {
+  id             String   @id @default(cuid())
+  subscriptionId String   @map("subscription_id")
+  paymentId      String   @map("payment_id")
+  price          Decimal  @db.Decimal(10, 2)
+  paymentStatus  Boolean  @default(false) @map("payment_status")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  // Relacionamentos
+  subscription Subscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+  payment      Payment      @relation(fields: [paymentId], references: [id], onDelete: Restrict)
+
+  @@map("subscription_payment")
+}
+
+model Certificate {
+  id           String   @id @default(cuid())
+  personId     String   @map("person_id")
+  meetupId     String   @map("meetup_id")
+  link         String
+  securityCode String   @unique @map("security_code")
+  datetime     DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relacionamentos
+  person Person @relation(fields: [personId], references: [id], onDelete: Cascade)
+  meetup Meetup @relation(fields: [meetupId], references: [id], onDelete: Cascade)
+
+  @@unique([personId, meetupId])
+  @@map("certificate")
+}
+
+model MeetupMedia {
+  id        String   @id @default(cuid())
+  meetupId  String   @map("meetup_id")
+  personId  String   @map("person_id")
+  link      String
+  datetime  DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relacionamentos
+  meetup Meetup @relation(fields: [meetupId], references: [id], onDelete: Cascade)
+  person Person @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@map("meetup_media")
+}
+
+model GuestLoad {
+  id        String   @id @default(cuid())
+  link      String
+  meetupId  String   @map("meetup_id")
+  personId  String   @map("person_id")
+  datetime  DateTime
+  count     Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relacionamentos
+  meetup Meetup @relation(fields: [meetupId], references: [id], onDelete: Cascade)
+  person Person @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@map("guest_load")
 }

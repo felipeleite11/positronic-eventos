@@ -33,6 +33,66 @@ export type Account = $Result.DefaultSelection<Prisma.$AccountPayload>
  * 
  */
 export type Verification = $Result.DefaultSelection<Prisma.$VerificationPayload>
+/**
+ * Model Person
+ * 
+ */
+export type Person = $Result.DefaultSelection<Prisma.$PersonPayload>
+/**
+ * Model Address
+ * 
+ */
+export type Address = $Result.DefaultSelection<Prisma.$AddressPayload>
+/**
+ * Model Meetup
+ * 
+ */
+export type Meetup = $Result.DefaultSelection<Prisma.$MeetupPayload>
+/**
+ * Model MeetupRole
+ * 
+ */
+export type MeetupRole = $Result.DefaultSelection<Prisma.$MeetupRolePayload>
+/**
+ * Model MeetupAdmin
+ * 
+ */
+export type MeetupAdmin = $Result.DefaultSelection<Prisma.$MeetupAdminPayload>
+/**
+ * Model Subscription
+ * 
+ */
+export type Subscription = $Result.DefaultSelection<Prisma.$SubscriptionPayload>
+/**
+ * Model Invite
+ * 
+ */
+export type Invite = $Result.DefaultSelection<Prisma.$InvitePayload>
+/**
+ * Model Payment
+ * 
+ */
+export type Payment = $Result.DefaultSelection<Prisma.$PaymentPayload>
+/**
+ * Model SubscriptionPayment
+ * 
+ */
+export type SubscriptionPayment = $Result.DefaultSelection<Prisma.$SubscriptionPaymentPayload>
+/**
+ * Model Certificate
+ * 
+ */
+export type Certificate = $Result.DefaultSelection<Prisma.$CertificatePayload>
+/**
+ * Model MeetupMedia
+ * 
+ */
+export type MeetupMedia = $Result.DefaultSelection<Prisma.$MeetupMediaPayload>
+/**
+ * Model GuestLoad
+ * 
+ */
+export type GuestLoad = $Result.DefaultSelection<Prisma.$GuestLoadPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -191,6 +251,126 @@ export class PrismaClient<
     * ```
     */
   get verification(): Prisma.VerificationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.person`: Exposes CRUD operations for the **Person** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more People
+    * const people = await prisma.person.findMany()
+    * ```
+    */
+  get person(): Prisma.PersonDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.address`: Exposes CRUD operations for the **Address** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Addresses
+    * const addresses = await prisma.address.findMany()
+    * ```
+    */
+  get address(): Prisma.AddressDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.meetup`: Exposes CRUD operations for the **Meetup** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Meetups
+    * const meetups = await prisma.meetup.findMany()
+    * ```
+    */
+  get meetup(): Prisma.MeetupDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.meetupRole`: Exposes CRUD operations for the **MeetupRole** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MeetupRoles
+    * const meetupRoles = await prisma.meetupRole.findMany()
+    * ```
+    */
+  get meetupRole(): Prisma.MeetupRoleDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.meetupAdmin`: Exposes CRUD operations for the **MeetupAdmin** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MeetupAdmins
+    * const meetupAdmins = await prisma.meetupAdmin.findMany()
+    * ```
+    */
+  get meetupAdmin(): Prisma.MeetupAdminDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.subscription`: Exposes CRUD operations for the **Subscription** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Subscriptions
+    * const subscriptions = await prisma.subscription.findMany()
+    * ```
+    */
+  get subscription(): Prisma.SubscriptionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.invite`: Exposes CRUD operations for the **Invite** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Invites
+    * const invites = await prisma.invite.findMany()
+    * ```
+    */
+  get invite(): Prisma.InviteDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.payment`: Exposes CRUD operations for the **Payment** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Payments
+    * const payments = await prisma.payment.findMany()
+    * ```
+    */
+  get payment(): Prisma.PaymentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.subscriptionPayment`: Exposes CRUD operations for the **SubscriptionPayment** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SubscriptionPayments
+    * const subscriptionPayments = await prisma.subscriptionPayment.findMany()
+    * ```
+    */
+  get subscriptionPayment(): Prisma.SubscriptionPaymentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.certificate`: Exposes CRUD operations for the **Certificate** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Certificates
+    * const certificates = await prisma.certificate.findMany()
+    * ```
+    */
+  get certificate(): Prisma.CertificateDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.meetupMedia`: Exposes CRUD operations for the **MeetupMedia** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MeetupMedias
+    * const meetupMedias = await prisma.meetupMedia.findMany()
+    * ```
+    */
+  get meetupMedia(): Prisma.MeetupMediaDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.guestLoad`: Exposes CRUD operations for the **GuestLoad** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more GuestLoads
+    * const guestLoads = await prisma.guestLoad.findMany()
+    * ```
+    */
+  get guestLoad(): Prisma.GuestLoadDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -634,7 +814,19 @@ export namespace Prisma {
     User: 'User',
     Session: 'Session',
     Account: 'Account',
-    Verification: 'Verification'
+    Verification: 'Verification',
+    Person: 'Person',
+    Address: 'Address',
+    Meetup: 'Meetup',
+    MeetupRole: 'MeetupRole',
+    MeetupAdmin: 'MeetupAdmin',
+    Subscription: 'Subscription',
+    Invite: 'Invite',
+    Payment: 'Payment',
+    SubscriptionPayment: 'SubscriptionPayment',
+    Certificate: 'Certificate',
+    MeetupMedia: 'MeetupMedia',
+    GuestLoad: 'GuestLoad'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -653,7 +845,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "verification"
+      modelProps: "user" | "session" | "account" | "verification" | "person" | "address" | "meetup" | "meetupRole" | "meetupAdmin" | "subscription" | "invite" | "payment" | "subscriptionPayment" | "certificate" | "meetupMedia" | "guestLoad"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -921,6 +1113,798 @@ export namespace Prisma {
           }
         }
       }
+      Person: {
+        payload: Prisma.$PersonPayload<ExtArgs>
+        fields: Prisma.PersonFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PersonFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PersonFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload>
+          }
+          findFirst: {
+            args: Prisma.PersonFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PersonFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload>
+          }
+          findMany: {
+            args: Prisma.PersonFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload>[]
+          }
+          create: {
+            args: Prisma.PersonCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload>
+          }
+          createMany: {
+            args: Prisma.PersonCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.PersonDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload>
+          }
+          update: {
+            args: Prisma.PersonUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload>
+          }
+          deleteMany: {
+            args: Prisma.PersonDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PersonUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.PersonUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PersonPayload>
+          }
+          aggregate: {
+            args: Prisma.PersonAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePerson>
+          }
+          groupBy: {
+            args: Prisma.PersonGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PersonGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PersonCountArgs<ExtArgs>
+            result: $Utils.Optional<PersonCountAggregateOutputType> | number
+          }
+        }
+      }
+      Address: {
+        payload: Prisma.$AddressPayload<ExtArgs>
+        fields: Prisma.AddressFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AddressFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AddressPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AddressFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AddressPayload>
+          }
+          findFirst: {
+            args: Prisma.AddressFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AddressPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AddressFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AddressPayload>
+          }
+          findMany: {
+            args: Prisma.AddressFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AddressPayload>[]
+          }
+          create: {
+            args: Prisma.AddressCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AddressPayload>
+          }
+          createMany: {
+            args: Prisma.AddressCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.AddressDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AddressPayload>
+          }
+          update: {
+            args: Prisma.AddressUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AddressPayload>
+          }
+          deleteMany: {
+            args: Prisma.AddressDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AddressUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.AddressUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AddressPayload>
+          }
+          aggregate: {
+            args: Prisma.AddressAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAddress>
+          }
+          groupBy: {
+            args: Prisma.AddressGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AddressGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AddressCountArgs<ExtArgs>
+            result: $Utils.Optional<AddressCountAggregateOutputType> | number
+          }
+        }
+      }
+      Meetup: {
+        payload: Prisma.$MeetupPayload<ExtArgs>
+        fields: Prisma.MeetupFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MeetupFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MeetupFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupPayload>
+          }
+          findFirst: {
+            args: Prisma.MeetupFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MeetupFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupPayload>
+          }
+          findMany: {
+            args: Prisma.MeetupFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupPayload>[]
+          }
+          create: {
+            args: Prisma.MeetupCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupPayload>
+          }
+          createMany: {
+            args: Prisma.MeetupCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.MeetupDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupPayload>
+          }
+          update: {
+            args: Prisma.MeetupUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupPayload>
+          }
+          deleteMany: {
+            args: Prisma.MeetupDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MeetupUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.MeetupUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupPayload>
+          }
+          aggregate: {
+            args: Prisma.MeetupAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMeetup>
+          }
+          groupBy: {
+            args: Prisma.MeetupGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MeetupGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MeetupCountArgs<ExtArgs>
+            result: $Utils.Optional<MeetupCountAggregateOutputType> | number
+          }
+        }
+      }
+      MeetupRole: {
+        payload: Prisma.$MeetupRolePayload<ExtArgs>
+        fields: Prisma.MeetupRoleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MeetupRoleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupRolePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MeetupRoleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupRolePayload>
+          }
+          findFirst: {
+            args: Prisma.MeetupRoleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupRolePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MeetupRoleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupRolePayload>
+          }
+          findMany: {
+            args: Prisma.MeetupRoleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupRolePayload>[]
+          }
+          create: {
+            args: Prisma.MeetupRoleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupRolePayload>
+          }
+          createMany: {
+            args: Prisma.MeetupRoleCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.MeetupRoleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupRolePayload>
+          }
+          update: {
+            args: Prisma.MeetupRoleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupRolePayload>
+          }
+          deleteMany: {
+            args: Prisma.MeetupRoleDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MeetupRoleUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.MeetupRoleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupRolePayload>
+          }
+          aggregate: {
+            args: Prisma.MeetupRoleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMeetupRole>
+          }
+          groupBy: {
+            args: Prisma.MeetupRoleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MeetupRoleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MeetupRoleCountArgs<ExtArgs>
+            result: $Utils.Optional<MeetupRoleCountAggregateOutputType> | number
+          }
+        }
+      }
+      MeetupAdmin: {
+        payload: Prisma.$MeetupAdminPayload<ExtArgs>
+        fields: Prisma.MeetupAdminFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MeetupAdminFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupAdminPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MeetupAdminFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupAdminPayload>
+          }
+          findFirst: {
+            args: Prisma.MeetupAdminFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupAdminPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MeetupAdminFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupAdminPayload>
+          }
+          findMany: {
+            args: Prisma.MeetupAdminFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupAdminPayload>[]
+          }
+          create: {
+            args: Prisma.MeetupAdminCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupAdminPayload>
+          }
+          createMany: {
+            args: Prisma.MeetupAdminCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.MeetupAdminDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupAdminPayload>
+          }
+          update: {
+            args: Prisma.MeetupAdminUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupAdminPayload>
+          }
+          deleteMany: {
+            args: Prisma.MeetupAdminDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MeetupAdminUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.MeetupAdminUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupAdminPayload>
+          }
+          aggregate: {
+            args: Prisma.MeetupAdminAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMeetupAdmin>
+          }
+          groupBy: {
+            args: Prisma.MeetupAdminGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MeetupAdminGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MeetupAdminCountArgs<ExtArgs>
+            result: $Utils.Optional<MeetupAdminCountAggregateOutputType> | number
+          }
+        }
+      }
+      Subscription: {
+        payload: Prisma.$SubscriptionPayload<ExtArgs>
+        fields: Prisma.SubscriptionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SubscriptionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SubscriptionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload>
+          }
+          findFirst: {
+            args: Prisma.SubscriptionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SubscriptionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload>
+          }
+          findMany: {
+            args: Prisma.SubscriptionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload>[]
+          }
+          create: {
+            args: Prisma.SubscriptionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload>
+          }
+          createMany: {
+            args: Prisma.SubscriptionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.SubscriptionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload>
+          }
+          update: {
+            args: Prisma.SubscriptionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload>
+          }
+          deleteMany: {
+            args: Prisma.SubscriptionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SubscriptionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.SubscriptionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload>
+          }
+          aggregate: {
+            args: Prisma.SubscriptionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSubscription>
+          }
+          groupBy: {
+            args: Prisma.SubscriptionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SubscriptionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SubscriptionCountArgs<ExtArgs>
+            result: $Utils.Optional<SubscriptionCountAggregateOutputType> | number
+          }
+        }
+      }
+      Invite: {
+        payload: Prisma.$InvitePayload<ExtArgs>
+        fields: Prisma.InviteFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.InviteFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.InviteFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitePayload>
+          }
+          findFirst: {
+            args: Prisma.InviteFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.InviteFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitePayload>
+          }
+          findMany: {
+            args: Prisma.InviteFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitePayload>[]
+          }
+          create: {
+            args: Prisma.InviteCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitePayload>
+          }
+          createMany: {
+            args: Prisma.InviteCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.InviteDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitePayload>
+          }
+          update: {
+            args: Prisma.InviteUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitePayload>
+          }
+          deleteMany: {
+            args: Prisma.InviteDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.InviteUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.InviteUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$InvitePayload>
+          }
+          aggregate: {
+            args: Prisma.InviteAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateInvite>
+          }
+          groupBy: {
+            args: Prisma.InviteGroupByArgs<ExtArgs>
+            result: $Utils.Optional<InviteGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.InviteCountArgs<ExtArgs>
+            result: $Utils.Optional<InviteCountAggregateOutputType> | number
+          }
+        }
+      }
+      Payment: {
+        payload: Prisma.$PaymentPayload<ExtArgs>
+        fields: Prisma.PaymentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PaymentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PaymentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload>
+          }
+          findFirst: {
+            args: Prisma.PaymentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PaymentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload>
+          }
+          findMany: {
+            args: Prisma.PaymentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload>[]
+          }
+          create: {
+            args: Prisma.PaymentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload>
+          }
+          createMany: {
+            args: Prisma.PaymentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.PaymentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload>
+          }
+          update: {
+            args: Prisma.PaymentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload>
+          }
+          deleteMany: {
+            args: Prisma.PaymentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PaymentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.PaymentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PaymentPayload>
+          }
+          aggregate: {
+            args: Prisma.PaymentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePayment>
+          }
+          groupBy: {
+            args: Prisma.PaymentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PaymentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PaymentCountArgs<ExtArgs>
+            result: $Utils.Optional<PaymentCountAggregateOutputType> | number
+          }
+        }
+      }
+      SubscriptionPayment: {
+        payload: Prisma.$SubscriptionPaymentPayload<ExtArgs>
+        fields: Prisma.SubscriptionPaymentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SubscriptionPaymentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPaymentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SubscriptionPaymentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPaymentPayload>
+          }
+          findFirst: {
+            args: Prisma.SubscriptionPaymentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPaymentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SubscriptionPaymentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPaymentPayload>
+          }
+          findMany: {
+            args: Prisma.SubscriptionPaymentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPaymentPayload>[]
+          }
+          create: {
+            args: Prisma.SubscriptionPaymentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPaymentPayload>
+          }
+          createMany: {
+            args: Prisma.SubscriptionPaymentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.SubscriptionPaymentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPaymentPayload>
+          }
+          update: {
+            args: Prisma.SubscriptionPaymentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPaymentPayload>
+          }
+          deleteMany: {
+            args: Prisma.SubscriptionPaymentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SubscriptionPaymentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.SubscriptionPaymentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPaymentPayload>
+          }
+          aggregate: {
+            args: Prisma.SubscriptionPaymentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSubscriptionPayment>
+          }
+          groupBy: {
+            args: Prisma.SubscriptionPaymentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SubscriptionPaymentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SubscriptionPaymentCountArgs<ExtArgs>
+            result: $Utils.Optional<SubscriptionPaymentCountAggregateOutputType> | number
+          }
+        }
+      }
+      Certificate: {
+        payload: Prisma.$CertificatePayload<ExtArgs>
+        fields: Prisma.CertificateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CertificateFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CertificateFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload>
+          }
+          findFirst: {
+            args: Prisma.CertificateFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CertificateFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload>
+          }
+          findMany: {
+            args: Prisma.CertificateFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload>[]
+          }
+          create: {
+            args: Prisma.CertificateCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload>
+          }
+          createMany: {
+            args: Prisma.CertificateCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.CertificateDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload>
+          }
+          update: {
+            args: Prisma.CertificateUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload>
+          }
+          deleteMany: {
+            args: Prisma.CertificateDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CertificateUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.CertificateUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload>
+          }
+          aggregate: {
+            args: Prisma.CertificateAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCertificate>
+          }
+          groupBy: {
+            args: Prisma.CertificateGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CertificateGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CertificateCountArgs<ExtArgs>
+            result: $Utils.Optional<CertificateCountAggregateOutputType> | number
+          }
+        }
+      }
+      MeetupMedia: {
+        payload: Prisma.$MeetupMediaPayload<ExtArgs>
+        fields: Prisma.MeetupMediaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MeetupMediaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupMediaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MeetupMediaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupMediaPayload>
+          }
+          findFirst: {
+            args: Prisma.MeetupMediaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupMediaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MeetupMediaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupMediaPayload>
+          }
+          findMany: {
+            args: Prisma.MeetupMediaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupMediaPayload>[]
+          }
+          create: {
+            args: Prisma.MeetupMediaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupMediaPayload>
+          }
+          createMany: {
+            args: Prisma.MeetupMediaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.MeetupMediaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupMediaPayload>
+          }
+          update: {
+            args: Prisma.MeetupMediaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupMediaPayload>
+          }
+          deleteMany: {
+            args: Prisma.MeetupMediaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MeetupMediaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.MeetupMediaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupMediaPayload>
+          }
+          aggregate: {
+            args: Prisma.MeetupMediaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMeetupMedia>
+          }
+          groupBy: {
+            args: Prisma.MeetupMediaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MeetupMediaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MeetupMediaCountArgs<ExtArgs>
+            result: $Utils.Optional<MeetupMediaCountAggregateOutputType> | number
+          }
+        }
+      }
+      GuestLoad: {
+        payload: Prisma.$GuestLoadPayload<ExtArgs>
+        fields: Prisma.GuestLoadFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.GuestLoadFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GuestLoadPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GuestLoadFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GuestLoadPayload>
+          }
+          findFirst: {
+            args: Prisma.GuestLoadFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GuestLoadPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GuestLoadFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GuestLoadPayload>
+          }
+          findMany: {
+            args: Prisma.GuestLoadFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GuestLoadPayload>[]
+          }
+          create: {
+            args: Prisma.GuestLoadCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GuestLoadPayload>
+          }
+          createMany: {
+            args: Prisma.GuestLoadCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.GuestLoadDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GuestLoadPayload>
+          }
+          update: {
+            args: Prisma.GuestLoadUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GuestLoadPayload>
+          }
+          deleteMany: {
+            args: Prisma.GuestLoadDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GuestLoadUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.GuestLoadUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GuestLoadPayload>
+          }
+          aggregate: {
+            args: Prisma.GuestLoadAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGuestLoad>
+          }
+          groupBy: {
+            args: Prisma.GuestLoadGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GuestLoadGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GuestLoadCountArgs<ExtArgs>
+            result: $Utils.Optional<GuestLoadCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1017,6 +2001,18 @@ export namespace Prisma {
     session?: SessionOmit
     account?: AccountOmit
     verification?: VerificationOmit
+    person?: PersonOmit
+    address?: AddressOmit
+    meetup?: MeetupOmit
+    meetupRole?: MeetupRoleOmit
+    meetupAdmin?: MeetupAdminOmit
+    subscription?: SubscriptionOmit
+    invite?: InviteOmit
+    payment?: PaymentOmit
+    subscriptionPayment?: SubscriptionPaymentOmit
+    certificate?: CertificateOmit
+    meetupMedia?: MeetupMediaOmit
+    guestLoad?: GuestLoadOmit
   }
 
   /* Types for Logging */
@@ -1129,6 +2125,282 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AccountWhereInput
+  }
+
+
+  /**
+   * Count Type PersonCountOutputType
+   */
+
+  export type PersonCountOutputType = {
+    meetupAdmins: number
+    subscriptions: number
+    invites: number
+    certificates: number
+    meetupMedias: number
+    guestLoads: number
+  }
+
+  export type PersonCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meetupAdmins?: boolean | PersonCountOutputTypeCountMeetupAdminsArgs
+    subscriptions?: boolean | PersonCountOutputTypeCountSubscriptionsArgs
+    invites?: boolean | PersonCountOutputTypeCountInvitesArgs
+    certificates?: boolean | PersonCountOutputTypeCountCertificatesArgs
+    meetupMedias?: boolean | PersonCountOutputTypeCountMeetupMediasArgs
+    guestLoads?: boolean | PersonCountOutputTypeCountGuestLoadsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PersonCountOutputType without action
+   */
+  export type PersonCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PersonCountOutputType
+     */
+    select?: PersonCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PersonCountOutputType without action
+   */
+  export type PersonCountOutputTypeCountMeetupAdminsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetupAdminWhereInput
+  }
+
+  /**
+   * PersonCountOutputType without action
+   */
+  export type PersonCountOutputTypeCountSubscriptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubscriptionWhereInput
+  }
+
+  /**
+   * PersonCountOutputType without action
+   */
+  export type PersonCountOutputTypeCountInvitesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InviteWhereInput
+  }
+
+  /**
+   * PersonCountOutputType without action
+   */
+  export type PersonCountOutputTypeCountCertificatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CertificateWhereInput
+  }
+
+  /**
+   * PersonCountOutputType without action
+   */
+  export type PersonCountOutputTypeCountMeetupMediasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetupMediaWhereInput
+  }
+
+  /**
+   * PersonCountOutputType without action
+   */
+  export type PersonCountOutputTypeCountGuestLoadsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GuestLoadWhereInput
+  }
+
+
+  /**
+   * Count Type AddressCountOutputType
+   */
+
+  export type AddressCountOutputType = {
+    meetups: number
+  }
+
+  export type AddressCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meetups?: boolean | AddressCountOutputTypeCountMeetupsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * AddressCountOutputType without action
+   */
+  export type AddressCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AddressCountOutputType
+     */
+    select?: AddressCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * AddressCountOutputType without action
+   */
+  export type AddressCountOutputTypeCountMeetupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetupWhereInput
+  }
+
+
+  /**
+   * Count Type MeetupCountOutputType
+   */
+
+  export type MeetupCountOutputType = {
+    meetupAdmins: number
+    subscriptions: number
+    invites: number
+    certificates: number
+    meetupMedias: number
+    guestLoads: number
+  }
+
+  export type MeetupCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meetupAdmins?: boolean | MeetupCountOutputTypeCountMeetupAdminsArgs
+    subscriptions?: boolean | MeetupCountOutputTypeCountSubscriptionsArgs
+    invites?: boolean | MeetupCountOutputTypeCountInvitesArgs
+    certificates?: boolean | MeetupCountOutputTypeCountCertificatesArgs
+    meetupMedias?: boolean | MeetupCountOutputTypeCountMeetupMediasArgs
+    guestLoads?: boolean | MeetupCountOutputTypeCountGuestLoadsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MeetupCountOutputType without action
+   */
+  export type MeetupCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupCountOutputType
+     */
+    select?: MeetupCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MeetupCountOutputType without action
+   */
+  export type MeetupCountOutputTypeCountMeetupAdminsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetupAdminWhereInput
+  }
+
+  /**
+   * MeetupCountOutputType without action
+   */
+  export type MeetupCountOutputTypeCountSubscriptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubscriptionWhereInput
+  }
+
+  /**
+   * MeetupCountOutputType without action
+   */
+  export type MeetupCountOutputTypeCountInvitesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InviteWhereInput
+  }
+
+  /**
+   * MeetupCountOutputType without action
+   */
+  export type MeetupCountOutputTypeCountCertificatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CertificateWhereInput
+  }
+
+  /**
+   * MeetupCountOutputType without action
+   */
+  export type MeetupCountOutputTypeCountMeetupMediasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetupMediaWhereInput
+  }
+
+  /**
+   * MeetupCountOutputType without action
+   */
+  export type MeetupCountOutputTypeCountGuestLoadsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GuestLoadWhereInput
+  }
+
+
+  /**
+   * Count Type MeetupRoleCountOutputType
+   */
+
+  export type MeetupRoleCountOutputType = {
+    subscriptions: number
+  }
+
+  export type MeetupRoleCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    subscriptions?: boolean | MeetupRoleCountOutputTypeCountSubscriptionsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MeetupRoleCountOutputType without action
+   */
+  export type MeetupRoleCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupRoleCountOutputType
+     */
+    select?: MeetupRoleCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MeetupRoleCountOutputType without action
+   */
+  export type MeetupRoleCountOutputTypeCountSubscriptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubscriptionWhereInput
+  }
+
+
+  /**
+   * Count Type SubscriptionCountOutputType
+   */
+
+  export type SubscriptionCountOutputType = {
+    subscriptionPayments: number
+  }
+
+  export type SubscriptionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    subscriptionPayments?: boolean | SubscriptionCountOutputTypeCountSubscriptionPaymentsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * SubscriptionCountOutputType without action
+   */
+  export type SubscriptionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionCountOutputType
+     */
+    select?: SubscriptionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * SubscriptionCountOutputType without action
+   */
+  export type SubscriptionCountOutputTypeCountSubscriptionPaymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubscriptionPaymentWhereInput
+  }
+
+
+  /**
+   * Count Type PaymentCountOutputType
+   */
+
+  export type PaymentCountOutputType = {
+    subscriptionPayments: number
+  }
+
+  export type PaymentCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    subscriptionPayments?: boolean | PaymentCountOutputTypeCountSubscriptionPaymentsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PaymentCountOutputType without action
+   */
+  export type PaymentCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PaymentCountOutputType
+     */
+    select?: PaymentCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PaymentCountOutputType without action
+   */
+  export type PaymentCountOutputTypeCountSubscriptionPaymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubscriptionPaymentWhereInput
   }
 
 
@@ -1318,6 +2590,7 @@ export namespace Prisma {
     updatedAt?: boolean
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
+    person?: boolean | User$personArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1337,6 +2610,7 @@ export namespace Prisma {
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
+    person?: boolean | User$personArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -1345,6 +2619,7 @@ export namespace Prisma {
     objects: {
       sessions: Prisma.$SessionPayload<ExtArgs>[]
       accounts: Prisma.$AccountPayload<ExtArgs>[]
+      person: Prisma.$PersonPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1696,6 +2971,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    person<T extends User$personArgs<ExtArgs> = {}>(args?: Subset<T, User$personArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2120,6 +3396,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
+  }
+
+  /**
+   * User.person
+   */
+  export type User$personArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PersonInclude<ExtArgs> | null
+    where?: PersonWhereInput
   }
 
   /**
@@ -5014,6 +6309,12022 @@ export namespace Prisma {
 
 
   /**
+   * Model Person
+   */
+
+  export type AggregatePerson = {
+    _count: PersonCountAggregateOutputType | null
+    _min: PersonMinAggregateOutputType | null
+    _max: PersonMaxAggregateOutputType | null
+  }
+
+  export type PersonMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    email: string | null
+    phone: string | null
+    gender: string | null
+    birthdate: Date | null
+    cpf: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    userId: string | null
+  }
+
+  export type PersonMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    email: string | null
+    phone: string | null
+    gender: string | null
+    birthdate: Date | null
+    cpf: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    userId: string | null
+  }
+
+  export type PersonCountAggregateOutputType = {
+    id: number
+    name: number
+    email: number
+    phone: number
+    gender: number
+    birthdate: number
+    cpf: number
+    createdAt: number
+    updatedAt: number
+    userId: number
+    _all: number
+  }
+
+
+  export type PersonMinAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    phone?: true
+    gender?: true
+    birthdate?: true
+    cpf?: true
+    createdAt?: true
+    updatedAt?: true
+    userId?: true
+  }
+
+  export type PersonMaxAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    phone?: true
+    gender?: true
+    birthdate?: true
+    cpf?: true
+    createdAt?: true
+    updatedAt?: true
+    userId?: true
+  }
+
+  export type PersonCountAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    phone?: true
+    gender?: true
+    birthdate?: true
+    cpf?: true
+    createdAt?: true
+    updatedAt?: true
+    userId?: true
+    _all?: true
+  }
+
+  export type PersonAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Person to aggregate.
+     */
+    where?: PersonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of People to fetch.
+     */
+    orderBy?: PersonOrderByWithRelationInput | PersonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PersonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` People from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` People.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned People
+    **/
+    _count?: true | PersonCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PersonMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PersonMaxAggregateInputType
+  }
+
+  export type GetPersonAggregateType<T extends PersonAggregateArgs> = {
+        [P in keyof T & keyof AggregatePerson]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePerson[P]>
+      : GetScalarType<T[P], AggregatePerson[P]>
+  }
+
+
+
+
+  export type PersonGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PersonWhereInput
+    orderBy?: PersonOrderByWithAggregationInput | PersonOrderByWithAggregationInput[]
+    by: PersonScalarFieldEnum[] | PersonScalarFieldEnum
+    having?: PersonScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PersonCountAggregateInputType | true
+    _min?: PersonMinAggregateInputType
+    _max?: PersonMaxAggregateInputType
+  }
+
+  export type PersonGroupByOutputType = {
+    id: string
+    name: string
+    email: string
+    phone: string | null
+    gender: string | null
+    birthdate: Date | null
+    cpf: string | null
+    createdAt: Date
+    updatedAt: Date
+    userId: string
+    _count: PersonCountAggregateOutputType | null
+    _min: PersonMinAggregateOutputType | null
+    _max: PersonMaxAggregateOutputType | null
+  }
+
+  type GetPersonGroupByPayload<T extends PersonGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PersonGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PersonGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PersonGroupByOutputType[P]>
+            : GetScalarType<T[P], PersonGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PersonSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    phone?: boolean
+    gender?: boolean
+    birthdate?: boolean
+    cpf?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+    meetupAdmins?: boolean | Person$meetupAdminsArgs<ExtArgs>
+    subscriptions?: boolean | Person$subscriptionsArgs<ExtArgs>
+    invites?: boolean | Person$invitesArgs<ExtArgs>
+    certificates?: boolean | Person$certificatesArgs<ExtArgs>
+    meetupMedias?: boolean | Person$meetupMediasArgs<ExtArgs>
+    guestLoads?: boolean | Person$guestLoadsArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    _count?: boolean | PersonCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["person"]>
+
+
+
+  export type PersonSelectScalar = {
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    phone?: boolean
+    gender?: boolean
+    birthdate?: boolean
+    cpf?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+  }
+
+  export type PersonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "gender" | "birthdate" | "cpf" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["person"]>
+  export type PersonInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meetupAdmins?: boolean | Person$meetupAdminsArgs<ExtArgs>
+    subscriptions?: boolean | Person$subscriptionsArgs<ExtArgs>
+    invites?: boolean | Person$invitesArgs<ExtArgs>
+    certificates?: boolean | Person$certificatesArgs<ExtArgs>
+    meetupMedias?: boolean | Person$meetupMediasArgs<ExtArgs>
+    guestLoads?: boolean | Person$guestLoadsArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    _count?: boolean | PersonCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $PersonPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Person"
+    objects: {
+      meetupAdmins: Prisma.$MeetupAdminPayload<ExtArgs>[]
+      subscriptions: Prisma.$SubscriptionPayload<ExtArgs>[]
+      invites: Prisma.$InvitePayload<ExtArgs>[]
+      certificates: Prisma.$CertificatePayload<ExtArgs>[]
+      meetupMedias: Prisma.$MeetupMediaPayload<ExtArgs>[]
+      guestLoads: Prisma.$GuestLoadPayload<ExtArgs>[]
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      email: string
+      phone: string | null
+      gender: string | null
+      birthdate: Date | null
+      cpf: string | null
+      createdAt: Date
+      updatedAt: Date
+      userId: string
+    }, ExtArgs["result"]["person"]>
+    composites: {}
+  }
+
+  type PersonGetPayload<S extends boolean | null | undefined | PersonDefaultArgs> = $Result.GetResult<Prisma.$PersonPayload, S>
+
+  type PersonCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PersonFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PersonCountAggregateInputType | true
+    }
+
+  export interface PersonDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Person'], meta: { name: 'Person' } }
+    /**
+     * Find zero or one Person that matches the filter.
+     * @param {PersonFindUniqueArgs} args - Arguments to find a Person
+     * @example
+     * // Get one Person
+     * const person = await prisma.person.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PersonFindUniqueArgs>(args: SelectSubset<T, PersonFindUniqueArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Person that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PersonFindUniqueOrThrowArgs} args - Arguments to find a Person
+     * @example
+     * // Get one Person
+     * const person = await prisma.person.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PersonFindUniqueOrThrowArgs>(args: SelectSubset<T, PersonFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Person that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonFindFirstArgs} args - Arguments to find a Person
+     * @example
+     * // Get one Person
+     * const person = await prisma.person.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PersonFindFirstArgs>(args?: SelectSubset<T, PersonFindFirstArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Person that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonFindFirstOrThrowArgs} args - Arguments to find a Person
+     * @example
+     * // Get one Person
+     * const person = await prisma.person.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PersonFindFirstOrThrowArgs>(args?: SelectSubset<T, PersonFindFirstOrThrowArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more People that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all People
+     * const people = await prisma.person.findMany()
+     * 
+     * // Get first 10 People
+     * const people = await prisma.person.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const personWithIdOnly = await prisma.person.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PersonFindManyArgs>(args?: SelectSubset<T, PersonFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Person.
+     * @param {PersonCreateArgs} args - Arguments to create a Person.
+     * @example
+     * // Create one Person
+     * const Person = await prisma.person.create({
+     *   data: {
+     *     // ... data to create a Person
+     *   }
+     * })
+     * 
+     */
+    create<T extends PersonCreateArgs>(args: SelectSubset<T, PersonCreateArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many People.
+     * @param {PersonCreateManyArgs} args - Arguments to create many People.
+     * @example
+     * // Create many People
+     * const person = await prisma.person.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PersonCreateManyArgs>(args?: SelectSubset<T, PersonCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Person.
+     * @param {PersonDeleteArgs} args - Arguments to delete one Person.
+     * @example
+     * // Delete one Person
+     * const Person = await prisma.person.delete({
+     *   where: {
+     *     // ... filter to delete one Person
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PersonDeleteArgs>(args: SelectSubset<T, PersonDeleteArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Person.
+     * @param {PersonUpdateArgs} args - Arguments to update one Person.
+     * @example
+     * // Update one Person
+     * const person = await prisma.person.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PersonUpdateArgs>(args: SelectSubset<T, PersonUpdateArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more People.
+     * @param {PersonDeleteManyArgs} args - Arguments to filter People to delete.
+     * @example
+     * // Delete a few People
+     * const { count } = await prisma.person.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PersonDeleteManyArgs>(args?: SelectSubset<T, PersonDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more People.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many People
+     * const person = await prisma.person.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PersonUpdateManyArgs>(args: SelectSubset<T, PersonUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Person.
+     * @param {PersonUpsertArgs} args - Arguments to update or create a Person.
+     * @example
+     * // Update or create a Person
+     * const person = await prisma.person.upsert({
+     *   create: {
+     *     // ... data to create a Person
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Person we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PersonUpsertArgs>(args: SelectSubset<T, PersonUpsertArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of People.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonCountArgs} args - Arguments to filter People to count.
+     * @example
+     * // Count the number of People
+     * const count = await prisma.person.count({
+     *   where: {
+     *     // ... the filter for the People we want to count
+     *   }
+     * })
+    **/
+    count<T extends PersonCountArgs>(
+      args?: Subset<T, PersonCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PersonCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Person.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PersonAggregateArgs>(args: Subset<T, PersonAggregateArgs>): Prisma.PrismaPromise<GetPersonAggregateType<T>>
+
+    /**
+     * Group by Person.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PersonGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PersonGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PersonGroupByArgs['orderBy'] }
+        : { orderBy?: PersonGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PersonGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPersonGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Person model
+   */
+  readonly fields: PersonFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Person.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PersonClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    meetupAdmins<T extends Person$meetupAdminsArgs<ExtArgs> = {}>(args?: Subset<T, Person$meetupAdminsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupAdminPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    subscriptions<T extends Person$subscriptionsArgs<ExtArgs> = {}>(args?: Subset<T, Person$subscriptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    invites<T extends Person$invitesArgs<ExtArgs> = {}>(args?: Subset<T, Person$invitesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    certificates<T extends Person$certificatesArgs<ExtArgs> = {}>(args?: Subset<T, Person$certificatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    meetupMedias<T extends Person$meetupMediasArgs<ExtArgs> = {}>(args?: Subset<T, Person$meetupMediasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupMediaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    guestLoads<T extends Person$guestLoadsArgs<ExtArgs> = {}>(args?: Subset<T, Person$guestLoadsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GuestLoadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Person model
+   */
+  interface PersonFieldRefs {
+    readonly id: FieldRef<"Person", 'String'>
+    readonly name: FieldRef<"Person", 'String'>
+    readonly email: FieldRef<"Person", 'String'>
+    readonly phone: FieldRef<"Person", 'String'>
+    readonly gender: FieldRef<"Person", 'String'>
+    readonly birthdate: FieldRef<"Person", 'DateTime'>
+    readonly cpf: FieldRef<"Person", 'String'>
+    readonly createdAt: FieldRef<"Person", 'DateTime'>
+    readonly updatedAt: FieldRef<"Person", 'DateTime'>
+    readonly userId: FieldRef<"Person", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Person findUnique
+   */
+  export type PersonFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PersonInclude<ExtArgs> | null
+    /**
+     * Filter, which Person to fetch.
+     */
+    where: PersonWhereUniqueInput
+  }
+
+  /**
+   * Person findUniqueOrThrow
+   */
+  export type PersonFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PersonInclude<ExtArgs> | null
+    /**
+     * Filter, which Person to fetch.
+     */
+    where: PersonWhereUniqueInput
+  }
+
+  /**
+   * Person findFirst
+   */
+  export type PersonFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PersonInclude<ExtArgs> | null
+    /**
+     * Filter, which Person to fetch.
+     */
+    where?: PersonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of People to fetch.
+     */
+    orderBy?: PersonOrderByWithRelationInput | PersonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for People.
+     */
+    cursor?: PersonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` People from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` People.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of People.
+     */
+    distinct?: PersonScalarFieldEnum | PersonScalarFieldEnum[]
+  }
+
+  /**
+   * Person findFirstOrThrow
+   */
+  export type PersonFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PersonInclude<ExtArgs> | null
+    /**
+     * Filter, which Person to fetch.
+     */
+    where?: PersonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of People to fetch.
+     */
+    orderBy?: PersonOrderByWithRelationInput | PersonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for People.
+     */
+    cursor?: PersonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` People from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` People.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of People.
+     */
+    distinct?: PersonScalarFieldEnum | PersonScalarFieldEnum[]
+  }
+
+  /**
+   * Person findMany
+   */
+  export type PersonFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PersonInclude<ExtArgs> | null
+    /**
+     * Filter, which People to fetch.
+     */
+    where?: PersonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of People to fetch.
+     */
+    orderBy?: PersonOrderByWithRelationInput | PersonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing People.
+     */
+    cursor?: PersonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` People from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` People.
+     */
+    skip?: number
+    distinct?: PersonScalarFieldEnum | PersonScalarFieldEnum[]
+  }
+
+  /**
+   * Person create
+   */
+  export type PersonCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PersonInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Person.
+     */
+    data: XOR<PersonCreateInput, PersonUncheckedCreateInput>
+  }
+
+  /**
+   * Person createMany
+   */
+  export type PersonCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many People.
+     */
+    data: PersonCreateManyInput | PersonCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Person update
+   */
+  export type PersonUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PersonInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Person.
+     */
+    data: XOR<PersonUpdateInput, PersonUncheckedUpdateInput>
+    /**
+     * Choose, which Person to update.
+     */
+    where: PersonWhereUniqueInput
+  }
+
+  /**
+   * Person updateMany
+   */
+  export type PersonUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update People.
+     */
+    data: XOR<PersonUpdateManyMutationInput, PersonUncheckedUpdateManyInput>
+    /**
+     * Filter which People to update
+     */
+    where?: PersonWhereInput
+    /**
+     * Limit how many People to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Person upsert
+   */
+  export type PersonUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PersonInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Person to update in case it exists.
+     */
+    where: PersonWhereUniqueInput
+    /**
+     * In case the Person found by the `where` argument doesn't exist, create a new Person with this data.
+     */
+    create: XOR<PersonCreateInput, PersonUncheckedCreateInput>
+    /**
+     * In case the Person was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PersonUpdateInput, PersonUncheckedUpdateInput>
+  }
+
+  /**
+   * Person delete
+   */
+  export type PersonDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PersonInclude<ExtArgs> | null
+    /**
+     * Filter which Person to delete.
+     */
+    where: PersonWhereUniqueInput
+  }
+
+  /**
+   * Person deleteMany
+   */
+  export type PersonDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which People to delete
+     */
+    where?: PersonWhereInput
+    /**
+     * Limit how many People to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Person.meetupAdmins
+   */
+  export type Person$meetupAdminsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupAdmin
+     */
+    select?: MeetupAdminSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupAdmin
+     */
+    omit?: MeetupAdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupAdminInclude<ExtArgs> | null
+    where?: MeetupAdminWhereInput
+    orderBy?: MeetupAdminOrderByWithRelationInput | MeetupAdminOrderByWithRelationInput[]
+    cursor?: MeetupAdminWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MeetupAdminScalarFieldEnum | MeetupAdminScalarFieldEnum[]
+  }
+
+  /**
+   * Person.subscriptions
+   */
+  export type Person$subscriptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subscription
+     */
+    select?: SubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subscription
+     */
+    omit?: SubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionInclude<ExtArgs> | null
+    where?: SubscriptionWhereInput
+    orderBy?: SubscriptionOrderByWithRelationInput | SubscriptionOrderByWithRelationInput[]
+    cursor?: SubscriptionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SubscriptionScalarFieldEnum | SubscriptionScalarFieldEnum[]
+  }
+
+  /**
+   * Person.invites
+   */
+  export type Person$invitesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Invite
+     */
+    select?: InviteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Invite
+     */
+    omit?: InviteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InviteInclude<ExtArgs> | null
+    where?: InviteWhereInput
+    orderBy?: InviteOrderByWithRelationInput | InviteOrderByWithRelationInput[]
+    cursor?: InviteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InviteScalarFieldEnum | InviteScalarFieldEnum[]
+  }
+
+  /**
+   * Person.certificates
+   */
+  export type Person$certificatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    where?: CertificateWhereInput
+    orderBy?: CertificateOrderByWithRelationInput | CertificateOrderByWithRelationInput[]
+    cursor?: CertificateWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CertificateScalarFieldEnum | CertificateScalarFieldEnum[]
+  }
+
+  /**
+   * Person.meetupMedias
+   */
+  export type Person$meetupMediasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupMedia
+     */
+    select?: MeetupMediaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupMedia
+     */
+    omit?: MeetupMediaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupMediaInclude<ExtArgs> | null
+    where?: MeetupMediaWhereInput
+    orderBy?: MeetupMediaOrderByWithRelationInput | MeetupMediaOrderByWithRelationInput[]
+    cursor?: MeetupMediaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MeetupMediaScalarFieldEnum | MeetupMediaScalarFieldEnum[]
+  }
+
+  /**
+   * Person.guestLoads
+   */
+  export type Person$guestLoadsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GuestLoad
+     */
+    select?: GuestLoadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GuestLoad
+     */
+    omit?: GuestLoadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GuestLoadInclude<ExtArgs> | null
+    where?: GuestLoadWhereInput
+    orderBy?: GuestLoadOrderByWithRelationInput | GuestLoadOrderByWithRelationInput[]
+    cursor?: GuestLoadWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GuestLoadScalarFieldEnum | GuestLoadScalarFieldEnum[]
+  }
+
+  /**
+   * Person without action
+   */
+  export type PersonDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Person
+     */
+    select?: PersonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Person
+     */
+    omit?: PersonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PersonInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Address
+   */
+
+  export type AggregateAddress = {
+    _count: AddressCountAggregateOutputType | null
+    _min: AddressMinAggregateOutputType | null
+    _max: AddressMaxAggregateOutputType | null
+  }
+
+  export type AddressMinAggregateOutputType = {
+    id: string | null
+    mapLink: string | null
+    state: string | null
+    city: string | null
+    district: string | null
+    street: string | null
+    number: string | null
+    complement: string | null
+    zipcode: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AddressMaxAggregateOutputType = {
+    id: string | null
+    mapLink: string | null
+    state: string | null
+    city: string | null
+    district: string | null
+    street: string | null
+    number: string | null
+    complement: string | null
+    zipcode: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AddressCountAggregateOutputType = {
+    id: number
+    mapLink: number
+    state: number
+    city: number
+    district: number
+    street: number
+    number: number
+    complement: number
+    zipcode: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type AddressMinAggregateInputType = {
+    id?: true
+    mapLink?: true
+    state?: true
+    city?: true
+    district?: true
+    street?: true
+    number?: true
+    complement?: true
+    zipcode?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AddressMaxAggregateInputType = {
+    id?: true
+    mapLink?: true
+    state?: true
+    city?: true
+    district?: true
+    street?: true
+    number?: true
+    complement?: true
+    zipcode?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AddressCountAggregateInputType = {
+    id?: true
+    mapLink?: true
+    state?: true
+    city?: true
+    district?: true
+    street?: true
+    number?: true
+    complement?: true
+    zipcode?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type AddressAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Address to aggregate.
+     */
+    where?: AddressWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Addresses to fetch.
+     */
+    orderBy?: AddressOrderByWithRelationInput | AddressOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AddressWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Addresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Addresses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Addresses
+    **/
+    _count?: true | AddressCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AddressMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AddressMaxAggregateInputType
+  }
+
+  export type GetAddressAggregateType<T extends AddressAggregateArgs> = {
+        [P in keyof T & keyof AggregateAddress]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAddress[P]>
+      : GetScalarType<T[P], AggregateAddress[P]>
+  }
+
+
+
+
+  export type AddressGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AddressWhereInput
+    orderBy?: AddressOrderByWithAggregationInput | AddressOrderByWithAggregationInput[]
+    by: AddressScalarFieldEnum[] | AddressScalarFieldEnum
+    having?: AddressScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AddressCountAggregateInputType | true
+    _min?: AddressMinAggregateInputType
+    _max?: AddressMaxAggregateInputType
+  }
+
+  export type AddressGroupByOutputType = {
+    id: string
+    mapLink: string | null
+    state: string
+    city: string
+    district: string
+    street: string
+    number: string
+    complement: string | null
+    zipcode: string
+    createdAt: Date
+    updatedAt: Date
+    _count: AddressCountAggregateOutputType | null
+    _min: AddressMinAggregateOutputType | null
+    _max: AddressMaxAggregateOutputType | null
+  }
+
+  type GetAddressGroupByPayload<T extends AddressGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AddressGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AddressGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AddressGroupByOutputType[P]>
+            : GetScalarType<T[P], AddressGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AddressSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mapLink?: boolean
+    state?: boolean
+    city?: boolean
+    district?: boolean
+    street?: boolean
+    number?: boolean
+    complement?: boolean
+    zipcode?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    meetups?: boolean | Address$meetupsArgs<ExtArgs>
+    _count?: boolean | AddressCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["address"]>
+
+
+
+  export type AddressSelectScalar = {
+    id?: boolean
+    mapLink?: boolean
+    state?: boolean
+    city?: boolean
+    district?: boolean
+    street?: boolean
+    number?: boolean
+    complement?: boolean
+    zipcode?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type AddressOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mapLink" | "state" | "city" | "district" | "street" | "number" | "complement" | "zipcode" | "createdAt" | "updatedAt", ExtArgs["result"]["address"]>
+  export type AddressInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meetups?: boolean | Address$meetupsArgs<ExtArgs>
+    _count?: boolean | AddressCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $AddressPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Address"
+    objects: {
+      meetups: Prisma.$MeetupPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      mapLink: string | null
+      state: string
+      city: string
+      district: string
+      street: string
+      number: string
+      complement: string | null
+      zipcode: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["address"]>
+    composites: {}
+  }
+
+  type AddressGetPayload<S extends boolean | null | undefined | AddressDefaultArgs> = $Result.GetResult<Prisma.$AddressPayload, S>
+
+  type AddressCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AddressFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AddressCountAggregateInputType | true
+    }
+
+  export interface AddressDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Address'], meta: { name: 'Address' } }
+    /**
+     * Find zero or one Address that matches the filter.
+     * @param {AddressFindUniqueArgs} args - Arguments to find a Address
+     * @example
+     * // Get one Address
+     * const address = await prisma.address.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AddressFindUniqueArgs>(args: SelectSubset<T, AddressFindUniqueArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Address that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AddressFindUniqueOrThrowArgs} args - Arguments to find a Address
+     * @example
+     * // Get one Address
+     * const address = await prisma.address.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AddressFindUniqueOrThrowArgs>(args: SelectSubset<T, AddressFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Address that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AddressFindFirstArgs} args - Arguments to find a Address
+     * @example
+     * // Get one Address
+     * const address = await prisma.address.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AddressFindFirstArgs>(args?: SelectSubset<T, AddressFindFirstArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Address that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AddressFindFirstOrThrowArgs} args - Arguments to find a Address
+     * @example
+     * // Get one Address
+     * const address = await prisma.address.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AddressFindFirstOrThrowArgs>(args?: SelectSubset<T, AddressFindFirstOrThrowArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Addresses that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AddressFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Addresses
+     * const addresses = await prisma.address.findMany()
+     * 
+     * // Get first 10 Addresses
+     * const addresses = await prisma.address.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const addressWithIdOnly = await prisma.address.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AddressFindManyArgs>(args?: SelectSubset<T, AddressFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Address.
+     * @param {AddressCreateArgs} args - Arguments to create a Address.
+     * @example
+     * // Create one Address
+     * const Address = await prisma.address.create({
+     *   data: {
+     *     // ... data to create a Address
+     *   }
+     * })
+     * 
+     */
+    create<T extends AddressCreateArgs>(args: SelectSubset<T, AddressCreateArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Addresses.
+     * @param {AddressCreateManyArgs} args - Arguments to create many Addresses.
+     * @example
+     * // Create many Addresses
+     * const address = await prisma.address.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AddressCreateManyArgs>(args?: SelectSubset<T, AddressCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Address.
+     * @param {AddressDeleteArgs} args - Arguments to delete one Address.
+     * @example
+     * // Delete one Address
+     * const Address = await prisma.address.delete({
+     *   where: {
+     *     // ... filter to delete one Address
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AddressDeleteArgs>(args: SelectSubset<T, AddressDeleteArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Address.
+     * @param {AddressUpdateArgs} args - Arguments to update one Address.
+     * @example
+     * // Update one Address
+     * const address = await prisma.address.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AddressUpdateArgs>(args: SelectSubset<T, AddressUpdateArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Addresses.
+     * @param {AddressDeleteManyArgs} args - Arguments to filter Addresses to delete.
+     * @example
+     * // Delete a few Addresses
+     * const { count } = await prisma.address.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AddressDeleteManyArgs>(args?: SelectSubset<T, AddressDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Addresses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AddressUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Addresses
+     * const address = await prisma.address.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AddressUpdateManyArgs>(args: SelectSubset<T, AddressUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Address.
+     * @param {AddressUpsertArgs} args - Arguments to update or create a Address.
+     * @example
+     * // Update or create a Address
+     * const address = await prisma.address.upsert({
+     *   create: {
+     *     // ... data to create a Address
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Address we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AddressUpsertArgs>(args: SelectSubset<T, AddressUpsertArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Addresses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AddressCountArgs} args - Arguments to filter Addresses to count.
+     * @example
+     * // Count the number of Addresses
+     * const count = await prisma.address.count({
+     *   where: {
+     *     // ... the filter for the Addresses we want to count
+     *   }
+     * })
+    **/
+    count<T extends AddressCountArgs>(
+      args?: Subset<T, AddressCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AddressCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Address.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AddressAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AddressAggregateArgs>(args: Subset<T, AddressAggregateArgs>): Prisma.PrismaPromise<GetAddressAggregateType<T>>
+
+    /**
+     * Group by Address.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AddressGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AddressGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AddressGroupByArgs['orderBy'] }
+        : { orderBy?: AddressGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AddressGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAddressGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Address model
+   */
+  readonly fields: AddressFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Address.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AddressClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    meetups<T extends Address$meetupsArgs<ExtArgs> = {}>(args?: Subset<T, Address$meetupsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Address model
+   */
+  interface AddressFieldRefs {
+    readonly id: FieldRef<"Address", 'String'>
+    readonly mapLink: FieldRef<"Address", 'String'>
+    readonly state: FieldRef<"Address", 'String'>
+    readonly city: FieldRef<"Address", 'String'>
+    readonly district: FieldRef<"Address", 'String'>
+    readonly street: FieldRef<"Address", 'String'>
+    readonly number: FieldRef<"Address", 'String'>
+    readonly complement: FieldRef<"Address", 'String'>
+    readonly zipcode: FieldRef<"Address", 'String'>
+    readonly createdAt: FieldRef<"Address", 'DateTime'>
+    readonly updatedAt: FieldRef<"Address", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Address findUnique
+   */
+  export type AddressFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Address
+     */
+    select?: AddressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Address
+     */
+    omit?: AddressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AddressInclude<ExtArgs> | null
+    /**
+     * Filter, which Address to fetch.
+     */
+    where: AddressWhereUniqueInput
+  }
+
+  /**
+   * Address findUniqueOrThrow
+   */
+  export type AddressFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Address
+     */
+    select?: AddressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Address
+     */
+    omit?: AddressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AddressInclude<ExtArgs> | null
+    /**
+     * Filter, which Address to fetch.
+     */
+    where: AddressWhereUniqueInput
+  }
+
+  /**
+   * Address findFirst
+   */
+  export type AddressFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Address
+     */
+    select?: AddressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Address
+     */
+    omit?: AddressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AddressInclude<ExtArgs> | null
+    /**
+     * Filter, which Address to fetch.
+     */
+    where?: AddressWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Addresses to fetch.
+     */
+    orderBy?: AddressOrderByWithRelationInput | AddressOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Addresses.
+     */
+    cursor?: AddressWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Addresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Addresses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Addresses.
+     */
+    distinct?: AddressScalarFieldEnum | AddressScalarFieldEnum[]
+  }
+
+  /**
+   * Address findFirstOrThrow
+   */
+  export type AddressFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Address
+     */
+    select?: AddressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Address
+     */
+    omit?: AddressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AddressInclude<ExtArgs> | null
+    /**
+     * Filter, which Address to fetch.
+     */
+    where?: AddressWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Addresses to fetch.
+     */
+    orderBy?: AddressOrderByWithRelationInput | AddressOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Addresses.
+     */
+    cursor?: AddressWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Addresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Addresses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Addresses.
+     */
+    distinct?: AddressScalarFieldEnum | AddressScalarFieldEnum[]
+  }
+
+  /**
+   * Address findMany
+   */
+  export type AddressFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Address
+     */
+    select?: AddressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Address
+     */
+    omit?: AddressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AddressInclude<ExtArgs> | null
+    /**
+     * Filter, which Addresses to fetch.
+     */
+    where?: AddressWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Addresses to fetch.
+     */
+    orderBy?: AddressOrderByWithRelationInput | AddressOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Addresses.
+     */
+    cursor?: AddressWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Addresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Addresses.
+     */
+    skip?: number
+    distinct?: AddressScalarFieldEnum | AddressScalarFieldEnum[]
+  }
+
+  /**
+   * Address create
+   */
+  export type AddressCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Address
+     */
+    select?: AddressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Address
+     */
+    omit?: AddressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AddressInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Address.
+     */
+    data: XOR<AddressCreateInput, AddressUncheckedCreateInput>
+  }
+
+  /**
+   * Address createMany
+   */
+  export type AddressCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Addresses.
+     */
+    data: AddressCreateManyInput | AddressCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Address update
+   */
+  export type AddressUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Address
+     */
+    select?: AddressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Address
+     */
+    omit?: AddressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AddressInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Address.
+     */
+    data: XOR<AddressUpdateInput, AddressUncheckedUpdateInput>
+    /**
+     * Choose, which Address to update.
+     */
+    where: AddressWhereUniqueInput
+  }
+
+  /**
+   * Address updateMany
+   */
+  export type AddressUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Addresses.
+     */
+    data: XOR<AddressUpdateManyMutationInput, AddressUncheckedUpdateManyInput>
+    /**
+     * Filter which Addresses to update
+     */
+    where?: AddressWhereInput
+    /**
+     * Limit how many Addresses to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Address upsert
+   */
+  export type AddressUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Address
+     */
+    select?: AddressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Address
+     */
+    omit?: AddressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AddressInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Address to update in case it exists.
+     */
+    where: AddressWhereUniqueInput
+    /**
+     * In case the Address found by the `where` argument doesn't exist, create a new Address with this data.
+     */
+    create: XOR<AddressCreateInput, AddressUncheckedCreateInput>
+    /**
+     * In case the Address was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AddressUpdateInput, AddressUncheckedUpdateInput>
+  }
+
+  /**
+   * Address delete
+   */
+  export type AddressDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Address
+     */
+    select?: AddressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Address
+     */
+    omit?: AddressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AddressInclude<ExtArgs> | null
+    /**
+     * Filter which Address to delete.
+     */
+    where: AddressWhereUniqueInput
+  }
+
+  /**
+   * Address deleteMany
+   */
+  export type AddressDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Addresses to delete
+     */
+    where?: AddressWhereInput
+    /**
+     * Limit how many Addresses to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Address.meetups
+   */
+  export type Address$meetupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Meetup
+     */
+    select?: MeetupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Meetup
+     */
+    omit?: MeetupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupInclude<ExtArgs> | null
+    where?: MeetupWhereInput
+    orderBy?: MeetupOrderByWithRelationInput | MeetupOrderByWithRelationInput[]
+    cursor?: MeetupWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MeetupScalarFieldEnum | MeetupScalarFieldEnum[]
+  }
+
+  /**
+   * Address without action
+   */
+  export type AddressDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Address
+     */
+    select?: AddressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Address
+     */
+    omit?: AddressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AddressInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Meetup
+   */
+
+  export type AggregateMeetup = {
+    _count: MeetupCountAggregateOutputType | null
+    _min: MeetupMinAggregateOutputType | null
+    _max: MeetupMaxAggregateOutputType | null
+  }
+
+  export type MeetupMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    description: string | null
+    datetime: Date | null
+    addressId: string | null
+    image: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MeetupMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    description: string | null
+    datetime: Date | null
+    addressId: string | null
+    image: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MeetupCountAggregateOutputType = {
+    id: number
+    title: number
+    description: number
+    datetime: number
+    addressId: number
+    image: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MeetupMinAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    datetime?: true
+    addressId?: true
+    image?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MeetupMaxAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    datetime?: true
+    addressId?: true
+    image?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MeetupCountAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    datetime?: true
+    addressId?: true
+    image?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MeetupAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Meetup to aggregate.
+     */
+    where?: MeetupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Meetups to fetch.
+     */
+    orderBy?: MeetupOrderByWithRelationInput | MeetupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MeetupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Meetups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Meetups.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Meetups
+    **/
+    _count?: true | MeetupCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MeetupMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MeetupMaxAggregateInputType
+  }
+
+  export type GetMeetupAggregateType<T extends MeetupAggregateArgs> = {
+        [P in keyof T & keyof AggregateMeetup]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMeetup[P]>
+      : GetScalarType<T[P], AggregateMeetup[P]>
+  }
+
+
+
+
+  export type MeetupGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetupWhereInput
+    orderBy?: MeetupOrderByWithAggregationInput | MeetupOrderByWithAggregationInput[]
+    by: MeetupScalarFieldEnum[] | MeetupScalarFieldEnum
+    having?: MeetupScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MeetupCountAggregateInputType | true
+    _min?: MeetupMinAggregateInputType
+    _max?: MeetupMaxAggregateInputType
+  }
+
+  export type MeetupGroupByOutputType = {
+    id: string
+    title: string
+    description: string | null
+    datetime: Date
+    addressId: string
+    image: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: MeetupCountAggregateOutputType | null
+    _min: MeetupMinAggregateOutputType | null
+    _max: MeetupMaxAggregateOutputType | null
+  }
+
+  type GetMeetupGroupByPayload<T extends MeetupGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MeetupGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MeetupGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MeetupGroupByOutputType[P]>
+            : GetScalarType<T[P], MeetupGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MeetupSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    datetime?: boolean
+    addressId?: boolean
+    image?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    address?: boolean | AddressDefaultArgs<ExtArgs>
+    meetupAdmins?: boolean | Meetup$meetupAdminsArgs<ExtArgs>
+    subscriptions?: boolean | Meetup$subscriptionsArgs<ExtArgs>
+    invites?: boolean | Meetup$invitesArgs<ExtArgs>
+    certificates?: boolean | Meetup$certificatesArgs<ExtArgs>
+    meetupMedias?: boolean | Meetup$meetupMediasArgs<ExtArgs>
+    guestLoads?: boolean | Meetup$guestLoadsArgs<ExtArgs>
+    _count?: boolean | MeetupCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["meetup"]>
+
+
+
+  export type MeetupSelectScalar = {
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    datetime?: boolean
+    addressId?: boolean
+    image?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MeetupOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "datetime" | "addressId" | "image" | "createdAt" | "updatedAt", ExtArgs["result"]["meetup"]>
+  export type MeetupInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    address?: boolean | AddressDefaultArgs<ExtArgs>
+    meetupAdmins?: boolean | Meetup$meetupAdminsArgs<ExtArgs>
+    subscriptions?: boolean | Meetup$subscriptionsArgs<ExtArgs>
+    invites?: boolean | Meetup$invitesArgs<ExtArgs>
+    certificates?: boolean | Meetup$certificatesArgs<ExtArgs>
+    meetupMedias?: boolean | Meetup$meetupMediasArgs<ExtArgs>
+    guestLoads?: boolean | Meetup$guestLoadsArgs<ExtArgs>
+    _count?: boolean | MeetupCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $MeetupPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Meetup"
+    objects: {
+      address: Prisma.$AddressPayload<ExtArgs>
+      meetupAdmins: Prisma.$MeetupAdminPayload<ExtArgs>[]
+      subscriptions: Prisma.$SubscriptionPayload<ExtArgs>[]
+      invites: Prisma.$InvitePayload<ExtArgs>[]
+      certificates: Prisma.$CertificatePayload<ExtArgs>[]
+      meetupMedias: Prisma.$MeetupMediaPayload<ExtArgs>[]
+      guestLoads: Prisma.$GuestLoadPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      description: string | null
+      datetime: Date
+      addressId: string
+      image: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["meetup"]>
+    composites: {}
+  }
+
+  type MeetupGetPayload<S extends boolean | null | undefined | MeetupDefaultArgs> = $Result.GetResult<Prisma.$MeetupPayload, S>
+
+  type MeetupCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MeetupFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MeetupCountAggregateInputType | true
+    }
+
+  export interface MeetupDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Meetup'], meta: { name: 'Meetup' } }
+    /**
+     * Find zero or one Meetup that matches the filter.
+     * @param {MeetupFindUniqueArgs} args - Arguments to find a Meetup
+     * @example
+     * // Get one Meetup
+     * const meetup = await prisma.meetup.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MeetupFindUniqueArgs>(args: SelectSubset<T, MeetupFindUniqueArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Meetup that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MeetupFindUniqueOrThrowArgs} args - Arguments to find a Meetup
+     * @example
+     * // Get one Meetup
+     * const meetup = await prisma.meetup.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MeetupFindUniqueOrThrowArgs>(args: SelectSubset<T, MeetupFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Meetup that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupFindFirstArgs} args - Arguments to find a Meetup
+     * @example
+     * // Get one Meetup
+     * const meetup = await prisma.meetup.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MeetupFindFirstArgs>(args?: SelectSubset<T, MeetupFindFirstArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Meetup that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupFindFirstOrThrowArgs} args - Arguments to find a Meetup
+     * @example
+     * // Get one Meetup
+     * const meetup = await prisma.meetup.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MeetupFindFirstOrThrowArgs>(args?: SelectSubset<T, MeetupFindFirstOrThrowArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Meetups that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Meetups
+     * const meetups = await prisma.meetup.findMany()
+     * 
+     * // Get first 10 Meetups
+     * const meetups = await prisma.meetup.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const meetupWithIdOnly = await prisma.meetup.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MeetupFindManyArgs>(args?: SelectSubset<T, MeetupFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Meetup.
+     * @param {MeetupCreateArgs} args - Arguments to create a Meetup.
+     * @example
+     * // Create one Meetup
+     * const Meetup = await prisma.meetup.create({
+     *   data: {
+     *     // ... data to create a Meetup
+     *   }
+     * })
+     * 
+     */
+    create<T extends MeetupCreateArgs>(args: SelectSubset<T, MeetupCreateArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Meetups.
+     * @param {MeetupCreateManyArgs} args - Arguments to create many Meetups.
+     * @example
+     * // Create many Meetups
+     * const meetup = await prisma.meetup.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MeetupCreateManyArgs>(args?: SelectSubset<T, MeetupCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Meetup.
+     * @param {MeetupDeleteArgs} args - Arguments to delete one Meetup.
+     * @example
+     * // Delete one Meetup
+     * const Meetup = await prisma.meetup.delete({
+     *   where: {
+     *     // ... filter to delete one Meetup
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MeetupDeleteArgs>(args: SelectSubset<T, MeetupDeleteArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Meetup.
+     * @param {MeetupUpdateArgs} args - Arguments to update one Meetup.
+     * @example
+     * // Update one Meetup
+     * const meetup = await prisma.meetup.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MeetupUpdateArgs>(args: SelectSubset<T, MeetupUpdateArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Meetups.
+     * @param {MeetupDeleteManyArgs} args - Arguments to filter Meetups to delete.
+     * @example
+     * // Delete a few Meetups
+     * const { count } = await prisma.meetup.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MeetupDeleteManyArgs>(args?: SelectSubset<T, MeetupDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Meetups.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Meetups
+     * const meetup = await prisma.meetup.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MeetupUpdateManyArgs>(args: SelectSubset<T, MeetupUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Meetup.
+     * @param {MeetupUpsertArgs} args - Arguments to update or create a Meetup.
+     * @example
+     * // Update or create a Meetup
+     * const meetup = await prisma.meetup.upsert({
+     *   create: {
+     *     // ... data to create a Meetup
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Meetup we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MeetupUpsertArgs>(args: SelectSubset<T, MeetupUpsertArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Meetups.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupCountArgs} args - Arguments to filter Meetups to count.
+     * @example
+     * // Count the number of Meetups
+     * const count = await prisma.meetup.count({
+     *   where: {
+     *     // ... the filter for the Meetups we want to count
+     *   }
+     * })
+    **/
+    count<T extends MeetupCountArgs>(
+      args?: Subset<T, MeetupCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MeetupCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Meetup.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MeetupAggregateArgs>(args: Subset<T, MeetupAggregateArgs>): Prisma.PrismaPromise<GetMeetupAggregateType<T>>
+
+    /**
+     * Group by Meetup.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MeetupGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MeetupGroupByArgs['orderBy'] }
+        : { orderBy?: MeetupGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MeetupGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMeetupGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Meetup model
+   */
+  readonly fields: MeetupFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Meetup.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MeetupClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    address<T extends AddressDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AddressDefaultArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    meetupAdmins<T extends Meetup$meetupAdminsArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$meetupAdminsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupAdminPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    subscriptions<T extends Meetup$subscriptionsArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$subscriptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    invites<T extends Meetup$invitesArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$invitesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    certificates<T extends Meetup$certificatesArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$certificatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    meetupMedias<T extends Meetup$meetupMediasArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$meetupMediasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupMediaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    guestLoads<T extends Meetup$guestLoadsArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$guestLoadsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GuestLoadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Meetup model
+   */
+  interface MeetupFieldRefs {
+    readonly id: FieldRef<"Meetup", 'String'>
+    readonly title: FieldRef<"Meetup", 'String'>
+    readonly description: FieldRef<"Meetup", 'String'>
+    readonly datetime: FieldRef<"Meetup", 'DateTime'>
+    readonly addressId: FieldRef<"Meetup", 'String'>
+    readonly image: FieldRef<"Meetup", 'String'>
+    readonly createdAt: FieldRef<"Meetup", 'DateTime'>
+    readonly updatedAt: FieldRef<"Meetup", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Meetup findUnique
+   */
+  export type MeetupFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Meetup
+     */
+    select?: MeetupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Meetup
+     */
+    omit?: MeetupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupInclude<ExtArgs> | null
+    /**
+     * Filter, which Meetup to fetch.
+     */
+    where: MeetupWhereUniqueInput
+  }
+
+  /**
+   * Meetup findUniqueOrThrow
+   */
+  export type MeetupFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Meetup
+     */
+    select?: MeetupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Meetup
+     */
+    omit?: MeetupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupInclude<ExtArgs> | null
+    /**
+     * Filter, which Meetup to fetch.
+     */
+    where: MeetupWhereUniqueInput
+  }
+
+  /**
+   * Meetup findFirst
+   */
+  export type MeetupFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Meetup
+     */
+    select?: MeetupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Meetup
+     */
+    omit?: MeetupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupInclude<ExtArgs> | null
+    /**
+     * Filter, which Meetup to fetch.
+     */
+    where?: MeetupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Meetups to fetch.
+     */
+    orderBy?: MeetupOrderByWithRelationInput | MeetupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Meetups.
+     */
+    cursor?: MeetupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Meetups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Meetups.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Meetups.
+     */
+    distinct?: MeetupScalarFieldEnum | MeetupScalarFieldEnum[]
+  }
+
+  /**
+   * Meetup findFirstOrThrow
+   */
+  export type MeetupFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Meetup
+     */
+    select?: MeetupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Meetup
+     */
+    omit?: MeetupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupInclude<ExtArgs> | null
+    /**
+     * Filter, which Meetup to fetch.
+     */
+    where?: MeetupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Meetups to fetch.
+     */
+    orderBy?: MeetupOrderByWithRelationInput | MeetupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Meetups.
+     */
+    cursor?: MeetupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Meetups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Meetups.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Meetups.
+     */
+    distinct?: MeetupScalarFieldEnum | MeetupScalarFieldEnum[]
+  }
+
+  /**
+   * Meetup findMany
+   */
+  export type MeetupFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Meetup
+     */
+    select?: MeetupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Meetup
+     */
+    omit?: MeetupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupInclude<ExtArgs> | null
+    /**
+     * Filter, which Meetups to fetch.
+     */
+    where?: MeetupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Meetups to fetch.
+     */
+    orderBy?: MeetupOrderByWithRelationInput | MeetupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Meetups.
+     */
+    cursor?: MeetupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Meetups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Meetups.
+     */
+    skip?: number
+    distinct?: MeetupScalarFieldEnum | MeetupScalarFieldEnum[]
+  }
+
+  /**
+   * Meetup create
+   */
+  export type MeetupCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Meetup
+     */
+    select?: MeetupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Meetup
+     */
+    omit?: MeetupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Meetup.
+     */
+    data: XOR<MeetupCreateInput, MeetupUncheckedCreateInput>
+  }
+
+  /**
+   * Meetup createMany
+   */
+  export type MeetupCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Meetups.
+     */
+    data: MeetupCreateManyInput | MeetupCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Meetup update
+   */
+  export type MeetupUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Meetup
+     */
+    select?: MeetupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Meetup
+     */
+    omit?: MeetupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Meetup.
+     */
+    data: XOR<MeetupUpdateInput, MeetupUncheckedUpdateInput>
+    /**
+     * Choose, which Meetup to update.
+     */
+    where: MeetupWhereUniqueInput
+  }
+
+  /**
+   * Meetup updateMany
+   */
+  export type MeetupUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Meetups.
+     */
+    data: XOR<MeetupUpdateManyMutationInput, MeetupUncheckedUpdateManyInput>
+    /**
+     * Filter which Meetups to update
+     */
+    where?: MeetupWhereInput
+    /**
+     * Limit how many Meetups to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Meetup upsert
+   */
+  export type MeetupUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Meetup
+     */
+    select?: MeetupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Meetup
+     */
+    omit?: MeetupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Meetup to update in case it exists.
+     */
+    where: MeetupWhereUniqueInput
+    /**
+     * In case the Meetup found by the `where` argument doesn't exist, create a new Meetup with this data.
+     */
+    create: XOR<MeetupCreateInput, MeetupUncheckedCreateInput>
+    /**
+     * In case the Meetup was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MeetupUpdateInput, MeetupUncheckedUpdateInput>
+  }
+
+  /**
+   * Meetup delete
+   */
+  export type MeetupDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Meetup
+     */
+    select?: MeetupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Meetup
+     */
+    omit?: MeetupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupInclude<ExtArgs> | null
+    /**
+     * Filter which Meetup to delete.
+     */
+    where: MeetupWhereUniqueInput
+  }
+
+  /**
+   * Meetup deleteMany
+   */
+  export type MeetupDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Meetups to delete
+     */
+    where?: MeetupWhereInput
+    /**
+     * Limit how many Meetups to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Meetup.meetupAdmins
+   */
+  export type Meetup$meetupAdminsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupAdmin
+     */
+    select?: MeetupAdminSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupAdmin
+     */
+    omit?: MeetupAdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupAdminInclude<ExtArgs> | null
+    where?: MeetupAdminWhereInput
+    orderBy?: MeetupAdminOrderByWithRelationInput | MeetupAdminOrderByWithRelationInput[]
+    cursor?: MeetupAdminWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MeetupAdminScalarFieldEnum | MeetupAdminScalarFieldEnum[]
+  }
+
+  /**
+   * Meetup.subscriptions
+   */
+  export type Meetup$subscriptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subscription
+     */
+    select?: SubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subscription
+     */
+    omit?: SubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionInclude<ExtArgs> | null
+    where?: SubscriptionWhereInput
+    orderBy?: SubscriptionOrderByWithRelationInput | SubscriptionOrderByWithRelationInput[]
+    cursor?: SubscriptionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SubscriptionScalarFieldEnum | SubscriptionScalarFieldEnum[]
+  }
+
+  /**
+   * Meetup.invites
+   */
+  export type Meetup$invitesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Invite
+     */
+    select?: InviteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Invite
+     */
+    omit?: InviteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InviteInclude<ExtArgs> | null
+    where?: InviteWhereInput
+    orderBy?: InviteOrderByWithRelationInput | InviteOrderByWithRelationInput[]
+    cursor?: InviteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InviteScalarFieldEnum | InviteScalarFieldEnum[]
+  }
+
+  /**
+   * Meetup.certificates
+   */
+  export type Meetup$certificatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    where?: CertificateWhereInput
+    orderBy?: CertificateOrderByWithRelationInput | CertificateOrderByWithRelationInput[]
+    cursor?: CertificateWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CertificateScalarFieldEnum | CertificateScalarFieldEnum[]
+  }
+
+  /**
+   * Meetup.meetupMedias
+   */
+  export type Meetup$meetupMediasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupMedia
+     */
+    select?: MeetupMediaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupMedia
+     */
+    omit?: MeetupMediaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupMediaInclude<ExtArgs> | null
+    where?: MeetupMediaWhereInput
+    orderBy?: MeetupMediaOrderByWithRelationInput | MeetupMediaOrderByWithRelationInput[]
+    cursor?: MeetupMediaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MeetupMediaScalarFieldEnum | MeetupMediaScalarFieldEnum[]
+  }
+
+  /**
+   * Meetup.guestLoads
+   */
+  export type Meetup$guestLoadsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GuestLoad
+     */
+    select?: GuestLoadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GuestLoad
+     */
+    omit?: GuestLoadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GuestLoadInclude<ExtArgs> | null
+    where?: GuestLoadWhereInput
+    orderBy?: GuestLoadOrderByWithRelationInput | GuestLoadOrderByWithRelationInput[]
+    cursor?: GuestLoadWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GuestLoadScalarFieldEnum | GuestLoadScalarFieldEnum[]
+  }
+
+  /**
+   * Meetup without action
+   */
+  export type MeetupDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Meetup
+     */
+    select?: MeetupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Meetup
+     */
+    omit?: MeetupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MeetupRole
+   */
+
+  export type AggregateMeetupRole = {
+    _count: MeetupRoleCountAggregateOutputType | null
+    _avg: MeetupRoleAvgAggregateOutputType | null
+    _sum: MeetupRoleSumAggregateOutputType | null
+    _min: MeetupRoleMinAggregateOutputType | null
+    _max: MeetupRoleMaxAggregateOutputType | null
+  }
+
+  export type MeetupRoleAvgAggregateOutputType = {
+    subscriptionPrice: Decimal | null
+  }
+
+  export type MeetupRoleSumAggregateOutputType = {
+    subscriptionPrice: Decimal | null
+  }
+
+  export type MeetupRoleMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    subscriptionPrice: Decimal | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MeetupRoleMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    subscriptionPrice: Decimal | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MeetupRoleCountAggregateOutputType = {
+    id: number
+    name: number
+    subscriptionPrice: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MeetupRoleAvgAggregateInputType = {
+    subscriptionPrice?: true
+  }
+
+  export type MeetupRoleSumAggregateInputType = {
+    subscriptionPrice?: true
+  }
+
+  export type MeetupRoleMinAggregateInputType = {
+    id?: true
+    name?: true
+    subscriptionPrice?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MeetupRoleMaxAggregateInputType = {
+    id?: true
+    name?: true
+    subscriptionPrice?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MeetupRoleCountAggregateInputType = {
+    id?: true
+    name?: true
+    subscriptionPrice?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MeetupRoleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MeetupRole to aggregate.
+     */
+    where?: MeetupRoleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupRoles to fetch.
+     */
+    orderBy?: MeetupRoleOrderByWithRelationInput | MeetupRoleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MeetupRoleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupRoles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupRoles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MeetupRoles
+    **/
+    _count?: true | MeetupRoleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MeetupRoleAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MeetupRoleSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MeetupRoleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MeetupRoleMaxAggregateInputType
+  }
+
+  export type GetMeetupRoleAggregateType<T extends MeetupRoleAggregateArgs> = {
+        [P in keyof T & keyof AggregateMeetupRole]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMeetupRole[P]>
+      : GetScalarType<T[P], AggregateMeetupRole[P]>
+  }
+
+
+
+
+  export type MeetupRoleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetupRoleWhereInput
+    orderBy?: MeetupRoleOrderByWithAggregationInput | MeetupRoleOrderByWithAggregationInput[]
+    by: MeetupRoleScalarFieldEnum[] | MeetupRoleScalarFieldEnum
+    having?: MeetupRoleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MeetupRoleCountAggregateInputType | true
+    _avg?: MeetupRoleAvgAggregateInputType
+    _sum?: MeetupRoleSumAggregateInputType
+    _min?: MeetupRoleMinAggregateInputType
+    _max?: MeetupRoleMaxAggregateInputType
+  }
+
+  export type MeetupRoleGroupByOutputType = {
+    id: string
+    name: string
+    subscriptionPrice: Decimal
+    createdAt: Date
+    updatedAt: Date
+    _count: MeetupRoleCountAggregateOutputType | null
+    _avg: MeetupRoleAvgAggregateOutputType | null
+    _sum: MeetupRoleSumAggregateOutputType | null
+    _min: MeetupRoleMinAggregateOutputType | null
+    _max: MeetupRoleMaxAggregateOutputType | null
+  }
+
+  type GetMeetupRoleGroupByPayload<T extends MeetupRoleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MeetupRoleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MeetupRoleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MeetupRoleGroupByOutputType[P]>
+            : GetScalarType<T[P], MeetupRoleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MeetupRoleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    subscriptionPrice?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    subscriptions?: boolean | MeetupRole$subscriptionsArgs<ExtArgs>
+    _count?: boolean | MeetupRoleCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["meetupRole"]>
+
+
+
+  export type MeetupRoleSelectScalar = {
+    id?: boolean
+    name?: boolean
+    subscriptionPrice?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MeetupRoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "subscriptionPrice" | "createdAt" | "updatedAt", ExtArgs["result"]["meetupRole"]>
+  export type MeetupRoleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    subscriptions?: boolean | MeetupRole$subscriptionsArgs<ExtArgs>
+    _count?: boolean | MeetupRoleCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $MeetupRolePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MeetupRole"
+    objects: {
+      subscriptions: Prisma.$SubscriptionPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      subscriptionPrice: Prisma.Decimal
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["meetupRole"]>
+    composites: {}
+  }
+
+  type MeetupRoleGetPayload<S extends boolean | null | undefined | MeetupRoleDefaultArgs> = $Result.GetResult<Prisma.$MeetupRolePayload, S>
+
+  type MeetupRoleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MeetupRoleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MeetupRoleCountAggregateInputType | true
+    }
+
+  export interface MeetupRoleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MeetupRole'], meta: { name: 'MeetupRole' } }
+    /**
+     * Find zero or one MeetupRole that matches the filter.
+     * @param {MeetupRoleFindUniqueArgs} args - Arguments to find a MeetupRole
+     * @example
+     * // Get one MeetupRole
+     * const meetupRole = await prisma.meetupRole.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MeetupRoleFindUniqueArgs>(args: SelectSubset<T, MeetupRoleFindUniqueArgs<ExtArgs>>): Prisma__MeetupRoleClient<$Result.GetResult<Prisma.$MeetupRolePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MeetupRole that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MeetupRoleFindUniqueOrThrowArgs} args - Arguments to find a MeetupRole
+     * @example
+     * // Get one MeetupRole
+     * const meetupRole = await prisma.meetupRole.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MeetupRoleFindUniqueOrThrowArgs>(args: SelectSubset<T, MeetupRoleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MeetupRoleClient<$Result.GetResult<Prisma.$MeetupRolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MeetupRole that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupRoleFindFirstArgs} args - Arguments to find a MeetupRole
+     * @example
+     * // Get one MeetupRole
+     * const meetupRole = await prisma.meetupRole.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MeetupRoleFindFirstArgs>(args?: SelectSubset<T, MeetupRoleFindFirstArgs<ExtArgs>>): Prisma__MeetupRoleClient<$Result.GetResult<Prisma.$MeetupRolePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MeetupRole that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupRoleFindFirstOrThrowArgs} args - Arguments to find a MeetupRole
+     * @example
+     * // Get one MeetupRole
+     * const meetupRole = await prisma.meetupRole.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MeetupRoleFindFirstOrThrowArgs>(args?: SelectSubset<T, MeetupRoleFindFirstOrThrowArgs<ExtArgs>>): Prisma__MeetupRoleClient<$Result.GetResult<Prisma.$MeetupRolePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MeetupRoles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupRoleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MeetupRoles
+     * const meetupRoles = await prisma.meetupRole.findMany()
+     * 
+     * // Get first 10 MeetupRoles
+     * const meetupRoles = await prisma.meetupRole.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const meetupRoleWithIdOnly = await prisma.meetupRole.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MeetupRoleFindManyArgs>(args?: SelectSubset<T, MeetupRoleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MeetupRole.
+     * @param {MeetupRoleCreateArgs} args - Arguments to create a MeetupRole.
+     * @example
+     * // Create one MeetupRole
+     * const MeetupRole = await prisma.meetupRole.create({
+     *   data: {
+     *     // ... data to create a MeetupRole
+     *   }
+     * })
+     * 
+     */
+    create<T extends MeetupRoleCreateArgs>(args: SelectSubset<T, MeetupRoleCreateArgs<ExtArgs>>): Prisma__MeetupRoleClient<$Result.GetResult<Prisma.$MeetupRolePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MeetupRoles.
+     * @param {MeetupRoleCreateManyArgs} args - Arguments to create many MeetupRoles.
+     * @example
+     * // Create many MeetupRoles
+     * const meetupRole = await prisma.meetupRole.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MeetupRoleCreateManyArgs>(args?: SelectSubset<T, MeetupRoleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a MeetupRole.
+     * @param {MeetupRoleDeleteArgs} args - Arguments to delete one MeetupRole.
+     * @example
+     * // Delete one MeetupRole
+     * const MeetupRole = await prisma.meetupRole.delete({
+     *   where: {
+     *     // ... filter to delete one MeetupRole
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MeetupRoleDeleteArgs>(args: SelectSubset<T, MeetupRoleDeleteArgs<ExtArgs>>): Prisma__MeetupRoleClient<$Result.GetResult<Prisma.$MeetupRolePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MeetupRole.
+     * @param {MeetupRoleUpdateArgs} args - Arguments to update one MeetupRole.
+     * @example
+     * // Update one MeetupRole
+     * const meetupRole = await prisma.meetupRole.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MeetupRoleUpdateArgs>(args: SelectSubset<T, MeetupRoleUpdateArgs<ExtArgs>>): Prisma__MeetupRoleClient<$Result.GetResult<Prisma.$MeetupRolePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MeetupRoles.
+     * @param {MeetupRoleDeleteManyArgs} args - Arguments to filter MeetupRoles to delete.
+     * @example
+     * // Delete a few MeetupRoles
+     * const { count } = await prisma.meetupRole.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MeetupRoleDeleteManyArgs>(args?: SelectSubset<T, MeetupRoleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MeetupRoles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupRoleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MeetupRoles
+     * const meetupRole = await prisma.meetupRole.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MeetupRoleUpdateManyArgs>(args: SelectSubset<T, MeetupRoleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MeetupRole.
+     * @param {MeetupRoleUpsertArgs} args - Arguments to update or create a MeetupRole.
+     * @example
+     * // Update or create a MeetupRole
+     * const meetupRole = await prisma.meetupRole.upsert({
+     *   create: {
+     *     // ... data to create a MeetupRole
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MeetupRole we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MeetupRoleUpsertArgs>(args: SelectSubset<T, MeetupRoleUpsertArgs<ExtArgs>>): Prisma__MeetupRoleClient<$Result.GetResult<Prisma.$MeetupRolePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MeetupRoles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupRoleCountArgs} args - Arguments to filter MeetupRoles to count.
+     * @example
+     * // Count the number of MeetupRoles
+     * const count = await prisma.meetupRole.count({
+     *   where: {
+     *     // ... the filter for the MeetupRoles we want to count
+     *   }
+     * })
+    **/
+    count<T extends MeetupRoleCountArgs>(
+      args?: Subset<T, MeetupRoleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MeetupRoleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MeetupRole.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupRoleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MeetupRoleAggregateArgs>(args: Subset<T, MeetupRoleAggregateArgs>): Prisma.PrismaPromise<GetMeetupRoleAggregateType<T>>
+
+    /**
+     * Group by MeetupRole.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupRoleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MeetupRoleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MeetupRoleGroupByArgs['orderBy'] }
+        : { orderBy?: MeetupRoleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MeetupRoleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMeetupRoleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MeetupRole model
+   */
+  readonly fields: MeetupRoleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MeetupRole.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MeetupRoleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    subscriptions<T extends MeetupRole$subscriptionsArgs<ExtArgs> = {}>(args?: Subset<T, MeetupRole$subscriptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MeetupRole model
+   */
+  interface MeetupRoleFieldRefs {
+    readonly id: FieldRef<"MeetupRole", 'String'>
+    readonly name: FieldRef<"MeetupRole", 'String'>
+    readonly subscriptionPrice: FieldRef<"MeetupRole", 'Decimal'>
+    readonly createdAt: FieldRef<"MeetupRole", 'DateTime'>
+    readonly updatedAt: FieldRef<"MeetupRole", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MeetupRole findUnique
+   */
+  export type MeetupRoleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupRole
+     */
+    select?: MeetupRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupRole
+     */
+    omit?: MeetupRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupRoleInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupRole to fetch.
+     */
+    where: MeetupRoleWhereUniqueInput
+  }
+
+  /**
+   * MeetupRole findUniqueOrThrow
+   */
+  export type MeetupRoleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupRole
+     */
+    select?: MeetupRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupRole
+     */
+    omit?: MeetupRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupRoleInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupRole to fetch.
+     */
+    where: MeetupRoleWhereUniqueInput
+  }
+
+  /**
+   * MeetupRole findFirst
+   */
+  export type MeetupRoleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupRole
+     */
+    select?: MeetupRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupRole
+     */
+    omit?: MeetupRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupRoleInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupRole to fetch.
+     */
+    where?: MeetupRoleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupRoles to fetch.
+     */
+    orderBy?: MeetupRoleOrderByWithRelationInput | MeetupRoleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MeetupRoles.
+     */
+    cursor?: MeetupRoleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupRoles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupRoles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MeetupRoles.
+     */
+    distinct?: MeetupRoleScalarFieldEnum | MeetupRoleScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupRole findFirstOrThrow
+   */
+  export type MeetupRoleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupRole
+     */
+    select?: MeetupRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupRole
+     */
+    omit?: MeetupRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupRoleInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupRole to fetch.
+     */
+    where?: MeetupRoleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupRoles to fetch.
+     */
+    orderBy?: MeetupRoleOrderByWithRelationInput | MeetupRoleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MeetupRoles.
+     */
+    cursor?: MeetupRoleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupRoles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupRoles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MeetupRoles.
+     */
+    distinct?: MeetupRoleScalarFieldEnum | MeetupRoleScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupRole findMany
+   */
+  export type MeetupRoleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupRole
+     */
+    select?: MeetupRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupRole
+     */
+    omit?: MeetupRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupRoleInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupRoles to fetch.
+     */
+    where?: MeetupRoleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupRoles to fetch.
+     */
+    orderBy?: MeetupRoleOrderByWithRelationInput | MeetupRoleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MeetupRoles.
+     */
+    cursor?: MeetupRoleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupRoles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupRoles.
+     */
+    skip?: number
+    distinct?: MeetupRoleScalarFieldEnum | MeetupRoleScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupRole create
+   */
+  export type MeetupRoleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupRole
+     */
+    select?: MeetupRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupRole
+     */
+    omit?: MeetupRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupRoleInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MeetupRole.
+     */
+    data: XOR<MeetupRoleCreateInput, MeetupRoleUncheckedCreateInput>
+  }
+
+  /**
+   * MeetupRole createMany
+   */
+  export type MeetupRoleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MeetupRoles.
+     */
+    data: MeetupRoleCreateManyInput | MeetupRoleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MeetupRole update
+   */
+  export type MeetupRoleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupRole
+     */
+    select?: MeetupRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupRole
+     */
+    omit?: MeetupRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupRoleInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MeetupRole.
+     */
+    data: XOR<MeetupRoleUpdateInput, MeetupRoleUncheckedUpdateInput>
+    /**
+     * Choose, which MeetupRole to update.
+     */
+    where: MeetupRoleWhereUniqueInput
+  }
+
+  /**
+   * MeetupRole updateMany
+   */
+  export type MeetupRoleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MeetupRoles.
+     */
+    data: XOR<MeetupRoleUpdateManyMutationInput, MeetupRoleUncheckedUpdateManyInput>
+    /**
+     * Filter which MeetupRoles to update
+     */
+    where?: MeetupRoleWhereInput
+    /**
+     * Limit how many MeetupRoles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MeetupRole upsert
+   */
+  export type MeetupRoleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupRole
+     */
+    select?: MeetupRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupRole
+     */
+    omit?: MeetupRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupRoleInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MeetupRole to update in case it exists.
+     */
+    where: MeetupRoleWhereUniqueInput
+    /**
+     * In case the MeetupRole found by the `where` argument doesn't exist, create a new MeetupRole with this data.
+     */
+    create: XOR<MeetupRoleCreateInput, MeetupRoleUncheckedCreateInput>
+    /**
+     * In case the MeetupRole was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MeetupRoleUpdateInput, MeetupRoleUncheckedUpdateInput>
+  }
+
+  /**
+   * MeetupRole delete
+   */
+  export type MeetupRoleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupRole
+     */
+    select?: MeetupRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupRole
+     */
+    omit?: MeetupRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupRoleInclude<ExtArgs> | null
+    /**
+     * Filter which MeetupRole to delete.
+     */
+    where: MeetupRoleWhereUniqueInput
+  }
+
+  /**
+   * MeetupRole deleteMany
+   */
+  export type MeetupRoleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MeetupRoles to delete
+     */
+    where?: MeetupRoleWhereInput
+    /**
+     * Limit how many MeetupRoles to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MeetupRole.subscriptions
+   */
+  export type MeetupRole$subscriptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subscription
+     */
+    select?: SubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subscription
+     */
+    omit?: SubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionInclude<ExtArgs> | null
+    where?: SubscriptionWhereInput
+    orderBy?: SubscriptionOrderByWithRelationInput | SubscriptionOrderByWithRelationInput[]
+    cursor?: SubscriptionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SubscriptionScalarFieldEnum | SubscriptionScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupRole without action
+   */
+  export type MeetupRoleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupRole
+     */
+    select?: MeetupRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupRole
+     */
+    omit?: MeetupRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupRoleInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MeetupAdmin
+   */
+
+  export type AggregateMeetupAdmin = {
+    _count: MeetupAdminCountAggregateOutputType | null
+    _min: MeetupAdminMinAggregateOutputType | null
+    _max: MeetupAdminMaxAggregateOutputType | null
+  }
+
+  export type MeetupAdminMinAggregateOutputType = {
+    id: string | null
+    meetupId: string | null
+    personId: string | null
+    role: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MeetupAdminMaxAggregateOutputType = {
+    id: string | null
+    meetupId: string | null
+    personId: string | null
+    role: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MeetupAdminCountAggregateOutputType = {
+    id: number
+    meetupId: number
+    personId: number
+    role: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MeetupAdminMinAggregateInputType = {
+    id?: true
+    meetupId?: true
+    personId?: true
+    role?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MeetupAdminMaxAggregateInputType = {
+    id?: true
+    meetupId?: true
+    personId?: true
+    role?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MeetupAdminCountAggregateInputType = {
+    id?: true
+    meetupId?: true
+    personId?: true
+    role?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MeetupAdminAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MeetupAdmin to aggregate.
+     */
+    where?: MeetupAdminWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupAdmins to fetch.
+     */
+    orderBy?: MeetupAdminOrderByWithRelationInput | MeetupAdminOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MeetupAdminWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupAdmins from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupAdmins.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MeetupAdmins
+    **/
+    _count?: true | MeetupAdminCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MeetupAdminMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MeetupAdminMaxAggregateInputType
+  }
+
+  export type GetMeetupAdminAggregateType<T extends MeetupAdminAggregateArgs> = {
+        [P in keyof T & keyof AggregateMeetupAdmin]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMeetupAdmin[P]>
+      : GetScalarType<T[P], AggregateMeetupAdmin[P]>
+  }
+
+
+
+
+  export type MeetupAdminGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetupAdminWhereInput
+    orderBy?: MeetupAdminOrderByWithAggregationInput | MeetupAdminOrderByWithAggregationInput[]
+    by: MeetupAdminScalarFieldEnum[] | MeetupAdminScalarFieldEnum
+    having?: MeetupAdminScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MeetupAdminCountAggregateInputType | true
+    _min?: MeetupAdminMinAggregateInputType
+    _max?: MeetupAdminMaxAggregateInputType
+  }
+
+  export type MeetupAdminGroupByOutputType = {
+    id: string
+    meetupId: string
+    personId: string
+    role: string
+    createdAt: Date
+    updatedAt: Date
+    _count: MeetupAdminCountAggregateOutputType | null
+    _min: MeetupAdminMinAggregateOutputType | null
+    _max: MeetupAdminMaxAggregateOutputType | null
+  }
+
+  type GetMeetupAdminGroupByPayload<T extends MeetupAdminGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MeetupAdminGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MeetupAdminGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MeetupAdminGroupByOutputType[P]>
+            : GetScalarType<T[P], MeetupAdminGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MeetupAdminSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    meetupId?: boolean
+    personId?: boolean
+    role?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
+    person?: boolean | PersonDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["meetupAdmin"]>
+
+
+
+  export type MeetupAdminSelectScalar = {
+    id?: boolean
+    meetupId?: boolean
+    personId?: boolean
+    role?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MeetupAdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "meetupId" | "personId" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["meetupAdmin"]>
+  export type MeetupAdminInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
+    person?: boolean | PersonDefaultArgs<ExtArgs>
+  }
+
+  export type $MeetupAdminPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MeetupAdmin"
+    objects: {
+      meetup: Prisma.$MeetupPayload<ExtArgs>
+      person: Prisma.$PersonPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      meetupId: string
+      personId: string
+      role: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["meetupAdmin"]>
+    composites: {}
+  }
+
+  type MeetupAdminGetPayload<S extends boolean | null | undefined | MeetupAdminDefaultArgs> = $Result.GetResult<Prisma.$MeetupAdminPayload, S>
+
+  type MeetupAdminCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MeetupAdminFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MeetupAdminCountAggregateInputType | true
+    }
+
+  export interface MeetupAdminDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MeetupAdmin'], meta: { name: 'MeetupAdmin' } }
+    /**
+     * Find zero or one MeetupAdmin that matches the filter.
+     * @param {MeetupAdminFindUniqueArgs} args - Arguments to find a MeetupAdmin
+     * @example
+     * // Get one MeetupAdmin
+     * const meetupAdmin = await prisma.meetupAdmin.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MeetupAdminFindUniqueArgs>(args: SelectSubset<T, MeetupAdminFindUniqueArgs<ExtArgs>>): Prisma__MeetupAdminClient<$Result.GetResult<Prisma.$MeetupAdminPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MeetupAdmin that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MeetupAdminFindUniqueOrThrowArgs} args - Arguments to find a MeetupAdmin
+     * @example
+     * // Get one MeetupAdmin
+     * const meetupAdmin = await prisma.meetupAdmin.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MeetupAdminFindUniqueOrThrowArgs>(args: SelectSubset<T, MeetupAdminFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MeetupAdminClient<$Result.GetResult<Prisma.$MeetupAdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MeetupAdmin that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupAdminFindFirstArgs} args - Arguments to find a MeetupAdmin
+     * @example
+     * // Get one MeetupAdmin
+     * const meetupAdmin = await prisma.meetupAdmin.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MeetupAdminFindFirstArgs>(args?: SelectSubset<T, MeetupAdminFindFirstArgs<ExtArgs>>): Prisma__MeetupAdminClient<$Result.GetResult<Prisma.$MeetupAdminPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MeetupAdmin that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupAdminFindFirstOrThrowArgs} args - Arguments to find a MeetupAdmin
+     * @example
+     * // Get one MeetupAdmin
+     * const meetupAdmin = await prisma.meetupAdmin.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MeetupAdminFindFirstOrThrowArgs>(args?: SelectSubset<T, MeetupAdminFindFirstOrThrowArgs<ExtArgs>>): Prisma__MeetupAdminClient<$Result.GetResult<Prisma.$MeetupAdminPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MeetupAdmins that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupAdminFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MeetupAdmins
+     * const meetupAdmins = await prisma.meetupAdmin.findMany()
+     * 
+     * // Get first 10 MeetupAdmins
+     * const meetupAdmins = await prisma.meetupAdmin.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const meetupAdminWithIdOnly = await prisma.meetupAdmin.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MeetupAdminFindManyArgs>(args?: SelectSubset<T, MeetupAdminFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupAdminPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MeetupAdmin.
+     * @param {MeetupAdminCreateArgs} args - Arguments to create a MeetupAdmin.
+     * @example
+     * // Create one MeetupAdmin
+     * const MeetupAdmin = await prisma.meetupAdmin.create({
+     *   data: {
+     *     // ... data to create a MeetupAdmin
+     *   }
+     * })
+     * 
+     */
+    create<T extends MeetupAdminCreateArgs>(args: SelectSubset<T, MeetupAdminCreateArgs<ExtArgs>>): Prisma__MeetupAdminClient<$Result.GetResult<Prisma.$MeetupAdminPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MeetupAdmins.
+     * @param {MeetupAdminCreateManyArgs} args - Arguments to create many MeetupAdmins.
+     * @example
+     * // Create many MeetupAdmins
+     * const meetupAdmin = await prisma.meetupAdmin.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MeetupAdminCreateManyArgs>(args?: SelectSubset<T, MeetupAdminCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a MeetupAdmin.
+     * @param {MeetupAdminDeleteArgs} args - Arguments to delete one MeetupAdmin.
+     * @example
+     * // Delete one MeetupAdmin
+     * const MeetupAdmin = await prisma.meetupAdmin.delete({
+     *   where: {
+     *     // ... filter to delete one MeetupAdmin
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MeetupAdminDeleteArgs>(args: SelectSubset<T, MeetupAdminDeleteArgs<ExtArgs>>): Prisma__MeetupAdminClient<$Result.GetResult<Prisma.$MeetupAdminPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MeetupAdmin.
+     * @param {MeetupAdminUpdateArgs} args - Arguments to update one MeetupAdmin.
+     * @example
+     * // Update one MeetupAdmin
+     * const meetupAdmin = await prisma.meetupAdmin.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MeetupAdminUpdateArgs>(args: SelectSubset<T, MeetupAdminUpdateArgs<ExtArgs>>): Prisma__MeetupAdminClient<$Result.GetResult<Prisma.$MeetupAdminPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MeetupAdmins.
+     * @param {MeetupAdminDeleteManyArgs} args - Arguments to filter MeetupAdmins to delete.
+     * @example
+     * // Delete a few MeetupAdmins
+     * const { count } = await prisma.meetupAdmin.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MeetupAdminDeleteManyArgs>(args?: SelectSubset<T, MeetupAdminDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MeetupAdmins.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupAdminUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MeetupAdmins
+     * const meetupAdmin = await prisma.meetupAdmin.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MeetupAdminUpdateManyArgs>(args: SelectSubset<T, MeetupAdminUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MeetupAdmin.
+     * @param {MeetupAdminUpsertArgs} args - Arguments to update or create a MeetupAdmin.
+     * @example
+     * // Update or create a MeetupAdmin
+     * const meetupAdmin = await prisma.meetupAdmin.upsert({
+     *   create: {
+     *     // ... data to create a MeetupAdmin
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MeetupAdmin we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MeetupAdminUpsertArgs>(args: SelectSubset<T, MeetupAdminUpsertArgs<ExtArgs>>): Prisma__MeetupAdminClient<$Result.GetResult<Prisma.$MeetupAdminPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MeetupAdmins.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupAdminCountArgs} args - Arguments to filter MeetupAdmins to count.
+     * @example
+     * // Count the number of MeetupAdmins
+     * const count = await prisma.meetupAdmin.count({
+     *   where: {
+     *     // ... the filter for the MeetupAdmins we want to count
+     *   }
+     * })
+    **/
+    count<T extends MeetupAdminCountArgs>(
+      args?: Subset<T, MeetupAdminCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MeetupAdminCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MeetupAdmin.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupAdminAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MeetupAdminAggregateArgs>(args: Subset<T, MeetupAdminAggregateArgs>): Prisma.PrismaPromise<GetMeetupAdminAggregateType<T>>
+
+    /**
+     * Group by MeetupAdmin.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupAdminGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MeetupAdminGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MeetupAdminGroupByArgs['orderBy'] }
+        : { orderBy?: MeetupAdminGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MeetupAdminGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMeetupAdminGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MeetupAdmin model
+   */
+  readonly fields: MeetupAdminFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MeetupAdmin.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MeetupAdminClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    meetup<T extends MeetupDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MeetupDefaultArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    person<T extends PersonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PersonDefaultArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MeetupAdmin model
+   */
+  interface MeetupAdminFieldRefs {
+    readonly id: FieldRef<"MeetupAdmin", 'String'>
+    readonly meetupId: FieldRef<"MeetupAdmin", 'String'>
+    readonly personId: FieldRef<"MeetupAdmin", 'String'>
+    readonly role: FieldRef<"MeetupAdmin", 'String'>
+    readonly createdAt: FieldRef<"MeetupAdmin", 'DateTime'>
+    readonly updatedAt: FieldRef<"MeetupAdmin", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MeetupAdmin findUnique
+   */
+  export type MeetupAdminFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupAdmin
+     */
+    select?: MeetupAdminSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupAdmin
+     */
+    omit?: MeetupAdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupAdminInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupAdmin to fetch.
+     */
+    where: MeetupAdminWhereUniqueInput
+  }
+
+  /**
+   * MeetupAdmin findUniqueOrThrow
+   */
+  export type MeetupAdminFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupAdmin
+     */
+    select?: MeetupAdminSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupAdmin
+     */
+    omit?: MeetupAdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupAdminInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupAdmin to fetch.
+     */
+    where: MeetupAdminWhereUniqueInput
+  }
+
+  /**
+   * MeetupAdmin findFirst
+   */
+  export type MeetupAdminFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupAdmin
+     */
+    select?: MeetupAdminSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupAdmin
+     */
+    omit?: MeetupAdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupAdminInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupAdmin to fetch.
+     */
+    where?: MeetupAdminWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupAdmins to fetch.
+     */
+    orderBy?: MeetupAdminOrderByWithRelationInput | MeetupAdminOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MeetupAdmins.
+     */
+    cursor?: MeetupAdminWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupAdmins from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupAdmins.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MeetupAdmins.
+     */
+    distinct?: MeetupAdminScalarFieldEnum | MeetupAdminScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupAdmin findFirstOrThrow
+   */
+  export type MeetupAdminFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupAdmin
+     */
+    select?: MeetupAdminSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupAdmin
+     */
+    omit?: MeetupAdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupAdminInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupAdmin to fetch.
+     */
+    where?: MeetupAdminWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupAdmins to fetch.
+     */
+    orderBy?: MeetupAdminOrderByWithRelationInput | MeetupAdminOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MeetupAdmins.
+     */
+    cursor?: MeetupAdminWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupAdmins from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupAdmins.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MeetupAdmins.
+     */
+    distinct?: MeetupAdminScalarFieldEnum | MeetupAdminScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupAdmin findMany
+   */
+  export type MeetupAdminFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupAdmin
+     */
+    select?: MeetupAdminSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupAdmin
+     */
+    omit?: MeetupAdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupAdminInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupAdmins to fetch.
+     */
+    where?: MeetupAdminWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupAdmins to fetch.
+     */
+    orderBy?: MeetupAdminOrderByWithRelationInput | MeetupAdminOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MeetupAdmins.
+     */
+    cursor?: MeetupAdminWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupAdmins from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupAdmins.
+     */
+    skip?: number
+    distinct?: MeetupAdminScalarFieldEnum | MeetupAdminScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupAdmin create
+   */
+  export type MeetupAdminCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupAdmin
+     */
+    select?: MeetupAdminSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupAdmin
+     */
+    omit?: MeetupAdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupAdminInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MeetupAdmin.
+     */
+    data: XOR<MeetupAdminCreateInput, MeetupAdminUncheckedCreateInput>
+  }
+
+  /**
+   * MeetupAdmin createMany
+   */
+  export type MeetupAdminCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MeetupAdmins.
+     */
+    data: MeetupAdminCreateManyInput | MeetupAdminCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MeetupAdmin update
+   */
+  export type MeetupAdminUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupAdmin
+     */
+    select?: MeetupAdminSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupAdmin
+     */
+    omit?: MeetupAdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupAdminInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MeetupAdmin.
+     */
+    data: XOR<MeetupAdminUpdateInput, MeetupAdminUncheckedUpdateInput>
+    /**
+     * Choose, which MeetupAdmin to update.
+     */
+    where: MeetupAdminWhereUniqueInput
+  }
+
+  /**
+   * MeetupAdmin updateMany
+   */
+  export type MeetupAdminUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MeetupAdmins.
+     */
+    data: XOR<MeetupAdminUpdateManyMutationInput, MeetupAdminUncheckedUpdateManyInput>
+    /**
+     * Filter which MeetupAdmins to update
+     */
+    where?: MeetupAdminWhereInput
+    /**
+     * Limit how many MeetupAdmins to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MeetupAdmin upsert
+   */
+  export type MeetupAdminUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupAdmin
+     */
+    select?: MeetupAdminSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupAdmin
+     */
+    omit?: MeetupAdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupAdminInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MeetupAdmin to update in case it exists.
+     */
+    where: MeetupAdminWhereUniqueInput
+    /**
+     * In case the MeetupAdmin found by the `where` argument doesn't exist, create a new MeetupAdmin with this data.
+     */
+    create: XOR<MeetupAdminCreateInput, MeetupAdminUncheckedCreateInput>
+    /**
+     * In case the MeetupAdmin was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MeetupAdminUpdateInput, MeetupAdminUncheckedUpdateInput>
+  }
+
+  /**
+   * MeetupAdmin delete
+   */
+  export type MeetupAdminDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupAdmin
+     */
+    select?: MeetupAdminSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupAdmin
+     */
+    omit?: MeetupAdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupAdminInclude<ExtArgs> | null
+    /**
+     * Filter which MeetupAdmin to delete.
+     */
+    where: MeetupAdminWhereUniqueInput
+  }
+
+  /**
+   * MeetupAdmin deleteMany
+   */
+  export type MeetupAdminDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MeetupAdmins to delete
+     */
+    where?: MeetupAdminWhereInput
+    /**
+     * Limit how many MeetupAdmins to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MeetupAdmin without action
+   */
+  export type MeetupAdminDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupAdmin
+     */
+    select?: MeetupAdminSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupAdmin
+     */
+    omit?: MeetupAdminOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupAdminInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Subscription
+   */
+
+  export type AggregateSubscription = {
+    _count: SubscriptionCountAggregateOutputType | null
+    _min: SubscriptionMinAggregateOutputType | null
+    _max: SubscriptionMaxAggregateOutputType | null
+  }
+
+  export type SubscriptionMinAggregateOutputType = {
+    id: string | null
+    personId: string | null
+    meetupId: string | null
+    meetupRoleId: string | null
+    presenceConfirmation: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SubscriptionMaxAggregateOutputType = {
+    id: string | null
+    personId: string | null
+    meetupId: string | null
+    meetupRoleId: string | null
+    presenceConfirmation: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SubscriptionCountAggregateOutputType = {
+    id: number
+    personId: number
+    meetupId: number
+    meetupRoleId: number
+    presenceConfirmation: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type SubscriptionMinAggregateInputType = {
+    id?: true
+    personId?: true
+    meetupId?: true
+    meetupRoleId?: true
+    presenceConfirmation?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SubscriptionMaxAggregateInputType = {
+    id?: true
+    personId?: true
+    meetupId?: true
+    meetupRoleId?: true
+    presenceConfirmation?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SubscriptionCountAggregateInputType = {
+    id?: true
+    personId?: true
+    meetupId?: true
+    meetupRoleId?: true
+    presenceConfirmation?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type SubscriptionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Subscription to aggregate.
+     */
+    where?: SubscriptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Subscriptions to fetch.
+     */
+    orderBy?: SubscriptionOrderByWithRelationInput | SubscriptionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SubscriptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Subscriptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Subscriptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Subscriptions
+    **/
+    _count?: true | SubscriptionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SubscriptionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SubscriptionMaxAggregateInputType
+  }
+
+  export type GetSubscriptionAggregateType<T extends SubscriptionAggregateArgs> = {
+        [P in keyof T & keyof AggregateSubscription]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSubscription[P]>
+      : GetScalarType<T[P], AggregateSubscription[P]>
+  }
+
+
+
+
+  export type SubscriptionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubscriptionWhereInput
+    orderBy?: SubscriptionOrderByWithAggregationInput | SubscriptionOrderByWithAggregationInput[]
+    by: SubscriptionScalarFieldEnum[] | SubscriptionScalarFieldEnum
+    having?: SubscriptionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SubscriptionCountAggregateInputType | true
+    _min?: SubscriptionMinAggregateInputType
+    _max?: SubscriptionMaxAggregateInputType
+  }
+
+  export type SubscriptionGroupByOutputType = {
+    id: string
+    personId: string
+    meetupId: string
+    meetupRoleId: string
+    presenceConfirmation: boolean | null
+    createdAt: Date
+    updatedAt: Date
+    _count: SubscriptionCountAggregateOutputType | null
+    _min: SubscriptionMinAggregateOutputType | null
+    _max: SubscriptionMaxAggregateOutputType | null
+  }
+
+  type GetSubscriptionGroupByPayload<T extends SubscriptionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SubscriptionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SubscriptionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SubscriptionGroupByOutputType[P]>
+            : GetScalarType<T[P], SubscriptionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SubscriptionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    personId?: boolean
+    meetupId?: boolean
+    meetupRoleId?: boolean
+    presenceConfirmation?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    person?: boolean | PersonDefaultArgs<ExtArgs>
+    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
+    meetupRole?: boolean | MeetupRoleDefaultArgs<ExtArgs>
+    subscriptionPayments?: boolean | Subscription$subscriptionPaymentsArgs<ExtArgs>
+    _count?: boolean | SubscriptionCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["subscription"]>
+
+
+
+  export type SubscriptionSelectScalar = {
+    id?: boolean
+    personId?: boolean
+    meetupId?: boolean
+    meetupRoleId?: boolean
+    presenceConfirmation?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type SubscriptionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "personId" | "meetupId" | "meetupRoleId" | "presenceConfirmation" | "createdAt" | "updatedAt", ExtArgs["result"]["subscription"]>
+  export type SubscriptionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    person?: boolean | PersonDefaultArgs<ExtArgs>
+    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
+    meetupRole?: boolean | MeetupRoleDefaultArgs<ExtArgs>
+    subscriptionPayments?: boolean | Subscription$subscriptionPaymentsArgs<ExtArgs>
+    _count?: boolean | SubscriptionCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $SubscriptionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Subscription"
+    objects: {
+      person: Prisma.$PersonPayload<ExtArgs>
+      meetup: Prisma.$MeetupPayload<ExtArgs>
+      meetupRole: Prisma.$MeetupRolePayload<ExtArgs>
+      subscriptionPayments: Prisma.$SubscriptionPaymentPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      personId: string
+      meetupId: string
+      meetupRoleId: string
+      presenceConfirmation: boolean | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["subscription"]>
+    composites: {}
+  }
+
+  type SubscriptionGetPayload<S extends boolean | null | undefined | SubscriptionDefaultArgs> = $Result.GetResult<Prisma.$SubscriptionPayload, S>
+
+  type SubscriptionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SubscriptionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SubscriptionCountAggregateInputType | true
+    }
+
+  export interface SubscriptionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Subscription'], meta: { name: 'Subscription' } }
+    /**
+     * Find zero or one Subscription that matches the filter.
+     * @param {SubscriptionFindUniqueArgs} args - Arguments to find a Subscription
+     * @example
+     * // Get one Subscription
+     * const subscription = await prisma.subscription.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SubscriptionFindUniqueArgs>(args: SelectSubset<T, SubscriptionFindUniqueArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Subscription that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SubscriptionFindUniqueOrThrowArgs} args - Arguments to find a Subscription
+     * @example
+     * // Get one Subscription
+     * const subscription = await prisma.subscription.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SubscriptionFindUniqueOrThrowArgs>(args: SelectSubset<T, SubscriptionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Subscription that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionFindFirstArgs} args - Arguments to find a Subscription
+     * @example
+     * // Get one Subscription
+     * const subscription = await prisma.subscription.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SubscriptionFindFirstArgs>(args?: SelectSubset<T, SubscriptionFindFirstArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Subscription that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionFindFirstOrThrowArgs} args - Arguments to find a Subscription
+     * @example
+     * // Get one Subscription
+     * const subscription = await prisma.subscription.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SubscriptionFindFirstOrThrowArgs>(args?: SelectSubset<T, SubscriptionFindFirstOrThrowArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Subscriptions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Subscriptions
+     * const subscriptions = await prisma.subscription.findMany()
+     * 
+     * // Get first 10 Subscriptions
+     * const subscriptions = await prisma.subscription.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const subscriptionWithIdOnly = await prisma.subscription.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SubscriptionFindManyArgs>(args?: SelectSubset<T, SubscriptionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Subscription.
+     * @param {SubscriptionCreateArgs} args - Arguments to create a Subscription.
+     * @example
+     * // Create one Subscription
+     * const Subscription = await prisma.subscription.create({
+     *   data: {
+     *     // ... data to create a Subscription
+     *   }
+     * })
+     * 
+     */
+    create<T extends SubscriptionCreateArgs>(args: SelectSubset<T, SubscriptionCreateArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Subscriptions.
+     * @param {SubscriptionCreateManyArgs} args - Arguments to create many Subscriptions.
+     * @example
+     * // Create many Subscriptions
+     * const subscription = await prisma.subscription.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SubscriptionCreateManyArgs>(args?: SelectSubset<T, SubscriptionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Subscription.
+     * @param {SubscriptionDeleteArgs} args - Arguments to delete one Subscription.
+     * @example
+     * // Delete one Subscription
+     * const Subscription = await prisma.subscription.delete({
+     *   where: {
+     *     // ... filter to delete one Subscription
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SubscriptionDeleteArgs>(args: SelectSubset<T, SubscriptionDeleteArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Subscription.
+     * @param {SubscriptionUpdateArgs} args - Arguments to update one Subscription.
+     * @example
+     * // Update one Subscription
+     * const subscription = await prisma.subscription.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SubscriptionUpdateArgs>(args: SelectSubset<T, SubscriptionUpdateArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Subscriptions.
+     * @param {SubscriptionDeleteManyArgs} args - Arguments to filter Subscriptions to delete.
+     * @example
+     * // Delete a few Subscriptions
+     * const { count } = await prisma.subscription.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SubscriptionDeleteManyArgs>(args?: SelectSubset<T, SubscriptionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Subscriptions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Subscriptions
+     * const subscription = await prisma.subscription.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SubscriptionUpdateManyArgs>(args: SelectSubset<T, SubscriptionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Subscription.
+     * @param {SubscriptionUpsertArgs} args - Arguments to update or create a Subscription.
+     * @example
+     * // Update or create a Subscription
+     * const subscription = await prisma.subscription.upsert({
+     *   create: {
+     *     // ... data to create a Subscription
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Subscription we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SubscriptionUpsertArgs>(args: SelectSubset<T, SubscriptionUpsertArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Subscriptions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionCountArgs} args - Arguments to filter Subscriptions to count.
+     * @example
+     * // Count the number of Subscriptions
+     * const count = await prisma.subscription.count({
+     *   where: {
+     *     // ... the filter for the Subscriptions we want to count
+     *   }
+     * })
+    **/
+    count<T extends SubscriptionCountArgs>(
+      args?: Subset<T, SubscriptionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SubscriptionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Subscription.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SubscriptionAggregateArgs>(args: Subset<T, SubscriptionAggregateArgs>): Prisma.PrismaPromise<GetSubscriptionAggregateType<T>>
+
+    /**
+     * Group by Subscription.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SubscriptionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SubscriptionGroupByArgs['orderBy'] }
+        : { orderBy?: SubscriptionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SubscriptionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSubscriptionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Subscription model
+   */
+  readonly fields: SubscriptionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Subscription.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SubscriptionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    person<T extends PersonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PersonDefaultArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    meetup<T extends MeetupDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MeetupDefaultArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    meetupRole<T extends MeetupRoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MeetupRoleDefaultArgs<ExtArgs>>): Prisma__MeetupRoleClient<$Result.GetResult<Prisma.$MeetupRolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    subscriptionPayments<T extends Subscription$subscriptionPaymentsArgs<ExtArgs> = {}>(args?: Subset<T, Subscription$subscriptionPaymentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriptionPaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Subscription model
+   */
+  interface SubscriptionFieldRefs {
+    readonly id: FieldRef<"Subscription", 'String'>
+    readonly personId: FieldRef<"Subscription", 'String'>
+    readonly meetupId: FieldRef<"Subscription", 'String'>
+    readonly meetupRoleId: FieldRef<"Subscription", 'String'>
+    readonly presenceConfirmation: FieldRef<"Subscription", 'Boolean'>
+    readonly createdAt: FieldRef<"Subscription", 'DateTime'>
+    readonly updatedAt: FieldRef<"Subscription", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Subscription findUnique
+   */
+  export type SubscriptionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subscription
+     */
+    select?: SubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subscription
+     */
+    omit?: SubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionInclude<ExtArgs> | null
+    /**
+     * Filter, which Subscription to fetch.
+     */
+    where: SubscriptionWhereUniqueInput
+  }
+
+  /**
+   * Subscription findUniqueOrThrow
+   */
+  export type SubscriptionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subscription
+     */
+    select?: SubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subscription
+     */
+    omit?: SubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionInclude<ExtArgs> | null
+    /**
+     * Filter, which Subscription to fetch.
+     */
+    where: SubscriptionWhereUniqueInput
+  }
+
+  /**
+   * Subscription findFirst
+   */
+  export type SubscriptionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subscription
+     */
+    select?: SubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subscription
+     */
+    omit?: SubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionInclude<ExtArgs> | null
+    /**
+     * Filter, which Subscription to fetch.
+     */
+    where?: SubscriptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Subscriptions to fetch.
+     */
+    orderBy?: SubscriptionOrderByWithRelationInput | SubscriptionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Subscriptions.
+     */
+    cursor?: SubscriptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Subscriptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Subscriptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Subscriptions.
+     */
+    distinct?: SubscriptionScalarFieldEnum | SubscriptionScalarFieldEnum[]
+  }
+
+  /**
+   * Subscription findFirstOrThrow
+   */
+  export type SubscriptionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subscription
+     */
+    select?: SubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subscription
+     */
+    omit?: SubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionInclude<ExtArgs> | null
+    /**
+     * Filter, which Subscription to fetch.
+     */
+    where?: SubscriptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Subscriptions to fetch.
+     */
+    orderBy?: SubscriptionOrderByWithRelationInput | SubscriptionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Subscriptions.
+     */
+    cursor?: SubscriptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Subscriptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Subscriptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Subscriptions.
+     */
+    distinct?: SubscriptionScalarFieldEnum | SubscriptionScalarFieldEnum[]
+  }
+
+  /**
+   * Subscription findMany
+   */
+  export type SubscriptionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subscription
+     */
+    select?: SubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subscription
+     */
+    omit?: SubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionInclude<ExtArgs> | null
+    /**
+     * Filter, which Subscriptions to fetch.
+     */
+    where?: SubscriptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Subscriptions to fetch.
+     */
+    orderBy?: SubscriptionOrderByWithRelationInput | SubscriptionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Subscriptions.
+     */
+    cursor?: SubscriptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Subscriptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Subscriptions.
+     */
+    skip?: number
+    distinct?: SubscriptionScalarFieldEnum | SubscriptionScalarFieldEnum[]
+  }
+
+  /**
+   * Subscription create
+   */
+  export type SubscriptionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subscription
+     */
+    select?: SubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subscription
+     */
+    omit?: SubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Subscription.
+     */
+    data: XOR<SubscriptionCreateInput, SubscriptionUncheckedCreateInput>
+  }
+
+  /**
+   * Subscription createMany
+   */
+  export type SubscriptionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Subscriptions.
+     */
+    data: SubscriptionCreateManyInput | SubscriptionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Subscription update
+   */
+  export type SubscriptionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subscription
+     */
+    select?: SubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subscription
+     */
+    omit?: SubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Subscription.
+     */
+    data: XOR<SubscriptionUpdateInput, SubscriptionUncheckedUpdateInput>
+    /**
+     * Choose, which Subscription to update.
+     */
+    where: SubscriptionWhereUniqueInput
+  }
+
+  /**
+   * Subscription updateMany
+   */
+  export type SubscriptionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Subscriptions.
+     */
+    data: XOR<SubscriptionUpdateManyMutationInput, SubscriptionUncheckedUpdateManyInput>
+    /**
+     * Filter which Subscriptions to update
+     */
+    where?: SubscriptionWhereInput
+    /**
+     * Limit how many Subscriptions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Subscription upsert
+   */
+  export type SubscriptionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subscription
+     */
+    select?: SubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subscription
+     */
+    omit?: SubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Subscription to update in case it exists.
+     */
+    where: SubscriptionWhereUniqueInput
+    /**
+     * In case the Subscription found by the `where` argument doesn't exist, create a new Subscription with this data.
+     */
+    create: XOR<SubscriptionCreateInput, SubscriptionUncheckedCreateInput>
+    /**
+     * In case the Subscription was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SubscriptionUpdateInput, SubscriptionUncheckedUpdateInput>
+  }
+
+  /**
+   * Subscription delete
+   */
+  export type SubscriptionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subscription
+     */
+    select?: SubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subscription
+     */
+    omit?: SubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionInclude<ExtArgs> | null
+    /**
+     * Filter which Subscription to delete.
+     */
+    where: SubscriptionWhereUniqueInput
+  }
+
+  /**
+   * Subscription deleteMany
+   */
+  export type SubscriptionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Subscriptions to delete
+     */
+    where?: SubscriptionWhereInput
+    /**
+     * Limit how many Subscriptions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Subscription.subscriptionPayments
+   */
+  export type Subscription$subscriptionPaymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionPayment
+     */
+    select?: SubscriptionPaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionPayment
+     */
+    omit?: SubscriptionPaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionPaymentInclude<ExtArgs> | null
+    where?: SubscriptionPaymentWhereInput
+    orderBy?: SubscriptionPaymentOrderByWithRelationInput | SubscriptionPaymentOrderByWithRelationInput[]
+    cursor?: SubscriptionPaymentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SubscriptionPaymentScalarFieldEnum | SubscriptionPaymentScalarFieldEnum[]
+  }
+
+  /**
+   * Subscription without action
+   */
+  export type SubscriptionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subscription
+     */
+    select?: SubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subscription
+     */
+    omit?: SubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Invite
+   */
+
+  export type AggregateInvite = {
+    _count: InviteCountAggregateOutputType | null
+    _min: InviteMinAggregateOutputType | null
+    _max: InviteMaxAggregateOutputType | null
+  }
+
+  export type InviteMinAggregateOutputType = {
+    id: string | null
+    personId: string | null
+    meetupId: string | null
+    link: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type InviteMaxAggregateOutputType = {
+    id: string | null
+    personId: string | null
+    meetupId: string | null
+    link: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type InviteCountAggregateOutputType = {
+    id: number
+    personId: number
+    meetupId: number
+    link: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type InviteMinAggregateInputType = {
+    id?: true
+    personId?: true
+    meetupId?: true
+    link?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type InviteMaxAggregateInputType = {
+    id?: true
+    personId?: true
+    meetupId?: true
+    link?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type InviteCountAggregateInputType = {
+    id?: true
+    personId?: true
+    meetupId?: true
+    link?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type InviteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Invite to aggregate.
+     */
+    where?: InviteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Invites to fetch.
+     */
+    orderBy?: InviteOrderByWithRelationInput | InviteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: InviteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Invites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Invites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Invites
+    **/
+    _count?: true | InviteCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: InviteMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: InviteMaxAggregateInputType
+  }
+
+  export type GetInviteAggregateType<T extends InviteAggregateArgs> = {
+        [P in keyof T & keyof AggregateInvite]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateInvite[P]>
+      : GetScalarType<T[P], AggregateInvite[P]>
+  }
+
+
+
+
+  export type InviteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InviteWhereInput
+    orderBy?: InviteOrderByWithAggregationInput | InviteOrderByWithAggregationInput[]
+    by: InviteScalarFieldEnum[] | InviteScalarFieldEnum
+    having?: InviteScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: InviteCountAggregateInputType | true
+    _min?: InviteMinAggregateInputType
+    _max?: InviteMaxAggregateInputType
+  }
+
+  export type InviteGroupByOutputType = {
+    id: string
+    personId: string
+    meetupId: string
+    link: string
+    createdAt: Date
+    updatedAt: Date
+    _count: InviteCountAggregateOutputType | null
+    _min: InviteMinAggregateOutputType | null
+    _max: InviteMaxAggregateOutputType | null
+  }
+
+  type GetInviteGroupByPayload<T extends InviteGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<InviteGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof InviteGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], InviteGroupByOutputType[P]>
+            : GetScalarType<T[P], InviteGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type InviteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    personId?: boolean
+    meetupId?: boolean
+    link?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    person?: boolean | PersonDefaultArgs<ExtArgs>
+    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["invite"]>
+
+
+
+  export type InviteSelectScalar = {
+    id?: boolean
+    personId?: boolean
+    meetupId?: boolean
+    link?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type InviteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "personId" | "meetupId" | "link" | "createdAt" | "updatedAt", ExtArgs["result"]["invite"]>
+  export type InviteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    person?: boolean | PersonDefaultArgs<ExtArgs>
+    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
+  }
+
+  export type $InvitePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Invite"
+    objects: {
+      person: Prisma.$PersonPayload<ExtArgs>
+      meetup: Prisma.$MeetupPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      personId: string
+      meetupId: string
+      link: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["invite"]>
+    composites: {}
+  }
+
+  type InviteGetPayload<S extends boolean | null | undefined | InviteDefaultArgs> = $Result.GetResult<Prisma.$InvitePayload, S>
+
+  type InviteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<InviteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: InviteCountAggregateInputType | true
+    }
+
+  export interface InviteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Invite'], meta: { name: 'Invite' } }
+    /**
+     * Find zero or one Invite that matches the filter.
+     * @param {InviteFindUniqueArgs} args - Arguments to find a Invite
+     * @example
+     * // Get one Invite
+     * const invite = await prisma.invite.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends InviteFindUniqueArgs>(args: SelectSubset<T, InviteFindUniqueArgs<ExtArgs>>): Prisma__InviteClient<$Result.GetResult<Prisma.$InvitePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Invite that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {InviteFindUniqueOrThrowArgs} args - Arguments to find a Invite
+     * @example
+     * // Get one Invite
+     * const invite = await prisma.invite.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends InviteFindUniqueOrThrowArgs>(args: SelectSubset<T, InviteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__InviteClient<$Result.GetResult<Prisma.$InvitePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Invite that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InviteFindFirstArgs} args - Arguments to find a Invite
+     * @example
+     * // Get one Invite
+     * const invite = await prisma.invite.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends InviteFindFirstArgs>(args?: SelectSubset<T, InviteFindFirstArgs<ExtArgs>>): Prisma__InviteClient<$Result.GetResult<Prisma.$InvitePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Invite that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InviteFindFirstOrThrowArgs} args - Arguments to find a Invite
+     * @example
+     * // Get one Invite
+     * const invite = await prisma.invite.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends InviteFindFirstOrThrowArgs>(args?: SelectSubset<T, InviteFindFirstOrThrowArgs<ExtArgs>>): Prisma__InviteClient<$Result.GetResult<Prisma.$InvitePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Invites that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InviteFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Invites
+     * const invites = await prisma.invite.findMany()
+     * 
+     * // Get first 10 Invites
+     * const invites = await prisma.invite.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const inviteWithIdOnly = await prisma.invite.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends InviteFindManyArgs>(args?: SelectSubset<T, InviteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Invite.
+     * @param {InviteCreateArgs} args - Arguments to create a Invite.
+     * @example
+     * // Create one Invite
+     * const Invite = await prisma.invite.create({
+     *   data: {
+     *     // ... data to create a Invite
+     *   }
+     * })
+     * 
+     */
+    create<T extends InviteCreateArgs>(args: SelectSubset<T, InviteCreateArgs<ExtArgs>>): Prisma__InviteClient<$Result.GetResult<Prisma.$InvitePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Invites.
+     * @param {InviteCreateManyArgs} args - Arguments to create many Invites.
+     * @example
+     * // Create many Invites
+     * const invite = await prisma.invite.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends InviteCreateManyArgs>(args?: SelectSubset<T, InviteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Invite.
+     * @param {InviteDeleteArgs} args - Arguments to delete one Invite.
+     * @example
+     * // Delete one Invite
+     * const Invite = await prisma.invite.delete({
+     *   where: {
+     *     // ... filter to delete one Invite
+     *   }
+     * })
+     * 
+     */
+    delete<T extends InviteDeleteArgs>(args: SelectSubset<T, InviteDeleteArgs<ExtArgs>>): Prisma__InviteClient<$Result.GetResult<Prisma.$InvitePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Invite.
+     * @param {InviteUpdateArgs} args - Arguments to update one Invite.
+     * @example
+     * // Update one Invite
+     * const invite = await prisma.invite.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends InviteUpdateArgs>(args: SelectSubset<T, InviteUpdateArgs<ExtArgs>>): Prisma__InviteClient<$Result.GetResult<Prisma.$InvitePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Invites.
+     * @param {InviteDeleteManyArgs} args - Arguments to filter Invites to delete.
+     * @example
+     * // Delete a few Invites
+     * const { count } = await prisma.invite.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends InviteDeleteManyArgs>(args?: SelectSubset<T, InviteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Invites.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InviteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Invites
+     * const invite = await prisma.invite.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends InviteUpdateManyArgs>(args: SelectSubset<T, InviteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Invite.
+     * @param {InviteUpsertArgs} args - Arguments to update or create a Invite.
+     * @example
+     * // Update or create a Invite
+     * const invite = await prisma.invite.upsert({
+     *   create: {
+     *     // ... data to create a Invite
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Invite we want to update
+     *   }
+     * })
+     */
+    upsert<T extends InviteUpsertArgs>(args: SelectSubset<T, InviteUpsertArgs<ExtArgs>>): Prisma__InviteClient<$Result.GetResult<Prisma.$InvitePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Invites.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InviteCountArgs} args - Arguments to filter Invites to count.
+     * @example
+     * // Count the number of Invites
+     * const count = await prisma.invite.count({
+     *   where: {
+     *     // ... the filter for the Invites we want to count
+     *   }
+     * })
+    **/
+    count<T extends InviteCountArgs>(
+      args?: Subset<T, InviteCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], InviteCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Invite.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InviteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends InviteAggregateArgs>(args: Subset<T, InviteAggregateArgs>): Prisma.PrismaPromise<GetInviteAggregateType<T>>
+
+    /**
+     * Group by Invite.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {InviteGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends InviteGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: InviteGroupByArgs['orderBy'] }
+        : { orderBy?: InviteGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, InviteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInviteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Invite model
+   */
+  readonly fields: InviteFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Invite.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__InviteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    person<T extends PersonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PersonDefaultArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    meetup<T extends MeetupDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MeetupDefaultArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Invite model
+   */
+  interface InviteFieldRefs {
+    readonly id: FieldRef<"Invite", 'String'>
+    readonly personId: FieldRef<"Invite", 'String'>
+    readonly meetupId: FieldRef<"Invite", 'String'>
+    readonly link: FieldRef<"Invite", 'String'>
+    readonly createdAt: FieldRef<"Invite", 'DateTime'>
+    readonly updatedAt: FieldRef<"Invite", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Invite findUnique
+   */
+  export type InviteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Invite
+     */
+    select?: InviteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Invite
+     */
+    omit?: InviteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InviteInclude<ExtArgs> | null
+    /**
+     * Filter, which Invite to fetch.
+     */
+    where: InviteWhereUniqueInput
+  }
+
+  /**
+   * Invite findUniqueOrThrow
+   */
+  export type InviteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Invite
+     */
+    select?: InviteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Invite
+     */
+    omit?: InviteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InviteInclude<ExtArgs> | null
+    /**
+     * Filter, which Invite to fetch.
+     */
+    where: InviteWhereUniqueInput
+  }
+
+  /**
+   * Invite findFirst
+   */
+  export type InviteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Invite
+     */
+    select?: InviteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Invite
+     */
+    omit?: InviteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InviteInclude<ExtArgs> | null
+    /**
+     * Filter, which Invite to fetch.
+     */
+    where?: InviteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Invites to fetch.
+     */
+    orderBy?: InviteOrderByWithRelationInput | InviteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Invites.
+     */
+    cursor?: InviteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Invites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Invites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Invites.
+     */
+    distinct?: InviteScalarFieldEnum | InviteScalarFieldEnum[]
+  }
+
+  /**
+   * Invite findFirstOrThrow
+   */
+  export type InviteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Invite
+     */
+    select?: InviteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Invite
+     */
+    omit?: InviteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InviteInclude<ExtArgs> | null
+    /**
+     * Filter, which Invite to fetch.
+     */
+    where?: InviteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Invites to fetch.
+     */
+    orderBy?: InviteOrderByWithRelationInput | InviteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Invites.
+     */
+    cursor?: InviteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Invites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Invites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Invites.
+     */
+    distinct?: InviteScalarFieldEnum | InviteScalarFieldEnum[]
+  }
+
+  /**
+   * Invite findMany
+   */
+  export type InviteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Invite
+     */
+    select?: InviteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Invite
+     */
+    omit?: InviteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InviteInclude<ExtArgs> | null
+    /**
+     * Filter, which Invites to fetch.
+     */
+    where?: InviteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Invites to fetch.
+     */
+    orderBy?: InviteOrderByWithRelationInput | InviteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Invites.
+     */
+    cursor?: InviteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Invites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Invites.
+     */
+    skip?: number
+    distinct?: InviteScalarFieldEnum | InviteScalarFieldEnum[]
+  }
+
+  /**
+   * Invite create
+   */
+  export type InviteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Invite
+     */
+    select?: InviteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Invite
+     */
+    omit?: InviteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InviteInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Invite.
+     */
+    data: XOR<InviteCreateInput, InviteUncheckedCreateInput>
+  }
+
+  /**
+   * Invite createMany
+   */
+  export type InviteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Invites.
+     */
+    data: InviteCreateManyInput | InviteCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Invite update
+   */
+  export type InviteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Invite
+     */
+    select?: InviteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Invite
+     */
+    omit?: InviteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InviteInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Invite.
+     */
+    data: XOR<InviteUpdateInput, InviteUncheckedUpdateInput>
+    /**
+     * Choose, which Invite to update.
+     */
+    where: InviteWhereUniqueInput
+  }
+
+  /**
+   * Invite updateMany
+   */
+  export type InviteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Invites.
+     */
+    data: XOR<InviteUpdateManyMutationInput, InviteUncheckedUpdateManyInput>
+    /**
+     * Filter which Invites to update
+     */
+    where?: InviteWhereInput
+    /**
+     * Limit how many Invites to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Invite upsert
+   */
+  export type InviteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Invite
+     */
+    select?: InviteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Invite
+     */
+    omit?: InviteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InviteInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Invite to update in case it exists.
+     */
+    where: InviteWhereUniqueInput
+    /**
+     * In case the Invite found by the `where` argument doesn't exist, create a new Invite with this data.
+     */
+    create: XOR<InviteCreateInput, InviteUncheckedCreateInput>
+    /**
+     * In case the Invite was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<InviteUpdateInput, InviteUncheckedUpdateInput>
+  }
+
+  /**
+   * Invite delete
+   */
+  export type InviteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Invite
+     */
+    select?: InviteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Invite
+     */
+    omit?: InviteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InviteInclude<ExtArgs> | null
+    /**
+     * Filter which Invite to delete.
+     */
+    where: InviteWhereUniqueInput
+  }
+
+  /**
+   * Invite deleteMany
+   */
+  export type InviteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Invites to delete
+     */
+    where?: InviteWhereInput
+    /**
+     * Limit how many Invites to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Invite without action
+   */
+  export type InviteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Invite
+     */
+    select?: InviteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Invite
+     */
+    omit?: InviteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InviteInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Payment
+   */
+
+  export type AggregatePayment = {
+    _count: PaymentCountAggregateOutputType | null
+    _min: PaymentMinAggregateOutputType | null
+    _max: PaymentMaxAggregateOutputType | null
+  }
+
+  export type PaymentMinAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PaymentMaxAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PaymentCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PaymentMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PaymentMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PaymentCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PaymentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Payment to aggregate.
+     */
+    where?: PaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Payments to fetch.
+     */
+    orderBy?: PaymentOrderByWithRelationInput | PaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Payments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Payments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Payments
+    **/
+    _count?: true | PaymentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PaymentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PaymentMaxAggregateInputType
+  }
+
+  export type GetPaymentAggregateType<T extends PaymentAggregateArgs> = {
+        [P in keyof T & keyof AggregatePayment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePayment[P]>
+      : GetScalarType<T[P], AggregatePayment[P]>
+  }
+
+
+
+
+  export type PaymentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PaymentWhereInput
+    orderBy?: PaymentOrderByWithAggregationInput | PaymentOrderByWithAggregationInput[]
+    by: PaymentScalarFieldEnum[] | PaymentScalarFieldEnum
+    having?: PaymentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PaymentCountAggregateInputType | true
+    _min?: PaymentMinAggregateInputType
+    _max?: PaymentMaxAggregateInputType
+  }
+
+  export type PaymentGroupByOutputType = {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    _count: PaymentCountAggregateOutputType | null
+    _min: PaymentMinAggregateOutputType | null
+    _max: PaymentMaxAggregateOutputType | null
+  }
+
+  type GetPaymentGroupByPayload<T extends PaymentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PaymentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PaymentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PaymentGroupByOutputType[P]>
+            : GetScalarType<T[P], PaymentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PaymentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    subscriptionPayments?: boolean | Payment$subscriptionPaymentsArgs<ExtArgs>
+    _count?: boolean | PaymentCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["payment"]>
+
+
+
+  export type PaymentSelectScalar = {
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type PaymentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt", ExtArgs["result"]["payment"]>
+  export type PaymentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    subscriptionPayments?: boolean | Payment$subscriptionPaymentsArgs<ExtArgs>
+    _count?: boolean | PaymentCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $PaymentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Payment"
+    objects: {
+      subscriptionPayments: Prisma.$SubscriptionPaymentPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["payment"]>
+    composites: {}
+  }
+
+  type PaymentGetPayload<S extends boolean | null | undefined | PaymentDefaultArgs> = $Result.GetResult<Prisma.$PaymentPayload, S>
+
+  type PaymentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PaymentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PaymentCountAggregateInputType | true
+    }
+
+  export interface PaymentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Payment'], meta: { name: 'Payment' } }
+    /**
+     * Find zero or one Payment that matches the filter.
+     * @param {PaymentFindUniqueArgs} args - Arguments to find a Payment
+     * @example
+     * // Get one Payment
+     * const payment = await prisma.payment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PaymentFindUniqueArgs>(args: SelectSubset<T, PaymentFindUniqueArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Payment that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PaymentFindUniqueOrThrowArgs} args - Arguments to find a Payment
+     * @example
+     * // Get one Payment
+     * const payment = await prisma.payment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PaymentFindUniqueOrThrowArgs>(args: SelectSubset<T, PaymentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Payment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PaymentFindFirstArgs} args - Arguments to find a Payment
+     * @example
+     * // Get one Payment
+     * const payment = await prisma.payment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PaymentFindFirstArgs>(args?: SelectSubset<T, PaymentFindFirstArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Payment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PaymentFindFirstOrThrowArgs} args - Arguments to find a Payment
+     * @example
+     * // Get one Payment
+     * const payment = await prisma.payment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PaymentFindFirstOrThrowArgs>(args?: SelectSubset<T, PaymentFindFirstOrThrowArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Payments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PaymentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Payments
+     * const payments = await prisma.payment.findMany()
+     * 
+     * // Get first 10 Payments
+     * const payments = await prisma.payment.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const paymentWithIdOnly = await prisma.payment.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PaymentFindManyArgs>(args?: SelectSubset<T, PaymentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Payment.
+     * @param {PaymentCreateArgs} args - Arguments to create a Payment.
+     * @example
+     * // Create one Payment
+     * const Payment = await prisma.payment.create({
+     *   data: {
+     *     // ... data to create a Payment
+     *   }
+     * })
+     * 
+     */
+    create<T extends PaymentCreateArgs>(args: SelectSubset<T, PaymentCreateArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Payments.
+     * @param {PaymentCreateManyArgs} args - Arguments to create many Payments.
+     * @example
+     * // Create many Payments
+     * const payment = await prisma.payment.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PaymentCreateManyArgs>(args?: SelectSubset<T, PaymentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Payment.
+     * @param {PaymentDeleteArgs} args - Arguments to delete one Payment.
+     * @example
+     * // Delete one Payment
+     * const Payment = await prisma.payment.delete({
+     *   where: {
+     *     // ... filter to delete one Payment
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PaymentDeleteArgs>(args: SelectSubset<T, PaymentDeleteArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Payment.
+     * @param {PaymentUpdateArgs} args - Arguments to update one Payment.
+     * @example
+     * // Update one Payment
+     * const payment = await prisma.payment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PaymentUpdateArgs>(args: SelectSubset<T, PaymentUpdateArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Payments.
+     * @param {PaymentDeleteManyArgs} args - Arguments to filter Payments to delete.
+     * @example
+     * // Delete a few Payments
+     * const { count } = await prisma.payment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PaymentDeleteManyArgs>(args?: SelectSubset<T, PaymentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Payments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PaymentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Payments
+     * const payment = await prisma.payment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PaymentUpdateManyArgs>(args: SelectSubset<T, PaymentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Payment.
+     * @param {PaymentUpsertArgs} args - Arguments to update or create a Payment.
+     * @example
+     * // Update or create a Payment
+     * const payment = await prisma.payment.upsert({
+     *   create: {
+     *     // ... data to create a Payment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Payment we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PaymentUpsertArgs>(args: SelectSubset<T, PaymentUpsertArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Payments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PaymentCountArgs} args - Arguments to filter Payments to count.
+     * @example
+     * // Count the number of Payments
+     * const count = await prisma.payment.count({
+     *   where: {
+     *     // ... the filter for the Payments we want to count
+     *   }
+     * })
+    **/
+    count<T extends PaymentCountArgs>(
+      args?: Subset<T, PaymentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PaymentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Payment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PaymentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PaymentAggregateArgs>(args: Subset<T, PaymentAggregateArgs>): Prisma.PrismaPromise<GetPaymentAggregateType<T>>
+
+    /**
+     * Group by Payment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PaymentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PaymentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PaymentGroupByArgs['orderBy'] }
+        : { orderBy?: PaymentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PaymentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPaymentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Payment model
+   */
+  readonly fields: PaymentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Payment.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PaymentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    subscriptionPayments<T extends Payment$subscriptionPaymentsArgs<ExtArgs> = {}>(args?: Subset<T, Payment$subscriptionPaymentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriptionPaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Payment model
+   */
+  interface PaymentFieldRefs {
+    readonly id: FieldRef<"Payment", 'String'>
+    readonly createdAt: FieldRef<"Payment", 'DateTime'>
+    readonly updatedAt: FieldRef<"Payment", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Payment findUnique
+   */
+  export type PaymentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which Payment to fetch.
+     */
+    where: PaymentWhereUniqueInput
+  }
+
+  /**
+   * Payment findUniqueOrThrow
+   */
+  export type PaymentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which Payment to fetch.
+     */
+    where: PaymentWhereUniqueInput
+  }
+
+  /**
+   * Payment findFirst
+   */
+  export type PaymentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which Payment to fetch.
+     */
+    where?: PaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Payments to fetch.
+     */
+    orderBy?: PaymentOrderByWithRelationInput | PaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Payments.
+     */
+    cursor?: PaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Payments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Payments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Payments.
+     */
+    distinct?: PaymentScalarFieldEnum | PaymentScalarFieldEnum[]
+  }
+
+  /**
+   * Payment findFirstOrThrow
+   */
+  export type PaymentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which Payment to fetch.
+     */
+    where?: PaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Payments to fetch.
+     */
+    orderBy?: PaymentOrderByWithRelationInput | PaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Payments.
+     */
+    cursor?: PaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Payments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Payments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Payments.
+     */
+    distinct?: PaymentScalarFieldEnum | PaymentScalarFieldEnum[]
+  }
+
+  /**
+   * Payment findMany
+   */
+  export type PaymentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which Payments to fetch.
+     */
+    where?: PaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Payments to fetch.
+     */
+    orderBy?: PaymentOrderByWithRelationInput | PaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Payments.
+     */
+    cursor?: PaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Payments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Payments.
+     */
+    skip?: number
+    distinct?: PaymentScalarFieldEnum | PaymentScalarFieldEnum[]
+  }
+
+  /**
+   * Payment create
+   */
+  export type PaymentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Payment.
+     */
+    data: XOR<PaymentCreateInput, PaymentUncheckedCreateInput>
+  }
+
+  /**
+   * Payment createMany
+   */
+  export type PaymentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Payments.
+     */
+    data: PaymentCreateManyInput | PaymentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Payment update
+   */
+  export type PaymentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Payment.
+     */
+    data: XOR<PaymentUpdateInput, PaymentUncheckedUpdateInput>
+    /**
+     * Choose, which Payment to update.
+     */
+    where: PaymentWhereUniqueInput
+  }
+
+  /**
+   * Payment updateMany
+   */
+  export type PaymentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Payments.
+     */
+    data: XOR<PaymentUpdateManyMutationInput, PaymentUncheckedUpdateManyInput>
+    /**
+     * Filter which Payments to update
+     */
+    where?: PaymentWhereInput
+    /**
+     * Limit how many Payments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Payment upsert
+   */
+  export type PaymentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Payment to update in case it exists.
+     */
+    where: PaymentWhereUniqueInput
+    /**
+     * In case the Payment found by the `where` argument doesn't exist, create a new Payment with this data.
+     */
+    create: XOR<PaymentCreateInput, PaymentUncheckedCreateInput>
+    /**
+     * In case the Payment was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PaymentUpdateInput, PaymentUncheckedUpdateInput>
+  }
+
+  /**
+   * Payment delete
+   */
+  export type PaymentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+    /**
+     * Filter which Payment to delete.
+     */
+    where: PaymentWhereUniqueInput
+  }
+
+  /**
+   * Payment deleteMany
+   */
+  export type PaymentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Payments to delete
+     */
+    where?: PaymentWhereInput
+    /**
+     * Limit how many Payments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Payment.subscriptionPayments
+   */
+  export type Payment$subscriptionPaymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionPayment
+     */
+    select?: SubscriptionPaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionPayment
+     */
+    omit?: SubscriptionPaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionPaymentInclude<ExtArgs> | null
+    where?: SubscriptionPaymentWhereInput
+    orderBy?: SubscriptionPaymentOrderByWithRelationInput | SubscriptionPaymentOrderByWithRelationInput[]
+    cursor?: SubscriptionPaymentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SubscriptionPaymentScalarFieldEnum | SubscriptionPaymentScalarFieldEnum[]
+  }
+
+  /**
+   * Payment without action
+   */
+  export type PaymentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment
+     */
+    select?: PaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Payment
+     */
+    omit?: PaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PaymentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model SubscriptionPayment
+   */
+
+  export type AggregateSubscriptionPayment = {
+    _count: SubscriptionPaymentCountAggregateOutputType | null
+    _avg: SubscriptionPaymentAvgAggregateOutputType | null
+    _sum: SubscriptionPaymentSumAggregateOutputType | null
+    _min: SubscriptionPaymentMinAggregateOutputType | null
+    _max: SubscriptionPaymentMaxAggregateOutputType | null
+  }
+
+  export type SubscriptionPaymentAvgAggregateOutputType = {
+    price: Decimal | null
+  }
+
+  export type SubscriptionPaymentSumAggregateOutputType = {
+    price: Decimal | null
+  }
+
+  export type SubscriptionPaymentMinAggregateOutputType = {
+    id: string | null
+    subscriptionId: string | null
+    paymentId: string | null
+    price: Decimal | null
+    paymentStatus: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SubscriptionPaymentMaxAggregateOutputType = {
+    id: string | null
+    subscriptionId: string | null
+    paymentId: string | null
+    price: Decimal | null
+    paymentStatus: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SubscriptionPaymentCountAggregateOutputType = {
+    id: number
+    subscriptionId: number
+    paymentId: number
+    price: number
+    paymentStatus: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type SubscriptionPaymentAvgAggregateInputType = {
+    price?: true
+  }
+
+  export type SubscriptionPaymentSumAggregateInputType = {
+    price?: true
+  }
+
+  export type SubscriptionPaymentMinAggregateInputType = {
+    id?: true
+    subscriptionId?: true
+    paymentId?: true
+    price?: true
+    paymentStatus?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SubscriptionPaymentMaxAggregateInputType = {
+    id?: true
+    subscriptionId?: true
+    paymentId?: true
+    price?: true
+    paymentStatus?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SubscriptionPaymentCountAggregateInputType = {
+    id?: true
+    subscriptionId?: true
+    paymentId?: true
+    price?: true
+    paymentStatus?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type SubscriptionPaymentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SubscriptionPayment to aggregate.
+     */
+    where?: SubscriptionPaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SubscriptionPayments to fetch.
+     */
+    orderBy?: SubscriptionPaymentOrderByWithRelationInput | SubscriptionPaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SubscriptionPaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SubscriptionPayments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SubscriptionPayments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SubscriptionPayments
+    **/
+    _count?: true | SubscriptionPaymentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SubscriptionPaymentAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SubscriptionPaymentSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SubscriptionPaymentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SubscriptionPaymentMaxAggregateInputType
+  }
+
+  export type GetSubscriptionPaymentAggregateType<T extends SubscriptionPaymentAggregateArgs> = {
+        [P in keyof T & keyof AggregateSubscriptionPayment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSubscriptionPayment[P]>
+      : GetScalarType<T[P], AggregateSubscriptionPayment[P]>
+  }
+
+
+
+
+  export type SubscriptionPaymentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubscriptionPaymentWhereInput
+    orderBy?: SubscriptionPaymentOrderByWithAggregationInput | SubscriptionPaymentOrderByWithAggregationInput[]
+    by: SubscriptionPaymentScalarFieldEnum[] | SubscriptionPaymentScalarFieldEnum
+    having?: SubscriptionPaymentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SubscriptionPaymentCountAggregateInputType | true
+    _avg?: SubscriptionPaymentAvgAggregateInputType
+    _sum?: SubscriptionPaymentSumAggregateInputType
+    _min?: SubscriptionPaymentMinAggregateInputType
+    _max?: SubscriptionPaymentMaxAggregateInputType
+  }
+
+  export type SubscriptionPaymentGroupByOutputType = {
+    id: string
+    subscriptionId: string
+    paymentId: string
+    price: Decimal
+    paymentStatus: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: SubscriptionPaymentCountAggregateOutputType | null
+    _avg: SubscriptionPaymentAvgAggregateOutputType | null
+    _sum: SubscriptionPaymentSumAggregateOutputType | null
+    _min: SubscriptionPaymentMinAggregateOutputType | null
+    _max: SubscriptionPaymentMaxAggregateOutputType | null
+  }
+
+  type GetSubscriptionPaymentGroupByPayload<T extends SubscriptionPaymentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SubscriptionPaymentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SubscriptionPaymentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SubscriptionPaymentGroupByOutputType[P]>
+            : GetScalarType<T[P], SubscriptionPaymentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SubscriptionPaymentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    subscriptionId?: boolean
+    paymentId?: boolean
+    price?: boolean
+    paymentStatus?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    subscription?: boolean | SubscriptionDefaultArgs<ExtArgs>
+    payment?: boolean | PaymentDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["subscriptionPayment"]>
+
+
+
+  export type SubscriptionPaymentSelectScalar = {
+    id?: boolean
+    subscriptionId?: boolean
+    paymentId?: boolean
+    price?: boolean
+    paymentStatus?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type SubscriptionPaymentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "subscriptionId" | "paymentId" | "price" | "paymentStatus" | "createdAt" | "updatedAt", ExtArgs["result"]["subscriptionPayment"]>
+  export type SubscriptionPaymentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    subscription?: boolean | SubscriptionDefaultArgs<ExtArgs>
+    payment?: boolean | PaymentDefaultArgs<ExtArgs>
+  }
+
+  export type $SubscriptionPaymentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SubscriptionPayment"
+    objects: {
+      subscription: Prisma.$SubscriptionPayload<ExtArgs>
+      payment: Prisma.$PaymentPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      subscriptionId: string
+      paymentId: string
+      price: Prisma.Decimal
+      paymentStatus: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["subscriptionPayment"]>
+    composites: {}
+  }
+
+  type SubscriptionPaymentGetPayload<S extends boolean | null | undefined | SubscriptionPaymentDefaultArgs> = $Result.GetResult<Prisma.$SubscriptionPaymentPayload, S>
+
+  type SubscriptionPaymentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SubscriptionPaymentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SubscriptionPaymentCountAggregateInputType | true
+    }
+
+  export interface SubscriptionPaymentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SubscriptionPayment'], meta: { name: 'SubscriptionPayment' } }
+    /**
+     * Find zero or one SubscriptionPayment that matches the filter.
+     * @param {SubscriptionPaymentFindUniqueArgs} args - Arguments to find a SubscriptionPayment
+     * @example
+     * // Get one SubscriptionPayment
+     * const subscriptionPayment = await prisma.subscriptionPayment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SubscriptionPaymentFindUniqueArgs>(args: SelectSubset<T, SubscriptionPaymentFindUniqueArgs<ExtArgs>>): Prisma__SubscriptionPaymentClient<$Result.GetResult<Prisma.$SubscriptionPaymentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one SubscriptionPayment that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SubscriptionPaymentFindUniqueOrThrowArgs} args - Arguments to find a SubscriptionPayment
+     * @example
+     * // Get one SubscriptionPayment
+     * const subscriptionPayment = await prisma.subscriptionPayment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SubscriptionPaymentFindUniqueOrThrowArgs>(args: SelectSubset<T, SubscriptionPaymentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SubscriptionPaymentClient<$Result.GetResult<Prisma.$SubscriptionPaymentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SubscriptionPayment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionPaymentFindFirstArgs} args - Arguments to find a SubscriptionPayment
+     * @example
+     * // Get one SubscriptionPayment
+     * const subscriptionPayment = await prisma.subscriptionPayment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SubscriptionPaymentFindFirstArgs>(args?: SelectSubset<T, SubscriptionPaymentFindFirstArgs<ExtArgs>>): Prisma__SubscriptionPaymentClient<$Result.GetResult<Prisma.$SubscriptionPaymentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SubscriptionPayment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionPaymentFindFirstOrThrowArgs} args - Arguments to find a SubscriptionPayment
+     * @example
+     * // Get one SubscriptionPayment
+     * const subscriptionPayment = await prisma.subscriptionPayment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SubscriptionPaymentFindFirstOrThrowArgs>(args?: SelectSubset<T, SubscriptionPaymentFindFirstOrThrowArgs<ExtArgs>>): Prisma__SubscriptionPaymentClient<$Result.GetResult<Prisma.$SubscriptionPaymentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more SubscriptionPayments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionPaymentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SubscriptionPayments
+     * const subscriptionPayments = await prisma.subscriptionPayment.findMany()
+     * 
+     * // Get first 10 SubscriptionPayments
+     * const subscriptionPayments = await prisma.subscriptionPayment.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const subscriptionPaymentWithIdOnly = await prisma.subscriptionPayment.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SubscriptionPaymentFindManyArgs>(args?: SelectSubset<T, SubscriptionPaymentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriptionPaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a SubscriptionPayment.
+     * @param {SubscriptionPaymentCreateArgs} args - Arguments to create a SubscriptionPayment.
+     * @example
+     * // Create one SubscriptionPayment
+     * const SubscriptionPayment = await prisma.subscriptionPayment.create({
+     *   data: {
+     *     // ... data to create a SubscriptionPayment
+     *   }
+     * })
+     * 
+     */
+    create<T extends SubscriptionPaymentCreateArgs>(args: SelectSubset<T, SubscriptionPaymentCreateArgs<ExtArgs>>): Prisma__SubscriptionPaymentClient<$Result.GetResult<Prisma.$SubscriptionPaymentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many SubscriptionPayments.
+     * @param {SubscriptionPaymentCreateManyArgs} args - Arguments to create many SubscriptionPayments.
+     * @example
+     * // Create many SubscriptionPayments
+     * const subscriptionPayment = await prisma.subscriptionPayment.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SubscriptionPaymentCreateManyArgs>(args?: SelectSubset<T, SubscriptionPaymentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a SubscriptionPayment.
+     * @param {SubscriptionPaymentDeleteArgs} args - Arguments to delete one SubscriptionPayment.
+     * @example
+     * // Delete one SubscriptionPayment
+     * const SubscriptionPayment = await prisma.subscriptionPayment.delete({
+     *   where: {
+     *     // ... filter to delete one SubscriptionPayment
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SubscriptionPaymentDeleteArgs>(args: SelectSubset<T, SubscriptionPaymentDeleteArgs<ExtArgs>>): Prisma__SubscriptionPaymentClient<$Result.GetResult<Prisma.$SubscriptionPaymentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one SubscriptionPayment.
+     * @param {SubscriptionPaymentUpdateArgs} args - Arguments to update one SubscriptionPayment.
+     * @example
+     * // Update one SubscriptionPayment
+     * const subscriptionPayment = await prisma.subscriptionPayment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SubscriptionPaymentUpdateArgs>(args: SelectSubset<T, SubscriptionPaymentUpdateArgs<ExtArgs>>): Prisma__SubscriptionPaymentClient<$Result.GetResult<Prisma.$SubscriptionPaymentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more SubscriptionPayments.
+     * @param {SubscriptionPaymentDeleteManyArgs} args - Arguments to filter SubscriptionPayments to delete.
+     * @example
+     * // Delete a few SubscriptionPayments
+     * const { count } = await prisma.subscriptionPayment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SubscriptionPaymentDeleteManyArgs>(args?: SelectSubset<T, SubscriptionPaymentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SubscriptionPayments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionPaymentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SubscriptionPayments
+     * const subscriptionPayment = await prisma.subscriptionPayment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SubscriptionPaymentUpdateManyArgs>(args: SelectSubset<T, SubscriptionPaymentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one SubscriptionPayment.
+     * @param {SubscriptionPaymentUpsertArgs} args - Arguments to update or create a SubscriptionPayment.
+     * @example
+     * // Update or create a SubscriptionPayment
+     * const subscriptionPayment = await prisma.subscriptionPayment.upsert({
+     *   create: {
+     *     // ... data to create a SubscriptionPayment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SubscriptionPayment we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SubscriptionPaymentUpsertArgs>(args: SelectSubset<T, SubscriptionPaymentUpsertArgs<ExtArgs>>): Prisma__SubscriptionPaymentClient<$Result.GetResult<Prisma.$SubscriptionPaymentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of SubscriptionPayments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionPaymentCountArgs} args - Arguments to filter SubscriptionPayments to count.
+     * @example
+     * // Count the number of SubscriptionPayments
+     * const count = await prisma.subscriptionPayment.count({
+     *   where: {
+     *     // ... the filter for the SubscriptionPayments we want to count
+     *   }
+     * })
+    **/
+    count<T extends SubscriptionPaymentCountArgs>(
+      args?: Subset<T, SubscriptionPaymentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SubscriptionPaymentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SubscriptionPayment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionPaymentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SubscriptionPaymentAggregateArgs>(args: Subset<T, SubscriptionPaymentAggregateArgs>): Prisma.PrismaPromise<GetSubscriptionPaymentAggregateType<T>>
+
+    /**
+     * Group by SubscriptionPayment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubscriptionPaymentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SubscriptionPaymentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SubscriptionPaymentGroupByArgs['orderBy'] }
+        : { orderBy?: SubscriptionPaymentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SubscriptionPaymentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSubscriptionPaymentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SubscriptionPayment model
+   */
+  readonly fields: SubscriptionPaymentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SubscriptionPayment.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SubscriptionPaymentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    subscription<T extends SubscriptionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SubscriptionDefaultArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    payment<T extends PaymentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PaymentDefaultArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SubscriptionPayment model
+   */
+  interface SubscriptionPaymentFieldRefs {
+    readonly id: FieldRef<"SubscriptionPayment", 'String'>
+    readonly subscriptionId: FieldRef<"SubscriptionPayment", 'String'>
+    readonly paymentId: FieldRef<"SubscriptionPayment", 'String'>
+    readonly price: FieldRef<"SubscriptionPayment", 'Decimal'>
+    readonly paymentStatus: FieldRef<"SubscriptionPayment", 'Boolean'>
+    readonly createdAt: FieldRef<"SubscriptionPayment", 'DateTime'>
+    readonly updatedAt: FieldRef<"SubscriptionPayment", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SubscriptionPayment findUnique
+   */
+  export type SubscriptionPaymentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionPayment
+     */
+    select?: SubscriptionPaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionPayment
+     */
+    omit?: SubscriptionPaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionPaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which SubscriptionPayment to fetch.
+     */
+    where: SubscriptionPaymentWhereUniqueInput
+  }
+
+  /**
+   * SubscriptionPayment findUniqueOrThrow
+   */
+  export type SubscriptionPaymentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionPayment
+     */
+    select?: SubscriptionPaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionPayment
+     */
+    omit?: SubscriptionPaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionPaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which SubscriptionPayment to fetch.
+     */
+    where: SubscriptionPaymentWhereUniqueInput
+  }
+
+  /**
+   * SubscriptionPayment findFirst
+   */
+  export type SubscriptionPaymentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionPayment
+     */
+    select?: SubscriptionPaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionPayment
+     */
+    omit?: SubscriptionPaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionPaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which SubscriptionPayment to fetch.
+     */
+    where?: SubscriptionPaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SubscriptionPayments to fetch.
+     */
+    orderBy?: SubscriptionPaymentOrderByWithRelationInput | SubscriptionPaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SubscriptionPayments.
+     */
+    cursor?: SubscriptionPaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SubscriptionPayments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SubscriptionPayments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SubscriptionPayments.
+     */
+    distinct?: SubscriptionPaymentScalarFieldEnum | SubscriptionPaymentScalarFieldEnum[]
+  }
+
+  /**
+   * SubscriptionPayment findFirstOrThrow
+   */
+  export type SubscriptionPaymentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionPayment
+     */
+    select?: SubscriptionPaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionPayment
+     */
+    omit?: SubscriptionPaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionPaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which SubscriptionPayment to fetch.
+     */
+    where?: SubscriptionPaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SubscriptionPayments to fetch.
+     */
+    orderBy?: SubscriptionPaymentOrderByWithRelationInput | SubscriptionPaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SubscriptionPayments.
+     */
+    cursor?: SubscriptionPaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SubscriptionPayments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SubscriptionPayments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SubscriptionPayments.
+     */
+    distinct?: SubscriptionPaymentScalarFieldEnum | SubscriptionPaymentScalarFieldEnum[]
+  }
+
+  /**
+   * SubscriptionPayment findMany
+   */
+  export type SubscriptionPaymentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionPayment
+     */
+    select?: SubscriptionPaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionPayment
+     */
+    omit?: SubscriptionPaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionPaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which SubscriptionPayments to fetch.
+     */
+    where?: SubscriptionPaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SubscriptionPayments to fetch.
+     */
+    orderBy?: SubscriptionPaymentOrderByWithRelationInput | SubscriptionPaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SubscriptionPayments.
+     */
+    cursor?: SubscriptionPaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SubscriptionPayments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SubscriptionPayments.
+     */
+    skip?: number
+    distinct?: SubscriptionPaymentScalarFieldEnum | SubscriptionPaymentScalarFieldEnum[]
+  }
+
+  /**
+   * SubscriptionPayment create
+   */
+  export type SubscriptionPaymentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionPayment
+     */
+    select?: SubscriptionPaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionPayment
+     */
+    omit?: SubscriptionPaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionPaymentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a SubscriptionPayment.
+     */
+    data: XOR<SubscriptionPaymentCreateInput, SubscriptionPaymentUncheckedCreateInput>
+  }
+
+  /**
+   * SubscriptionPayment createMany
+   */
+  export type SubscriptionPaymentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SubscriptionPayments.
+     */
+    data: SubscriptionPaymentCreateManyInput | SubscriptionPaymentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SubscriptionPayment update
+   */
+  export type SubscriptionPaymentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionPayment
+     */
+    select?: SubscriptionPaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionPayment
+     */
+    omit?: SubscriptionPaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionPaymentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a SubscriptionPayment.
+     */
+    data: XOR<SubscriptionPaymentUpdateInput, SubscriptionPaymentUncheckedUpdateInput>
+    /**
+     * Choose, which SubscriptionPayment to update.
+     */
+    where: SubscriptionPaymentWhereUniqueInput
+  }
+
+  /**
+   * SubscriptionPayment updateMany
+   */
+  export type SubscriptionPaymentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SubscriptionPayments.
+     */
+    data: XOR<SubscriptionPaymentUpdateManyMutationInput, SubscriptionPaymentUncheckedUpdateManyInput>
+    /**
+     * Filter which SubscriptionPayments to update
+     */
+    where?: SubscriptionPaymentWhereInput
+    /**
+     * Limit how many SubscriptionPayments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SubscriptionPayment upsert
+   */
+  export type SubscriptionPaymentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionPayment
+     */
+    select?: SubscriptionPaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionPayment
+     */
+    omit?: SubscriptionPaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionPaymentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the SubscriptionPayment to update in case it exists.
+     */
+    where: SubscriptionPaymentWhereUniqueInput
+    /**
+     * In case the SubscriptionPayment found by the `where` argument doesn't exist, create a new SubscriptionPayment with this data.
+     */
+    create: XOR<SubscriptionPaymentCreateInput, SubscriptionPaymentUncheckedCreateInput>
+    /**
+     * In case the SubscriptionPayment was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SubscriptionPaymentUpdateInput, SubscriptionPaymentUncheckedUpdateInput>
+  }
+
+  /**
+   * SubscriptionPayment delete
+   */
+  export type SubscriptionPaymentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionPayment
+     */
+    select?: SubscriptionPaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionPayment
+     */
+    omit?: SubscriptionPaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionPaymentInclude<ExtArgs> | null
+    /**
+     * Filter which SubscriptionPayment to delete.
+     */
+    where: SubscriptionPaymentWhereUniqueInput
+  }
+
+  /**
+   * SubscriptionPayment deleteMany
+   */
+  export type SubscriptionPaymentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SubscriptionPayments to delete
+     */
+    where?: SubscriptionPaymentWhereInput
+    /**
+     * Limit how many SubscriptionPayments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SubscriptionPayment without action
+   */
+  export type SubscriptionPaymentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionPayment
+     */
+    select?: SubscriptionPaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionPayment
+     */
+    omit?: SubscriptionPaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionPaymentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Certificate
+   */
+
+  export type AggregateCertificate = {
+    _count: CertificateCountAggregateOutputType | null
+    _min: CertificateMinAggregateOutputType | null
+    _max: CertificateMaxAggregateOutputType | null
+  }
+
+  export type CertificateMinAggregateOutputType = {
+    id: string | null
+    personId: string | null
+    meetupId: string | null
+    link: string | null
+    securityCode: string | null
+    datetime: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CertificateMaxAggregateOutputType = {
+    id: string | null
+    personId: string | null
+    meetupId: string | null
+    link: string | null
+    securityCode: string | null
+    datetime: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CertificateCountAggregateOutputType = {
+    id: number
+    personId: number
+    meetupId: number
+    link: number
+    securityCode: number
+    datetime: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CertificateMinAggregateInputType = {
+    id?: true
+    personId?: true
+    meetupId?: true
+    link?: true
+    securityCode?: true
+    datetime?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CertificateMaxAggregateInputType = {
+    id?: true
+    personId?: true
+    meetupId?: true
+    link?: true
+    securityCode?: true
+    datetime?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CertificateCountAggregateInputType = {
+    id?: true
+    personId?: true
+    meetupId?: true
+    link?: true
+    securityCode?: true
+    datetime?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CertificateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Certificate to aggregate.
+     */
+    where?: CertificateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Certificates to fetch.
+     */
+    orderBy?: CertificateOrderByWithRelationInput | CertificateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CertificateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Certificates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Certificates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Certificates
+    **/
+    _count?: true | CertificateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CertificateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CertificateMaxAggregateInputType
+  }
+
+  export type GetCertificateAggregateType<T extends CertificateAggregateArgs> = {
+        [P in keyof T & keyof AggregateCertificate]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCertificate[P]>
+      : GetScalarType<T[P], AggregateCertificate[P]>
+  }
+
+
+
+
+  export type CertificateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CertificateWhereInput
+    orderBy?: CertificateOrderByWithAggregationInput | CertificateOrderByWithAggregationInput[]
+    by: CertificateScalarFieldEnum[] | CertificateScalarFieldEnum
+    having?: CertificateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CertificateCountAggregateInputType | true
+    _min?: CertificateMinAggregateInputType
+    _max?: CertificateMaxAggregateInputType
+  }
+
+  export type CertificateGroupByOutputType = {
+    id: string
+    personId: string
+    meetupId: string
+    link: string
+    securityCode: string
+    datetime: Date
+    createdAt: Date
+    updatedAt: Date
+    _count: CertificateCountAggregateOutputType | null
+    _min: CertificateMinAggregateOutputType | null
+    _max: CertificateMaxAggregateOutputType | null
+  }
+
+  type GetCertificateGroupByPayload<T extends CertificateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CertificateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CertificateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CertificateGroupByOutputType[P]>
+            : GetScalarType<T[P], CertificateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CertificateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    personId?: boolean
+    meetupId?: boolean
+    link?: boolean
+    securityCode?: boolean
+    datetime?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    person?: boolean | PersonDefaultArgs<ExtArgs>
+    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["certificate"]>
+
+
+
+  export type CertificateSelectScalar = {
+    id?: boolean
+    personId?: boolean
+    meetupId?: boolean
+    link?: boolean
+    securityCode?: boolean
+    datetime?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CertificateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "personId" | "meetupId" | "link" | "securityCode" | "datetime" | "createdAt" | "updatedAt", ExtArgs["result"]["certificate"]>
+  export type CertificateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    person?: boolean | PersonDefaultArgs<ExtArgs>
+    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
+  }
+
+  export type $CertificatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Certificate"
+    objects: {
+      person: Prisma.$PersonPayload<ExtArgs>
+      meetup: Prisma.$MeetupPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      personId: string
+      meetupId: string
+      link: string
+      securityCode: string
+      datetime: Date
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["certificate"]>
+    composites: {}
+  }
+
+  type CertificateGetPayload<S extends boolean | null | undefined | CertificateDefaultArgs> = $Result.GetResult<Prisma.$CertificatePayload, S>
+
+  type CertificateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CertificateFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CertificateCountAggregateInputType | true
+    }
+
+  export interface CertificateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Certificate'], meta: { name: 'Certificate' } }
+    /**
+     * Find zero or one Certificate that matches the filter.
+     * @param {CertificateFindUniqueArgs} args - Arguments to find a Certificate
+     * @example
+     * // Get one Certificate
+     * const certificate = await prisma.certificate.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CertificateFindUniqueArgs>(args: SelectSubset<T, CertificateFindUniqueArgs<ExtArgs>>): Prisma__CertificateClient<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Certificate that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CertificateFindUniqueOrThrowArgs} args - Arguments to find a Certificate
+     * @example
+     * // Get one Certificate
+     * const certificate = await prisma.certificate.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CertificateFindUniqueOrThrowArgs>(args: SelectSubset<T, CertificateFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CertificateClient<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Certificate that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateFindFirstArgs} args - Arguments to find a Certificate
+     * @example
+     * // Get one Certificate
+     * const certificate = await prisma.certificate.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CertificateFindFirstArgs>(args?: SelectSubset<T, CertificateFindFirstArgs<ExtArgs>>): Prisma__CertificateClient<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Certificate that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateFindFirstOrThrowArgs} args - Arguments to find a Certificate
+     * @example
+     * // Get one Certificate
+     * const certificate = await prisma.certificate.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CertificateFindFirstOrThrowArgs>(args?: SelectSubset<T, CertificateFindFirstOrThrowArgs<ExtArgs>>): Prisma__CertificateClient<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Certificates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Certificates
+     * const certificates = await prisma.certificate.findMany()
+     * 
+     * // Get first 10 Certificates
+     * const certificates = await prisma.certificate.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const certificateWithIdOnly = await prisma.certificate.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CertificateFindManyArgs>(args?: SelectSubset<T, CertificateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Certificate.
+     * @param {CertificateCreateArgs} args - Arguments to create a Certificate.
+     * @example
+     * // Create one Certificate
+     * const Certificate = await prisma.certificate.create({
+     *   data: {
+     *     // ... data to create a Certificate
+     *   }
+     * })
+     * 
+     */
+    create<T extends CertificateCreateArgs>(args: SelectSubset<T, CertificateCreateArgs<ExtArgs>>): Prisma__CertificateClient<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Certificates.
+     * @param {CertificateCreateManyArgs} args - Arguments to create many Certificates.
+     * @example
+     * // Create many Certificates
+     * const certificate = await prisma.certificate.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CertificateCreateManyArgs>(args?: SelectSubset<T, CertificateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Certificate.
+     * @param {CertificateDeleteArgs} args - Arguments to delete one Certificate.
+     * @example
+     * // Delete one Certificate
+     * const Certificate = await prisma.certificate.delete({
+     *   where: {
+     *     // ... filter to delete one Certificate
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CertificateDeleteArgs>(args: SelectSubset<T, CertificateDeleteArgs<ExtArgs>>): Prisma__CertificateClient<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Certificate.
+     * @param {CertificateUpdateArgs} args - Arguments to update one Certificate.
+     * @example
+     * // Update one Certificate
+     * const certificate = await prisma.certificate.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CertificateUpdateArgs>(args: SelectSubset<T, CertificateUpdateArgs<ExtArgs>>): Prisma__CertificateClient<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Certificates.
+     * @param {CertificateDeleteManyArgs} args - Arguments to filter Certificates to delete.
+     * @example
+     * // Delete a few Certificates
+     * const { count } = await prisma.certificate.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CertificateDeleteManyArgs>(args?: SelectSubset<T, CertificateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Certificates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Certificates
+     * const certificate = await prisma.certificate.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CertificateUpdateManyArgs>(args: SelectSubset<T, CertificateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Certificate.
+     * @param {CertificateUpsertArgs} args - Arguments to update or create a Certificate.
+     * @example
+     * // Update or create a Certificate
+     * const certificate = await prisma.certificate.upsert({
+     *   create: {
+     *     // ... data to create a Certificate
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Certificate we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CertificateUpsertArgs>(args: SelectSubset<T, CertificateUpsertArgs<ExtArgs>>): Prisma__CertificateClient<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Certificates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateCountArgs} args - Arguments to filter Certificates to count.
+     * @example
+     * // Count the number of Certificates
+     * const count = await prisma.certificate.count({
+     *   where: {
+     *     // ... the filter for the Certificates we want to count
+     *   }
+     * })
+    **/
+    count<T extends CertificateCountArgs>(
+      args?: Subset<T, CertificateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CertificateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Certificate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CertificateAggregateArgs>(args: Subset<T, CertificateAggregateArgs>): Prisma.PrismaPromise<GetCertificateAggregateType<T>>
+
+    /**
+     * Group by Certificate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CertificateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CertificateGroupByArgs['orderBy'] }
+        : { orderBy?: CertificateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CertificateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCertificateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Certificate model
+   */
+  readonly fields: CertificateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Certificate.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CertificateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    person<T extends PersonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PersonDefaultArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    meetup<T extends MeetupDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MeetupDefaultArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Certificate model
+   */
+  interface CertificateFieldRefs {
+    readonly id: FieldRef<"Certificate", 'String'>
+    readonly personId: FieldRef<"Certificate", 'String'>
+    readonly meetupId: FieldRef<"Certificate", 'String'>
+    readonly link: FieldRef<"Certificate", 'String'>
+    readonly securityCode: FieldRef<"Certificate", 'String'>
+    readonly datetime: FieldRef<"Certificate", 'DateTime'>
+    readonly createdAt: FieldRef<"Certificate", 'DateTime'>
+    readonly updatedAt: FieldRef<"Certificate", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Certificate findUnique
+   */
+  export type CertificateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    /**
+     * Filter, which Certificate to fetch.
+     */
+    where: CertificateWhereUniqueInput
+  }
+
+  /**
+   * Certificate findUniqueOrThrow
+   */
+  export type CertificateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    /**
+     * Filter, which Certificate to fetch.
+     */
+    where: CertificateWhereUniqueInput
+  }
+
+  /**
+   * Certificate findFirst
+   */
+  export type CertificateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    /**
+     * Filter, which Certificate to fetch.
+     */
+    where?: CertificateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Certificates to fetch.
+     */
+    orderBy?: CertificateOrderByWithRelationInput | CertificateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Certificates.
+     */
+    cursor?: CertificateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Certificates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Certificates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Certificates.
+     */
+    distinct?: CertificateScalarFieldEnum | CertificateScalarFieldEnum[]
+  }
+
+  /**
+   * Certificate findFirstOrThrow
+   */
+  export type CertificateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    /**
+     * Filter, which Certificate to fetch.
+     */
+    where?: CertificateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Certificates to fetch.
+     */
+    orderBy?: CertificateOrderByWithRelationInput | CertificateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Certificates.
+     */
+    cursor?: CertificateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Certificates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Certificates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Certificates.
+     */
+    distinct?: CertificateScalarFieldEnum | CertificateScalarFieldEnum[]
+  }
+
+  /**
+   * Certificate findMany
+   */
+  export type CertificateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    /**
+     * Filter, which Certificates to fetch.
+     */
+    where?: CertificateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Certificates to fetch.
+     */
+    orderBy?: CertificateOrderByWithRelationInput | CertificateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Certificates.
+     */
+    cursor?: CertificateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Certificates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Certificates.
+     */
+    skip?: number
+    distinct?: CertificateScalarFieldEnum | CertificateScalarFieldEnum[]
+  }
+
+  /**
+   * Certificate create
+   */
+  export type CertificateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Certificate.
+     */
+    data: XOR<CertificateCreateInput, CertificateUncheckedCreateInput>
+  }
+
+  /**
+   * Certificate createMany
+   */
+  export type CertificateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Certificates.
+     */
+    data: CertificateCreateManyInput | CertificateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Certificate update
+   */
+  export type CertificateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Certificate.
+     */
+    data: XOR<CertificateUpdateInput, CertificateUncheckedUpdateInput>
+    /**
+     * Choose, which Certificate to update.
+     */
+    where: CertificateWhereUniqueInput
+  }
+
+  /**
+   * Certificate updateMany
+   */
+  export type CertificateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Certificates.
+     */
+    data: XOR<CertificateUpdateManyMutationInput, CertificateUncheckedUpdateManyInput>
+    /**
+     * Filter which Certificates to update
+     */
+    where?: CertificateWhereInput
+    /**
+     * Limit how many Certificates to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Certificate upsert
+   */
+  export type CertificateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Certificate to update in case it exists.
+     */
+    where: CertificateWhereUniqueInput
+    /**
+     * In case the Certificate found by the `where` argument doesn't exist, create a new Certificate with this data.
+     */
+    create: XOR<CertificateCreateInput, CertificateUncheckedCreateInput>
+    /**
+     * In case the Certificate was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CertificateUpdateInput, CertificateUncheckedUpdateInput>
+  }
+
+  /**
+   * Certificate delete
+   */
+  export type CertificateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    /**
+     * Filter which Certificate to delete.
+     */
+    where: CertificateWhereUniqueInput
+  }
+
+  /**
+   * Certificate deleteMany
+   */
+  export type CertificateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Certificates to delete
+     */
+    where?: CertificateWhereInput
+    /**
+     * Limit how many Certificates to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Certificate without action
+   */
+  export type CertificateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MeetupMedia
+   */
+
+  export type AggregateMeetupMedia = {
+    _count: MeetupMediaCountAggregateOutputType | null
+    _min: MeetupMediaMinAggregateOutputType | null
+    _max: MeetupMediaMaxAggregateOutputType | null
+  }
+
+  export type MeetupMediaMinAggregateOutputType = {
+    id: string | null
+    meetupId: string | null
+    personId: string | null
+    link: string | null
+    datetime: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MeetupMediaMaxAggregateOutputType = {
+    id: string | null
+    meetupId: string | null
+    personId: string | null
+    link: string | null
+    datetime: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MeetupMediaCountAggregateOutputType = {
+    id: number
+    meetupId: number
+    personId: number
+    link: number
+    datetime: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MeetupMediaMinAggregateInputType = {
+    id?: true
+    meetupId?: true
+    personId?: true
+    link?: true
+    datetime?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MeetupMediaMaxAggregateInputType = {
+    id?: true
+    meetupId?: true
+    personId?: true
+    link?: true
+    datetime?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MeetupMediaCountAggregateInputType = {
+    id?: true
+    meetupId?: true
+    personId?: true
+    link?: true
+    datetime?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MeetupMediaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MeetupMedia to aggregate.
+     */
+    where?: MeetupMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupMedias to fetch.
+     */
+    orderBy?: MeetupMediaOrderByWithRelationInput | MeetupMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MeetupMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupMedias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MeetupMedias
+    **/
+    _count?: true | MeetupMediaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MeetupMediaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MeetupMediaMaxAggregateInputType
+  }
+
+  export type GetMeetupMediaAggregateType<T extends MeetupMediaAggregateArgs> = {
+        [P in keyof T & keyof AggregateMeetupMedia]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMeetupMedia[P]>
+      : GetScalarType<T[P], AggregateMeetupMedia[P]>
+  }
+
+
+
+
+  export type MeetupMediaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetupMediaWhereInput
+    orderBy?: MeetupMediaOrderByWithAggregationInput | MeetupMediaOrderByWithAggregationInput[]
+    by: MeetupMediaScalarFieldEnum[] | MeetupMediaScalarFieldEnum
+    having?: MeetupMediaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MeetupMediaCountAggregateInputType | true
+    _min?: MeetupMediaMinAggregateInputType
+    _max?: MeetupMediaMaxAggregateInputType
+  }
+
+  export type MeetupMediaGroupByOutputType = {
+    id: string
+    meetupId: string
+    personId: string
+    link: string
+    datetime: Date
+    createdAt: Date
+    updatedAt: Date
+    _count: MeetupMediaCountAggregateOutputType | null
+    _min: MeetupMediaMinAggregateOutputType | null
+    _max: MeetupMediaMaxAggregateOutputType | null
+  }
+
+  type GetMeetupMediaGroupByPayload<T extends MeetupMediaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MeetupMediaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MeetupMediaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MeetupMediaGroupByOutputType[P]>
+            : GetScalarType<T[P], MeetupMediaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MeetupMediaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    meetupId?: boolean
+    personId?: boolean
+    link?: boolean
+    datetime?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
+    person?: boolean | PersonDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["meetupMedia"]>
+
+
+
+  export type MeetupMediaSelectScalar = {
+    id?: boolean
+    meetupId?: boolean
+    personId?: boolean
+    link?: boolean
+    datetime?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MeetupMediaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "meetupId" | "personId" | "link" | "datetime" | "createdAt" | "updatedAt", ExtArgs["result"]["meetupMedia"]>
+  export type MeetupMediaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
+    person?: boolean | PersonDefaultArgs<ExtArgs>
+  }
+
+  export type $MeetupMediaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MeetupMedia"
+    objects: {
+      meetup: Prisma.$MeetupPayload<ExtArgs>
+      person: Prisma.$PersonPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      meetupId: string
+      personId: string
+      link: string
+      datetime: Date
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["meetupMedia"]>
+    composites: {}
+  }
+
+  type MeetupMediaGetPayload<S extends boolean | null | undefined | MeetupMediaDefaultArgs> = $Result.GetResult<Prisma.$MeetupMediaPayload, S>
+
+  type MeetupMediaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MeetupMediaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MeetupMediaCountAggregateInputType | true
+    }
+
+  export interface MeetupMediaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MeetupMedia'], meta: { name: 'MeetupMedia' } }
+    /**
+     * Find zero or one MeetupMedia that matches the filter.
+     * @param {MeetupMediaFindUniqueArgs} args - Arguments to find a MeetupMedia
+     * @example
+     * // Get one MeetupMedia
+     * const meetupMedia = await prisma.meetupMedia.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MeetupMediaFindUniqueArgs>(args: SelectSubset<T, MeetupMediaFindUniqueArgs<ExtArgs>>): Prisma__MeetupMediaClient<$Result.GetResult<Prisma.$MeetupMediaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MeetupMedia that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MeetupMediaFindUniqueOrThrowArgs} args - Arguments to find a MeetupMedia
+     * @example
+     * // Get one MeetupMedia
+     * const meetupMedia = await prisma.meetupMedia.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MeetupMediaFindUniqueOrThrowArgs>(args: SelectSubset<T, MeetupMediaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MeetupMediaClient<$Result.GetResult<Prisma.$MeetupMediaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MeetupMedia that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupMediaFindFirstArgs} args - Arguments to find a MeetupMedia
+     * @example
+     * // Get one MeetupMedia
+     * const meetupMedia = await prisma.meetupMedia.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MeetupMediaFindFirstArgs>(args?: SelectSubset<T, MeetupMediaFindFirstArgs<ExtArgs>>): Prisma__MeetupMediaClient<$Result.GetResult<Prisma.$MeetupMediaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MeetupMedia that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupMediaFindFirstOrThrowArgs} args - Arguments to find a MeetupMedia
+     * @example
+     * // Get one MeetupMedia
+     * const meetupMedia = await prisma.meetupMedia.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MeetupMediaFindFirstOrThrowArgs>(args?: SelectSubset<T, MeetupMediaFindFirstOrThrowArgs<ExtArgs>>): Prisma__MeetupMediaClient<$Result.GetResult<Prisma.$MeetupMediaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MeetupMedias that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupMediaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MeetupMedias
+     * const meetupMedias = await prisma.meetupMedia.findMany()
+     * 
+     * // Get first 10 MeetupMedias
+     * const meetupMedias = await prisma.meetupMedia.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const meetupMediaWithIdOnly = await prisma.meetupMedia.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MeetupMediaFindManyArgs>(args?: SelectSubset<T, MeetupMediaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupMediaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MeetupMedia.
+     * @param {MeetupMediaCreateArgs} args - Arguments to create a MeetupMedia.
+     * @example
+     * // Create one MeetupMedia
+     * const MeetupMedia = await prisma.meetupMedia.create({
+     *   data: {
+     *     // ... data to create a MeetupMedia
+     *   }
+     * })
+     * 
+     */
+    create<T extends MeetupMediaCreateArgs>(args: SelectSubset<T, MeetupMediaCreateArgs<ExtArgs>>): Prisma__MeetupMediaClient<$Result.GetResult<Prisma.$MeetupMediaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MeetupMedias.
+     * @param {MeetupMediaCreateManyArgs} args - Arguments to create many MeetupMedias.
+     * @example
+     * // Create many MeetupMedias
+     * const meetupMedia = await prisma.meetupMedia.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MeetupMediaCreateManyArgs>(args?: SelectSubset<T, MeetupMediaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a MeetupMedia.
+     * @param {MeetupMediaDeleteArgs} args - Arguments to delete one MeetupMedia.
+     * @example
+     * // Delete one MeetupMedia
+     * const MeetupMedia = await prisma.meetupMedia.delete({
+     *   where: {
+     *     // ... filter to delete one MeetupMedia
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MeetupMediaDeleteArgs>(args: SelectSubset<T, MeetupMediaDeleteArgs<ExtArgs>>): Prisma__MeetupMediaClient<$Result.GetResult<Prisma.$MeetupMediaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MeetupMedia.
+     * @param {MeetupMediaUpdateArgs} args - Arguments to update one MeetupMedia.
+     * @example
+     * // Update one MeetupMedia
+     * const meetupMedia = await prisma.meetupMedia.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MeetupMediaUpdateArgs>(args: SelectSubset<T, MeetupMediaUpdateArgs<ExtArgs>>): Prisma__MeetupMediaClient<$Result.GetResult<Prisma.$MeetupMediaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MeetupMedias.
+     * @param {MeetupMediaDeleteManyArgs} args - Arguments to filter MeetupMedias to delete.
+     * @example
+     * // Delete a few MeetupMedias
+     * const { count } = await prisma.meetupMedia.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MeetupMediaDeleteManyArgs>(args?: SelectSubset<T, MeetupMediaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MeetupMedias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupMediaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MeetupMedias
+     * const meetupMedia = await prisma.meetupMedia.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MeetupMediaUpdateManyArgs>(args: SelectSubset<T, MeetupMediaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MeetupMedia.
+     * @param {MeetupMediaUpsertArgs} args - Arguments to update or create a MeetupMedia.
+     * @example
+     * // Update or create a MeetupMedia
+     * const meetupMedia = await prisma.meetupMedia.upsert({
+     *   create: {
+     *     // ... data to create a MeetupMedia
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MeetupMedia we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MeetupMediaUpsertArgs>(args: SelectSubset<T, MeetupMediaUpsertArgs<ExtArgs>>): Prisma__MeetupMediaClient<$Result.GetResult<Prisma.$MeetupMediaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MeetupMedias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupMediaCountArgs} args - Arguments to filter MeetupMedias to count.
+     * @example
+     * // Count the number of MeetupMedias
+     * const count = await prisma.meetupMedia.count({
+     *   where: {
+     *     // ... the filter for the MeetupMedias we want to count
+     *   }
+     * })
+    **/
+    count<T extends MeetupMediaCountArgs>(
+      args?: Subset<T, MeetupMediaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MeetupMediaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MeetupMedia.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupMediaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MeetupMediaAggregateArgs>(args: Subset<T, MeetupMediaAggregateArgs>): Prisma.PrismaPromise<GetMeetupMediaAggregateType<T>>
+
+    /**
+     * Group by MeetupMedia.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupMediaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MeetupMediaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MeetupMediaGroupByArgs['orderBy'] }
+        : { orderBy?: MeetupMediaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MeetupMediaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMeetupMediaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MeetupMedia model
+   */
+  readonly fields: MeetupMediaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MeetupMedia.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MeetupMediaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    meetup<T extends MeetupDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MeetupDefaultArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    person<T extends PersonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PersonDefaultArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MeetupMedia model
+   */
+  interface MeetupMediaFieldRefs {
+    readonly id: FieldRef<"MeetupMedia", 'String'>
+    readonly meetupId: FieldRef<"MeetupMedia", 'String'>
+    readonly personId: FieldRef<"MeetupMedia", 'String'>
+    readonly link: FieldRef<"MeetupMedia", 'String'>
+    readonly datetime: FieldRef<"MeetupMedia", 'DateTime'>
+    readonly createdAt: FieldRef<"MeetupMedia", 'DateTime'>
+    readonly updatedAt: FieldRef<"MeetupMedia", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MeetupMedia findUnique
+   */
+  export type MeetupMediaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupMedia
+     */
+    select?: MeetupMediaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupMedia
+     */
+    omit?: MeetupMediaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupMedia to fetch.
+     */
+    where: MeetupMediaWhereUniqueInput
+  }
+
+  /**
+   * MeetupMedia findUniqueOrThrow
+   */
+  export type MeetupMediaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupMedia
+     */
+    select?: MeetupMediaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupMedia
+     */
+    omit?: MeetupMediaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupMedia to fetch.
+     */
+    where: MeetupMediaWhereUniqueInput
+  }
+
+  /**
+   * MeetupMedia findFirst
+   */
+  export type MeetupMediaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupMedia
+     */
+    select?: MeetupMediaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupMedia
+     */
+    omit?: MeetupMediaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupMedia to fetch.
+     */
+    where?: MeetupMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupMedias to fetch.
+     */
+    orderBy?: MeetupMediaOrderByWithRelationInput | MeetupMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MeetupMedias.
+     */
+    cursor?: MeetupMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupMedias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MeetupMedias.
+     */
+    distinct?: MeetupMediaScalarFieldEnum | MeetupMediaScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupMedia findFirstOrThrow
+   */
+  export type MeetupMediaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupMedia
+     */
+    select?: MeetupMediaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupMedia
+     */
+    omit?: MeetupMediaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupMedia to fetch.
+     */
+    where?: MeetupMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupMedias to fetch.
+     */
+    orderBy?: MeetupMediaOrderByWithRelationInput | MeetupMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MeetupMedias.
+     */
+    cursor?: MeetupMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupMedias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MeetupMedias.
+     */
+    distinct?: MeetupMediaScalarFieldEnum | MeetupMediaScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupMedia findMany
+   */
+  export type MeetupMediaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupMedia
+     */
+    select?: MeetupMediaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupMedia
+     */
+    omit?: MeetupMediaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupMedias to fetch.
+     */
+    where?: MeetupMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupMedias to fetch.
+     */
+    orderBy?: MeetupMediaOrderByWithRelationInput | MeetupMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MeetupMedias.
+     */
+    cursor?: MeetupMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupMedias.
+     */
+    skip?: number
+    distinct?: MeetupMediaScalarFieldEnum | MeetupMediaScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupMedia create
+   */
+  export type MeetupMediaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupMedia
+     */
+    select?: MeetupMediaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupMedia
+     */
+    omit?: MeetupMediaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupMediaInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MeetupMedia.
+     */
+    data: XOR<MeetupMediaCreateInput, MeetupMediaUncheckedCreateInput>
+  }
+
+  /**
+   * MeetupMedia createMany
+   */
+  export type MeetupMediaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MeetupMedias.
+     */
+    data: MeetupMediaCreateManyInput | MeetupMediaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MeetupMedia update
+   */
+  export type MeetupMediaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupMedia
+     */
+    select?: MeetupMediaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupMedia
+     */
+    omit?: MeetupMediaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupMediaInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MeetupMedia.
+     */
+    data: XOR<MeetupMediaUpdateInput, MeetupMediaUncheckedUpdateInput>
+    /**
+     * Choose, which MeetupMedia to update.
+     */
+    where: MeetupMediaWhereUniqueInput
+  }
+
+  /**
+   * MeetupMedia updateMany
+   */
+  export type MeetupMediaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MeetupMedias.
+     */
+    data: XOR<MeetupMediaUpdateManyMutationInput, MeetupMediaUncheckedUpdateManyInput>
+    /**
+     * Filter which MeetupMedias to update
+     */
+    where?: MeetupMediaWhereInput
+    /**
+     * Limit how many MeetupMedias to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MeetupMedia upsert
+   */
+  export type MeetupMediaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupMedia
+     */
+    select?: MeetupMediaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupMedia
+     */
+    omit?: MeetupMediaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupMediaInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MeetupMedia to update in case it exists.
+     */
+    where: MeetupMediaWhereUniqueInput
+    /**
+     * In case the MeetupMedia found by the `where` argument doesn't exist, create a new MeetupMedia with this data.
+     */
+    create: XOR<MeetupMediaCreateInput, MeetupMediaUncheckedCreateInput>
+    /**
+     * In case the MeetupMedia was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MeetupMediaUpdateInput, MeetupMediaUncheckedUpdateInput>
+  }
+
+  /**
+   * MeetupMedia delete
+   */
+  export type MeetupMediaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupMedia
+     */
+    select?: MeetupMediaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupMedia
+     */
+    omit?: MeetupMediaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupMediaInclude<ExtArgs> | null
+    /**
+     * Filter which MeetupMedia to delete.
+     */
+    where: MeetupMediaWhereUniqueInput
+  }
+
+  /**
+   * MeetupMedia deleteMany
+   */
+  export type MeetupMediaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MeetupMedias to delete
+     */
+    where?: MeetupMediaWhereInput
+    /**
+     * Limit how many MeetupMedias to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MeetupMedia without action
+   */
+  export type MeetupMediaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupMedia
+     */
+    select?: MeetupMediaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupMedia
+     */
+    omit?: MeetupMediaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupMediaInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model GuestLoad
+   */
+
+  export type AggregateGuestLoad = {
+    _count: GuestLoadCountAggregateOutputType | null
+    _avg: GuestLoadAvgAggregateOutputType | null
+    _sum: GuestLoadSumAggregateOutputType | null
+    _min: GuestLoadMinAggregateOutputType | null
+    _max: GuestLoadMaxAggregateOutputType | null
+  }
+
+  export type GuestLoadAvgAggregateOutputType = {
+    count: number | null
+  }
+
+  export type GuestLoadSumAggregateOutputType = {
+    count: number | null
+  }
+
+  export type GuestLoadMinAggregateOutputType = {
+    id: string | null
+    link: string | null
+    meetupId: string | null
+    personId: string | null
+    datetime: Date | null
+    count: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type GuestLoadMaxAggregateOutputType = {
+    id: string | null
+    link: string | null
+    meetupId: string | null
+    personId: string | null
+    datetime: Date | null
+    count: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type GuestLoadCountAggregateOutputType = {
+    id: number
+    link: number
+    meetupId: number
+    personId: number
+    datetime: number
+    count: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type GuestLoadAvgAggregateInputType = {
+    count?: true
+  }
+
+  export type GuestLoadSumAggregateInputType = {
+    count?: true
+  }
+
+  export type GuestLoadMinAggregateInputType = {
+    id?: true
+    link?: true
+    meetupId?: true
+    personId?: true
+    datetime?: true
+    count?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type GuestLoadMaxAggregateInputType = {
+    id?: true
+    link?: true
+    meetupId?: true
+    personId?: true
+    datetime?: true
+    count?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type GuestLoadCountAggregateInputType = {
+    id?: true
+    link?: true
+    meetupId?: true
+    personId?: true
+    datetime?: true
+    count?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type GuestLoadAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GuestLoad to aggregate.
+     */
+    where?: GuestLoadWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GuestLoads to fetch.
+     */
+    orderBy?: GuestLoadOrderByWithRelationInput | GuestLoadOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GuestLoadWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GuestLoads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GuestLoads.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned GuestLoads
+    **/
+    _count?: true | GuestLoadCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: GuestLoadAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: GuestLoadSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GuestLoadMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GuestLoadMaxAggregateInputType
+  }
+
+  export type GetGuestLoadAggregateType<T extends GuestLoadAggregateArgs> = {
+        [P in keyof T & keyof AggregateGuestLoad]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGuestLoad[P]>
+      : GetScalarType<T[P], AggregateGuestLoad[P]>
+  }
+
+
+
+
+  export type GuestLoadGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GuestLoadWhereInput
+    orderBy?: GuestLoadOrderByWithAggregationInput | GuestLoadOrderByWithAggregationInput[]
+    by: GuestLoadScalarFieldEnum[] | GuestLoadScalarFieldEnum
+    having?: GuestLoadScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GuestLoadCountAggregateInputType | true
+    _avg?: GuestLoadAvgAggregateInputType
+    _sum?: GuestLoadSumAggregateInputType
+    _min?: GuestLoadMinAggregateInputType
+    _max?: GuestLoadMaxAggregateInputType
+  }
+
+  export type GuestLoadGroupByOutputType = {
+    id: string
+    link: string
+    meetupId: string
+    personId: string
+    datetime: Date
+    count: number
+    createdAt: Date
+    updatedAt: Date
+    _count: GuestLoadCountAggregateOutputType | null
+    _avg: GuestLoadAvgAggregateOutputType | null
+    _sum: GuestLoadSumAggregateOutputType | null
+    _min: GuestLoadMinAggregateOutputType | null
+    _max: GuestLoadMaxAggregateOutputType | null
+  }
+
+  type GetGuestLoadGroupByPayload<T extends GuestLoadGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GuestLoadGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GuestLoadGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GuestLoadGroupByOutputType[P]>
+            : GetScalarType<T[P], GuestLoadGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GuestLoadSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    link?: boolean
+    meetupId?: boolean
+    personId?: boolean
+    datetime?: boolean
+    count?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
+    person?: boolean | PersonDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["guestLoad"]>
+
+
+
+  export type GuestLoadSelectScalar = {
+    id?: boolean
+    link?: boolean
+    meetupId?: boolean
+    personId?: boolean
+    datetime?: boolean
+    count?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type GuestLoadOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "link" | "meetupId" | "personId" | "datetime" | "count" | "createdAt" | "updatedAt", ExtArgs["result"]["guestLoad"]>
+  export type GuestLoadInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
+    person?: boolean | PersonDefaultArgs<ExtArgs>
+  }
+
+  export type $GuestLoadPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "GuestLoad"
+    objects: {
+      meetup: Prisma.$MeetupPayload<ExtArgs>
+      person: Prisma.$PersonPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      link: string
+      meetupId: string
+      personId: string
+      datetime: Date
+      count: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["guestLoad"]>
+    composites: {}
+  }
+
+  type GuestLoadGetPayload<S extends boolean | null | undefined | GuestLoadDefaultArgs> = $Result.GetResult<Prisma.$GuestLoadPayload, S>
+
+  type GuestLoadCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<GuestLoadFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GuestLoadCountAggregateInputType | true
+    }
+
+  export interface GuestLoadDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['GuestLoad'], meta: { name: 'GuestLoad' } }
+    /**
+     * Find zero or one GuestLoad that matches the filter.
+     * @param {GuestLoadFindUniqueArgs} args - Arguments to find a GuestLoad
+     * @example
+     * // Get one GuestLoad
+     * const guestLoad = await prisma.guestLoad.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends GuestLoadFindUniqueArgs>(args: SelectSubset<T, GuestLoadFindUniqueArgs<ExtArgs>>): Prisma__GuestLoadClient<$Result.GetResult<Prisma.$GuestLoadPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one GuestLoad that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {GuestLoadFindUniqueOrThrowArgs} args - Arguments to find a GuestLoad
+     * @example
+     * // Get one GuestLoad
+     * const guestLoad = await prisma.guestLoad.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends GuestLoadFindUniqueOrThrowArgs>(args: SelectSubset<T, GuestLoadFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GuestLoadClient<$Result.GetResult<Prisma.$GuestLoadPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GuestLoad that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GuestLoadFindFirstArgs} args - Arguments to find a GuestLoad
+     * @example
+     * // Get one GuestLoad
+     * const guestLoad = await prisma.guestLoad.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends GuestLoadFindFirstArgs>(args?: SelectSubset<T, GuestLoadFindFirstArgs<ExtArgs>>): Prisma__GuestLoadClient<$Result.GetResult<Prisma.$GuestLoadPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GuestLoad that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GuestLoadFindFirstOrThrowArgs} args - Arguments to find a GuestLoad
+     * @example
+     * // Get one GuestLoad
+     * const guestLoad = await prisma.guestLoad.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends GuestLoadFindFirstOrThrowArgs>(args?: SelectSubset<T, GuestLoadFindFirstOrThrowArgs<ExtArgs>>): Prisma__GuestLoadClient<$Result.GetResult<Prisma.$GuestLoadPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more GuestLoads that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GuestLoadFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all GuestLoads
+     * const guestLoads = await prisma.guestLoad.findMany()
+     * 
+     * // Get first 10 GuestLoads
+     * const guestLoads = await prisma.guestLoad.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const guestLoadWithIdOnly = await prisma.guestLoad.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends GuestLoadFindManyArgs>(args?: SelectSubset<T, GuestLoadFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GuestLoadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a GuestLoad.
+     * @param {GuestLoadCreateArgs} args - Arguments to create a GuestLoad.
+     * @example
+     * // Create one GuestLoad
+     * const GuestLoad = await prisma.guestLoad.create({
+     *   data: {
+     *     // ... data to create a GuestLoad
+     *   }
+     * })
+     * 
+     */
+    create<T extends GuestLoadCreateArgs>(args: SelectSubset<T, GuestLoadCreateArgs<ExtArgs>>): Prisma__GuestLoadClient<$Result.GetResult<Prisma.$GuestLoadPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many GuestLoads.
+     * @param {GuestLoadCreateManyArgs} args - Arguments to create many GuestLoads.
+     * @example
+     * // Create many GuestLoads
+     * const guestLoad = await prisma.guestLoad.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends GuestLoadCreateManyArgs>(args?: SelectSubset<T, GuestLoadCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a GuestLoad.
+     * @param {GuestLoadDeleteArgs} args - Arguments to delete one GuestLoad.
+     * @example
+     * // Delete one GuestLoad
+     * const GuestLoad = await prisma.guestLoad.delete({
+     *   where: {
+     *     // ... filter to delete one GuestLoad
+     *   }
+     * })
+     * 
+     */
+    delete<T extends GuestLoadDeleteArgs>(args: SelectSubset<T, GuestLoadDeleteArgs<ExtArgs>>): Prisma__GuestLoadClient<$Result.GetResult<Prisma.$GuestLoadPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one GuestLoad.
+     * @param {GuestLoadUpdateArgs} args - Arguments to update one GuestLoad.
+     * @example
+     * // Update one GuestLoad
+     * const guestLoad = await prisma.guestLoad.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends GuestLoadUpdateArgs>(args: SelectSubset<T, GuestLoadUpdateArgs<ExtArgs>>): Prisma__GuestLoadClient<$Result.GetResult<Prisma.$GuestLoadPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more GuestLoads.
+     * @param {GuestLoadDeleteManyArgs} args - Arguments to filter GuestLoads to delete.
+     * @example
+     * // Delete a few GuestLoads
+     * const { count } = await prisma.guestLoad.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends GuestLoadDeleteManyArgs>(args?: SelectSubset<T, GuestLoadDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GuestLoads.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GuestLoadUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many GuestLoads
+     * const guestLoad = await prisma.guestLoad.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends GuestLoadUpdateManyArgs>(args: SelectSubset<T, GuestLoadUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one GuestLoad.
+     * @param {GuestLoadUpsertArgs} args - Arguments to update or create a GuestLoad.
+     * @example
+     * // Update or create a GuestLoad
+     * const guestLoad = await prisma.guestLoad.upsert({
+     *   create: {
+     *     // ... data to create a GuestLoad
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the GuestLoad we want to update
+     *   }
+     * })
+     */
+    upsert<T extends GuestLoadUpsertArgs>(args: SelectSubset<T, GuestLoadUpsertArgs<ExtArgs>>): Prisma__GuestLoadClient<$Result.GetResult<Prisma.$GuestLoadPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of GuestLoads.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GuestLoadCountArgs} args - Arguments to filter GuestLoads to count.
+     * @example
+     * // Count the number of GuestLoads
+     * const count = await prisma.guestLoad.count({
+     *   where: {
+     *     // ... the filter for the GuestLoads we want to count
+     *   }
+     * })
+    **/
+    count<T extends GuestLoadCountArgs>(
+      args?: Subset<T, GuestLoadCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GuestLoadCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a GuestLoad.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GuestLoadAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GuestLoadAggregateArgs>(args: Subset<T, GuestLoadAggregateArgs>): Prisma.PrismaPromise<GetGuestLoadAggregateType<T>>
+
+    /**
+     * Group by GuestLoad.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GuestLoadGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GuestLoadGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GuestLoadGroupByArgs['orderBy'] }
+        : { orderBy?: GuestLoadGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GuestLoadGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGuestLoadGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the GuestLoad model
+   */
+  readonly fields: GuestLoadFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for GuestLoad.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__GuestLoadClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    meetup<T extends MeetupDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MeetupDefaultArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    person<T extends PersonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PersonDefaultArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the GuestLoad model
+   */
+  interface GuestLoadFieldRefs {
+    readonly id: FieldRef<"GuestLoad", 'String'>
+    readonly link: FieldRef<"GuestLoad", 'String'>
+    readonly meetupId: FieldRef<"GuestLoad", 'String'>
+    readonly personId: FieldRef<"GuestLoad", 'String'>
+    readonly datetime: FieldRef<"GuestLoad", 'DateTime'>
+    readonly count: FieldRef<"GuestLoad", 'Int'>
+    readonly createdAt: FieldRef<"GuestLoad", 'DateTime'>
+    readonly updatedAt: FieldRef<"GuestLoad", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * GuestLoad findUnique
+   */
+  export type GuestLoadFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GuestLoad
+     */
+    select?: GuestLoadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GuestLoad
+     */
+    omit?: GuestLoadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GuestLoadInclude<ExtArgs> | null
+    /**
+     * Filter, which GuestLoad to fetch.
+     */
+    where: GuestLoadWhereUniqueInput
+  }
+
+  /**
+   * GuestLoad findUniqueOrThrow
+   */
+  export type GuestLoadFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GuestLoad
+     */
+    select?: GuestLoadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GuestLoad
+     */
+    omit?: GuestLoadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GuestLoadInclude<ExtArgs> | null
+    /**
+     * Filter, which GuestLoad to fetch.
+     */
+    where: GuestLoadWhereUniqueInput
+  }
+
+  /**
+   * GuestLoad findFirst
+   */
+  export type GuestLoadFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GuestLoad
+     */
+    select?: GuestLoadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GuestLoad
+     */
+    omit?: GuestLoadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GuestLoadInclude<ExtArgs> | null
+    /**
+     * Filter, which GuestLoad to fetch.
+     */
+    where?: GuestLoadWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GuestLoads to fetch.
+     */
+    orderBy?: GuestLoadOrderByWithRelationInput | GuestLoadOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GuestLoads.
+     */
+    cursor?: GuestLoadWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GuestLoads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GuestLoads.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GuestLoads.
+     */
+    distinct?: GuestLoadScalarFieldEnum | GuestLoadScalarFieldEnum[]
+  }
+
+  /**
+   * GuestLoad findFirstOrThrow
+   */
+  export type GuestLoadFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GuestLoad
+     */
+    select?: GuestLoadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GuestLoad
+     */
+    omit?: GuestLoadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GuestLoadInclude<ExtArgs> | null
+    /**
+     * Filter, which GuestLoad to fetch.
+     */
+    where?: GuestLoadWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GuestLoads to fetch.
+     */
+    orderBy?: GuestLoadOrderByWithRelationInput | GuestLoadOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GuestLoads.
+     */
+    cursor?: GuestLoadWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GuestLoads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GuestLoads.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GuestLoads.
+     */
+    distinct?: GuestLoadScalarFieldEnum | GuestLoadScalarFieldEnum[]
+  }
+
+  /**
+   * GuestLoad findMany
+   */
+  export type GuestLoadFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GuestLoad
+     */
+    select?: GuestLoadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GuestLoad
+     */
+    omit?: GuestLoadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GuestLoadInclude<ExtArgs> | null
+    /**
+     * Filter, which GuestLoads to fetch.
+     */
+    where?: GuestLoadWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GuestLoads to fetch.
+     */
+    orderBy?: GuestLoadOrderByWithRelationInput | GuestLoadOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing GuestLoads.
+     */
+    cursor?: GuestLoadWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GuestLoads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GuestLoads.
+     */
+    skip?: number
+    distinct?: GuestLoadScalarFieldEnum | GuestLoadScalarFieldEnum[]
+  }
+
+  /**
+   * GuestLoad create
+   */
+  export type GuestLoadCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GuestLoad
+     */
+    select?: GuestLoadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GuestLoad
+     */
+    omit?: GuestLoadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GuestLoadInclude<ExtArgs> | null
+    /**
+     * The data needed to create a GuestLoad.
+     */
+    data: XOR<GuestLoadCreateInput, GuestLoadUncheckedCreateInput>
+  }
+
+  /**
+   * GuestLoad createMany
+   */
+  export type GuestLoadCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many GuestLoads.
+     */
+    data: GuestLoadCreateManyInput | GuestLoadCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * GuestLoad update
+   */
+  export type GuestLoadUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GuestLoad
+     */
+    select?: GuestLoadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GuestLoad
+     */
+    omit?: GuestLoadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GuestLoadInclude<ExtArgs> | null
+    /**
+     * The data needed to update a GuestLoad.
+     */
+    data: XOR<GuestLoadUpdateInput, GuestLoadUncheckedUpdateInput>
+    /**
+     * Choose, which GuestLoad to update.
+     */
+    where: GuestLoadWhereUniqueInput
+  }
+
+  /**
+   * GuestLoad updateMany
+   */
+  export type GuestLoadUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update GuestLoads.
+     */
+    data: XOR<GuestLoadUpdateManyMutationInput, GuestLoadUncheckedUpdateManyInput>
+    /**
+     * Filter which GuestLoads to update
+     */
+    where?: GuestLoadWhereInput
+    /**
+     * Limit how many GuestLoads to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * GuestLoad upsert
+   */
+  export type GuestLoadUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GuestLoad
+     */
+    select?: GuestLoadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GuestLoad
+     */
+    omit?: GuestLoadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GuestLoadInclude<ExtArgs> | null
+    /**
+     * The filter to search for the GuestLoad to update in case it exists.
+     */
+    where: GuestLoadWhereUniqueInput
+    /**
+     * In case the GuestLoad found by the `where` argument doesn't exist, create a new GuestLoad with this data.
+     */
+    create: XOR<GuestLoadCreateInput, GuestLoadUncheckedCreateInput>
+    /**
+     * In case the GuestLoad was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GuestLoadUpdateInput, GuestLoadUncheckedUpdateInput>
+  }
+
+  /**
+   * GuestLoad delete
+   */
+  export type GuestLoadDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GuestLoad
+     */
+    select?: GuestLoadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GuestLoad
+     */
+    omit?: GuestLoadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GuestLoadInclude<ExtArgs> | null
+    /**
+     * Filter which GuestLoad to delete.
+     */
+    where: GuestLoadWhereUniqueInput
+  }
+
+  /**
+   * GuestLoad deleteMany
+   */
+  export type GuestLoadDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GuestLoads to delete
+     */
+    where?: GuestLoadWhereInput
+    /**
+     * Limit how many GuestLoads to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * GuestLoad without action
+   */
+  export type GuestLoadDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GuestLoad
+     */
+    select?: GuestLoadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GuestLoad
+     */
+    omit?: GuestLoadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GuestLoadInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5085,6 +18396,164 @@ export namespace Prisma {
   export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[keyof typeof VerificationScalarFieldEnum]
 
 
+  export const PersonScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    email: 'email',
+    phone: 'phone',
+    gender: 'gender',
+    birthdate: 'birthdate',
+    cpf: 'cpf',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    userId: 'userId'
+  };
+
+  export type PersonScalarFieldEnum = (typeof PersonScalarFieldEnum)[keyof typeof PersonScalarFieldEnum]
+
+
+  export const AddressScalarFieldEnum: {
+    id: 'id',
+    mapLink: 'mapLink',
+    state: 'state',
+    city: 'city',
+    district: 'district',
+    street: 'street',
+    number: 'number',
+    complement: 'complement',
+    zipcode: 'zipcode',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type AddressScalarFieldEnum = (typeof AddressScalarFieldEnum)[keyof typeof AddressScalarFieldEnum]
+
+
+  export const MeetupScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    datetime: 'datetime',
+    addressId: 'addressId',
+    image: 'image',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MeetupScalarFieldEnum = (typeof MeetupScalarFieldEnum)[keyof typeof MeetupScalarFieldEnum]
+
+
+  export const MeetupRoleScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    subscriptionPrice: 'subscriptionPrice',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MeetupRoleScalarFieldEnum = (typeof MeetupRoleScalarFieldEnum)[keyof typeof MeetupRoleScalarFieldEnum]
+
+
+  export const MeetupAdminScalarFieldEnum: {
+    id: 'id',
+    meetupId: 'meetupId',
+    personId: 'personId',
+    role: 'role',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MeetupAdminScalarFieldEnum = (typeof MeetupAdminScalarFieldEnum)[keyof typeof MeetupAdminScalarFieldEnum]
+
+
+  export const SubscriptionScalarFieldEnum: {
+    id: 'id',
+    personId: 'personId',
+    meetupId: 'meetupId',
+    meetupRoleId: 'meetupRoleId',
+    presenceConfirmation: 'presenceConfirmation',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type SubscriptionScalarFieldEnum = (typeof SubscriptionScalarFieldEnum)[keyof typeof SubscriptionScalarFieldEnum]
+
+
+  export const InviteScalarFieldEnum: {
+    id: 'id',
+    personId: 'personId',
+    meetupId: 'meetupId',
+    link: 'link',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type InviteScalarFieldEnum = (typeof InviteScalarFieldEnum)[keyof typeof InviteScalarFieldEnum]
+
+
+  export const PaymentScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
+
+
+  export const SubscriptionPaymentScalarFieldEnum: {
+    id: 'id',
+    subscriptionId: 'subscriptionId',
+    paymentId: 'paymentId',
+    price: 'price',
+    paymentStatus: 'paymentStatus',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type SubscriptionPaymentScalarFieldEnum = (typeof SubscriptionPaymentScalarFieldEnum)[keyof typeof SubscriptionPaymentScalarFieldEnum]
+
+
+  export const CertificateScalarFieldEnum: {
+    id: 'id',
+    personId: 'personId',
+    meetupId: 'meetupId',
+    link: 'link',
+    securityCode: 'securityCode',
+    datetime: 'datetime',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CertificateScalarFieldEnum = (typeof CertificateScalarFieldEnum)[keyof typeof CertificateScalarFieldEnum]
+
+
+  export const MeetupMediaScalarFieldEnum: {
+    id: 'id',
+    meetupId: 'meetupId',
+    personId: 'personId',
+    link: 'link',
+    datetime: 'datetime',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MeetupMediaScalarFieldEnum = (typeof MeetupMediaScalarFieldEnum)[keyof typeof MeetupMediaScalarFieldEnum]
+
+
+  export const GuestLoadScalarFieldEnum: {
+    id: 'id',
+    link: 'link',
+    meetupId: 'meetupId',
+    personId: 'personId',
+    datetime: 'datetime',
+    count: 'count',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type GuestLoadScalarFieldEnum = (typeof GuestLoadScalarFieldEnum)[keyof typeof GuestLoadScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -5146,6 +18615,130 @@ export namespace Prisma {
   export type VerificationOrderByRelevanceFieldEnum = (typeof VerificationOrderByRelevanceFieldEnum)[keyof typeof VerificationOrderByRelevanceFieldEnum]
 
 
+  export const PersonOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name',
+    email: 'email',
+    phone: 'phone',
+    gender: 'gender',
+    cpf: 'cpf',
+    userId: 'userId'
+  };
+
+  export type PersonOrderByRelevanceFieldEnum = (typeof PersonOrderByRelevanceFieldEnum)[keyof typeof PersonOrderByRelevanceFieldEnum]
+
+
+  export const AddressOrderByRelevanceFieldEnum: {
+    id: 'id',
+    mapLink: 'mapLink',
+    state: 'state',
+    city: 'city',
+    district: 'district',
+    street: 'street',
+    number: 'number',
+    complement: 'complement',
+    zipcode: 'zipcode'
+  };
+
+  export type AddressOrderByRelevanceFieldEnum = (typeof AddressOrderByRelevanceFieldEnum)[keyof typeof AddressOrderByRelevanceFieldEnum]
+
+
+  export const MeetupOrderByRelevanceFieldEnum: {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    addressId: 'addressId',
+    image: 'image'
+  };
+
+  export type MeetupOrderByRelevanceFieldEnum = (typeof MeetupOrderByRelevanceFieldEnum)[keyof typeof MeetupOrderByRelevanceFieldEnum]
+
+
+  export const MeetupRoleOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type MeetupRoleOrderByRelevanceFieldEnum = (typeof MeetupRoleOrderByRelevanceFieldEnum)[keyof typeof MeetupRoleOrderByRelevanceFieldEnum]
+
+
+  export const MeetupAdminOrderByRelevanceFieldEnum: {
+    id: 'id',
+    meetupId: 'meetupId',
+    personId: 'personId',
+    role: 'role'
+  };
+
+  export type MeetupAdminOrderByRelevanceFieldEnum = (typeof MeetupAdminOrderByRelevanceFieldEnum)[keyof typeof MeetupAdminOrderByRelevanceFieldEnum]
+
+
+  export const SubscriptionOrderByRelevanceFieldEnum: {
+    id: 'id',
+    personId: 'personId',
+    meetupId: 'meetupId',
+    meetupRoleId: 'meetupRoleId'
+  };
+
+  export type SubscriptionOrderByRelevanceFieldEnum = (typeof SubscriptionOrderByRelevanceFieldEnum)[keyof typeof SubscriptionOrderByRelevanceFieldEnum]
+
+
+  export const InviteOrderByRelevanceFieldEnum: {
+    id: 'id',
+    personId: 'personId',
+    meetupId: 'meetupId',
+    link: 'link'
+  };
+
+  export type InviteOrderByRelevanceFieldEnum = (typeof InviteOrderByRelevanceFieldEnum)[keyof typeof InviteOrderByRelevanceFieldEnum]
+
+
+  export const PaymentOrderByRelevanceFieldEnum: {
+    id: 'id'
+  };
+
+  export type PaymentOrderByRelevanceFieldEnum = (typeof PaymentOrderByRelevanceFieldEnum)[keyof typeof PaymentOrderByRelevanceFieldEnum]
+
+
+  export const SubscriptionPaymentOrderByRelevanceFieldEnum: {
+    id: 'id',
+    subscriptionId: 'subscriptionId',
+    paymentId: 'paymentId'
+  };
+
+  export type SubscriptionPaymentOrderByRelevanceFieldEnum = (typeof SubscriptionPaymentOrderByRelevanceFieldEnum)[keyof typeof SubscriptionPaymentOrderByRelevanceFieldEnum]
+
+
+  export const CertificateOrderByRelevanceFieldEnum: {
+    id: 'id',
+    personId: 'personId',
+    meetupId: 'meetupId',
+    link: 'link',
+    securityCode: 'securityCode'
+  };
+
+  export type CertificateOrderByRelevanceFieldEnum = (typeof CertificateOrderByRelevanceFieldEnum)[keyof typeof CertificateOrderByRelevanceFieldEnum]
+
+
+  export const MeetupMediaOrderByRelevanceFieldEnum: {
+    id: 'id',
+    meetupId: 'meetupId',
+    personId: 'personId',
+    link: 'link'
+  };
+
+  export type MeetupMediaOrderByRelevanceFieldEnum = (typeof MeetupMediaOrderByRelevanceFieldEnum)[keyof typeof MeetupMediaOrderByRelevanceFieldEnum]
+
+
+  export const GuestLoadOrderByRelevanceFieldEnum: {
+    id: 'id',
+    link: 'link',
+    meetupId: 'meetupId',
+    personId: 'personId'
+  };
+
+  export type GuestLoadOrderByRelevanceFieldEnum = (typeof GuestLoadOrderByRelevanceFieldEnum)[keyof typeof GuestLoadOrderByRelevanceFieldEnum]
+
+
   /**
    * Field references
    */
@@ -5173,9 +18766,23 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
     
   /**
    * Deep Input Types
@@ -5195,6 +18802,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
+    person?: XOR<PersonNullableScalarRelationFilter, PersonWhereInput> | null
   }
 
   export type UserOrderByWithRelationInput = {
@@ -5207,6 +18815,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     sessions?: SessionOrderByRelationAggregateInput
     accounts?: AccountOrderByRelationAggregateInput
+    person?: PersonOrderByWithRelationInput
     _relevance?: UserOrderByRelevanceInput
   }
 
@@ -5223,6 +18832,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
+    person?: XOR<PersonNullableScalarRelationFilter, PersonWhereInput> | null
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -5476,6 +19086,881 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Verification"> | Date | string
   }
 
+  export type PersonWhereInput = {
+    AND?: PersonWhereInput | PersonWhereInput[]
+    OR?: PersonWhereInput[]
+    NOT?: PersonWhereInput | PersonWhereInput[]
+    id?: StringFilter<"Person"> | string
+    name?: StringFilter<"Person"> | string
+    email?: StringFilter<"Person"> | string
+    phone?: StringNullableFilter<"Person"> | string | null
+    gender?: StringNullableFilter<"Person"> | string | null
+    birthdate?: DateTimeNullableFilter<"Person"> | Date | string | null
+    cpf?: StringNullableFilter<"Person"> | string | null
+    createdAt?: DateTimeFilter<"Person"> | Date | string
+    updatedAt?: DateTimeFilter<"Person"> | Date | string
+    userId?: StringFilter<"Person"> | string
+    meetupAdmins?: MeetupAdminListRelationFilter
+    subscriptions?: SubscriptionListRelationFilter
+    invites?: InviteListRelationFilter
+    certificates?: CertificateListRelationFilter
+    meetupMedias?: MeetupMediaListRelationFilter
+    guestLoads?: GuestLoadListRelationFilter
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type PersonOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phone?: SortOrderInput | SortOrder
+    gender?: SortOrderInput | SortOrder
+    birthdate?: SortOrderInput | SortOrder
+    cpf?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+    meetupAdmins?: MeetupAdminOrderByRelationAggregateInput
+    subscriptions?: SubscriptionOrderByRelationAggregateInput
+    invites?: InviteOrderByRelationAggregateInput
+    certificates?: CertificateOrderByRelationAggregateInput
+    meetupMedias?: MeetupMediaOrderByRelationAggregateInput
+    guestLoads?: GuestLoadOrderByRelationAggregateInput
+    user?: UserOrderByWithRelationInput
+    _relevance?: PersonOrderByRelevanceInput
+  }
+
+  export type PersonWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    email?: string
+    cpf?: string
+    userId?: string
+    AND?: PersonWhereInput | PersonWhereInput[]
+    OR?: PersonWhereInput[]
+    NOT?: PersonWhereInput | PersonWhereInput[]
+    name?: StringFilter<"Person"> | string
+    phone?: StringNullableFilter<"Person"> | string | null
+    gender?: StringNullableFilter<"Person"> | string | null
+    birthdate?: DateTimeNullableFilter<"Person"> | Date | string | null
+    createdAt?: DateTimeFilter<"Person"> | Date | string
+    updatedAt?: DateTimeFilter<"Person"> | Date | string
+    meetupAdmins?: MeetupAdminListRelationFilter
+    subscriptions?: SubscriptionListRelationFilter
+    invites?: InviteListRelationFilter
+    certificates?: CertificateListRelationFilter
+    meetupMedias?: MeetupMediaListRelationFilter
+    guestLoads?: GuestLoadListRelationFilter
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "email" | "cpf" | "userId">
+
+  export type PersonOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phone?: SortOrderInput | SortOrder
+    gender?: SortOrderInput | SortOrder
+    birthdate?: SortOrderInput | SortOrder
+    cpf?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+    _count?: PersonCountOrderByAggregateInput
+    _max?: PersonMaxOrderByAggregateInput
+    _min?: PersonMinOrderByAggregateInput
+  }
+
+  export type PersonScalarWhereWithAggregatesInput = {
+    AND?: PersonScalarWhereWithAggregatesInput | PersonScalarWhereWithAggregatesInput[]
+    OR?: PersonScalarWhereWithAggregatesInput[]
+    NOT?: PersonScalarWhereWithAggregatesInput | PersonScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Person"> | string
+    name?: StringWithAggregatesFilter<"Person"> | string
+    email?: StringWithAggregatesFilter<"Person"> | string
+    phone?: StringNullableWithAggregatesFilter<"Person"> | string | null
+    gender?: StringNullableWithAggregatesFilter<"Person"> | string | null
+    birthdate?: DateTimeNullableWithAggregatesFilter<"Person"> | Date | string | null
+    cpf?: StringNullableWithAggregatesFilter<"Person"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Person"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Person"> | Date | string
+    userId?: StringWithAggregatesFilter<"Person"> | string
+  }
+
+  export type AddressWhereInput = {
+    AND?: AddressWhereInput | AddressWhereInput[]
+    OR?: AddressWhereInput[]
+    NOT?: AddressWhereInput | AddressWhereInput[]
+    id?: StringFilter<"Address"> | string
+    mapLink?: StringNullableFilter<"Address"> | string | null
+    state?: StringFilter<"Address"> | string
+    city?: StringFilter<"Address"> | string
+    district?: StringFilter<"Address"> | string
+    street?: StringFilter<"Address"> | string
+    number?: StringFilter<"Address"> | string
+    complement?: StringNullableFilter<"Address"> | string | null
+    zipcode?: StringFilter<"Address"> | string
+    createdAt?: DateTimeFilter<"Address"> | Date | string
+    updatedAt?: DateTimeFilter<"Address"> | Date | string
+    meetups?: MeetupListRelationFilter
+  }
+
+  export type AddressOrderByWithRelationInput = {
+    id?: SortOrder
+    mapLink?: SortOrderInput | SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    district?: SortOrder
+    street?: SortOrder
+    number?: SortOrder
+    complement?: SortOrderInput | SortOrder
+    zipcode?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    meetups?: MeetupOrderByRelationAggregateInput
+    _relevance?: AddressOrderByRelevanceInput
+  }
+
+  export type AddressWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AddressWhereInput | AddressWhereInput[]
+    OR?: AddressWhereInput[]
+    NOT?: AddressWhereInput | AddressWhereInput[]
+    mapLink?: StringNullableFilter<"Address"> | string | null
+    state?: StringFilter<"Address"> | string
+    city?: StringFilter<"Address"> | string
+    district?: StringFilter<"Address"> | string
+    street?: StringFilter<"Address"> | string
+    number?: StringFilter<"Address"> | string
+    complement?: StringNullableFilter<"Address"> | string | null
+    zipcode?: StringFilter<"Address"> | string
+    createdAt?: DateTimeFilter<"Address"> | Date | string
+    updatedAt?: DateTimeFilter<"Address"> | Date | string
+    meetups?: MeetupListRelationFilter
+  }, "id">
+
+  export type AddressOrderByWithAggregationInput = {
+    id?: SortOrder
+    mapLink?: SortOrderInput | SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    district?: SortOrder
+    street?: SortOrder
+    number?: SortOrder
+    complement?: SortOrderInput | SortOrder
+    zipcode?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: AddressCountOrderByAggregateInput
+    _max?: AddressMaxOrderByAggregateInput
+    _min?: AddressMinOrderByAggregateInput
+  }
+
+  export type AddressScalarWhereWithAggregatesInput = {
+    AND?: AddressScalarWhereWithAggregatesInput | AddressScalarWhereWithAggregatesInput[]
+    OR?: AddressScalarWhereWithAggregatesInput[]
+    NOT?: AddressScalarWhereWithAggregatesInput | AddressScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Address"> | string
+    mapLink?: StringNullableWithAggregatesFilter<"Address"> | string | null
+    state?: StringWithAggregatesFilter<"Address"> | string
+    city?: StringWithAggregatesFilter<"Address"> | string
+    district?: StringWithAggregatesFilter<"Address"> | string
+    street?: StringWithAggregatesFilter<"Address"> | string
+    number?: StringWithAggregatesFilter<"Address"> | string
+    complement?: StringNullableWithAggregatesFilter<"Address"> | string | null
+    zipcode?: StringWithAggregatesFilter<"Address"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Address"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Address"> | Date | string
+  }
+
+  export type MeetupWhereInput = {
+    AND?: MeetupWhereInput | MeetupWhereInput[]
+    OR?: MeetupWhereInput[]
+    NOT?: MeetupWhereInput | MeetupWhereInput[]
+    id?: StringFilter<"Meetup"> | string
+    title?: StringFilter<"Meetup"> | string
+    description?: StringNullableFilter<"Meetup"> | string | null
+    datetime?: DateTimeFilter<"Meetup"> | Date | string
+    addressId?: StringFilter<"Meetup"> | string
+    image?: StringNullableFilter<"Meetup"> | string | null
+    createdAt?: DateTimeFilter<"Meetup"> | Date | string
+    updatedAt?: DateTimeFilter<"Meetup"> | Date | string
+    address?: XOR<AddressScalarRelationFilter, AddressWhereInput>
+    meetupAdmins?: MeetupAdminListRelationFilter
+    subscriptions?: SubscriptionListRelationFilter
+    invites?: InviteListRelationFilter
+    certificates?: CertificateListRelationFilter
+    meetupMedias?: MeetupMediaListRelationFilter
+    guestLoads?: GuestLoadListRelationFilter
+  }
+
+  export type MeetupOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    datetime?: SortOrder
+    addressId?: SortOrder
+    image?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    address?: AddressOrderByWithRelationInput
+    meetupAdmins?: MeetupAdminOrderByRelationAggregateInput
+    subscriptions?: SubscriptionOrderByRelationAggregateInput
+    invites?: InviteOrderByRelationAggregateInput
+    certificates?: CertificateOrderByRelationAggregateInput
+    meetupMedias?: MeetupMediaOrderByRelationAggregateInput
+    guestLoads?: GuestLoadOrderByRelationAggregateInput
+    _relevance?: MeetupOrderByRelevanceInput
+  }
+
+  export type MeetupWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MeetupWhereInput | MeetupWhereInput[]
+    OR?: MeetupWhereInput[]
+    NOT?: MeetupWhereInput | MeetupWhereInput[]
+    title?: StringFilter<"Meetup"> | string
+    description?: StringNullableFilter<"Meetup"> | string | null
+    datetime?: DateTimeFilter<"Meetup"> | Date | string
+    addressId?: StringFilter<"Meetup"> | string
+    image?: StringNullableFilter<"Meetup"> | string | null
+    createdAt?: DateTimeFilter<"Meetup"> | Date | string
+    updatedAt?: DateTimeFilter<"Meetup"> | Date | string
+    address?: XOR<AddressScalarRelationFilter, AddressWhereInput>
+    meetupAdmins?: MeetupAdminListRelationFilter
+    subscriptions?: SubscriptionListRelationFilter
+    invites?: InviteListRelationFilter
+    certificates?: CertificateListRelationFilter
+    meetupMedias?: MeetupMediaListRelationFilter
+    guestLoads?: GuestLoadListRelationFilter
+  }, "id">
+
+  export type MeetupOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    datetime?: SortOrder
+    addressId?: SortOrder
+    image?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MeetupCountOrderByAggregateInput
+    _max?: MeetupMaxOrderByAggregateInput
+    _min?: MeetupMinOrderByAggregateInput
+  }
+
+  export type MeetupScalarWhereWithAggregatesInput = {
+    AND?: MeetupScalarWhereWithAggregatesInput | MeetupScalarWhereWithAggregatesInput[]
+    OR?: MeetupScalarWhereWithAggregatesInput[]
+    NOT?: MeetupScalarWhereWithAggregatesInput | MeetupScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Meetup"> | string
+    title?: StringWithAggregatesFilter<"Meetup"> | string
+    description?: StringNullableWithAggregatesFilter<"Meetup"> | string | null
+    datetime?: DateTimeWithAggregatesFilter<"Meetup"> | Date | string
+    addressId?: StringWithAggregatesFilter<"Meetup"> | string
+    image?: StringNullableWithAggregatesFilter<"Meetup"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Meetup"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Meetup"> | Date | string
+  }
+
+  export type MeetupRoleWhereInput = {
+    AND?: MeetupRoleWhereInput | MeetupRoleWhereInput[]
+    OR?: MeetupRoleWhereInput[]
+    NOT?: MeetupRoleWhereInput | MeetupRoleWhereInput[]
+    id?: StringFilter<"MeetupRole"> | string
+    name?: StringFilter<"MeetupRole"> | string
+    subscriptionPrice?: DecimalFilter<"MeetupRole"> | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFilter<"MeetupRole"> | Date | string
+    updatedAt?: DateTimeFilter<"MeetupRole"> | Date | string
+    subscriptions?: SubscriptionListRelationFilter
+  }
+
+  export type MeetupRoleOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    subscriptionPrice?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    subscriptions?: SubscriptionOrderByRelationAggregateInput
+    _relevance?: MeetupRoleOrderByRelevanceInput
+  }
+
+  export type MeetupRoleWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MeetupRoleWhereInput | MeetupRoleWhereInput[]
+    OR?: MeetupRoleWhereInput[]
+    NOT?: MeetupRoleWhereInput | MeetupRoleWhereInput[]
+    name?: StringFilter<"MeetupRole"> | string
+    subscriptionPrice?: DecimalFilter<"MeetupRole"> | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFilter<"MeetupRole"> | Date | string
+    updatedAt?: DateTimeFilter<"MeetupRole"> | Date | string
+    subscriptions?: SubscriptionListRelationFilter
+  }, "id">
+
+  export type MeetupRoleOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    subscriptionPrice?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MeetupRoleCountOrderByAggregateInput
+    _avg?: MeetupRoleAvgOrderByAggregateInput
+    _max?: MeetupRoleMaxOrderByAggregateInput
+    _min?: MeetupRoleMinOrderByAggregateInput
+    _sum?: MeetupRoleSumOrderByAggregateInput
+  }
+
+  export type MeetupRoleScalarWhereWithAggregatesInput = {
+    AND?: MeetupRoleScalarWhereWithAggregatesInput | MeetupRoleScalarWhereWithAggregatesInput[]
+    OR?: MeetupRoleScalarWhereWithAggregatesInput[]
+    NOT?: MeetupRoleScalarWhereWithAggregatesInput | MeetupRoleScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MeetupRole"> | string
+    name?: StringWithAggregatesFilter<"MeetupRole"> | string
+    subscriptionPrice?: DecimalWithAggregatesFilter<"MeetupRole"> | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeWithAggregatesFilter<"MeetupRole"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MeetupRole"> | Date | string
+  }
+
+  export type MeetupAdminWhereInput = {
+    AND?: MeetupAdminWhereInput | MeetupAdminWhereInput[]
+    OR?: MeetupAdminWhereInput[]
+    NOT?: MeetupAdminWhereInput | MeetupAdminWhereInput[]
+    id?: StringFilter<"MeetupAdmin"> | string
+    meetupId?: StringFilter<"MeetupAdmin"> | string
+    personId?: StringFilter<"MeetupAdmin"> | string
+    role?: StringFilter<"MeetupAdmin"> | string
+    createdAt?: DateTimeFilter<"MeetupAdmin"> | Date | string
+    updatedAt?: DateTimeFilter<"MeetupAdmin"> | Date | string
+    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
+    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+  }
+
+  export type MeetupAdminOrderByWithRelationInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    role?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    meetup?: MeetupOrderByWithRelationInput
+    person?: PersonOrderByWithRelationInput
+    _relevance?: MeetupAdminOrderByRelevanceInput
+  }
+
+  export type MeetupAdminWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    meetupId_personId?: MeetupAdminMeetupIdPersonIdCompoundUniqueInput
+    AND?: MeetupAdminWhereInput | MeetupAdminWhereInput[]
+    OR?: MeetupAdminWhereInput[]
+    NOT?: MeetupAdminWhereInput | MeetupAdminWhereInput[]
+    meetupId?: StringFilter<"MeetupAdmin"> | string
+    personId?: StringFilter<"MeetupAdmin"> | string
+    role?: StringFilter<"MeetupAdmin"> | string
+    createdAt?: DateTimeFilter<"MeetupAdmin"> | Date | string
+    updatedAt?: DateTimeFilter<"MeetupAdmin"> | Date | string
+    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
+    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+  }, "id" | "meetupId_personId">
+
+  export type MeetupAdminOrderByWithAggregationInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    role?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MeetupAdminCountOrderByAggregateInput
+    _max?: MeetupAdminMaxOrderByAggregateInput
+    _min?: MeetupAdminMinOrderByAggregateInput
+  }
+
+  export type MeetupAdminScalarWhereWithAggregatesInput = {
+    AND?: MeetupAdminScalarWhereWithAggregatesInput | MeetupAdminScalarWhereWithAggregatesInput[]
+    OR?: MeetupAdminScalarWhereWithAggregatesInput[]
+    NOT?: MeetupAdminScalarWhereWithAggregatesInput | MeetupAdminScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MeetupAdmin"> | string
+    meetupId?: StringWithAggregatesFilter<"MeetupAdmin"> | string
+    personId?: StringWithAggregatesFilter<"MeetupAdmin"> | string
+    role?: StringWithAggregatesFilter<"MeetupAdmin"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"MeetupAdmin"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MeetupAdmin"> | Date | string
+  }
+
+  export type SubscriptionWhereInput = {
+    AND?: SubscriptionWhereInput | SubscriptionWhereInput[]
+    OR?: SubscriptionWhereInput[]
+    NOT?: SubscriptionWhereInput | SubscriptionWhereInput[]
+    id?: StringFilter<"Subscription"> | string
+    personId?: StringFilter<"Subscription"> | string
+    meetupId?: StringFilter<"Subscription"> | string
+    meetupRoleId?: StringFilter<"Subscription"> | string
+    presenceConfirmation?: BoolNullableFilter<"Subscription"> | boolean | null
+    createdAt?: DateTimeFilter<"Subscription"> | Date | string
+    updatedAt?: DateTimeFilter<"Subscription"> | Date | string
+    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
+    meetupRole?: XOR<MeetupRoleScalarRelationFilter, MeetupRoleWhereInput>
+    subscriptionPayments?: SubscriptionPaymentListRelationFilter
+  }
+
+  export type SubscriptionOrderByWithRelationInput = {
+    id?: SortOrder
+    personId?: SortOrder
+    meetupId?: SortOrder
+    meetupRoleId?: SortOrder
+    presenceConfirmation?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    person?: PersonOrderByWithRelationInput
+    meetup?: MeetupOrderByWithRelationInput
+    meetupRole?: MeetupRoleOrderByWithRelationInput
+    subscriptionPayments?: SubscriptionPaymentOrderByRelationAggregateInput
+    _relevance?: SubscriptionOrderByRelevanceInput
+  }
+
+  export type SubscriptionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    personId_meetupId?: SubscriptionPersonIdMeetupIdCompoundUniqueInput
+    AND?: SubscriptionWhereInput | SubscriptionWhereInput[]
+    OR?: SubscriptionWhereInput[]
+    NOT?: SubscriptionWhereInput | SubscriptionWhereInput[]
+    personId?: StringFilter<"Subscription"> | string
+    meetupId?: StringFilter<"Subscription"> | string
+    meetupRoleId?: StringFilter<"Subscription"> | string
+    presenceConfirmation?: BoolNullableFilter<"Subscription"> | boolean | null
+    createdAt?: DateTimeFilter<"Subscription"> | Date | string
+    updatedAt?: DateTimeFilter<"Subscription"> | Date | string
+    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
+    meetupRole?: XOR<MeetupRoleScalarRelationFilter, MeetupRoleWhereInput>
+    subscriptionPayments?: SubscriptionPaymentListRelationFilter
+  }, "id" | "personId_meetupId">
+
+  export type SubscriptionOrderByWithAggregationInput = {
+    id?: SortOrder
+    personId?: SortOrder
+    meetupId?: SortOrder
+    meetupRoleId?: SortOrder
+    presenceConfirmation?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: SubscriptionCountOrderByAggregateInput
+    _max?: SubscriptionMaxOrderByAggregateInput
+    _min?: SubscriptionMinOrderByAggregateInput
+  }
+
+  export type SubscriptionScalarWhereWithAggregatesInput = {
+    AND?: SubscriptionScalarWhereWithAggregatesInput | SubscriptionScalarWhereWithAggregatesInput[]
+    OR?: SubscriptionScalarWhereWithAggregatesInput[]
+    NOT?: SubscriptionScalarWhereWithAggregatesInput | SubscriptionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Subscription"> | string
+    personId?: StringWithAggregatesFilter<"Subscription"> | string
+    meetupId?: StringWithAggregatesFilter<"Subscription"> | string
+    meetupRoleId?: StringWithAggregatesFilter<"Subscription"> | string
+    presenceConfirmation?: BoolNullableWithAggregatesFilter<"Subscription"> | boolean | null
+    createdAt?: DateTimeWithAggregatesFilter<"Subscription"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Subscription"> | Date | string
+  }
+
+  export type InviteWhereInput = {
+    AND?: InviteWhereInput | InviteWhereInput[]
+    OR?: InviteWhereInput[]
+    NOT?: InviteWhereInput | InviteWhereInput[]
+    id?: StringFilter<"Invite"> | string
+    personId?: StringFilter<"Invite"> | string
+    meetupId?: StringFilter<"Invite"> | string
+    link?: StringFilter<"Invite"> | string
+    createdAt?: DateTimeFilter<"Invite"> | Date | string
+    updatedAt?: DateTimeFilter<"Invite"> | Date | string
+    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
+  }
+
+  export type InviteOrderByWithRelationInput = {
+    id?: SortOrder
+    personId?: SortOrder
+    meetupId?: SortOrder
+    link?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    person?: PersonOrderByWithRelationInput
+    meetup?: MeetupOrderByWithRelationInput
+    _relevance?: InviteOrderByRelevanceInput
+  }
+
+  export type InviteWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    personId_meetupId?: InvitePersonIdMeetupIdCompoundUniqueInput
+    AND?: InviteWhereInput | InviteWhereInput[]
+    OR?: InviteWhereInput[]
+    NOT?: InviteWhereInput | InviteWhereInput[]
+    personId?: StringFilter<"Invite"> | string
+    meetupId?: StringFilter<"Invite"> | string
+    link?: StringFilter<"Invite"> | string
+    createdAt?: DateTimeFilter<"Invite"> | Date | string
+    updatedAt?: DateTimeFilter<"Invite"> | Date | string
+    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
+  }, "id" | "personId_meetupId">
+
+  export type InviteOrderByWithAggregationInput = {
+    id?: SortOrder
+    personId?: SortOrder
+    meetupId?: SortOrder
+    link?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: InviteCountOrderByAggregateInput
+    _max?: InviteMaxOrderByAggregateInput
+    _min?: InviteMinOrderByAggregateInput
+  }
+
+  export type InviteScalarWhereWithAggregatesInput = {
+    AND?: InviteScalarWhereWithAggregatesInput | InviteScalarWhereWithAggregatesInput[]
+    OR?: InviteScalarWhereWithAggregatesInput[]
+    NOT?: InviteScalarWhereWithAggregatesInput | InviteScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Invite"> | string
+    personId?: StringWithAggregatesFilter<"Invite"> | string
+    meetupId?: StringWithAggregatesFilter<"Invite"> | string
+    link?: StringWithAggregatesFilter<"Invite"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Invite"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Invite"> | Date | string
+  }
+
+  export type PaymentWhereInput = {
+    AND?: PaymentWhereInput | PaymentWhereInput[]
+    OR?: PaymentWhereInput[]
+    NOT?: PaymentWhereInput | PaymentWhereInput[]
+    id?: StringFilter<"Payment"> | string
+    createdAt?: DateTimeFilter<"Payment"> | Date | string
+    updatedAt?: DateTimeFilter<"Payment"> | Date | string
+    subscriptionPayments?: SubscriptionPaymentListRelationFilter
+  }
+
+  export type PaymentOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    subscriptionPayments?: SubscriptionPaymentOrderByRelationAggregateInput
+    _relevance?: PaymentOrderByRelevanceInput
+  }
+
+  export type PaymentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: PaymentWhereInput | PaymentWhereInput[]
+    OR?: PaymentWhereInput[]
+    NOT?: PaymentWhereInput | PaymentWhereInput[]
+    createdAt?: DateTimeFilter<"Payment"> | Date | string
+    updatedAt?: DateTimeFilter<"Payment"> | Date | string
+    subscriptionPayments?: SubscriptionPaymentListRelationFilter
+  }, "id">
+
+  export type PaymentOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PaymentCountOrderByAggregateInput
+    _max?: PaymentMaxOrderByAggregateInput
+    _min?: PaymentMinOrderByAggregateInput
+  }
+
+  export type PaymentScalarWhereWithAggregatesInput = {
+    AND?: PaymentScalarWhereWithAggregatesInput | PaymentScalarWhereWithAggregatesInput[]
+    OR?: PaymentScalarWhereWithAggregatesInput[]
+    NOT?: PaymentScalarWhereWithAggregatesInput | PaymentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Payment"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Payment"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Payment"> | Date | string
+  }
+
+  export type SubscriptionPaymentWhereInput = {
+    AND?: SubscriptionPaymentWhereInput | SubscriptionPaymentWhereInput[]
+    OR?: SubscriptionPaymentWhereInput[]
+    NOT?: SubscriptionPaymentWhereInput | SubscriptionPaymentWhereInput[]
+    id?: StringFilter<"SubscriptionPayment"> | string
+    subscriptionId?: StringFilter<"SubscriptionPayment"> | string
+    paymentId?: StringFilter<"SubscriptionPayment"> | string
+    price?: DecimalFilter<"SubscriptionPayment"> | Decimal | DecimalJsLike | number | string
+    paymentStatus?: BoolFilter<"SubscriptionPayment"> | boolean
+    createdAt?: DateTimeFilter<"SubscriptionPayment"> | Date | string
+    updatedAt?: DateTimeFilter<"SubscriptionPayment"> | Date | string
+    subscription?: XOR<SubscriptionScalarRelationFilter, SubscriptionWhereInput>
+    payment?: XOR<PaymentScalarRelationFilter, PaymentWhereInput>
+  }
+
+  export type SubscriptionPaymentOrderByWithRelationInput = {
+    id?: SortOrder
+    subscriptionId?: SortOrder
+    paymentId?: SortOrder
+    price?: SortOrder
+    paymentStatus?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    subscription?: SubscriptionOrderByWithRelationInput
+    payment?: PaymentOrderByWithRelationInput
+    _relevance?: SubscriptionPaymentOrderByRelevanceInput
+  }
+
+  export type SubscriptionPaymentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: SubscriptionPaymentWhereInput | SubscriptionPaymentWhereInput[]
+    OR?: SubscriptionPaymentWhereInput[]
+    NOT?: SubscriptionPaymentWhereInput | SubscriptionPaymentWhereInput[]
+    subscriptionId?: StringFilter<"SubscriptionPayment"> | string
+    paymentId?: StringFilter<"SubscriptionPayment"> | string
+    price?: DecimalFilter<"SubscriptionPayment"> | Decimal | DecimalJsLike | number | string
+    paymentStatus?: BoolFilter<"SubscriptionPayment"> | boolean
+    createdAt?: DateTimeFilter<"SubscriptionPayment"> | Date | string
+    updatedAt?: DateTimeFilter<"SubscriptionPayment"> | Date | string
+    subscription?: XOR<SubscriptionScalarRelationFilter, SubscriptionWhereInput>
+    payment?: XOR<PaymentScalarRelationFilter, PaymentWhereInput>
+  }, "id">
+
+  export type SubscriptionPaymentOrderByWithAggregationInput = {
+    id?: SortOrder
+    subscriptionId?: SortOrder
+    paymentId?: SortOrder
+    price?: SortOrder
+    paymentStatus?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: SubscriptionPaymentCountOrderByAggregateInput
+    _avg?: SubscriptionPaymentAvgOrderByAggregateInput
+    _max?: SubscriptionPaymentMaxOrderByAggregateInput
+    _min?: SubscriptionPaymentMinOrderByAggregateInput
+    _sum?: SubscriptionPaymentSumOrderByAggregateInput
+  }
+
+  export type SubscriptionPaymentScalarWhereWithAggregatesInput = {
+    AND?: SubscriptionPaymentScalarWhereWithAggregatesInput | SubscriptionPaymentScalarWhereWithAggregatesInput[]
+    OR?: SubscriptionPaymentScalarWhereWithAggregatesInput[]
+    NOT?: SubscriptionPaymentScalarWhereWithAggregatesInput | SubscriptionPaymentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"SubscriptionPayment"> | string
+    subscriptionId?: StringWithAggregatesFilter<"SubscriptionPayment"> | string
+    paymentId?: StringWithAggregatesFilter<"SubscriptionPayment"> | string
+    price?: DecimalWithAggregatesFilter<"SubscriptionPayment"> | Decimal | DecimalJsLike | number | string
+    paymentStatus?: BoolWithAggregatesFilter<"SubscriptionPayment"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"SubscriptionPayment"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"SubscriptionPayment"> | Date | string
+  }
+
+  export type CertificateWhereInput = {
+    AND?: CertificateWhereInput | CertificateWhereInput[]
+    OR?: CertificateWhereInput[]
+    NOT?: CertificateWhereInput | CertificateWhereInput[]
+    id?: StringFilter<"Certificate"> | string
+    personId?: StringFilter<"Certificate"> | string
+    meetupId?: StringFilter<"Certificate"> | string
+    link?: StringFilter<"Certificate"> | string
+    securityCode?: StringFilter<"Certificate"> | string
+    datetime?: DateTimeFilter<"Certificate"> | Date | string
+    createdAt?: DateTimeFilter<"Certificate"> | Date | string
+    updatedAt?: DateTimeFilter<"Certificate"> | Date | string
+    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
+  }
+
+  export type CertificateOrderByWithRelationInput = {
+    id?: SortOrder
+    personId?: SortOrder
+    meetupId?: SortOrder
+    link?: SortOrder
+    securityCode?: SortOrder
+    datetime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    person?: PersonOrderByWithRelationInput
+    meetup?: MeetupOrderByWithRelationInput
+    _relevance?: CertificateOrderByRelevanceInput
+  }
+
+  export type CertificateWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    securityCode?: string
+    personId_meetupId?: CertificatePersonIdMeetupIdCompoundUniqueInput
+    AND?: CertificateWhereInput | CertificateWhereInput[]
+    OR?: CertificateWhereInput[]
+    NOT?: CertificateWhereInput | CertificateWhereInput[]
+    personId?: StringFilter<"Certificate"> | string
+    meetupId?: StringFilter<"Certificate"> | string
+    link?: StringFilter<"Certificate"> | string
+    datetime?: DateTimeFilter<"Certificate"> | Date | string
+    createdAt?: DateTimeFilter<"Certificate"> | Date | string
+    updatedAt?: DateTimeFilter<"Certificate"> | Date | string
+    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
+  }, "id" | "securityCode" | "personId_meetupId">
+
+  export type CertificateOrderByWithAggregationInput = {
+    id?: SortOrder
+    personId?: SortOrder
+    meetupId?: SortOrder
+    link?: SortOrder
+    securityCode?: SortOrder
+    datetime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CertificateCountOrderByAggregateInput
+    _max?: CertificateMaxOrderByAggregateInput
+    _min?: CertificateMinOrderByAggregateInput
+  }
+
+  export type CertificateScalarWhereWithAggregatesInput = {
+    AND?: CertificateScalarWhereWithAggregatesInput | CertificateScalarWhereWithAggregatesInput[]
+    OR?: CertificateScalarWhereWithAggregatesInput[]
+    NOT?: CertificateScalarWhereWithAggregatesInput | CertificateScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Certificate"> | string
+    personId?: StringWithAggregatesFilter<"Certificate"> | string
+    meetupId?: StringWithAggregatesFilter<"Certificate"> | string
+    link?: StringWithAggregatesFilter<"Certificate"> | string
+    securityCode?: StringWithAggregatesFilter<"Certificate"> | string
+    datetime?: DateTimeWithAggregatesFilter<"Certificate"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"Certificate"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Certificate"> | Date | string
+  }
+
+  export type MeetupMediaWhereInput = {
+    AND?: MeetupMediaWhereInput | MeetupMediaWhereInput[]
+    OR?: MeetupMediaWhereInput[]
+    NOT?: MeetupMediaWhereInput | MeetupMediaWhereInput[]
+    id?: StringFilter<"MeetupMedia"> | string
+    meetupId?: StringFilter<"MeetupMedia"> | string
+    personId?: StringFilter<"MeetupMedia"> | string
+    link?: StringFilter<"MeetupMedia"> | string
+    datetime?: DateTimeFilter<"MeetupMedia"> | Date | string
+    createdAt?: DateTimeFilter<"MeetupMedia"> | Date | string
+    updatedAt?: DateTimeFilter<"MeetupMedia"> | Date | string
+    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
+    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+  }
+
+  export type MeetupMediaOrderByWithRelationInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    link?: SortOrder
+    datetime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    meetup?: MeetupOrderByWithRelationInput
+    person?: PersonOrderByWithRelationInput
+    _relevance?: MeetupMediaOrderByRelevanceInput
+  }
+
+  export type MeetupMediaWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MeetupMediaWhereInput | MeetupMediaWhereInput[]
+    OR?: MeetupMediaWhereInput[]
+    NOT?: MeetupMediaWhereInput | MeetupMediaWhereInput[]
+    meetupId?: StringFilter<"MeetupMedia"> | string
+    personId?: StringFilter<"MeetupMedia"> | string
+    link?: StringFilter<"MeetupMedia"> | string
+    datetime?: DateTimeFilter<"MeetupMedia"> | Date | string
+    createdAt?: DateTimeFilter<"MeetupMedia"> | Date | string
+    updatedAt?: DateTimeFilter<"MeetupMedia"> | Date | string
+    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
+    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+  }, "id">
+
+  export type MeetupMediaOrderByWithAggregationInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    link?: SortOrder
+    datetime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MeetupMediaCountOrderByAggregateInput
+    _max?: MeetupMediaMaxOrderByAggregateInput
+    _min?: MeetupMediaMinOrderByAggregateInput
+  }
+
+  export type MeetupMediaScalarWhereWithAggregatesInput = {
+    AND?: MeetupMediaScalarWhereWithAggregatesInput | MeetupMediaScalarWhereWithAggregatesInput[]
+    OR?: MeetupMediaScalarWhereWithAggregatesInput[]
+    NOT?: MeetupMediaScalarWhereWithAggregatesInput | MeetupMediaScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MeetupMedia"> | string
+    meetupId?: StringWithAggregatesFilter<"MeetupMedia"> | string
+    personId?: StringWithAggregatesFilter<"MeetupMedia"> | string
+    link?: StringWithAggregatesFilter<"MeetupMedia"> | string
+    datetime?: DateTimeWithAggregatesFilter<"MeetupMedia"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"MeetupMedia"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MeetupMedia"> | Date | string
+  }
+
+  export type GuestLoadWhereInput = {
+    AND?: GuestLoadWhereInput | GuestLoadWhereInput[]
+    OR?: GuestLoadWhereInput[]
+    NOT?: GuestLoadWhereInput | GuestLoadWhereInput[]
+    id?: StringFilter<"GuestLoad"> | string
+    link?: StringFilter<"GuestLoad"> | string
+    meetupId?: StringFilter<"GuestLoad"> | string
+    personId?: StringFilter<"GuestLoad"> | string
+    datetime?: DateTimeFilter<"GuestLoad"> | Date | string
+    count?: IntFilter<"GuestLoad"> | number
+    createdAt?: DateTimeFilter<"GuestLoad"> | Date | string
+    updatedAt?: DateTimeFilter<"GuestLoad"> | Date | string
+    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
+    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+  }
+
+  export type GuestLoadOrderByWithRelationInput = {
+    id?: SortOrder
+    link?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    datetime?: SortOrder
+    count?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    meetup?: MeetupOrderByWithRelationInput
+    person?: PersonOrderByWithRelationInput
+    _relevance?: GuestLoadOrderByRelevanceInput
+  }
+
+  export type GuestLoadWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: GuestLoadWhereInput | GuestLoadWhereInput[]
+    OR?: GuestLoadWhereInput[]
+    NOT?: GuestLoadWhereInput | GuestLoadWhereInput[]
+    link?: StringFilter<"GuestLoad"> | string
+    meetupId?: StringFilter<"GuestLoad"> | string
+    personId?: StringFilter<"GuestLoad"> | string
+    datetime?: DateTimeFilter<"GuestLoad"> | Date | string
+    count?: IntFilter<"GuestLoad"> | number
+    createdAt?: DateTimeFilter<"GuestLoad"> | Date | string
+    updatedAt?: DateTimeFilter<"GuestLoad"> | Date | string
+    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
+    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+  }, "id">
+
+  export type GuestLoadOrderByWithAggregationInput = {
+    id?: SortOrder
+    link?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    datetime?: SortOrder
+    count?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: GuestLoadCountOrderByAggregateInput
+    _avg?: GuestLoadAvgOrderByAggregateInput
+    _max?: GuestLoadMaxOrderByAggregateInput
+    _min?: GuestLoadMinOrderByAggregateInput
+    _sum?: GuestLoadSumOrderByAggregateInput
+  }
+
+  export type GuestLoadScalarWhereWithAggregatesInput = {
+    AND?: GuestLoadScalarWhereWithAggregatesInput | GuestLoadScalarWhereWithAggregatesInput[]
+    OR?: GuestLoadScalarWhereWithAggregatesInput[]
+    NOT?: GuestLoadScalarWhereWithAggregatesInput | GuestLoadScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"GuestLoad"> | string
+    link?: StringWithAggregatesFilter<"GuestLoad"> | string
+    meetupId?: StringWithAggregatesFilter<"GuestLoad"> | string
+    personId?: StringWithAggregatesFilter<"GuestLoad"> | string
+    datetime?: DateTimeWithAggregatesFilter<"GuestLoad"> | Date | string
+    count?: IntWithAggregatesFilter<"GuestLoad"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"GuestLoad"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"GuestLoad"> | Date | string
+  }
+
   export type UserCreateInput = {
     id: string
     name: string
@@ -5486,6 +19971,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     sessions?: SessionCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
+    person?: PersonCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -5498,6 +19984,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    person?: PersonUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -5510,6 +19997,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    person?: PersonUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -5522,6 +20010,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    person?: PersonUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -5804,6 +20293,907 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PersonCreateInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutPersonInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutPersonInput
+    invites?: InviteCreateNestedManyWithoutPersonInput
+    certificates?: CertificateCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
+    user: UserCreateNestedOneWithoutPersonInput
+  }
+
+  export type PersonUncheckedCreateInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutPersonInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutPersonInput
+    invites?: InviteUncheckedCreateNestedManyWithoutPersonInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
+  }
+
+  export type PersonUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUpdateManyWithoutPersonNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutPersonNestedInput
+    invites?: InviteUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
+    user?: UserUpdateOneRequiredWithoutPersonNestedInput
+  }
+
+  export type PersonUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutPersonNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutPersonNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
+  }
+
+  export type PersonCreateManyInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+  }
+
+  export type PersonUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PersonUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AddressCreateInput = {
+    id?: string
+    mapLink?: string | null
+    state: string
+    city: string
+    district: string
+    street: string
+    number: string
+    complement?: string | null
+    zipcode: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetups?: MeetupCreateNestedManyWithoutAddressInput
+  }
+
+  export type AddressUncheckedCreateInput = {
+    id?: string
+    mapLink?: string | null
+    state: string
+    city: string
+    district: string
+    street: string
+    number: string
+    complement?: string | null
+    zipcode: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetups?: MeetupUncheckedCreateNestedManyWithoutAddressInput
+  }
+
+  export type AddressUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mapLink?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    district?: StringFieldUpdateOperationsInput | string
+    street?: StringFieldUpdateOperationsInput | string
+    number?: StringFieldUpdateOperationsInput | string
+    complement?: NullableStringFieldUpdateOperationsInput | string | null
+    zipcode?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetups?: MeetupUpdateManyWithoutAddressNestedInput
+  }
+
+  export type AddressUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mapLink?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    district?: StringFieldUpdateOperationsInput | string
+    street?: StringFieldUpdateOperationsInput | string
+    number?: StringFieldUpdateOperationsInput | string
+    complement?: NullableStringFieldUpdateOperationsInput | string | null
+    zipcode?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetups?: MeetupUncheckedUpdateManyWithoutAddressNestedInput
+  }
+
+  export type AddressCreateManyInput = {
+    id?: string
+    mapLink?: string | null
+    state: string
+    city: string
+    district: string
+    street: string
+    number: string
+    complement?: string | null
+    zipcode: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AddressUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mapLink?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    district?: StringFieldUpdateOperationsInput | string
+    street?: StringFieldUpdateOperationsInput | string
+    number?: StringFieldUpdateOperationsInput | string
+    complement?: NullableStringFieldUpdateOperationsInput | string | null
+    zipcode?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AddressUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mapLink?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    district?: StringFieldUpdateOperationsInput | string
+    street?: StringFieldUpdateOperationsInput | string
+    number?: StringFieldUpdateOperationsInput | string
+    complement?: NullableStringFieldUpdateOperationsInput | string | null
+    zipcode?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupCreateInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    address: AddressCreateNestedOneWithoutMeetupsInput
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
+    invites?: InviteCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupUncheckedCreateInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    addressId: string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutMeetupInput
+    invites?: InviteUncheckedCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type MeetupUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    addressId?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type MeetupCreateManyInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    addressId: string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    addressId?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupRoleCreateInput = {
+    id?: string
+    name: string
+    subscriptionPrice: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subscriptions?: SubscriptionCreateNestedManyWithoutMeetupRoleInput
+  }
+
+  export type MeetupRoleUncheckedCreateInput = {
+    id?: string
+    name: string
+    subscriptionPrice: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutMeetupRoleInput
+  }
+
+  export type MeetupRoleUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    subscriptionPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptions?: SubscriptionUpdateManyWithoutMeetupRoleNestedInput
+  }
+
+  export type MeetupRoleUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    subscriptionPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutMeetupRoleNestedInput
+  }
+
+  export type MeetupRoleCreateManyInput = {
+    id?: string
+    name: string
+    subscriptionPrice: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupRoleUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    subscriptionPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupRoleUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    subscriptionPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupAdminCreateInput = {
+    id?: string
+    role: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetup: MeetupCreateNestedOneWithoutMeetupAdminsInput
+    person: PersonCreateNestedOneWithoutMeetupAdminsInput
+  }
+
+  export type MeetupAdminUncheckedCreateInput = {
+    id?: string
+    meetupId: string
+    personId: string
+    role: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupAdminUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetup?: MeetupUpdateOneRequiredWithoutMeetupAdminsNestedInput
+    person?: PersonUpdateOneRequiredWithoutMeetupAdminsNestedInput
+  }
+
+  export type MeetupAdminUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupAdminCreateManyInput = {
+    id?: string
+    meetupId: string
+    personId: string
+    role: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupAdminUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupAdminUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubscriptionCreateInput = {
+    id?: string
+    presenceConfirmation?: boolean | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    person: PersonCreateNestedOneWithoutSubscriptionsInput
+    meetup: MeetupCreateNestedOneWithoutSubscriptionsInput
+    meetupRole: MeetupRoleCreateNestedOneWithoutSubscriptionsInput
+    subscriptionPayments?: SubscriptionPaymentCreateNestedManyWithoutSubscriptionInput
+  }
+
+  export type SubscriptionUncheckedCreateInput = {
+    id?: string
+    personId: string
+    meetupId: string
+    meetupRoleId: string
+    presenceConfirmation?: boolean | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subscriptionPayments?: SubscriptionPaymentUncheckedCreateNestedManyWithoutSubscriptionInput
+  }
+
+  export type SubscriptionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    person?: PersonUpdateOneRequiredWithoutSubscriptionsNestedInput
+    meetup?: MeetupUpdateOneRequiredWithoutSubscriptionsNestedInput
+    meetupRole?: MeetupRoleUpdateOneRequiredWithoutSubscriptionsNestedInput
+    subscriptionPayments?: SubscriptionPaymentUpdateManyWithoutSubscriptionNestedInput
+  }
+
+  export type SubscriptionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    meetupRoleId?: StringFieldUpdateOperationsInput | string
+    presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionPayments?: SubscriptionPaymentUncheckedUpdateManyWithoutSubscriptionNestedInput
+  }
+
+  export type SubscriptionCreateManyInput = {
+    id?: string
+    personId: string
+    meetupId: string
+    meetupRoleId: string
+    presenceConfirmation?: boolean | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SubscriptionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubscriptionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    meetupRoleId?: StringFieldUpdateOperationsInput | string
+    presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InviteCreateInput = {
+    id?: string
+    link: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    person: PersonCreateNestedOneWithoutInvitesInput
+    meetup: MeetupCreateNestedOneWithoutInvitesInput
+  }
+
+  export type InviteUncheckedCreateInput = {
+    id?: string
+    personId: string
+    meetupId: string
+    link: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InviteUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    person?: PersonUpdateOneRequiredWithoutInvitesNestedInput
+    meetup?: MeetupUpdateOneRequiredWithoutInvitesNestedInput
+  }
+
+  export type InviteUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InviteCreateManyInput = {
+    id?: string
+    personId: string
+    meetupId: string
+    link: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InviteUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InviteUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PaymentCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subscriptionPayments?: SubscriptionPaymentCreateNestedManyWithoutPaymentInput
+  }
+
+  export type PaymentUncheckedCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subscriptionPayments?: SubscriptionPaymentUncheckedCreateNestedManyWithoutPaymentInput
+  }
+
+  export type PaymentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionPayments?: SubscriptionPaymentUpdateManyWithoutPaymentNestedInput
+  }
+
+  export type PaymentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionPayments?: SubscriptionPaymentUncheckedUpdateManyWithoutPaymentNestedInput
+  }
+
+  export type PaymentCreateManyInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PaymentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PaymentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubscriptionPaymentCreateInput = {
+    id?: string
+    price: Decimal | DecimalJsLike | number | string
+    paymentStatus?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subscription: SubscriptionCreateNestedOneWithoutSubscriptionPaymentsInput
+    payment: PaymentCreateNestedOneWithoutSubscriptionPaymentsInput
+  }
+
+  export type SubscriptionPaymentUncheckedCreateInput = {
+    id?: string
+    subscriptionId: string
+    paymentId: string
+    price: Decimal | DecimalJsLike | number | string
+    paymentStatus?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SubscriptionPaymentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentStatus?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscription?: SubscriptionUpdateOneRequiredWithoutSubscriptionPaymentsNestedInput
+    payment?: PaymentUpdateOneRequiredWithoutSubscriptionPaymentsNestedInput
+  }
+
+  export type SubscriptionPaymentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subscriptionId?: StringFieldUpdateOperationsInput | string
+    paymentId?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentStatus?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubscriptionPaymentCreateManyInput = {
+    id?: string
+    subscriptionId: string
+    paymentId: string
+    price: Decimal | DecimalJsLike | number | string
+    paymentStatus?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SubscriptionPaymentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentStatus?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubscriptionPaymentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subscriptionId?: StringFieldUpdateOperationsInput | string
+    paymentId?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentStatus?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CertificateCreateInput = {
+    id?: string
+    link: string
+    securityCode: string
+    datetime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    person: PersonCreateNestedOneWithoutCertificatesInput
+    meetup: MeetupCreateNestedOneWithoutCertificatesInput
+  }
+
+  export type CertificateUncheckedCreateInput = {
+    id?: string
+    personId: string
+    meetupId: string
+    link: string
+    securityCode: string
+    datetime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CertificateUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    securityCode?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    person?: PersonUpdateOneRequiredWithoutCertificatesNestedInput
+    meetup?: MeetupUpdateOneRequiredWithoutCertificatesNestedInput
+  }
+
+  export type CertificateUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    securityCode?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CertificateCreateManyInput = {
+    id?: string
+    personId: string
+    meetupId: string
+    link: string
+    securityCode: string
+    datetime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CertificateUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    securityCode?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CertificateUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    securityCode?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupMediaCreateInput = {
+    id?: string
+    link: string
+    datetime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetup: MeetupCreateNestedOneWithoutMeetupMediasInput
+    person: PersonCreateNestedOneWithoutMeetupMediasInput
+  }
+
+  export type MeetupMediaUncheckedCreateInput = {
+    id?: string
+    meetupId: string
+    personId: string
+    link: string
+    datetime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupMediaUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetup?: MeetupUpdateOneRequiredWithoutMeetupMediasNestedInput
+    person?: PersonUpdateOneRequiredWithoutMeetupMediasNestedInput
+  }
+
+  export type MeetupMediaUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupMediaCreateManyInput = {
+    id?: string
+    meetupId: string
+    personId: string
+    link: string
+    datetime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupMediaUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupMediaUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GuestLoadCreateInput = {
+    id?: string
+    link: string
+    datetime: Date | string
+    count: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetup: MeetupCreateNestedOneWithoutGuestLoadsInput
+    person: PersonCreateNestedOneWithoutGuestLoadsInput
+  }
+
+  export type GuestLoadUncheckedCreateInput = {
+    id?: string
+    link: string
+    meetupId: string
+    personId: string
+    datetime: Date | string
+    count: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GuestLoadUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetup?: MeetupUpdateOneRequiredWithoutGuestLoadsNestedInput
+    person?: PersonUpdateOneRequiredWithoutGuestLoadsNestedInput
+  }
+
+  export type GuestLoadUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GuestLoadCreateManyInput = {
+    id?: string
+    link: string
+    meetupId: string
+    personId: string
+    datetime: Date | string
+    count: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GuestLoadUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GuestLoadUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -5860,6 +21250,11 @@ export namespace Prisma {
     every?: AccountWhereInput
     some?: AccountWhereInput
     none?: AccountWhereInput
+  }
+
+  export type PersonNullableScalarRelationFilter = {
+    is?: PersonWhereInput | null
+    isNot?: PersonWhereInput | null
   }
 
   export type SortOrderInput = {
@@ -6125,6 +21520,665 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type MeetupAdminListRelationFilter = {
+    every?: MeetupAdminWhereInput
+    some?: MeetupAdminWhereInput
+    none?: MeetupAdminWhereInput
+  }
+
+  export type SubscriptionListRelationFilter = {
+    every?: SubscriptionWhereInput
+    some?: SubscriptionWhereInput
+    none?: SubscriptionWhereInput
+  }
+
+  export type InviteListRelationFilter = {
+    every?: InviteWhereInput
+    some?: InviteWhereInput
+    none?: InviteWhereInput
+  }
+
+  export type CertificateListRelationFilter = {
+    every?: CertificateWhereInput
+    some?: CertificateWhereInput
+    none?: CertificateWhereInput
+  }
+
+  export type MeetupMediaListRelationFilter = {
+    every?: MeetupMediaWhereInput
+    some?: MeetupMediaWhereInput
+    none?: MeetupMediaWhereInput
+  }
+
+  export type GuestLoadListRelationFilter = {
+    every?: GuestLoadWhereInput
+    some?: GuestLoadWhereInput
+    none?: GuestLoadWhereInput
+  }
+
+  export type MeetupAdminOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SubscriptionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type InviteOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CertificateOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MeetupMediaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type GuestLoadOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PersonOrderByRelevanceInput = {
+    fields: PersonOrderByRelevanceFieldEnum | PersonOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type PersonCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    gender?: SortOrder
+    birthdate?: SortOrder
+    cpf?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type PersonMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    gender?: SortOrder
+    birthdate?: SortOrder
+    cpf?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type PersonMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    gender?: SortOrder
+    birthdate?: SortOrder
+    cpf?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type MeetupListRelationFilter = {
+    every?: MeetupWhereInput
+    some?: MeetupWhereInput
+    none?: MeetupWhereInput
+  }
+
+  export type MeetupOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AddressOrderByRelevanceInput = {
+    fields: AddressOrderByRelevanceFieldEnum | AddressOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type AddressCountOrderByAggregateInput = {
+    id?: SortOrder
+    mapLink?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    district?: SortOrder
+    street?: SortOrder
+    number?: SortOrder
+    complement?: SortOrder
+    zipcode?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AddressMaxOrderByAggregateInput = {
+    id?: SortOrder
+    mapLink?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    district?: SortOrder
+    street?: SortOrder
+    number?: SortOrder
+    complement?: SortOrder
+    zipcode?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AddressMinOrderByAggregateInput = {
+    id?: SortOrder
+    mapLink?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    district?: SortOrder
+    street?: SortOrder
+    number?: SortOrder
+    complement?: SortOrder
+    zipcode?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AddressScalarRelationFilter = {
+    is?: AddressWhereInput
+    isNot?: AddressWhereInput
+  }
+
+  export type MeetupOrderByRelevanceInput = {
+    fields: MeetupOrderByRelevanceFieldEnum | MeetupOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type MeetupCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    datetime?: SortOrder
+    addressId?: SortOrder
+    image?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MeetupMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    datetime?: SortOrder
+    addressId?: SortOrder
+    image?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MeetupMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    datetime?: SortOrder
+    addressId?: SortOrder
+    image?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type MeetupRoleOrderByRelevanceInput = {
+    fields: MeetupRoleOrderByRelevanceFieldEnum | MeetupRoleOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type MeetupRoleCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    subscriptionPrice?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MeetupRoleAvgOrderByAggregateInput = {
+    subscriptionPrice?: SortOrder
+  }
+
+  export type MeetupRoleMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    subscriptionPrice?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MeetupRoleMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    subscriptionPrice?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MeetupRoleSumOrderByAggregateInput = {
+    subscriptionPrice?: SortOrder
+  }
+
+  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type MeetupScalarRelationFilter = {
+    is?: MeetupWhereInput
+    isNot?: MeetupWhereInput
+  }
+
+  export type PersonScalarRelationFilter = {
+    is?: PersonWhereInput
+    isNot?: PersonWhereInput
+  }
+
+  export type MeetupAdminOrderByRelevanceInput = {
+    fields: MeetupAdminOrderByRelevanceFieldEnum | MeetupAdminOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type MeetupAdminMeetupIdPersonIdCompoundUniqueInput = {
+    meetupId: string
+    personId: string
+  }
+
+  export type MeetupAdminCountOrderByAggregateInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    role?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MeetupAdminMaxOrderByAggregateInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    role?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MeetupAdminMinOrderByAggregateInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    role?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type MeetupRoleScalarRelationFilter = {
+    is?: MeetupRoleWhereInput
+    isNot?: MeetupRoleWhereInput
+  }
+
+  export type SubscriptionPaymentListRelationFilter = {
+    every?: SubscriptionPaymentWhereInput
+    some?: SubscriptionPaymentWhereInput
+    none?: SubscriptionPaymentWhereInput
+  }
+
+  export type SubscriptionPaymentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SubscriptionOrderByRelevanceInput = {
+    fields: SubscriptionOrderByRelevanceFieldEnum | SubscriptionOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type SubscriptionPersonIdMeetupIdCompoundUniqueInput = {
+    personId: string
+    meetupId: string
+  }
+
+  export type SubscriptionCountOrderByAggregateInput = {
+    id?: SortOrder
+    personId?: SortOrder
+    meetupId?: SortOrder
+    meetupRoleId?: SortOrder
+    presenceConfirmation?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SubscriptionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    personId?: SortOrder
+    meetupId?: SortOrder
+    meetupRoleId?: SortOrder
+    presenceConfirmation?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SubscriptionMinOrderByAggregateInput = {
+    id?: SortOrder
+    personId?: SortOrder
+    meetupId?: SortOrder
+    meetupRoleId?: SortOrder
+    presenceConfirmation?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type InviteOrderByRelevanceInput = {
+    fields: InviteOrderByRelevanceFieldEnum | InviteOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type InvitePersonIdMeetupIdCompoundUniqueInput = {
+    personId: string
+    meetupId: string
+  }
+
+  export type InviteCountOrderByAggregateInput = {
+    id?: SortOrder
+    personId?: SortOrder
+    meetupId?: SortOrder
+    link?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type InviteMaxOrderByAggregateInput = {
+    id?: SortOrder
+    personId?: SortOrder
+    meetupId?: SortOrder
+    link?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type InviteMinOrderByAggregateInput = {
+    id?: SortOrder
+    personId?: SortOrder
+    meetupId?: SortOrder
+    link?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PaymentOrderByRelevanceInput = {
+    fields: PaymentOrderByRelevanceFieldEnum | PaymentOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type PaymentCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PaymentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PaymentMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SubscriptionScalarRelationFilter = {
+    is?: SubscriptionWhereInput
+    isNot?: SubscriptionWhereInput
+  }
+
+  export type PaymentScalarRelationFilter = {
+    is?: PaymentWhereInput
+    isNot?: PaymentWhereInput
+  }
+
+  export type SubscriptionPaymentOrderByRelevanceInput = {
+    fields: SubscriptionPaymentOrderByRelevanceFieldEnum | SubscriptionPaymentOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type SubscriptionPaymentCountOrderByAggregateInput = {
+    id?: SortOrder
+    subscriptionId?: SortOrder
+    paymentId?: SortOrder
+    price?: SortOrder
+    paymentStatus?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SubscriptionPaymentAvgOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
+  export type SubscriptionPaymentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    subscriptionId?: SortOrder
+    paymentId?: SortOrder
+    price?: SortOrder
+    paymentStatus?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SubscriptionPaymentMinOrderByAggregateInput = {
+    id?: SortOrder
+    subscriptionId?: SortOrder
+    paymentId?: SortOrder
+    price?: SortOrder
+    paymentStatus?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SubscriptionPaymentSumOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
+  export type CertificateOrderByRelevanceInput = {
+    fields: CertificateOrderByRelevanceFieldEnum | CertificateOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type CertificatePersonIdMeetupIdCompoundUniqueInput = {
+    personId: string
+    meetupId: string
+  }
+
+  export type CertificateCountOrderByAggregateInput = {
+    id?: SortOrder
+    personId?: SortOrder
+    meetupId?: SortOrder
+    link?: SortOrder
+    securityCode?: SortOrder
+    datetime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CertificateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    personId?: SortOrder
+    meetupId?: SortOrder
+    link?: SortOrder
+    securityCode?: SortOrder
+    datetime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CertificateMinOrderByAggregateInput = {
+    id?: SortOrder
+    personId?: SortOrder
+    meetupId?: SortOrder
+    link?: SortOrder
+    securityCode?: SortOrder
+    datetime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MeetupMediaOrderByRelevanceInput = {
+    fields: MeetupMediaOrderByRelevanceFieldEnum | MeetupMediaOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type MeetupMediaCountOrderByAggregateInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    link?: SortOrder
+    datetime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MeetupMediaMaxOrderByAggregateInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    link?: SortOrder
+    datetime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MeetupMediaMinOrderByAggregateInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    link?: SortOrder
+    datetime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type GuestLoadOrderByRelevanceInput = {
+    fields: GuestLoadOrderByRelevanceFieldEnum | GuestLoadOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type GuestLoadCountOrderByAggregateInput = {
+    id?: SortOrder
+    link?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    datetime?: SortOrder
+    count?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type GuestLoadAvgOrderByAggregateInput = {
+    count?: SortOrder
+  }
+
+  export type GuestLoadMaxOrderByAggregateInput = {
+    id?: SortOrder
+    link?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    datetime?: SortOrder
+    count?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type GuestLoadMinOrderByAggregateInput = {
+    id?: SortOrder
+    link?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    datetime?: SortOrder
+    count?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type GuestLoadSumOrderByAggregateInput = {
+    count?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
   export type SessionCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -6139,6 +22193,12 @@ export namespace Prisma {
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
   }
 
+  export type PersonCreateNestedOneWithoutUserInput = {
+    create?: XOR<PersonCreateWithoutUserInput, PersonUncheckedCreateWithoutUserInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutUserInput
+    connect?: PersonWhereUniqueInput
+  }
+
   export type SessionUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -6151,6 +22211,12 @@ export namespace Prisma {
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
     createMany?: AccountCreateManyUserInputEnvelope
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+  }
+
+  export type PersonUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<PersonCreateWithoutUserInput, PersonUncheckedCreateWithoutUserInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutUserInput
+    connect?: PersonWhereUniqueInput
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -6197,6 +22263,16 @@ export namespace Prisma {
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
+  export type PersonUpdateOneWithoutUserNestedInput = {
+    create?: XOR<PersonCreateWithoutUserInput, PersonUncheckedCreateWithoutUserInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutUserInput
+    upsert?: PersonUpsertWithoutUserInput
+    disconnect?: PersonWhereInput | boolean
+    delete?: PersonWhereInput | boolean
+    connect?: PersonWhereUniqueInput
+    update?: XOR<XOR<PersonUpdateToOneWithWhereWithoutUserInput, PersonUpdateWithoutUserInput>, PersonUncheckedUpdateWithoutUserInput>
+  }
+
   export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -6223,6 +22299,16 @@ export namespace Prisma {
     update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
+  }
+
+  export type PersonUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<PersonCreateWithoutUserInput, PersonUncheckedCreateWithoutUserInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutUserInput
+    upsert?: PersonUpsertWithoutUserInput
+    disconnect?: PersonWhereInput | boolean
+    delete?: PersonWhereInput | boolean
+    connect?: PersonWhereUniqueInput
+    update?: XOR<XOR<PersonUpdateToOneWithWhereWithoutUserInput, PersonUpdateWithoutUserInput>, PersonUncheckedUpdateWithoutUserInput>
   }
 
   export type UserCreateNestedOneWithoutSessionsInput = {
@@ -6255,6 +22341,936 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutAccountsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAccountsInput, UserUpdateWithoutAccountsInput>, UserUncheckedUpdateWithoutAccountsInput>
+  }
+
+  export type MeetupAdminCreateNestedManyWithoutPersonInput = {
+    create?: XOR<MeetupAdminCreateWithoutPersonInput, MeetupAdminUncheckedCreateWithoutPersonInput> | MeetupAdminCreateWithoutPersonInput[] | MeetupAdminUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: MeetupAdminCreateOrConnectWithoutPersonInput | MeetupAdminCreateOrConnectWithoutPersonInput[]
+    createMany?: MeetupAdminCreateManyPersonInputEnvelope
+    connect?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+  }
+
+  export type SubscriptionCreateNestedManyWithoutPersonInput = {
+    create?: XOR<SubscriptionCreateWithoutPersonInput, SubscriptionUncheckedCreateWithoutPersonInput> | SubscriptionCreateWithoutPersonInput[] | SubscriptionUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: SubscriptionCreateOrConnectWithoutPersonInput | SubscriptionCreateOrConnectWithoutPersonInput[]
+    createMany?: SubscriptionCreateManyPersonInputEnvelope
+    connect?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+  }
+
+  export type InviteCreateNestedManyWithoutPersonInput = {
+    create?: XOR<InviteCreateWithoutPersonInput, InviteUncheckedCreateWithoutPersonInput> | InviteCreateWithoutPersonInput[] | InviteUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: InviteCreateOrConnectWithoutPersonInput | InviteCreateOrConnectWithoutPersonInput[]
+    createMany?: InviteCreateManyPersonInputEnvelope
+    connect?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+  }
+
+  export type CertificateCreateNestedManyWithoutPersonInput = {
+    create?: XOR<CertificateCreateWithoutPersonInput, CertificateUncheckedCreateWithoutPersonInput> | CertificateCreateWithoutPersonInput[] | CertificateUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: CertificateCreateOrConnectWithoutPersonInput | CertificateCreateOrConnectWithoutPersonInput[]
+    createMany?: CertificateCreateManyPersonInputEnvelope
+    connect?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+  }
+
+  export type MeetupMediaCreateNestedManyWithoutPersonInput = {
+    create?: XOR<MeetupMediaCreateWithoutPersonInput, MeetupMediaUncheckedCreateWithoutPersonInput> | MeetupMediaCreateWithoutPersonInput[] | MeetupMediaUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: MeetupMediaCreateOrConnectWithoutPersonInput | MeetupMediaCreateOrConnectWithoutPersonInput[]
+    createMany?: MeetupMediaCreateManyPersonInputEnvelope
+    connect?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+  }
+
+  export type GuestLoadCreateNestedManyWithoutPersonInput = {
+    create?: XOR<GuestLoadCreateWithoutPersonInput, GuestLoadUncheckedCreateWithoutPersonInput> | GuestLoadCreateWithoutPersonInput[] | GuestLoadUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: GuestLoadCreateOrConnectWithoutPersonInput | GuestLoadCreateOrConnectWithoutPersonInput[]
+    createMany?: GuestLoadCreateManyPersonInputEnvelope
+    connect?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+  }
+
+  export type UserCreateNestedOneWithoutPersonInput = {
+    create?: XOR<UserCreateWithoutPersonInput, UserUncheckedCreateWithoutPersonInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPersonInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type MeetupAdminUncheckedCreateNestedManyWithoutPersonInput = {
+    create?: XOR<MeetupAdminCreateWithoutPersonInput, MeetupAdminUncheckedCreateWithoutPersonInput> | MeetupAdminCreateWithoutPersonInput[] | MeetupAdminUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: MeetupAdminCreateOrConnectWithoutPersonInput | MeetupAdminCreateOrConnectWithoutPersonInput[]
+    createMany?: MeetupAdminCreateManyPersonInputEnvelope
+    connect?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+  }
+
+  export type SubscriptionUncheckedCreateNestedManyWithoutPersonInput = {
+    create?: XOR<SubscriptionCreateWithoutPersonInput, SubscriptionUncheckedCreateWithoutPersonInput> | SubscriptionCreateWithoutPersonInput[] | SubscriptionUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: SubscriptionCreateOrConnectWithoutPersonInput | SubscriptionCreateOrConnectWithoutPersonInput[]
+    createMany?: SubscriptionCreateManyPersonInputEnvelope
+    connect?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+  }
+
+  export type InviteUncheckedCreateNestedManyWithoutPersonInput = {
+    create?: XOR<InviteCreateWithoutPersonInput, InviteUncheckedCreateWithoutPersonInput> | InviteCreateWithoutPersonInput[] | InviteUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: InviteCreateOrConnectWithoutPersonInput | InviteCreateOrConnectWithoutPersonInput[]
+    createMany?: InviteCreateManyPersonInputEnvelope
+    connect?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+  }
+
+  export type CertificateUncheckedCreateNestedManyWithoutPersonInput = {
+    create?: XOR<CertificateCreateWithoutPersonInput, CertificateUncheckedCreateWithoutPersonInput> | CertificateCreateWithoutPersonInput[] | CertificateUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: CertificateCreateOrConnectWithoutPersonInput | CertificateCreateOrConnectWithoutPersonInput[]
+    createMany?: CertificateCreateManyPersonInputEnvelope
+    connect?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+  }
+
+  export type MeetupMediaUncheckedCreateNestedManyWithoutPersonInput = {
+    create?: XOR<MeetupMediaCreateWithoutPersonInput, MeetupMediaUncheckedCreateWithoutPersonInput> | MeetupMediaCreateWithoutPersonInput[] | MeetupMediaUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: MeetupMediaCreateOrConnectWithoutPersonInput | MeetupMediaCreateOrConnectWithoutPersonInput[]
+    createMany?: MeetupMediaCreateManyPersonInputEnvelope
+    connect?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+  }
+
+  export type GuestLoadUncheckedCreateNestedManyWithoutPersonInput = {
+    create?: XOR<GuestLoadCreateWithoutPersonInput, GuestLoadUncheckedCreateWithoutPersonInput> | GuestLoadCreateWithoutPersonInput[] | GuestLoadUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: GuestLoadCreateOrConnectWithoutPersonInput | GuestLoadCreateOrConnectWithoutPersonInput[]
+    createMany?: GuestLoadCreateManyPersonInputEnvelope
+    connect?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+  }
+
+  export type MeetupAdminUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<MeetupAdminCreateWithoutPersonInput, MeetupAdminUncheckedCreateWithoutPersonInput> | MeetupAdminCreateWithoutPersonInput[] | MeetupAdminUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: MeetupAdminCreateOrConnectWithoutPersonInput | MeetupAdminCreateOrConnectWithoutPersonInput[]
+    upsert?: MeetupAdminUpsertWithWhereUniqueWithoutPersonInput | MeetupAdminUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: MeetupAdminCreateManyPersonInputEnvelope
+    set?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+    disconnect?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+    delete?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+    connect?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+    update?: MeetupAdminUpdateWithWhereUniqueWithoutPersonInput | MeetupAdminUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: MeetupAdminUpdateManyWithWhereWithoutPersonInput | MeetupAdminUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: MeetupAdminScalarWhereInput | MeetupAdminScalarWhereInput[]
+  }
+
+  export type SubscriptionUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<SubscriptionCreateWithoutPersonInput, SubscriptionUncheckedCreateWithoutPersonInput> | SubscriptionCreateWithoutPersonInput[] | SubscriptionUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: SubscriptionCreateOrConnectWithoutPersonInput | SubscriptionCreateOrConnectWithoutPersonInput[]
+    upsert?: SubscriptionUpsertWithWhereUniqueWithoutPersonInput | SubscriptionUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: SubscriptionCreateManyPersonInputEnvelope
+    set?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    disconnect?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    delete?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    connect?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    update?: SubscriptionUpdateWithWhereUniqueWithoutPersonInput | SubscriptionUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: SubscriptionUpdateManyWithWhereWithoutPersonInput | SubscriptionUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: SubscriptionScalarWhereInput | SubscriptionScalarWhereInput[]
+  }
+
+  export type InviteUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<InviteCreateWithoutPersonInput, InviteUncheckedCreateWithoutPersonInput> | InviteCreateWithoutPersonInput[] | InviteUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: InviteCreateOrConnectWithoutPersonInput | InviteCreateOrConnectWithoutPersonInput[]
+    upsert?: InviteUpsertWithWhereUniqueWithoutPersonInput | InviteUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: InviteCreateManyPersonInputEnvelope
+    set?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+    disconnect?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+    delete?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+    connect?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+    update?: InviteUpdateWithWhereUniqueWithoutPersonInput | InviteUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: InviteUpdateManyWithWhereWithoutPersonInput | InviteUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: InviteScalarWhereInput | InviteScalarWhereInput[]
+  }
+
+  export type CertificateUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<CertificateCreateWithoutPersonInput, CertificateUncheckedCreateWithoutPersonInput> | CertificateCreateWithoutPersonInput[] | CertificateUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: CertificateCreateOrConnectWithoutPersonInput | CertificateCreateOrConnectWithoutPersonInput[]
+    upsert?: CertificateUpsertWithWhereUniqueWithoutPersonInput | CertificateUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: CertificateCreateManyPersonInputEnvelope
+    set?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+    disconnect?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+    delete?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+    connect?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+    update?: CertificateUpdateWithWhereUniqueWithoutPersonInput | CertificateUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: CertificateUpdateManyWithWhereWithoutPersonInput | CertificateUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: CertificateScalarWhereInput | CertificateScalarWhereInput[]
+  }
+
+  export type MeetupMediaUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<MeetupMediaCreateWithoutPersonInput, MeetupMediaUncheckedCreateWithoutPersonInput> | MeetupMediaCreateWithoutPersonInput[] | MeetupMediaUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: MeetupMediaCreateOrConnectWithoutPersonInput | MeetupMediaCreateOrConnectWithoutPersonInput[]
+    upsert?: MeetupMediaUpsertWithWhereUniqueWithoutPersonInput | MeetupMediaUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: MeetupMediaCreateManyPersonInputEnvelope
+    set?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+    disconnect?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+    delete?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+    connect?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+    update?: MeetupMediaUpdateWithWhereUniqueWithoutPersonInput | MeetupMediaUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: MeetupMediaUpdateManyWithWhereWithoutPersonInput | MeetupMediaUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: MeetupMediaScalarWhereInput | MeetupMediaScalarWhereInput[]
+  }
+
+  export type GuestLoadUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<GuestLoadCreateWithoutPersonInput, GuestLoadUncheckedCreateWithoutPersonInput> | GuestLoadCreateWithoutPersonInput[] | GuestLoadUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: GuestLoadCreateOrConnectWithoutPersonInput | GuestLoadCreateOrConnectWithoutPersonInput[]
+    upsert?: GuestLoadUpsertWithWhereUniqueWithoutPersonInput | GuestLoadUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: GuestLoadCreateManyPersonInputEnvelope
+    set?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+    disconnect?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+    delete?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+    connect?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+    update?: GuestLoadUpdateWithWhereUniqueWithoutPersonInput | GuestLoadUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: GuestLoadUpdateManyWithWhereWithoutPersonInput | GuestLoadUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: GuestLoadScalarWhereInput | GuestLoadScalarWhereInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutPersonNestedInput = {
+    create?: XOR<UserCreateWithoutPersonInput, UserUncheckedCreateWithoutPersonInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPersonInput
+    upsert?: UserUpsertWithoutPersonInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPersonInput, UserUpdateWithoutPersonInput>, UserUncheckedUpdateWithoutPersonInput>
+  }
+
+  export type MeetupAdminUncheckedUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<MeetupAdminCreateWithoutPersonInput, MeetupAdminUncheckedCreateWithoutPersonInput> | MeetupAdminCreateWithoutPersonInput[] | MeetupAdminUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: MeetupAdminCreateOrConnectWithoutPersonInput | MeetupAdminCreateOrConnectWithoutPersonInput[]
+    upsert?: MeetupAdminUpsertWithWhereUniqueWithoutPersonInput | MeetupAdminUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: MeetupAdminCreateManyPersonInputEnvelope
+    set?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+    disconnect?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+    delete?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+    connect?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+    update?: MeetupAdminUpdateWithWhereUniqueWithoutPersonInput | MeetupAdminUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: MeetupAdminUpdateManyWithWhereWithoutPersonInput | MeetupAdminUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: MeetupAdminScalarWhereInput | MeetupAdminScalarWhereInput[]
+  }
+
+  export type SubscriptionUncheckedUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<SubscriptionCreateWithoutPersonInput, SubscriptionUncheckedCreateWithoutPersonInput> | SubscriptionCreateWithoutPersonInput[] | SubscriptionUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: SubscriptionCreateOrConnectWithoutPersonInput | SubscriptionCreateOrConnectWithoutPersonInput[]
+    upsert?: SubscriptionUpsertWithWhereUniqueWithoutPersonInput | SubscriptionUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: SubscriptionCreateManyPersonInputEnvelope
+    set?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    disconnect?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    delete?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    connect?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    update?: SubscriptionUpdateWithWhereUniqueWithoutPersonInput | SubscriptionUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: SubscriptionUpdateManyWithWhereWithoutPersonInput | SubscriptionUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: SubscriptionScalarWhereInput | SubscriptionScalarWhereInput[]
+  }
+
+  export type InviteUncheckedUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<InviteCreateWithoutPersonInput, InviteUncheckedCreateWithoutPersonInput> | InviteCreateWithoutPersonInput[] | InviteUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: InviteCreateOrConnectWithoutPersonInput | InviteCreateOrConnectWithoutPersonInput[]
+    upsert?: InviteUpsertWithWhereUniqueWithoutPersonInput | InviteUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: InviteCreateManyPersonInputEnvelope
+    set?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+    disconnect?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+    delete?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+    connect?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+    update?: InviteUpdateWithWhereUniqueWithoutPersonInput | InviteUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: InviteUpdateManyWithWhereWithoutPersonInput | InviteUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: InviteScalarWhereInput | InviteScalarWhereInput[]
+  }
+
+  export type CertificateUncheckedUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<CertificateCreateWithoutPersonInput, CertificateUncheckedCreateWithoutPersonInput> | CertificateCreateWithoutPersonInput[] | CertificateUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: CertificateCreateOrConnectWithoutPersonInput | CertificateCreateOrConnectWithoutPersonInput[]
+    upsert?: CertificateUpsertWithWhereUniqueWithoutPersonInput | CertificateUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: CertificateCreateManyPersonInputEnvelope
+    set?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+    disconnect?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+    delete?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+    connect?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+    update?: CertificateUpdateWithWhereUniqueWithoutPersonInput | CertificateUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: CertificateUpdateManyWithWhereWithoutPersonInput | CertificateUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: CertificateScalarWhereInput | CertificateScalarWhereInput[]
+  }
+
+  export type MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<MeetupMediaCreateWithoutPersonInput, MeetupMediaUncheckedCreateWithoutPersonInput> | MeetupMediaCreateWithoutPersonInput[] | MeetupMediaUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: MeetupMediaCreateOrConnectWithoutPersonInput | MeetupMediaCreateOrConnectWithoutPersonInput[]
+    upsert?: MeetupMediaUpsertWithWhereUniqueWithoutPersonInput | MeetupMediaUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: MeetupMediaCreateManyPersonInputEnvelope
+    set?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+    disconnect?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+    delete?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+    connect?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+    update?: MeetupMediaUpdateWithWhereUniqueWithoutPersonInput | MeetupMediaUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: MeetupMediaUpdateManyWithWhereWithoutPersonInput | MeetupMediaUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: MeetupMediaScalarWhereInput | MeetupMediaScalarWhereInput[]
+  }
+
+  export type GuestLoadUncheckedUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<GuestLoadCreateWithoutPersonInput, GuestLoadUncheckedCreateWithoutPersonInput> | GuestLoadCreateWithoutPersonInput[] | GuestLoadUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: GuestLoadCreateOrConnectWithoutPersonInput | GuestLoadCreateOrConnectWithoutPersonInput[]
+    upsert?: GuestLoadUpsertWithWhereUniqueWithoutPersonInput | GuestLoadUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: GuestLoadCreateManyPersonInputEnvelope
+    set?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+    disconnect?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+    delete?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+    connect?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+    update?: GuestLoadUpdateWithWhereUniqueWithoutPersonInput | GuestLoadUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: GuestLoadUpdateManyWithWhereWithoutPersonInput | GuestLoadUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: GuestLoadScalarWhereInput | GuestLoadScalarWhereInput[]
+  }
+
+  export type MeetupCreateNestedManyWithoutAddressInput = {
+    create?: XOR<MeetupCreateWithoutAddressInput, MeetupUncheckedCreateWithoutAddressInput> | MeetupCreateWithoutAddressInput[] | MeetupUncheckedCreateWithoutAddressInput[]
+    connectOrCreate?: MeetupCreateOrConnectWithoutAddressInput | MeetupCreateOrConnectWithoutAddressInput[]
+    createMany?: MeetupCreateManyAddressInputEnvelope
+    connect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+  }
+
+  export type MeetupUncheckedCreateNestedManyWithoutAddressInput = {
+    create?: XOR<MeetupCreateWithoutAddressInput, MeetupUncheckedCreateWithoutAddressInput> | MeetupCreateWithoutAddressInput[] | MeetupUncheckedCreateWithoutAddressInput[]
+    connectOrCreate?: MeetupCreateOrConnectWithoutAddressInput | MeetupCreateOrConnectWithoutAddressInput[]
+    createMany?: MeetupCreateManyAddressInputEnvelope
+    connect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+  }
+
+  export type MeetupUpdateManyWithoutAddressNestedInput = {
+    create?: XOR<MeetupCreateWithoutAddressInput, MeetupUncheckedCreateWithoutAddressInput> | MeetupCreateWithoutAddressInput[] | MeetupUncheckedCreateWithoutAddressInput[]
+    connectOrCreate?: MeetupCreateOrConnectWithoutAddressInput | MeetupCreateOrConnectWithoutAddressInput[]
+    upsert?: MeetupUpsertWithWhereUniqueWithoutAddressInput | MeetupUpsertWithWhereUniqueWithoutAddressInput[]
+    createMany?: MeetupCreateManyAddressInputEnvelope
+    set?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    disconnect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    delete?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    connect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    update?: MeetupUpdateWithWhereUniqueWithoutAddressInput | MeetupUpdateWithWhereUniqueWithoutAddressInput[]
+    updateMany?: MeetupUpdateManyWithWhereWithoutAddressInput | MeetupUpdateManyWithWhereWithoutAddressInput[]
+    deleteMany?: MeetupScalarWhereInput | MeetupScalarWhereInput[]
+  }
+
+  export type MeetupUncheckedUpdateManyWithoutAddressNestedInput = {
+    create?: XOR<MeetupCreateWithoutAddressInput, MeetupUncheckedCreateWithoutAddressInput> | MeetupCreateWithoutAddressInput[] | MeetupUncheckedCreateWithoutAddressInput[]
+    connectOrCreate?: MeetupCreateOrConnectWithoutAddressInput | MeetupCreateOrConnectWithoutAddressInput[]
+    upsert?: MeetupUpsertWithWhereUniqueWithoutAddressInput | MeetupUpsertWithWhereUniqueWithoutAddressInput[]
+    createMany?: MeetupCreateManyAddressInputEnvelope
+    set?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    disconnect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    delete?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    connect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    update?: MeetupUpdateWithWhereUniqueWithoutAddressInput | MeetupUpdateWithWhereUniqueWithoutAddressInput[]
+    updateMany?: MeetupUpdateManyWithWhereWithoutAddressInput | MeetupUpdateManyWithWhereWithoutAddressInput[]
+    deleteMany?: MeetupScalarWhereInput | MeetupScalarWhereInput[]
+  }
+
+  export type AddressCreateNestedOneWithoutMeetupsInput = {
+    create?: XOR<AddressCreateWithoutMeetupsInput, AddressUncheckedCreateWithoutMeetupsInput>
+    connectOrCreate?: AddressCreateOrConnectWithoutMeetupsInput
+    connect?: AddressWhereUniqueInput
+  }
+
+  export type MeetupAdminCreateNestedManyWithoutMeetupInput = {
+    create?: XOR<MeetupAdminCreateWithoutMeetupInput, MeetupAdminUncheckedCreateWithoutMeetupInput> | MeetupAdminCreateWithoutMeetupInput[] | MeetupAdminUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: MeetupAdminCreateOrConnectWithoutMeetupInput | MeetupAdminCreateOrConnectWithoutMeetupInput[]
+    createMany?: MeetupAdminCreateManyMeetupInputEnvelope
+    connect?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+  }
+
+  export type SubscriptionCreateNestedManyWithoutMeetupInput = {
+    create?: XOR<SubscriptionCreateWithoutMeetupInput, SubscriptionUncheckedCreateWithoutMeetupInput> | SubscriptionCreateWithoutMeetupInput[] | SubscriptionUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: SubscriptionCreateOrConnectWithoutMeetupInput | SubscriptionCreateOrConnectWithoutMeetupInput[]
+    createMany?: SubscriptionCreateManyMeetupInputEnvelope
+    connect?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+  }
+
+  export type InviteCreateNestedManyWithoutMeetupInput = {
+    create?: XOR<InviteCreateWithoutMeetupInput, InviteUncheckedCreateWithoutMeetupInput> | InviteCreateWithoutMeetupInput[] | InviteUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: InviteCreateOrConnectWithoutMeetupInput | InviteCreateOrConnectWithoutMeetupInput[]
+    createMany?: InviteCreateManyMeetupInputEnvelope
+    connect?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+  }
+
+  export type CertificateCreateNestedManyWithoutMeetupInput = {
+    create?: XOR<CertificateCreateWithoutMeetupInput, CertificateUncheckedCreateWithoutMeetupInput> | CertificateCreateWithoutMeetupInput[] | CertificateUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: CertificateCreateOrConnectWithoutMeetupInput | CertificateCreateOrConnectWithoutMeetupInput[]
+    createMany?: CertificateCreateManyMeetupInputEnvelope
+    connect?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+  }
+
+  export type MeetupMediaCreateNestedManyWithoutMeetupInput = {
+    create?: XOR<MeetupMediaCreateWithoutMeetupInput, MeetupMediaUncheckedCreateWithoutMeetupInput> | MeetupMediaCreateWithoutMeetupInput[] | MeetupMediaUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: MeetupMediaCreateOrConnectWithoutMeetupInput | MeetupMediaCreateOrConnectWithoutMeetupInput[]
+    createMany?: MeetupMediaCreateManyMeetupInputEnvelope
+    connect?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+  }
+
+  export type GuestLoadCreateNestedManyWithoutMeetupInput = {
+    create?: XOR<GuestLoadCreateWithoutMeetupInput, GuestLoadUncheckedCreateWithoutMeetupInput> | GuestLoadCreateWithoutMeetupInput[] | GuestLoadUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: GuestLoadCreateOrConnectWithoutMeetupInput | GuestLoadCreateOrConnectWithoutMeetupInput[]
+    createMany?: GuestLoadCreateManyMeetupInputEnvelope
+    connect?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+  }
+
+  export type MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput = {
+    create?: XOR<MeetupAdminCreateWithoutMeetupInput, MeetupAdminUncheckedCreateWithoutMeetupInput> | MeetupAdminCreateWithoutMeetupInput[] | MeetupAdminUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: MeetupAdminCreateOrConnectWithoutMeetupInput | MeetupAdminCreateOrConnectWithoutMeetupInput[]
+    createMany?: MeetupAdminCreateManyMeetupInputEnvelope
+    connect?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+  }
+
+  export type SubscriptionUncheckedCreateNestedManyWithoutMeetupInput = {
+    create?: XOR<SubscriptionCreateWithoutMeetupInput, SubscriptionUncheckedCreateWithoutMeetupInput> | SubscriptionCreateWithoutMeetupInput[] | SubscriptionUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: SubscriptionCreateOrConnectWithoutMeetupInput | SubscriptionCreateOrConnectWithoutMeetupInput[]
+    createMany?: SubscriptionCreateManyMeetupInputEnvelope
+    connect?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+  }
+
+  export type InviteUncheckedCreateNestedManyWithoutMeetupInput = {
+    create?: XOR<InviteCreateWithoutMeetupInput, InviteUncheckedCreateWithoutMeetupInput> | InviteCreateWithoutMeetupInput[] | InviteUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: InviteCreateOrConnectWithoutMeetupInput | InviteCreateOrConnectWithoutMeetupInput[]
+    createMany?: InviteCreateManyMeetupInputEnvelope
+    connect?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+  }
+
+  export type CertificateUncheckedCreateNestedManyWithoutMeetupInput = {
+    create?: XOR<CertificateCreateWithoutMeetupInput, CertificateUncheckedCreateWithoutMeetupInput> | CertificateCreateWithoutMeetupInput[] | CertificateUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: CertificateCreateOrConnectWithoutMeetupInput | CertificateCreateOrConnectWithoutMeetupInput[]
+    createMany?: CertificateCreateManyMeetupInputEnvelope
+    connect?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+  }
+
+  export type MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput = {
+    create?: XOR<MeetupMediaCreateWithoutMeetupInput, MeetupMediaUncheckedCreateWithoutMeetupInput> | MeetupMediaCreateWithoutMeetupInput[] | MeetupMediaUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: MeetupMediaCreateOrConnectWithoutMeetupInput | MeetupMediaCreateOrConnectWithoutMeetupInput[]
+    createMany?: MeetupMediaCreateManyMeetupInputEnvelope
+    connect?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+  }
+
+  export type GuestLoadUncheckedCreateNestedManyWithoutMeetupInput = {
+    create?: XOR<GuestLoadCreateWithoutMeetupInput, GuestLoadUncheckedCreateWithoutMeetupInput> | GuestLoadCreateWithoutMeetupInput[] | GuestLoadUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: GuestLoadCreateOrConnectWithoutMeetupInput | GuestLoadCreateOrConnectWithoutMeetupInput[]
+    createMany?: GuestLoadCreateManyMeetupInputEnvelope
+    connect?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+  }
+
+  export type AddressUpdateOneRequiredWithoutMeetupsNestedInput = {
+    create?: XOR<AddressCreateWithoutMeetupsInput, AddressUncheckedCreateWithoutMeetupsInput>
+    connectOrCreate?: AddressCreateOrConnectWithoutMeetupsInput
+    upsert?: AddressUpsertWithoutMeetupsInput
+    connect?: AddressWhereUniqueInput
+    update?: XOR<XOR<AddressUpdateToOneWithWhereWithoutMeetupsInput, AddressUpdateWithoutMeetupsInput>, AddressUncheckedUpdateWithoutMeetupsInput>
+  }
+
+  export type MeetupAdminUpdateManyWithoutMeetupNestedInput = {
+    create?: XOR<MeetupAdminCreateWithoutMeetupInput, MeetupAdminUncheckedCreateWithoutMeetupInput> | MeetupAdminCreateWithoutMeetupInput[] | MeetupAdminUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: MeetupAdminCreateOrConnectWithoutMeetupInput | MeetupAdminCreateOrConnectWithoutMeetupInput[]
+    upsert?: MeetupAdminUpsertWithWhereUniqueWithoutMeetupInput | MeetupAdminUpsertWithWhereUniqueWithoutMeetupInput[]
+    createMany?: MeetupAdminCreateManyMeetupInputEnvelope
+    set?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+    disconnect?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+    delete?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+    connect?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+    update?: MeetupAdminUpdateWithWhereUniqueWithoutMeetupInput | MeetupAdminUpdateWithWhereUniqueWithoutMeetupInput[]
+    updateMany?: MeetupAdminUpdateManyWithWhereWithoutMeetupInput | MeetupAdminUpdateManyWithWhereWithoutMeetupInput[]
+    deleteMany?: MeetupAdminScalarWhereInput | MeetupAdminScalarWhereInput[]
+  }
+
+  export type SubscriptionUpdateManyWithoutMeetupNestedInput = {
+    create?: XOR<SubscriptionCreateWithoutMeetupInput, SubscriptionUncheckedCreateWithoutMeetupInput> | SubscriptionCreateWithoutMeetupInput[] | SubscriptionUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: SubscriptionCreateOrConnectWithoutMeetupInput | SubscriptionCreateOrConnectWithoutMeetupInput[]
+    upsert?: SubscriptionUpsertWithWhereUniqueWithoutMeetupInput | SubscriptionUpsertWithWhereUniqueWithoutMeetupInput[]
+    createMany?: SubscriptionCreateManyMeetupInputEnvelope
+    set?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    disconnect?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    delete?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    connect?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    update?: SubscriptionUpdateWithWhereUniqueWithoutMeetupInput | SubscriptionUpdateWithWhereUniqueWithoutMeetupInput[]
+    updateMany?: SubscriptionUpdateManyWithWhereWithoutMeetupInput | SubscriptionUpdateManyWithWhereWithoutMeetupInput[]
+    deleteMany?: SubscriptionScalarWhereInput | SubscriptionScalarWhereInput[]
+  }
+
+  export type InviteUpdateManyWithoutMeetupNestedInput = {
+    create?: XOR<InviteCreateWithoutMeetupInput, InviteUncheckedCreateWithoutMeetupInput> | InviteCreateWithoutMeetupInput[] | InviteUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: InviteCreateOrConnectWithoutMeetupInput | InviteCreateOrConnectWithoutMeetupInput[]
+    upsert?: InviteUpsertWithWhereUniqueWithoutMeetupInput | InviteUpsertWithWhereUniqueWithoutMeetupInput[]
+    createMany?: InviteCreateManyMeetupInputEnvelope
+    set?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+    disconnect?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+    delete?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+    connect?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+    update?: InviteUpdateWithWhereUniqueWithoutMeetupInput | InviteUpdateWithWhereUniqueWithoutMeetupInput[]
+    updateMany?: InviteUpdateManyWithWhereWithoutMeetupInput | InviteUpdateManyWithWhereWithoutMeetupInput[]
+    deleteMany?: InviteScalarWhereInput | InviteScalarWhereInput[]
+  }
+
+  export type CertificateUpdateManyWithoutMeetupNestedInput = {
+    create?: XOR<CertificateCreateWithoutMeetupInput, CertificateUncheckedCreateWithoutMeetupInput> | CertificateCreateWithoutMeetupInput[] | CertificateUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: CertificateCreateOrConnectWithoutMeetupInput | CertificateCreateOrConnectWithoutMeetupInput[]
+    upsert?: CertificateUpsertWithWhereUniqueWithoutMeetupInput | CertificateUpsertWithWhereUniqueWithoutMeetupInput[]
+    createMany?: CertificateCreateManyMeetupInputEnvelope
+    set?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+    disconnect?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+    delete?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+    connect?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+    update?: CertificateUpdateWithWhereUniqueWithoutMeetupInput | CertificateUpdateWithWhereUniqueWithoutMeetupInput[]
+    updateMany?: CertificateUpdateManyWithWhereWithoutMeetupInput | CertificateUpdateManyWithWhereWithoutMeetupInput[]
+    deleteMany?: CertificateScalarWhereInput | CertificateScalarWhereInput[]
+  }
+
+  export type MeetupMediaUpdateManyWithoutMeetupNestedInput = {
+    create?: XOR<MeetupMediaCreateWithoutMeetupInput, MeetupMediaUncheckedCreateWithoutMeetupInput> | MeetupMediaCreateWithoutMeetupInput[] | MeetupMediaUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: MeetupMediaCreateOrConnectWithoutMeetupInput | MeetupMediaCreateOrConnectWithoutMeetupInput[]
+    upsert?: MeetupMediaUpsertWithWhereUniqueWithoutMeetupInput | MeetupMediaUpsertWithWhereUniqueWithoutMeetupInput[]
+    createMany?: MeetupMediaCreateManyMeetupInputEnvelope
+    set?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+    disconnect?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+    delete?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+    connect?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+    update?: MeetupMediaUpdateWithWhereUniqueWithoutMeetupInput | MeetupMediaUpdateWithWhereUniqueWithoutMeetupInput[]
+    updateMany?: MeetupMediaUpdateManyWithWhereWithoutMeetupInput | MeetupMediaUpdateManyWithWhereWithoutMeetupInput[]
+    deleteMany?: MeetupMediaScalarWhereInput | MeetupMediaScalarWhereInput[]
+  }
+
+  export type GuestLoadUpdateManyWithoutMeetupNestedInput = {
+    create?: XOR<GuestLoadCreateWithoutMeetupInput, GuestLoadUncheckedCreateWithoutMeetupInput> | GuestLoadCreateWithoutMeetupInput[] | GuestLoadUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: GuestLoadCreateOrConnectWithoutMeetupInput | GuestLoadCreateOrConnectWithoutMeetupInput[]
+    upsert?: GuestLoadUpsertWithWhereUniqueWithoutMeetupInput | GuestLoadUpsertWithWhereUniqueWithoutMeetupInput[]
+    createMany?: GuestLoadCreateManyMeetupInputEnvelope
+    set?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+    disconnect?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+    delete?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+    connect?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+    update?: GuestLoadUpdateWithWhereUniqueWithoutMeetupInput | GuestLoadUpdateWithWhereUniqueWithoutMeetupInput[]
+    updateMany?: GuestLoadUpdateManyWithWhereWithoutMeetupInput | GuestLoadUpdateManyWithWhereWithoutMeetupInput[]
+    deleteMany?: GuestLoadScalarWhereInput | GuestLoadScalarWhereInput[]
+  }
+
+  export type MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput = {
+    create?: XOR<MeetupAdminCreateWithoutMeetupInput, MeetupAdminUncheckedCreateWithoutMeetupInput> | MeetupAdminCreateWithoutMeetupInput[] | MeetupAdminUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: MeetupAdminCreateOrConnectWithoutMeetupInput | MeetupAdminCreateOrConnectWithoutMeetupInput[]
+    upsert?: MeetupAdminUpsertWithWhereUniqueWithoutMeetupInput | MeetupAdminUpsertWithWhereUniqueWithoutMeetupInput[]
+    createMany?: MeetupAdminCreateManyMeetupInputEnvelope
+    set?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+    disconnect?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+    delete?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+    connect?: MeetupAdminWhereUniqueInput | MeetupAdminWhereUniqueInput[]
+    update?: MeetupAdminUpdateWithWhereUniqueWithoutMeetupInput | MeetupAdminUpdateWithWhereUniqueWithoutMeetupInput[]
+    updateMany?: MeetupAdminUpdateManyWithWhereWithoutMeetupInput | MeetupAdminUpdateManyWithWhereWithoutMeetupInput[]
+    deleteMany?: MeetupAdminScalarWhereInput | MeetupAdminScalarWhereInput[]
+  }
+
+  export type SubscriptionUncheckedUpdateManyWithoutMeetupNestedInput = {
+    create?: XOR<SubscriptionCreateWithoutMeetupInput, SubscriptionUncheckedCreateWithoutMeetupInput> | SubscriptionCreateWithoutMeetupInput[] | SubscriptionUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: SubscriptionCreateOrConnectWithoutMeetupInput | SubscriptionCreateOrConnectWithoutMeetupInput[]
+    upsert?: SubscriptionUpsertWithWhereUniqueWithoutMeetupInput | SubscriptionUpsertWithWhereUniqueWithoutMeetupInput[]
+    createMany?: SubscriptionCreateManyMeetupInputEnvelope
+    set?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    disconnect?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    delete?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    connect?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    update?: SubscriptionUpdateWithWhereUniqueWithoutMeetupInput | SubscriptionUpdateWithWhereUniqueWithoutMeetupInput[]
+    updateMany?: SubscriptionUpdateManyWithWhereWithoutMeetupInput | SubscriptionUpdateManyWithWhereWithoutMeetupInput[]
+    deleteMany?: SubscriptionScalarWhereInput | SubscriptionScalarWhereInput[]
+  }
+
+  export type InviteUncheckedUpdateManyWithoutMeetupNestedInput = {
+    create?: XOR<InviteCreateWithoutMeetupInput, InviteUncheckedCreateWithoutMeetupInput> | InviteCreateWithoutMeetupInput[] | InviteUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: InviteCreateOrConnectWithoutMeetupInput | InviteCreateOrConnectWithoutMeetupInput[]
+    upsert?: InviteUpsertWithWhereUniqueWithoutMeetupInput | InviteUpsertWithWhereUniqueWithoutMeetupInput[]
+    createMany?: InviteCreateManyMeetupInputEnvelope
+    set?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+    disconnect?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+    delete?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+    connect?: InviteWhereUniqueInput | InviteWhereUniqueInput[]
+    update?: InviteUpdateWithWhereUniqueWithoutMeetupInput | InviteUpdateWithWhereUniqueWithoutMeetupInput[]
+    updateMany?: InviteUpdateManyWithWhereWithoutMeetupInput | InviteUpdateManyWithWhereWithoutMeetupInput[]
+    deleteMany?: InviteScalarWhereInput | InviteScalarWhereInput[]
+  }
+
+  export type CertificateUncheckedUpdateManyWithoutMeetupNestedInput = {
+    create?: XOR<CertificateCreateWithoutMeetupInput, CertificateUncheckedCreateWithoutMeetupInput> | CertificateCreateWithoutMeetupInput[] | CertificateUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: CertificateCreateOrConnectWithoutMeetupInput | CertificateCreateOrConnectWithoutMeetupInput[]
+    upsert?: CertificateUpsertWithWhereUniqueWithoutMeetupInput | CertificateUpsertWithWhereUniqueWithoutMeetupInput[]
+    createMany?: CertificateCreateManyMeetupInputEnvelope
+    set?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+    disconnect?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+    delete?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+    connect?: CertificateWhereUniqueInput | CertificateWhereUniqueInput[]
+    update?: CertificateUpdateWithWhereUniqueWithoutMeetupInput | CertificateUpdateWithWhereUniqueWithoutMeetupInput[]
+    updateMany?: CertificateUpdateManyWithWhereWithoutMeetupInput | CertificateUpdateManyWithWhereWithoutMeetupInput[]
+    deleteMany?: CertificateScalarWhereInput | CertificateScalarWhereInput[]
+  }
+
+  export type MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput = {
+    create?: XOR<MeetupMediaCreateWithoutMeetupInput, MeetupMediaUncheckedCreateWithoutMeetupInput> | MeetupMediaCreateWithoutMeetupInput[] | MeetupMediaUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: MeetupMediaCreateOrConnectWithoutMeetupInput | MeetupMediaCreateOrConnectWithoutMeetupInput[]
+    upsert?: MeetupMediaUpsertWithWhereUniqueWithoutMeetupInput | MeetupMediaUpsertWithWhereUniqueWithoutMeetupInput[]
+    createMany?: MeetupMediaCreateManyMeetupInputEnvelope
+    set?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+    disconnect?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+    delete?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+    connect?: MeetupMediaWhereUniqueInput | MeetupMediaWhereUniqueInput[]
+    update?: MeetupMediaUpdateWithWhereUniqueWithoutMeetupInput | MeetupMediaUpdateWithWhereUniqueWithoutMeetupInput[]
+    updateMany?: MeetupMediaUpdateManyWithWhereWithoutMeetupInput | MeetupMediaUpdateManyWithWhereWithoutMeetupInput[]
+    deleteMany?: MeetupMediaScalarWhereInput | MeetupMediaScalarWhereInput[]
+  }
+
+  export type GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput = {
+    create?: XOR<GuestLoadCreateWithoutMeetupInput, GuestLoadUncheckedCreateWithoutMeetupInput> | GuestLoadCreateWithoutMeetupInput[] | GuestLoadUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: GuestLoadCreateOrConnectWithoutMeetupInput | GuestLoadCreateOrConnectWithoutMeetupInput[]
+    upsert?: GuestLoadUpsertWithWhereUniqueWithoutMeetupInput | GuestLoadUpsertWithWhereUniqueWithoutMeetupInput[]
+    createMany?: GuestLoadCreateManyMeetupInputEnvelope
+    set?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+    disconnect?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+    delete?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+    connect?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+    update?: GuestLoadUpdateWithWhereUniqueWithoutMeetupInput | GuestLoadUpdateWithWhereUniqueWithoutMeetupInput[]
+    updateMany?: GuestLoadUpdateManyWithWhereWithoutMeetupInput | GuestLoadUpdateManyWithWhereWithoutMeetupInput[]
+    deleteMany?: GuestLoadScalarWhereInput | GuestLoadScalarWhereInput[]
+  }
+
+  export type SubscriptionCreateNestedManyWithoutMeetupRoleInput = {
+    create?: XOR<SubscriptionCreateWithoutMeetupRoleInput, SubscriptionUncheckedCreateWithoutMeetupRoleInput> | SubscriptionCreateWithoutMeetupRoleInput[] | SubscriptionUncheckedCreateWithoutMeetupRoleInput[]
+    connectOrCreate?: SubscriptionCreateOrConnectWithoutMeetupRoleInput | SubscriptionCreateOrConnectWithoutMeetupRoleInput[]
+    createMany?: SubscriptionCreateManyMeetupRoleInputEnvelope
+    connect?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+  }
+
+  export type SubscriptionUncheckedCreateNestedManyWithoutMeetupRoleInput = {
+    create?: XOR<SubscriptionCreateWithoutMeetupRoleInput, SubscriptionUncheckedCreateWithoutMeetupRoleInput> | SubscriptionCreateWithoutMeetupRoleInput[] | SubscriptionUncheckedCreateWithoutMeetupRoleInput[]
+    connectOrCreate?: SubscriptionCreateOrConnectWithoutMeetupRoleInput | SubscriptionCreateOrConnectWithoutMeetupRoleInput[]
+    createMany?: SubscriptionCreateManyMeetupRoleInputEnvelope
+    connect?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+  }
+
+  export type DecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
+  export type SubscriptionUpdateManyWithoutMeetupRoleNestedInput = {
+    create?: XOR<SubscriptionCreateWithoutMeetupRoleInput, SubscriptionUncheckedCreateWithoutMeetupRoleInput> | SubscriptionCreateWithoutMeetupRoleInput[] | SubscriptionUncheckedCreateWithoutMeetupRoleInput[]
+    connectOrCreate?: SubscriptionCreateOrConnectWithoutMeetupRoleInput | SubscriptionCreateOrConnectWithoutMeetupRoleInput[]
+    upsert?: SubscriptionUpsertWithWhereUniqueWithoutMeetupRoleInput | SubscriptionUpsertWithWhereUniqueWithoutMeetupRoleInput[]
+    createMany?: SubscriptionCreateManyMeetupRoleInputEnvelope
+    set?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    disconnect?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    delete?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    connect?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    update?: SubscriptionUpdateWithWhereUniqueWithoutMeetupRoleInput | SubscriptionUpdateWithWhereUniqueWithoutMeetupRoleInput[]
+    updateMany?: SubscriptionUpdateManyWithWhereWithoutMeetupRoleInput | SubscriptionUpdateManyWithWhereWithoutMeetupRoleInput[]
+    deleteMany?: SubscriptionScalarWhereInput | SubscriptionScalarWhereInput[]
+  }
+
+  export type SubscriptionUncheckedUpdateManyWithoutMeetupRoleNestedInput = {
+    create?: XOR<SubscriptionCreateWithoutMeetupRoleInput, SubscriptionUncheckedCreateWithoutMeetupRoleInput> | SubscriptionCreateWithoutMeetupRoleInput[] | SubscriptionUncheckedCreateWithoutMeetupRoleInput[]
+    connectOrCreate?: SubscriptionCreateOrConnectWithoutMeetupRoleInput | SubscriptionCreateOrConnectWithoutMeetupRoleInput[]
+    upsert?: SubscriptionUpsertWithWhereUniqueWithoutMeetupRoleInput | SubscriptionUpsertWithWhereUniqueWithoutMeetupRoleInput[]
+    createMany?: SubscriptionCreateManyMeetupRoleInputEnvelope
+    set?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    disconnect?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    delete?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    connect?: SubscriptionWhereUniqueInput | SubscriptionWhereUniqueInput[]
+    update?: SubscriptionUpdateWithWhereUniqueWithoutMeetupRoleInput | SubscriptionUpdateWithWhereUniqueWithoutMeetupRoleInput[]
+    updateMany?: SubscriptionUpdateManyWithWhereWithoutMeetupRoleInput | SubscriptionUpdateManyWithWhereWithoutMeetupRoleInput[]
+    deleteMany?: SubscriptionScalarWhereInput | SubscriptionScalarWhereInput[]
+  }
+
+  export type MeetupCreateNestedOneWithoutMeetupAdminsInput = {
+    create?: XOR<MeetupCreateWithoutMeetupAdminsInput, MeetupUncheckedCreateWithoutMeetupAdminsInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutMeetupAdminsInput
+    connect?: MeetupWhereUniqueInput
+  }
+
+  export type PersonCreateNestedOneWithoutMeetupAdminsInput = {
+    create?: XOR<PersonCreateWithoutMeetupAdminsInput, PersonUncheckedCreateWithoutMeetupAdminsInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutMeetupAdminsInput
+    connect?: PersonWhereUniqueInput
+  }
+
+  export type MeetupUpdateOneRequiredWithoutMeetupAdminsNestedInput = {
+    create?: XOR<MeetupCreateWithoutMeetupAdminsInput, MeetupUncheckedCreateWithoutMeetupAdminsInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutMeetupAdminsInput
+    upsert?: MeetupUpsertWithoutMeetupAdminsInput
+    connect?: MeetupWhereUniqueInput
+    update?: XOR<XOR<MeetupUpdateToOneWithWhereWithoutMeetupAdminsInput, MeetupUpdateWithoutMeetupAdminsInput>, MeetupUncheckedUpdateWithoutMeetupAdminsInput>
+  }
+
+  export type PersonUpdateOneRequiredWithoutMeetupAdminsNestedInput = {
+    create?: XOR<PersonCreateWithoutMeetupAdminsInput, PersonUncheckedCreateWithoutMeetupAdminsInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutMeetupAdminsInput
+    upsert?: PersonUpsertWithoutMeetupAdminsInput
+    connect?: PersonWhereUniqueInput
+    update?: XOR<XOR<PersonUpdateToOneWithWhereWithoutMeetupAdminsInput, PersonUpdateWithoutMeetupAdminsInput>, PersonUncheckedUpdateWithoutMeetupAdminsInput>
+  }
+
+  export type PersonCreateNestedOneWithoutSubscriptionsInput = {
+    create?: XOR<PersonCreateWithoutSubscriptionsInput, PersonUncheckedCreateWithoutSubscriptionsInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutSubscriptionsInput
+    connect?: PersonWhereUniqueInput
+  }
+
+  export type MeetupCreateNestedOneWithoutSubscriptionsInput = {
+    create?: XOR<MeetupCreateWithoutSubscriptionsInput, MeetupUncheckedCreateWithoutSubscriptionsInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutSubscriptionsInput
+    connect?: MeetupWhereUniqueInput
+  }
+
+  export type MeetupRoleCreateNestedOneWithoutSubscriptionsInput = {
+    create?: XOR<MeetupRoleCreateWithoutSubscriptionsInput, MeetupRoleUncheckedCreateWithoutSubscriptionsInput>
+    connectOrCreate?: MeetupRoleCreateOrConnectWithoutSubscriptionsInput
+    connect?: MeetupRoleWhereUniqueInput
+  }
+
+  export type SubscriptionPaymentCreateNestedManyWithoutSubscriptionInput = {
+    create?: XOR<SubscriptionPaymentCreateWithoutSubscriptionInput, SubscriptionPaymentUncheckedCreateWithoutSubscriptionInput> | SubscriptionPaymentCreateWithoutSubscriptionInput[] | SubscriptionPaymentUncheckedCreateWithoutSubscriptionInput[]
+    connectOrCreate?: SubscriptionPaymentCreateOrConnectWithoutSubscriptionInput | SubscriptionPaymentCreateOrConnectWithoutSubscriptionInput[]
+    createMany?: SubscriptionPaymentCreateManySubscriptionInputEnvelope
+    connect?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+  }
+
+  export type SubscriptionPaymentUncheckedCreateNestedManyWithoutSubscriptionInput = {
+    create?: XOR<SubscriptionPaymentCreateWithoutSubscriptionInput, SubscriptionPaymentUncheckedCreateWithoutSubscriptionInput> | SubscriptionPaymentCreateWithoutSubscriptionInput[] | SubscriptionPaymentUncheckedCreateWithoutSubscriptionInput[]
+    connectOrCreate?: SubscriptionPaymentCreateOrConnectWithoutSubscriptionInput | SubscriptionPaymentCreateOrConnectWithoutSubscriptionInput[]
+    createMany?: SubscriptionPaymentCreateManySubscriptionInputEnvelope
+    connect?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+  }
+
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
+  export type PersonUpdateOneRequiredWithoutSubscriptionsNestedInput = {
+    create?: XOR<PersonCreateWithoutSubscriptionsInput, PersonUncheckedCreateWithoutSubscriptionsInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutSubscriptionsInput
+    upsert?: PersonUpsertWithoutSubscriptionsInput
+    connect?: PersonWhereUniqueInput
+    update?: XOR<XOR<PersonUpdateToOneWithWhereWithoutSubscriptionsInput, PersonUpdateWithoutSubscriptionsInput>, PersonUncheckedUpdateWithoutSubscriptionsInput>
+  }
+
+  export type MeetupUpdateOneRequiredWithoutSubscriptionsNestedInput = {
+    create?: XOR<MeetupCreateWithoutSubscriptionsInput, MeetupUncheckedCreateWithoutSubscriptionsInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutSubscriptionsInput
+    upsert?: MeetupUpsertWithoutSubscriptionsInput
+    connect?: MeetupWhereUniqueInput
+    update?: XOR<XOR<MeetupUpdateToOneWithWhereWithoutSubscriptionsInput, MeetupUpdateWithoutSubscriptionsInput>, MeetupUncheckedUpdateWithoutSubscriptionsInput>
+  }
+
+  export type MeetupRoleUpdateOneRequiredWithoutSubscriptionsNestedInput = {
+    create?: XOR<MeetupRoleCreateWithoutSubscriptionsInput, MeetupRoleUncheckedCreateWithoutSubscriptionsInput>
+    connectOrCreate?: MeetupRoleCreateOrConnectWithoutSubscriptionsInput
+    upsert?: MeetupRoleUpsertWithoutSubscriptionsInput
+    connect?: MeetupRoleWhereUniqueInput
+    update?: XOR<XOR<MeetupRoleUpdateToOneWithWhereWithoutSubscriptionsInput, MeetupRoleUpdateWithoutSubscriptionsInput>, MeetupRoleUncheckedUpdateWithoutSubscriptionsInput>
+  }
+
+  export type SubscriptionPaymentUpdateManyWithoutSubscriptionNestedInput = {
+    create?: XOR<SubscriptionPaymentCreateWithoutSubscriptionInput, SubscriptionPaymentUncheckedCreateWithoutSubscriptionInput> | SubscriptionPaymentCreateWithoutSubscriptionInput[] | SubscriptionPaymentUncheckedCreateWithoutSubscriptionInput[]
+    connectOrCreate?: SubscriptionPaymentCreateOrConnectWithoutSubscriptionInput | SubscriptionPaymentCreateOrConnectWithoutSubscriptionInput[]
+    upsert?: SubscriptionPaymentUpsertWithWhereUniqueWithoutSubscriptionInput | SubscriptionPaymentUpsertWithWhereUniqueWithoutSubscriptionInput[]
+    createMany?: SubscriptionPaymentCreateManySubscriptionInputEnvelope
+    set?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+    disconnect?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+    delete?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+    connect?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+    update?: SubscriptionPaymentUpdateWithWhereUniqueWithoutSubscriptionInput | SubscriptionPaymentUpdateWithWhereUniqueWithoutSubscriptionInput[]
+    updateMany?: SubscriptionPaymentUpdateManyWithWhereWithoutSubscriptionInput | SubscriptionPaymentUpdateManyWithWhereWithoutSubscriptionInput[]
+    deleteMany?: SubscriptionPaymentScalarWhereInput | SubscriptionPaymentScalarWhereInput[]
+  }
+
+  export type SubscriptionPaymentUncheckedUpdateManyWithoutSubscriptionNestedInput = {
+    create?: XOR<SubscriptionPaymentCreateWithoutSubscriptionInput, SubscriptionPaymentUncheckedCreateWithoutSubscriptionInput> | SubscriptionPaymentCreateWithoutSubscriptionInput[] | SubscriptionPaymentUncheckedCreateWithoutSubscriptionInput[]
+    connectOrCreate?: SubscriptionPaymentCreateOrConnectWithoutSubscriptionInput | SubscriptionPaymentCreateOrConnectWithoutSubscriptionInput[]
+    upsert?: SubscriptionPaymentUpsertWithWhereUniqueWithoutSubscriptionInput | SubscriptionPaymentUpsertWithWhereUniqueWithoutSubscriptionInput[]
+    createMany?: SubscriptionPaymentCreateManySubscriptionInputEnvelope
+    set?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+    disconnect?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+    delete?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+    connect?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+    update?: SubscriptionPaymentUpdateWithWhereUniqueWithoutSubscriptionInput | SubscriptionPaymentUpdateWithWhereUniqueWithoutSubscriptionInput[]
+    updateMany?: SubscriptionPaymentUpdateManyWithWhereWithoutSubscriptionInput | SubscriptionPaymentUpdateManyWithWhereWithoutSubscriptionInput[]
+    deleteMany?: SubscriptionPaymentScalarWhereInput | SubscriptionPaymentScalarWhereInput[]
+  }
+
+  export type PersonCreateNestedOneWithoutInvitesInput = {
+    create?: XOR<PersonCreateWithoutInvitesInput, PersonUncheckedCreateWithoutInvitesInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutInvitesInput
+    connect?: PersonWhereUniqueInput
+  }
+
+  export type MeetupCreateNestedOneWithoutInvitesInput = {
+    create?: XOR<MeetupCreateWithoutInvitesInput, MeetupUncheckedCreateWithoutInvitesInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutInvitesInput
+    connect?: MeetupWhereUniqueInput
+  }
+
+  export type PersonUpdateOneRequiredWithoutInvitesNestedInput = {
+    create?: XOR<PersonCreateWithoutInvitesInput, PersonUncheckedCreateWithoutInvitesInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutInvitesInput
+    upsert?: PersonUpsertWithoutInvitesInput
+    connect?: PersonWhereUniqueInput
+    update?: XOR<XOR<PersonUpdateToOneWithWhereWithoutInvitesInput, PersonUpdateWithoutInvitesInput>, PersonUncheckedUpdateWithoutInvitesInput>
+  }
+
+  export type MeetupUpdateOneRequiredWithoutInvitesNestedInput = {
+    create?: XOR<MeetupCreateWithoutInvitesInput, MeetupUncheckedCreateWithoutInvitesInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutInvitesInput
+    upsert?: MeetupUpsertWithoutInvitesInput
+    connect?: MeetupWhereUniqueInput
+    update?: XOR<XOR<MeetupUpdateToOneWithWhereWithoutInvitesInput, MeetupUpdateWithoutInvitesInput>, MeetupUncheckedUpdateWithoutInvitesInput>
+  }
+
+  export type SubscriptionPaymentCreateNestedManyWithoutPaymentInput = {
+    create?: XOR<SubscriptionPaymentCreateWithoutPaymentInput, SubscriptionPaymentUncheckedCreateWithoutPaymentInput> | SubscriptionPaymentCreateWithoutPaymentInput[] | SubscriptionPaymentUncheckedCreateWithoutPaymentInput[]
+    connectOrCreate?: SubscriptionPaymentCreateOrConnectWithoutPaymentInput | SubscriptionPaymentCreateOrConnectWithoutPaymentInput[]
+    createMany?: SubscriptionPaymentCreateManyPaymentInputEnvelope
+    connect?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+  }
+
+  export type SubscriptionPaymentUncheckedCreateNestedManyWithoutPaymentInput = {
+    create?: XOR<SubscriptionPaymentCreateWithoutPaymentInput, SubscriptionPaymentUncheckedCreateWithoutPaymentInput> | SubscriptionPaymentCreateWithoutPaymentInput[] | SubscriptionPaymentUncheckedCreateWithoutPaymentInput[]
+    connectOrCreate?: SubscriptionPaymentCreateOrConnectWithoutPaymentInput | SubscriptionPaymentCreateOrConnectWithoutPaymentInput[]
+    createMany?: SubscriptionPaymentCreateManyPaymentInputEnvelope
+    connect?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+  }
+
+  export type SubscriptionPaymentUpdateManyWithoutPaymentNestedInput = {
+    create?: XOR<SubscriptionPaymentCreateWithoutPaymentInput, SubscriptionPaymentUncheckedCreateWithoutPaymentInput> | SubscriptionPaymentCreateWithoutPaymentInput[] | SubscriptionPaymentUncheckedCreateWithoutPaymentInput[]
+    connectOrCreate?: SubscriptionPaymentCreateOrConnectWithoutPaymentInput | SubscriptionPaymentCreateOrConnectWithoutPaymentInput[]
+    upsert?: SubscriptionPaymentUpsertWithWhereUniqueWithoutPaymentInput | SubscriptionPaymentUpsertWithWhereUniqueWithoutPaymentInput[]
+    createMany?: SubscriptionPaymentCreateManyPaymentInputEnvelope
+    set?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+    disconnect?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+    delete?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+    connect?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+    update?: SubscriptionPaymentUpdateWithWhereUniqueWithoutPaymentInput | SubscriptionPaymentUpdateWithWhereUniqueWithoutPaymentInput[]
+    updateMany?: SubscriptionPaymentUpdateManyWithWhereWithoutPaymentInput | SubscriptionPaymentUpdateManyWithWhereWithoutPaymentInput[]
+    deleteMany?: SubscriptionPaymentScalarWhereInput | SubscriptionPaymentScalarWhereInput[]
+  }
+
+  export type SubscriptionPaymentUncheckedUpdateManyWithoutPaymentNestedInput = {
+    create?: XOR<SubscriptionPaymentCreateWithoutPaymentInput, SubscriptionPaymentUncheckedCreateWithoutPaymentInput> | SubscriptionPaymentCreateWithoutPaymentInput[] | SubscriptionPaymentUncheckedCreateWithoutPaymentInput[]
+    connectOrCreate?: SubscriptionPaymentCreateOrConnectWithoutPaymentInput | SubscriptionPaymentCreateOrConnectWithoutPaymentInput[]
+    upsert?: SubscriptionPaymentUpsertWithWhereUniqueWithoutPaymentInput | SubscriptionPaymentUpsertWithWhereUniqueWithoutPaymentInput[]
+    createMany?: SubscriptionPaymentCreateManyPaymentInputEnvelope
+    set?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+    disconnect?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+    delete?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+    connect?: SubscriptionPaymentWhereUniqueInput | SubscriptionPaymentWhereUniqueInput[]
+    update?: SubscriptionPaymentUpdateWithWhereUniqueWithoutPaymentInput | SubscriptionPaymentUpdateWithWhereUniqueWithoutPaymentInput[]
+    updateMany?: SubscriptionPaymentUpdateManyWithWhereWithoutPaymentInput | SubscriptionPaymentUpdateManyWithWhereWithoutPaymentInput[]
+    deleteMany?: SubscriptionPaymentScalarWhereInput | SubscriptionPaymentScalarWhereInput[]
+  }
+
+  export type SubscriptionCreateNestedOneWithoutSubscriptionPaymentsInput = {
+    create?: XOR<SubscriptionCreateWithoutSubscriptionPaymentsInput, SubscriptionUncheckedCreateWithoutSubscriptionPaymentsInput>
+    connectOrCreate?: SubscriptionCreateOrConnectWithoutSubscriptionPaymentsInput
+    connect?: SubscriptionWhereUniqueInput
+  }
+
+  export type PaymentCreateNestedOneWithoutSubscriptionPaymentsInput = {
+    create?: XOR<PaymentCreateWithoutSubscriptionPaymentsInput, PaymentUncheckedCreateWithoutSubscriptionPaymentsInput>
+    connectOrCreate?: PaymentCreateOrConnectWithoutSubscriptionPaymentsInput
+    connect?: PaymentWhereUniqueInput
+  }
+
+  export type SubscriptionUpdateOneRequiredWithoutSubscriptionPaymentsNestedInput = {
+    create?: XOR<SubscriptionCreateWithoutSubscriptionPaymentsInput, SubscriptionUncheckedCreateWithoutSubscriptionPaymentsInput>
+    connectOrCreate?: SubscriptionCreateOrConnectWithoutSubscriptionPaymentsInput
+    upsert?: SubscriptionUpsertWithoutSubscriptionPaymentsInput
+    connect?: SubscriptionWhereUniqueInput
+    update?: XOR<XOR<SubscriptionUpdateToOneWithWhereWithoutSubscriptionPaymentsInput, SubscriptionUpdateWithoutSubscriptionPaymentsInput>, SubscriptionUncheckedUpdateWithoutSubscriptionPaymentsInput>
+  }
+
+  export type PaymentUpdateOneRequiredWithoutSubscriptionPaymentsNestedInput = {
+    create?: XOR<PaymentCreateWithoutSubscriptionPaymentsInput, PaymentUncheckedCreateWithoutSubscriptionPaymentsInput>
+    connectOrCreate?: PaymentCreateOrConnectWithoutSubscriptionPaymentsInput
+    upsert?: PaymentUpsertWithoutSubscriptionPaymentsInput
+    connect?: PaymentWhereUniqueInput
+    update?: XOR<XOR<PaymentUpdateToOneWithWhereWithoutSubscriptionPaymentsInput, PaymentUpdateWithoutSubscriptionPaymentsInput>, PaymentUncheckedUpdateWithoutSubscriptionPaymentsInput>
+  }
+
+  export type PersonCreateNestedOneWithoutCertificatesInput = {
+    create?: XOR<PersonCreateWithoutCertificatesInput, PersonUncheckedCreateWithoutCertificatesInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutCertificatesInput
+    connect?: PersonWhereUniqueInput
+  }
+
+  export type MeetupCreateNestedOneWithoutCertificatesInput = {
+    create?: XOR<MeetupCreateWithoutCertificatesInput, MeetupUncheckedCreateWithoutCertificatesInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutCertificatesInput
+    connect?: MeetupWhereUniqueInput
+  }
+
+  export type PersonUpdateOneRequiredWithoutCertificatesNestedInput = {
+    create?: XOR<PersonCreateWithoutCertificatesInput, PersonUncheckedCreateWithoutCertificatesInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutCertificatesInput
+    upsert?: PersonUpsertWithoutCertificatesInput
+    connect?: PersonWhereUniqueInput
+    update?: XOR<XOR<PersonUpdateToOneWithWhereWithoutCertificatesInput, PersonUpdateWithoutCertificatesInput>, PersonUncheckedUpdateWithoutCertificatesInput>
+  }
+
+  export type MeetupUpdateOneRequiredWithoutCertificatesNestedInput = {
+    create?: XOR<MeetupCreateWithoutCertificatesInput, MeetupUncheckedCreateWithoutCertificatesInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutCertificatesInput
+    upsert?: MeetupUpsertWithoutCertificatesInput
+    connect?: MeetupWhereUniqueInput
+    update?: XOR<XOR<MeetupUpdateToOneWithWhereWithoutCertificatesInput, MeetupUpdateWithoutCertificatesInput>, MeetupUncheckedUpdateWithoutCertificatesInput>
+  }
+
+  export type MeetupCreateNestedOneWithoutMeetupMediasInput = {
+    create?: XOR<MeetupCreateWithoutMeetupMediasInput, MeetupUncheckedCreateWithoutMeetupMediasInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutMeetupMediasInput
+    connect?: MeetupWhereUniqueInput
+  }
+
+  export type PersonCreateNestedOneWithoutMeetupMediasInput = {
+    create?: XOR<PersonCreateWithoutMeetupMediasInput, PersonUncheckedCreateWithoutMeetupMediasInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutMeetupMediasInput
+    connect?: PersonWhereUniqueInput
+  }
+
+  export type MeetupUpdateOneRequiredWithoutMeetupMediasNestedInput = {
+    create?: XOR<MeetupCreateWithoutMeetupMediasInput, MeetupUncheckedCreateWithoutMeetupMediasInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutMeetupMediasInput
+    upsert?: MeetupUpsertWithoutMeetupMediasInput
+    connect?: MeetupWhereUniqueInput
+    update?: XOR<XOR<MeetupUpdateToOneWithWhereWithoutMeetupMediasInput, MeetupUpdateWithoutMeetupMediasInput>, MeetupUncheckedUpdateWithoutMeetupMediasInput>
+  }
+
+  export type PersonUpdateOneRequiredWithoutMeetupMediasNestedInput = {
+    create?: XOR<PersonCreateWithoutMeetupMediasInput, PersonUncheckedCreateWithoutMeetupMediasInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutMeetupMediasInput
+    upsert?: PersonUpsertWithoutMeetupMediasInput
+    connect?: PersonWhereUniqueInput
+    update?: XOR<XOR<PersonUpdateToOneWithWhereWithoutMeetupMediasInput, PersonUpdateWithoutMeetupMediasInput>, PersonUncheckedUpdateWithoutMeetupMediasInput>
+  }
+
+  export type MeetupCreateNestedOneWithoutGuestLoadsInput = {
+    create?: XOR<MeetupCreateWithoutGuestLoadsInput, MeetupUncheckedCreateWithoutGuestLoadsInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutGuestLoadsInput
+    connect?: MeetupWhereUniqueInput
+  }
+
+  export type PersonCreateNestedOneWithoutGuestLoadsInput = {
+    create?: XOR<PersonCreateWithoutGuestLoadsInput, PersonUncheckedCreateWithoutGuestLoadsInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutGuestLoadsInput
+    connect?: PersonWhereUniqueInput
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type MeetupUpdateOneRequiredWithoutGuestLoadsNestedInput = {
+    create?: XOR<MeetupCreateWithoutGuestLoadsInput, MeetupUncheckedCreateWithoutGuestLoadsInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutGuestLoadsInput
+    upsert?: MeetupUpsertWithoutGuestLoadsInput
+    connect?: MeetupWhereUniqueInput
+    update?: XOR<XOR<MeetupUpdateToOneWithWhereWithoutGuestLoadsInput, MeetupUpdateWithoutGuestLoadsInput>, MeetupUncheckedUpdateWithoutGuestLoadsInput>
+  }
+
+  export type PersonUpdateOneRequiredWithoutGuestLoadsNestedInput = {
+    create?: XOR<PersonCreateWithoutGuestLoadsInput, PersonUncheckedCreateWithoutGuestLoadsInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutGuestLoadsInput
+    upsert?: PersonUpsertWithoutGuestLoadsInput
+    connect?: PersonWhereUniqueInput
+    update?: XOR<XOR<PersonUpdateToOneWithWhereWithoutGuestLoadsInput, PersonUpdateWithoutGuestLoadsInput>, PersonUncheckedUpdateWithoutGuestLoadsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -6408,6 +23424,73 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedDecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type SessionCreateWithoutUserInput = {
     id: string
     expiresAt: Date | string
@@ -6478,6 +23561,47 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type PersonCreateWithoutUserInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutPersonInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutPersonInput
+    invites?: InviteCreateNestedManyWithoutPersonInput
+    certificates?: CertificateCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
+  }
+
+  export type PersonUncheckedCreateWithoutUserInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutPersonInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutPersonInput
+    invites?: InviteUncheckedCreateNestedManyWithoutPersonInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
+  }
+
+  export type PersonCreateOrConnectWithoutUserInput = {
+    where: PersonWhereUniqueInput
+    create: XOR<PersonCreateWithoutUserInput, PersonUncheckedCreateWithoutUserInput>
+  }
+
   export type SessionUpsertWithWhereUniqueWithoutUserInput = {
     where: SessionWhereUniqueInput
     update: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
@@ -6543,6 +23667,53 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Account"> | Date | string
   }
 
+  export type PersonUpsertWithoutUserInput = {
+    update: XOR<PersonUpdateWithoutUserInput, PersonUncheckedUpdateWithoutUserInput>
+    create: XOR<PersonCreateWithoutUserInput, PersonUncheckedCreateWithoutUserInput>
+    where?: PersonWhereInput
+  }
+
+  export type PersonUpdateToOneWithWhereWithoutUserInput = {
+    where?: PersonWhereInput
+    data: XOR<PersonUpdateWithoutUserInput, PersonUncheckedUpdateWithoutUserInput>
+  }
+
+  export type PersonUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUpdateManyWithoutPersonNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutPersonNestedInput
+    invites?: InviteUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
+  }
+
+  export type PersonUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutPersonNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutPersonNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
+  }
+
   export type UserCreateWithoutSessionsInput = {
     id: string
     name: string
@@ -6552,6 +23723,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
+    person?: PersonCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -6563,6 +23735,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    person?: PersonUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -6590,6 +23763,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    person?: PersonUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -6601,6 +23775,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    person?: PersonUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateWithoutAccountsInput = {
@@ -6612,6 +23787,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sessions?: SessionCreateNestedManyWithoutUserInput
+    person?: PersonCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -6623,6 +23799,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    person?: PersonUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -6650,6 +23827,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    person?: PersonUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -6661,6 +23839,2124 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    person?: PersonUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type MeetupAdminCreateWithoutPersonInput = {
+    id?: string
+    role: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetup: MeetupCreateNestedOneWithoutMeetupAdminsInput
+  }
+
+  export type MeetupAdminUncheckedCreateWithoutPersonInput = {
+    id?: string
+    meetupId: string
+    role: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupAdminCreateOrConnectWithoutPersonInput = {
+    where: MeetupAdminWhereUniqueInput
+    create: XOR<MeetupAdminCreateWithoutPersonInput, MeetupAdminUncheckedCreateWithoutPersonInput>
+  }
+
+  export type MeetupAdminCreateManyPersonInputEnvelope = {
+    data: MeetupAdminCreateManyPersonInput | MeetupAdminCreateManyPersonInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SubscriptionCreateWithoutPersonInput = {
+    id?: string
+    presenceConfirmation?: boolean | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetup: MeetupCreateNestedOneWithoutSubscriptionsInput
+    meetupRole: MeetupRoleCreateNestedOneWithoutSubscriptionsInput
+    subscriptionPayments?: SubscriptionPaymentCreateNestedManyWithoutSubscriptionInput
+  }
+
+  export type SubscriptionUncheckedCreateWithoutPersonInput = {
+    id?: string
+    meetupId: string
+    meetupRoleId: string
+    presenceConfirmation?: boolean | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subscriptionPayments?: SubscriptionPaymentUncheckedCreateNestedManyWithoutSubscriptionInput
+  }
+
+  export type SubscriptionCreateOrConnectWithoutPersonInput = {
+    where: SubscriptionWhereUniqueInput
+    create: XOR<SubscriptionCreateWithoutPersonInput, SubscriptionUncheckedCreateWithoutPersonInput>
+  }
+
+  export type SubscriptionCreateManyPersonInputEnvelope = {
+    data: SubscriptionCreateManyPersonInput | SubscriptionCreateManyPersonInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type InviteCreateWithoutPersonInput = {
+    id?: string
+    link: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetup: MeetupCreateNestedOneWithoutInvitesInput
+  }
+
+  export type InviteUncheckedCreateWithoutPersonInput = {
+    id?: string
+    meetupId: string
+    link: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InviteCreateOrConnectWithoutPersonInput = {
+    where: InviteWhereUniqueInput
+    create: XOR<InviteCreateWithoutPersonInput, InviteUncheckedCreateWithoutPersonInput>
+  }
+
+  export type InviteCreateManyPersonInputEnvelope = {
+    data: InviteCreateManyPersonInput | InviteCreateManyPersonInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CertificateCreateWithoutPersonInput = {
+    id?: string
+    link: string
+    securityCode: string
+    datetime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetup: MeetupCreateNestedOneWithoutCertificatesInput
+  }
+
+  export type CertificateUncheckedCreateWithoutPersonInput = {
+    id?: string
+    meetupId: string
+    link: string
+    securityCode: string
+    datetime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CertificateCreateOrConnectWithoutPersonInput = {
+    where: CertificateWhereUniqueInput
+    create: XOR<CertificateCreateWithoutPersonInput, CertificateUncheckedCreateWithoutPersonInput>
+  }
+
+  export type CertificateCreateManyPersonInputEnvelope = {
+    data: CertificateCreateManyPersonInput | CertificateCreateManyPersonInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MeetupMediaCreateWithoutPersonInput = {
+    id?: string
+    link: string
+    datetime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetup: MeetupCreateNestedOneWithoutMeetupMediasInput
+  }
+
+  export type MeetupMediaUncheckedCreateWithoutPersonInput = {
+    id?: string
+    meetupId: string
+    link: string
+    datetime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupMediaCreateOrConnectWithoutPersonInput = {
+    where: MeetupMediaWhereUniqueInput
+    create: XOR<MeetupMediaCreateWithoutPersonInput, MeetupMediaUncheckedCreateWithoutPersonInput>
+  }
+
+  export type MeetupMediaCreateManyPersonInputEnvelope = {
+    data: MeetupMediaCreateManyPersonInput | MeetupMediaCreateManyPersonInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type GuestLoadCreateWithoutPersonInput = {
+    id?: string
+    link: string
+    datetime: Date | string
+    count: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetup: MeetupCreateNestedOneWithoutGuestLoadsInput
+  }
+
+  export type GuestLoadUncheckedCreateWithoutPersonInput = {
+    id?: string
+    link: string
+    meetupId: string
+    datetime: Date | string
+    count: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GuestLoadCreateOrConnectWithoutPersonInput = {
+    where: GuestLoadWhereUniqueInput
+    create: XOR<GuestLoadCreateWithoutPersonInput, GuestLoadUncheckedCreateWithoutPersonInput>
+  }
+
+  export type GuestLoadCreateManyPersonInputEnvelope = {
+    data: GuestLoadCreateManyPersonInput | GuestLoadCreateManyPersonInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserCreateWithoutPersonInput = {
+    id: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutPersonInput = {
+    id: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutPersonInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutPersonInput, UserUncheckedCreateWithoutPersonInput>
+  }
+
+  export type MeetupAdminUpsertWithWhereUniqueWithoutPersonInput = {
+    where: MeetupAdminWhereUniqueInput
+    update: XOR<MeetupAdminUpdateWithoutPersonInput, MeetupAdminUncheckedUpdateWithoutPersonInput>
+    create: XOR<MeetupAdminCreateWithoutPersonInput, MeetupAdminUncheckedCreateWithoutPersonInput>
+  }
+
+  export type MeetupAdminUpdateWithWhereUniqueWithoutPersonInput = {
+    where: MeetupAdminWhereUniqueInput
+    data: XOR<MeetupAdminUpdateWithoutPersonInput, MeetupAdminUncheckedUpdateWithoutPersonInput>
+  }
+
+  export type MeetupAdminUpdateManyWithWhereWithoutPersonInput = {
+    where: MeetupAdminScalarWhereInput
+    data: XOR<MeetupAdminUpdateManyMutationInput, MeetupAdminUncheckedUpdateManyWithoutPersonInput>
+  }
+
+  export type MeetupAdminScalarWhereInput = {
+    AND?: MeetupAdminScalarWhereInput | MeetupAdminScalarWhereInput[]
+    OR?: MeetupAdminScalarWhereInput[]
+    NOT?: MeetupAdminScalarWhereInput | MeetupAdminScalarWhereInput[]
+    id?: StringFilter<"MeetupAdmin"> | string
+    meetupId?: StringFilter<"MeetupAdmin"> | string
+    personId?: StringFilter<"MeetupAdmin"> | string
+    role?: StringFilter<"MeetupAdmin"> | string
+    createdAt?: DateTimeFilter<"MeetupAdmin"> | Date | string
+    updatedAt?: DateTimeFilter<"MeetupAdmin"> | Date | string
+  }
+
+  export type SubscriptionUpsertWithWhereUniqueWithoutPersonInput = {
+    where: SubscriptionWhereUniqueInput
+    update: XOR<SubscriptionUpdateWithoutPersonInput, SubscriptionUncheckedUpdateWithoutPersonInput>
+    create: XOR<SubscriptionCreateWithoutPersonInput, SubscriptionUncheckedCreateWithoutPersonInput>
+  }
+
+  export type SubscriptionUpdateWithWhereUniqueWithoutPersonInput = {
+    where: SubscriptionWhereUniqueInput
+    data: XOR<SubscriptionUpdateWithoutPersonInput, SubscriptionUncheckedUpdateWithoutPersonInput>
+  }
+
+  export type SubscriptionUpdateManyWithWhereWithoutPersonInput = {
+    where: SubscriptionScalarWhereInput
+    data: XOR<SubscriptionUpdateManyMutationInput, SubscriptionUncheckedUpdateManyWithoutPersonInput>
+  }
+
+  export type SubscriptionScalarWhereInput = {
+    AND?: SubscriptionScalarWhereInput | SubscriptionScalarWhereInput[]
+    OR?: SubscriptionScalarWhereInput[]
+    NOT?: SubscriptionScalarWhereInput | SubscriptionScalarWhereInput[]
+    id?: StringFilter<"Subscription"> | string
+    personId?: StringFilter<"Subscription"> | string
+    meetupId?: StringFilter<"Subscription"> | string
+    meetupRoleId?: StringFilter<"Subscription"> | string
+    presenceConfirmation?: BoolNullableFilter<"Subscription"> | boolean | null
+    createdAt?: DateTimeFilter<"Subscription"> | Date | string
+    updatedAt?: DateTimeFilter<"Subscription"> | Date | string
+  }
+
+  export type InviteUpsertWithWhereUniqueWithoutPersonInput = {
+    where: InviteWhereUniqueInput
+    update: XOR<InviteUpdateWithoutPersonInput, InviteUncheckedUpdateWithoutPersonInput>
+    create: XOR<InviteCreateWithoutPersonInput, InviteUncheckedCreateWithoutPersonInput>
+  }
+
+  export type InviteUpdateWithWhereUniqueWithoutPersonInput = {
+    where: InviteWhereUniqueInput
+    data: XOR<InviteUpdateWithoutPersonInput, InviteUncheckedUpdateWithoutPersonInput>
+  }
+
+  export type InviteUpdateManyWithWhereWithoutPersonInput = {
+    where: InviteScalarWhereInput
+    data: XOR<InviteUpdateManyMutationInput, InviteUncheckedUpdateManyWithoutPersonInput>
+  }
+
+  export type InviteScalarWhereInput = {
+    AND?: InviteScalarWhereInput | InviteScalarWhereInput[]
+    OR?: InviteScalarWhereInput[]
+    NOT?: InviteScalarWhereInput | InviteScalarWhereInput[]
+    id?: StringFilter<"Invite"> | string
+    personId?: StringFilter<"Invite"> | string
+    meetupId?: StringFilter<"Invite"> | string
+    link?: StringFilter<"Invite"> | string
+    createdAt?: DateTimeFilter<"Invite"> | Date | string
+    updatedAt?: DateTimeFilter<"Invite"> | Date | string
+  }
+
+  export type CertificateUpsertWithWhereUniqueWithoutPersonInput = {
+    where: CertificateWhereUniqueInput
+    update: XOR<CertificateUpdateWithoutPersonInput, CertificateUncheckedUpdateWithoutPersonInput>
+    create: XOR<CertificateCreateWithoutPersonInput, CertificateUncheckedCreateWithoutPersonInput>
+  }
+
+  export type CertificateUpdateWithWhereUniqueWithoutPersonInput = {
+    where: CertificateWhereUniqueInput
+    data: XOR<CertificateUpdateWithoutPersonInput, CertificateUncheckedUpdateWithoutPersonInput>
+  }
+
+  export type CertificateUpdateManyWithWhereWithoutPersonInput = {
+    where: CertificateScalarWhereInput
+    data: XOR<CertificateUpdateManyMutationInput, CertificateUncheckedUpdateManyWithoutPersonInput>
+  }
+
+  export type CertificateScalarWhereInput = {
+    AND?: CertificateScalarWhereInput | CertificateScalarWhereInput[]
+    OR?: CertificateScalarWhereInput[]
+    NOT?: CertificateScalarWhereInput | CertificateScalarWhereInput[]
+    id?: StringFilter<"Certificate"> | string
+    personId?: StringFilter<"Certificate"> | string
+    meetupId?: StringFilter<"Certificate"> | string
+    link?: StringFilter<"Certificate"> | string
+    securityCode?: StringFilter<"Certificate"> | string
+    datetime?: DateTimeFilter<"Certificate"> | Date | string
+    createdAt?: DateTimeFilter<"Certificate"> | Date | string
+    updatedAt?: DateTimeFilter<"Certificate"> | Date | string
+  }
+
+  export type MeetupMediaUpsertWithWhereUniqueWithoutPersonInput = {
+    where: MeetupMediaWhereUniqueInput
+    update: XOR<MeetupMediaUpdateWithoutPersonInput, MeetupMediaUncheckedUpdateWithoutPersonInput>
+    create: XOR<MeetupMediaCreateWithoutPersonInput, MeetupMediaUncheckedCreateWithoutPersonInput>
+  }
+
+  export type MeetupMediaUpdateWithWhereUniqueWithoutPersonInput = {
+    where: MeetupMediaWhereUniqueInput
+    data: XOR<MeetupMediaUpdateWithoutPersonInput, MeetupMediaUncheckedUpdateWithoutPersonInput>
+  }
+
+  export type MeetupMediaUpdateManyWithWhereWithoutPersonInput = {
+    where: MeetupMediaScalarWhereInput
+    data: XOR<MeetupMediaUpdateManyMutationInput, MeetupMediaUncheckedUpdateManyWithoutPersonInput>
+  }
+
+  export type MeetupMediaScalarWhereInput = {
+    AND?: MeetupMediaScalarWhereInput | MeetupMediaScalarWhereInput[]
+    OR?: MeetupMediaScalarWhereInput[]
+    NOT?: MeetupMediaScalarWhereInput | MeetupMediaScalarWhereInput[]
+    id?: StringFilter<"MeetupMedia"> | string
+    meetupId?: StringFilter<"MeetupMedia"> | string
+    personId?: StringFilter<"MeetupMedia"> | string
+    link?: StringFilter<"MeetupMedia"> | string
+    datetime?: DateTimeFilter<"MeetupMedia"> | Date | string
+    createdAt?: DateTimeFilter<"MeetupMedia"> | Date | string
+    updatedAt?: DateTimeFilter<"MeetupMedia"> | Date | string
+  }
+
+  export type GuestLoadUpsertWithWhereUniqueWithoutPersonInput = {
+    where: GuestLoadWhereUniqueInput
+    update: XOR<GuestLoadUpdateWithoutPersonInput, GuestLoadUncheckedUpdateWithoutPersonInput>
+    create: XOR<GuestLoadCreateWithoutPersonInput, GuestLoadUncheckedCreateWithoutPersonInput>
+  }
+
+  export type GuestLoadUpdateWithWhereUniqueWithoutPersonInput = {
+    where: GuestLoadWhereUniqueInput
+    data: XOR<GuestLoadUpdateWithoutPersonInput, GuestLoadUncheckedUpdateWithoutPersonInput>
+  }
+
+  export type GuestLoadUpdateManyWithWhereWithoutPersonInput = {
+    where: GuestLoadScalarWhereInput
+    data: XOR<GuestLoadUpdateManyMutationInput, GuestLoadUncheckedUpdateManyWithoutPersonInput>
+  }
+
+  export type GuestLoadScalarWhereInput = {
+    AND?: GuestLoadScalarWhereInput | GuestLoadScalarWhereInput[]
+    OR?: GuestLoadScalarWhereInput[]
+    NOT?: GuestLoadScalarWhereInput | GuestLoadScalarWhereInput[]
+    id?: StringFilter<"GuestLoad"> | string
+    link?: StringFilter<"GuestLoad"> | string
+    meetupId?: StringFilter<"GuestLoad"> | string
+    personId?: StringFilter<"GuestLoad"> | string
+    datetime?: DateTimeFilter<"GuestLoad"> | Date | string
+    count?: IntFilter<"GuestLoad"> | number
+    createdAt?: DateTimeFilter<"GuestLoad"> | Date | string
+    updatedAt?: DateTimeFilter<"GuestLoad"> | Date | string
+  }
+
+  export type UserUpsertWithoutPersonInput = {
+    update: XOR<UserUpdateWithoutPersonInput, UserUncheckedUpdateWithoutPersonInput>
+    create: XOR<UserCreateWithoutPersonInput, UserUncheckedCreateWithoutPersonInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutPersonInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutPersonInput, UserUncheckedUpdateWithoutPersonInput>
+  }
+
+  export type UserUpdateWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type MeetupCreateWithoutAddressInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
+    invites?: InviteCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupUncheckedCreateWithoutAddressInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutMeetupInput
+    invites?: InviteUncheckedCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupCreateOrConnectWithoutAddressInput = {
+    where: MeetupWhereUniqueInput
+    create: XOR<MeetupCreateWithoutAddressInput, MeetupUncheckedCreateWithoutAddressInput>
+  }
+
+  export type MeetupCreateManyAddressInputEnvelope = {
+    data: MeetupCreateManyAddressInput | MeetupCreateManyAddressInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MeetupUpsertWithWhereUniqueWithoutAddressInput = {
+    where: MeetupWhereUniqueInput
+    update: XOR<MeetupUpdateWithoutAddressInput, MeetupUncheckedUpdateWithoutAddressInput>
+    create: XOR<MeetupCreateWithoutAddressInput, MeetupUncheckedCreateWithoutAddressInput>
+  }
+
+  export type MeetupUpdateWithWhereUniqueWithoutAddressInput = {
+    where: MeetupWhereUniqueInput
+    data: XOR<MeetupUpdateWithoutAddressInput, MeetupUncheckedUpdateWithoutAddressInput>
+  }
+
+  export type MeetupUpdateManyWithWhereWithoutAddressInput = {
+    where: MeetupScalarWhereInput
+    data: XOR<MeetupUpdateManyMutationInput, MeetupUncheckedUpdateManyWithoutAddressInput>
+  }
+
+  export type MeetupScalarWhereInput = {
+    AND?: MeetupScalarWhereInput | MeetupScalarWhereInput[]
+    OR?: MeetupScalarWhereInput[]
+    NOT?: MeetupScalarWhereInput | MeetupScalarWhereInput[]
+    id?: StringFilter<"Meetup"> | string
+    title?: StringFilter<"Meetup"> | string
+    description?: StringNullableFilter<"Meetup"> | string | null
+    datetime?: DateTimeFilter<"Meetup"> | Date | string
+    addressId?: StringFilter<"Meetup"> | string
+    image?: StringNullableFilter<"Meetup"> | string | null
+    createdAt?: DateTimeFilter<"Meetup"> | Date | string
+    updatedAt?: DateTimeFilter<"Meetup"> | Date | string
+  }
+
+  export type AddressCreateWithoutMeetupsInput = {
+    id?: string
+    mapLink?: string | null
+    state: string
+    city: string
+    district: string
+    street: string
+    number: string
+    complement?: string | null
+    zipcode: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AddressUncheckedCreateWithoutMeetupsInput = {
+    id?: string
+    mapLink?: string | null
+    state: string
+    city: string
+    district: string
+    street: string
+    number: string
+    complement?: string | null
+    zipcode: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AddressCreateOrConnectWithoutMeetupsInput = {
+    where: AddressWhereUniqueInput
+    create: XOR<AddressCreateWithoutMeetupsInput, AddressUncheckedCreateWithoutMeetupsInput>
+  }
+
+  export type MeetupAdminCreateWithoutMeetupInput = {
+    id?: string
+    role: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    person: PersonCreateNestedOneWithoutMeetupAdminsInput
+  }
+
+  export type MeetupAdminUncheckedCreateWithoutMeetupInput = {
+    id?: string
+    personId: string
+    role: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupAdminCreateOrConnectWithoutMeetupInput = {
+    where: MeetupAdminWhereUniqueInput
+    create: XOR<MeetupAdminCreateWithoutMeetupInput, MeetupAdminUncheckedCreateWithoutMeetupInput>
+  }
+
+  export type MeetupAdminCreateManyMeetupInputEnvelope = {
+    data: MeetupAdminCreateManyMeetupInput | MeetupAdminCreateManyMeetupInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SubscriptionCreateWithoutMeetupInput = {
+    id?: string
+    presenceConfirmation?: boolean | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    person: PersonCreateNestedOneWithoutSubscriptionsInput
+    meetupRole: MeetupRoleCreateNestedOneWithoutSubscriptionsInput
+    subscriptionPayments?: SubscriptionPaymentCreateNestedManyWithoutSubscriptionInput
+  }
+
+  export type SubscriptionUncheckedCreateWithoutMeetupInput = {
+    id?: string
+    personId: string
+    meetupRoleId: string
+    presenceConfirmation?: boolean | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subscriptionPayments?: SubscriptionPaymentUncheckedCreateNestedManyWithoutSubscriptionInput
+  }
+
+  export type SubscriptionCreateOrConnectWithoutMeetupInput = {
+    where: SubscriptionWhereUniqueInput
+    create: XOR<SubscriptionCreateWithoutMeetupInput, SubscriptionUncheckedCreateWithoutMeetupInput>
+  }
+
+  export type SubscriptionCreateManyMeetupInputEnvelope = {
+    data: SubscriptionCreateManyMeetupInput | SubscriptionCreateManyMeetupInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type InviteCreateWithoutMeetupInput = {
+    id?: string
+    link: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    person: PersonCreateNestedOneWithoutInvitesInput
+  }
+
+  export type InviteUncheckedCreateWithoutMeetupInput = {
+    id?: string
+    personId: string
+    link: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InviteCreateOrConnectWithoutMeetupInput = {
+    where: InviteWhereUniqueInput
+    create: XOR<InviteCreateWithoutMeetupInput, InviteUncheckedCreateWithoutMeetupInput>
+  }
+
+  export type InviteCreateManyMeetupInputEnvelope = {
+    data: InviteCreateManyMeetupInput | InviteCreateManyMeetupInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CertificateCreateWithoutMeetupInput = {
+    id?: string
+    link: string
+    securityCode: string
+    datetime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    person: PersonCreateNestedOneWithoutCertificatesInput
+  }
+
+  export type CertificateUncheckedCreateWithoutMeetupInput = {
+    id?: string
+    personId: string
+    link: string
+    securityCode: string
+    datetime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CertificateCreateOrConnectWithoutMeetupInput = {
+    where: CertificateWhereUniqueInput
+    create: XOR<CertificateCreateWithoutMeetupInput, CertificateUncheckedCreateWithoutMeetupInput>
+  }
+
+  export type CertificateCreateManyMeetupInputEnvelope = {
+    data: CertificateCreateManyMeetupInput | CertificateCreateManyMeetupInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MeetupMediaCreateWithoutMeetupInput = {
+    id?: string
+    link: string
+    datetime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    person: PersonCreateNestedOneWithoutMeetupMediasInput
+  }
+
+  export type MeetupMediaUncheckedCreateWithoutMeetupInput = {
+    id?: string
+    personId: string
+    link: string
+    datetime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupMediaCreateOrConnectWithoutMeetupInput = {
+    where: MeetupMediaWhereUniqueInput
+    create: XOR<MeetupMediaCreateWithoutMeetupInput, MeetupMediaUncheckedCreateWithoutMeetupInput>
+  }
+
+  export type MeetupMediaCreateManyMeetupInputEnvelope = {
+    data: MeetupMediaCreateManyMeetupInput | MeetupMediaCreateManyMeetupInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type GuestLoadCreateWithoutMeetupInput = {
+    id?: string
+    link: string
+    datetime: Date | string
+    count: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    person: PersonCreateNestedOneWithoutGuestLoadsInput
+  }
+
+  export type GuestLoadUncheckedCreateWithoutMeetupInput = {
+    id?: string
+    link: string
+    personId: string
+    datetime: Date | string
+    count: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GuestLoadCreateOrConnectWithoutMeetupInput = {
+    where: GuestLoadWhereUniqueInput
+    create: XOR<GuestLoadCreateWithoutMeetupInput, GuestLoadUncheckedCreateWithoutMeetupInput>
+  }
+
+  export type GuestLoadCreateManyMeetupInputEnvelope = {
+    data: GuestLoadCreateManyMeetupInput | GuestLoadCreateManyMeetupInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AddressUpsertWithoutMeetupsInput = {
+    update: XOR<AddressUpdateWithoutMeetupsInput, AddressUncheckedUpdateWithoutMeetupsInput>
+    create: XOR<AddressCreateWithoutMeetupsInput, AddressUncheckedCreateWithoutMeetupsInput>
+    where?: AddressWhereInput
+  }
+
+  export type AddressUpdateToOneWithWhereWithoutMeetupsInput = {
+    where?: AddressWhereInput
+    data: XOR<AddressUpdateWithoutMeetupsInput, AddressUncheckedUpdateWithoutMeetupsInput>
+  }
+
+  export type AddressUpdateWithoutMeetupsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mapLink?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    district?: StringFieldUpdateOperationsInput | string
+    street?: StringFieldUpdateOperationsInput | string
+    number?: StringFieldUpdateOperationsInput | string
+    complement?: NullableStringFieldUpdateOperationsInput | string | null
+    zipcode?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AddressUncheckedUpdateWithoutMeetupsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mapLink?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    district?: StringFieldUpdateOperationsInput | string
+    street?: StringFieldUpdateOperationsInput | string
+    number?: StringFieldUpdateOperationsInput | string
+    complement?: NullableStringFieldUpdateOperationsInput | string | null
+    zipcode?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupAdminUpsertWithWhereUniqueWithoutMeetupInput = {
+    where: MeetupAdminWhereUniqueInput
+    update: XOR<MeetupAdminUpdateWithoutMeetupInput, MeetupAdminUncheckedUpdateWithoutMeetupInput>
+    create: XOR<MeetupAdminCreateWithoutMeetupInput, MeetupAdminUncheckedCreateWithoutMeetupInput>
+  }
+
+  export type MeetupAdminUpdateWithWhereUniqueWithoutMeetupInput = {
+    where: MeetupAdminWhereUniqueInput
+    data: XOR<MeetupAdminUpdateWithoutMeetupInput, MeetupAdminUncheckedUpdateWithoutMeetupInput>
+  }
+
+  export type MeetupAdminUpdateManyWithWhereWithoutMeetupInput = {
+    where: MeetupAdminScalarWhereInput
+    data: XOR<MeetupAdminUpdateManyMutationInput, MeetupAdminUncheckedUpdateManyWithoutMeetupInput>
+  }
+
+  export type SubscriptionUpsertWithWhereUniqueWithoutMeetupInput = {
+    where: SubscriptionWhereUniqueInput
+    update: XOR<SubscriptionUpdateWithoutMeetupInput, SubscriptionUncheckedUpdateWithoutMeetupInput>
+    create: XOR<SubscriptionCreateWithoutMeetupInput, SubscriptionUncheckedCreateWithoutMeetupInput>
+  }
+
+  export type SubscriptionUpdateWithWhereUniqueWithoutMeetupInput = {
+    where: SubscriptionWhereUniqueInput
+    data: XOR<SubscriptionUpdateWithoutMeetupInput, SubscriptionUncheckedUpdateWithoutMeetupInput>
+  }
+
+  export type SubscriptionUpdateManyWithWhereWithoutMeetupInput = {
+    where: SubscriptionScalarWhereInput
+    data: XOR<SubscriptionUpdateManyMutationInput, SubscriptionUncheckedUpdateManyWithoutMeetupInput>
+  }
+
+  export type InviteUpsertWithWhereUniqueWithoutMeetupInput = {
+    where: InviteWhereUniqueInput
+    update: XOR<InviteUpdateWithoutMeetupInput, InviteUncheckedUpdateWithoutMeetupInput>
+    create: XOR<InviteCreateWithoutMeetupInput, InviteUncheckedCreateWithoutMeetupInput>
+  }
+
+  export type InviteUpdateWithWhereUniqueWithoutMeetupInput = {
+    where: InviteWhereUniqueInput
+    data: XOR<InviteUpdateWithoutMeetupInput, InviteUncheckedUpdateWithoutMeetupInput>
+  }
+
+  export type InviteUpdateManyWithWhereWithoutMeetupInput = {
+    where: InviteScalarWhereInput
+    data: XOR<InviteUpdateManyMutationInput, InviteUncheckedUpdateManyWithoutMeetupInput>
+  }
+
+  export type CertificateUpsertWithWhereUniqueWithoutMeetupInput = {
+    where: CertificateWhereUniqueInput
+    update: XOR<CertificateUpdateWithoutMeetupInput, CertificateUncheckedUpdateWithoutMeetupInput>
+    create: XOR<CertificateCreateWithoutMeetupInput, CertificateUncheckedCreateWithoutMeetupInput>
+  }
+
+  export type CertificateUpdateWithWhereUniqueWithoutMeetupInput = {
+    where: CertificateWhereUniqueInput
+    data: XOR<CertificateUpdateWithoutMeetupInput, CertificateUncheckedUpdateWithoutMeetupInput>
+  }
+
+  export type CertificateUpdateManyWithWhereWithoutMeetupInput = {
+    where: CertificateScalarWhereInput
+    data: XOR<CertificateUpdateManyMutationInput, CertificateUncheckedUpdateManyWithoutMeetupInput>
+  }
+
+  export type MeetupMediaUpsertWithWhereUniqueWithoutMeetupInput = {
+    where: MeetupMediaWhereUniqueInput
+    update: XOR<MeetupMediaUpdateWithoutMeetupInput, MeetupMediaUncheckedUpdateWithoutMeetupInput>
+    create: XOR<MeetupMediaCreateWithoutMeetupInput, MeetupMediaUncheckedCreateWithoutMeetupInput>
+  }
+
+  export type MeetupMediaUpdateWithWhereUniqueWithoutMeetupInput = {
+    where: MeetupMediaWhereUniqueInput
+    data: XOR<MeetupMediaUpdateWithoutMeetupInput, MeetupMediaUncheckedUpdateWithoutMeetupInput>
+  }
+
+  export type MeetupMediaUpdateManyWithWhereWithoutMeetupInput = {
+    where: MeetupMediaScalarWhereInput
+    data: XOR<MeetupMediaUpdateManyMutationInput, MeetupMediaUncheckedUpdateManyWithoutMeetupInput>
+  }
+
+  export type GuestLoadUpsertWithWhereUniqueWithoutMeetupInput = {
+    where: GuestLoadWhereUniqueInput
+    update: XOR<GuestLoadUpdateWithoutMeetupInput, GuestLoadUncheckedUpdateWithoutMeetupInput>
+    create: XOR<GuestLoadCreateWithoutMeetupInput, GuestLoadUncheckedCreateWithoutMeetupInput>
+  }
+
+  export type GuestLoadUpdateWithWhereUniqueWithoutMeetupInput = {
+    where: GuestLoadWhereUniqueInput
+    data: XOR<GuestLoadUpdateWithoutMeetupInput, GuestLoadUncheckedUpdateWithoutMeetupInput>
+  }
+
+  export type GuestLoadUpdateManyWithWhereWithoutMeetupInput = {
+    where: GuestLoadScalarWhereInput
+    data: XOR<GuestLoadUpdateManyMutationInput, GuestLoadUncheckedUpdateManyWithoutMeetupInput>
+  }
+
+  export type SubscriptionCreateWithoutMeetupRoleInput = {
+    id?: string
+    presenceConfirmation?: boolean | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    person: PersonCreateNestedOneWithoutSubscriptionsInput
+    meetup: MeetupCreateNestedOneWithoutSubscriptionsInput
+    subscriptionPayments?: SubscriptionPaymentCreateNestedManyWithoutSubscriptionInput
+  }
+
+  export type SubscriptionUncheckedCreateWithoutMeetupRoleInput = {
+    id?: string
+    personId: string
+    meetupId: string
+    presenceConfirmation?: boolean | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subscriptionPayments?: SubscriptionPaymentUncheckedCreateNestedManyWithoutSubscriptionInput
+  }
+
+  export type SubscriptionCreateOrConnectWithoutMeetupRoleInput = {
+    where: SubscriptionWhereUniqueInput
+    create: XOR<SubscriptionCreateWithoutMeetupRoleInput, SubscriptionUncheckedCreateWithoutMeetupRoleInput>
+  }
+
+  export type SubscriptionCreateManyMeetupRoleInputEnvelope = {
+    data: SubscriptionCreateManyMeetupRoleInput | SubscriptionCreateManyMeetupRoleInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SubscriptionUpsertWithWhereUniqueWithoutMeetupRoleInput = {
+    where: SubscriptionWhereUniqueInput
+    update: XOR<SubscriptionUpdateWithoutMeetupRoleInput, SubscriptionUncheckedUpdateWithoutMeetupRoleInput>
+    create: XOR<SubscriptionCreateWithoutMeetupRoleInput, SubscriptionUncheckedCreateWithoutMeetupRoleInput>
+  }
+
+  export type SubscriptionUpdateWithWhereUniqueWithoutMeetupRoleInput = {
+    where: SubscriptionWhereUniqueInput
+    data: XOR<SubscriptionUpdateWithoutMeetupRoleInput, SubscriptionUncheckedUpdateWithoutMeetupRoleInput>
+  }
+
+  export type SubscriptionUpdateManyWithWhereWithoutMeetupRoleInput = {
+    where: SubscriptionScalarWhereInput
+    data: XOR<SubscriptionUpdateManyMutationInput, SubscriptionUncheckedUpdateManyWithoutMeetupRoleInput>
+  }
+
+  export type MeetupCreateWithoutMeetupAdminsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    address: AddressCreateNestedOneWithoutMeetupsInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
+    invites?: InviteCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupUncheckedCreateWithoutMeetupAdminsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    addressId: string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutMeetupInput
+    invites?: InviteUncheckedCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupCreateOrConnectWithoutMeetupAdminsInput = {
+    where: MeetupWhereUniqueInput
+    create: XOR<MeetupCreateWithoutMeetupAdminsInput, MeetupUncheckedCreateWithoutMeetupAdminsInput>
+  }
+
+  export type PersonCreateWithoutMeetupAdminsInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subscriptions?: SubscriptionCreateNestedManyWithoutPersonInput
+    invites?: InviteCreateNestedManyWithoutPersonInput
+    certificates?: CertificateCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
+    user: UserCreateNestedOneWithoutPersonInput
+  }
+
+  export type PersonUncheckedCreateWithoutMeetupAdminsInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutPersonInput
+    invites?: InviteUncheckedCreateNestedManyWithoutPersonInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
+  }
+
+  export type PersonCreateOrConnectWithoutMeetupAdminsInput = {
+    where: PersonWhereUniqueInput
+    create: XOR<PersonCreateWithoutMeetupAdminsInput, PersonUncheckedCreateWithoutMeetupAdminsInput>
+  }
+
+  export type MeetupUpsertWithoutMeetupAdminsInput = {
+    update: XOR<MeetupUpdateWithoutMeetupAdminsInput, MeetupUncheckedUpdateWithoutMeetupAdminsInput>
+    create: XOR<MeetupCreateWithoutMeetupAdminsInput, MeetupUncheckedCreateWithoutMeetupAdminsInput>
+    where?: MeetupWhereInput
+  }
+
+  export type MeetupUpdateToOneWithWhereWithoutMeetupAdminsInput = {
+    where?: MeetupWhereInput
+    data: XOR<MeetupUpdateWithoutMeetupAdminsInput, MeetupUncheckedUpdateWithoutMeetupAdminsInput>
+  }
+
+  export type MeetupUpdateWithoutMeetupAdminsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type MeetupUncheckedUpdateWithoutMeetupAdminsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    addressId?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type PersonUpsertWithoutMeetupAdminsInput = {
+    update: XOR<PersonUpdateWithoutMeetupAdminsInput, PersonUncheckedUpdateWithoutMeetupAdminsInput>
+    create: XOR<PersonCreateWithoutMeetupAdminsInput, PersonUncheckedCreateWithoutMeetupAdminsInput>
+    where?: PersonWhereInput
+  }
+
+  export type PersonUpdateToOneWithWhereWithoutMeetupAdminsInput = {
+    where?: PersonWhereInput
+    data: XOR<PersonUpdateWithoutMeetupAdminsInput, PersonUncheckedUpdateWithoutMeetupAdminsInput>
+  }
+
+  export type PersonUpdateWithoutMeetupAdminsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptions?: SubscriptionUpdateManyWithoutPersonNestedInput
+    invites?: InviteUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
+    user?: UserUpdateOneRequiredWithoutPersonNestedInput
+  }
+
+  export type PersonUncheckedUpdateWithoutMeetupAdminsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutPersonNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
+  }
+
+  export type PersonCreateWithoutSubscriptionsInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutPersonInput
+    invites?: InviteCreateNestedManyWithoutPersonInput
+    certificates?: CertificateCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
+    user: UserCreateNestedOneWithoutPersonInput
+  }
+
+  export type PersonUncheckedCreateWithoutSubscriptionsInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutPersonInput
+    invites?: InviteUncheckedCreateNestedManyWithoutPersonInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
+  }
+
+  export type PersonCreateOrConnectWithoutSubscriptionsInput = {
+    where: PersonWhereUniqueInput
+    create: XOR<PersonCreateWithoutSubscriptionsInput, PersonUncheckedCreateWithoutSubscriptionsInput>
+  }
+
+  export type MeetupCreateWithoutSubscriptionsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    address: AddressCreateNestedOneWithoutMeetupsInput
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
+    invites?: InviteCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupUncheckedCreateWithoutSubscriptionsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    addressId: string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
+    invites?: InviteUncheckedCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupCreateOrConnectWithoutSubscriptionsInput = {
+    where: MeetupWhereUniqueInput
+    create: XOR<MeetupCreateWithoutSubscriptionsInput, MeetupUncheckedCreateWithoutSubscriptionsInput>
+  }
+
+  export type MeetupRoleCreateWithoutSubscriptionsInput = {
+    id?: string
+    name: string
+    subscriptionPrice: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupRoleUncheckedCreateWithoutSubscriptionsInput = {
+    id?: string
+    name: string
+    subscriptionPrice: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupRoleCreateOrConnectWithoutSubscriptionsInput = {
+    where: MeetupRoleWhereUniqueInput
+    create: XOR<MeetupRoleCreateWithoutSubscriptionsInput, MeetupRoleUncheckedCreateWithoutSubscriptionsInput>
+  }
+
+  export type SubscriptionPaymentCreateWithoutSubscriptionInput = {
+    id?: string
+    price: Decimal | DecimalJsLike | number | string
+    paymentStatus?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    payment: PaymentCreateNestedOneWithoutSubscriptionPaymentsInput
+  }
+
+  export type SubscriptionPaymentUncheckedCreateWithoutSubscriptionInput = {
+    id?: string
+    paymentId: string
+    price: Decimal | DecimalJsLike | number | string
+    paymentStatus?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SubscriptionPaymentCreateOrConnectWithoutSubscriptionInput = {
+    where: SubscriptionPaymentWhereUniqueInput
+    create: XOR<SubscriptionPaymentCreateWithoutSubscriptionInput, SubscriptionPaymentUncheckedCreateWithoutSubscriptionInput>
+  }
+
+  export type SubscriptionPaymentCreateManySubscriptionInputEnvelope = {
+    data: SubscriptionPaymentCreateManySubscriptionInput | SubscriptionPaymentCreateManySubscriptionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PersonUpsertWithoutSubscriptionsInput = {
+    update: XOR<PersonUpdateWithoutSubscriptionsInput, PersonUncheckedUpdateWithoutSubscriptionsInput>
+    create: XOR<PersonCreateWithoutSubscriptionsInput, PersonUncheckedCreateWithoutSubscriptionsInput>
+    where?: PersonWhereInput
+  }
+
+  export type PersonUpdateToOneWithWhereWithoutSubscriptionsInput = {
+    where?: PersonWhereInput
+    data: XOR<PersonUpdateWithoutSubscriptionsInput, PersonUncheckedUpdateWithoutSubscriptionsInput>
+  }
+
+  export type PersonUpdateWithoutSubscriptionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUpdateManyWithoutPersonNestedInput
+    invites?: InviteUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
+    user?: UserUpdateOneRequiredWithoutPersonNestedInput
+  }
+
+  export type PersonUncheckedUpdateWithoutSubscriptionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutPersonNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
+  }
+
+  export type MeetupUpsertWithoutSubscriptionsInput = {
+    update: XOR<MeetupUpdateWithoutSubscriptionsInput, MeetupUncheckedUpdateWithoutSubscriptionsInput>
+    create: XOR<MeetupCreateWithoutSubscriptionsInput, MeetupUncheckedCreateWithoutSubscriptionsInput>
+    where?: MeetupWhereInput
+  }
+
+  export type MeetupUpdateToOneWithWhereWithoutSubscriptionsInput = {
+    where?: MeetupWhereInput
+    data: XOR<MeetupUpdateWithoutSubscriptionsInput, MeetupUncheckedUpdateWithoutSubscriptionsInput>
+  }
+
+  export type MeetupUpdateWithoutSubscriptionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type MeetupUncheckedUpdateWithoutSubscriptionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    addressId?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type MeetupRoleUpsertWithoutSubscriptionsInput = {
+    update: XOR<MeetupRoleUpdateWithoutSubscriptionsInput, MeetupRoleUncheckedUpdateWithoutSubscriptionsInput>
+    create: XOR<MeetupRoleCreateWithoutSubscriptionsInput, MeetupRoleUncheckedCreateWithoutSubscriptionsInput>
+    where?: MeetupRoleWhereInput
+  }
+
+  export type MeetupRoleUpdateToOneWithWhereWithoutSubscriptionsInput = {
+    where?: MeetupRoleWhereInput
+    data: XOR<MeetupRoleUpdateWithoutSubscriptionsInput, MeetupRoleUncheckedUpdateWithoutSubscriptionsInput>
+  }
+
+  export type MeetupRoleUpdateWithoutSubscriptionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    subscriptionPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupRoleUncheckedUpdateWithoutSubscriptionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    subscriptionPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubscriptionPaymentUpsertWithWhereUniqueWithoutSubscriptionInput = {
+    where: SubscriptionPaymentWhereUniqueInput
+    update: XOR<SubscriptionPaymentUpdateWithoutSubscriptionInput, SubscriptionPaymentUncheckedUpdateWithoutSubscriptionInput>
+    create: XOR<SubscriptionPaymentCreateWithoutSubscriptionInput, SubscriptionPaymentUncheckedCreateWithoutSubscriptionInput>
+  }
+
+  export type SubscriptionPaymentUpdateWithWhereUniqueWithoutSubscriptionInput = {
+    where: SubscriptionPaymentWhereUniqueInput
+    data: XOR<SubscriptionPaymentUpdateWithoutSubscriptionInput, SubscriptionPaymentUncheckedUpdateWithoutSubscriptionInput>
+  }
+
+  export type SubscriptionPaymentUpdateManyWithWhereWithoutSubscriptionInput = {
+    where: SubscriptionPaymentScalarWhereInput
+    data: XOR<SubscriptionPaymentUpdateManyMutationInput, SubscriptionPaymentUncheckedUpdateManyWithoutSubscriptionInput>
+  }
+
+  export type SubscriptionPaymentScalarWhereInput = {
+    AND?: SubscriptionPaymentScalarWhereInput | SubscriptionPaymentScalarWhereInput[]
+    OR?: SubscriptionPaymentScalarWhereInput[]
+    NOT?: SubscriptionPaymentScalarWhereInput | SubscriptionPaymentScalarWhereInput[]
+    id?: StringFilter<"SubscriptionPayment"> | string
+    subscriptionId?: StringFilter<"SubscriptionPayment"> | string
+    paymentId?: StringFilter<"SubscriptionPayment"> | string
+    price?: DecimalFilter<"SubscriptionPayment"> | Decimal | DecimalJsLike | number | string
+    paymentStatus?: BoolFilter<"SubscriptionPayment"> | boolean
+    createdAt?: DateTimeFilter<"SubscriptionPayment"> | Date | string
+    updatedAt?: DateTimeFilter<"SubscriptionPayment"> | Date | string
+  }
+
+  export type PersonCreateWithoutInvitesInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutPersonInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutPersonInput
+    certificates?: CertificateCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
+    user: UserCreateNestedOneWithoutPersonInput
+  }
+
+  export type PersonUncheckedCreateWithoutInvitesInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutPersonInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutPersonInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
+  }
+
+  export type PersonCreateOrConnectWithoutInvitesInput = {
+    where: PersonWhereUniqueInput
+    create: XOR<PersonCreateWithoutInvitesInput, PersonUncheckedCreateWithoutInvitesInput>
+  }
+
+  export type MeetupCreateWithoutInvitesInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    address: AddressCreateNestedOneWithoutMeetupsInput
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupUncheckedCreateWithoutInvitesInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    addressId: string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupCreateOrConnectWithoutInvitesInput = {
+    where: MeetupWhereUniqueInput
+    create: XOR<MeetupCreateWithoutInvitesInput, MeetupUncheckedCreateWithoutInvitesInput>
+  }
+
+  export type PersonUpsertWithoutInvitesInput = {
+    update: XOR<PersonUpdateWithoutInvitesInput, PersonUncheckedUpdateWithoutInvitesInput>
+    create: XOR<PersonCreateWithoutInvitesInput, PersonUncheckedCreateWithoutInvitesInput>
+    where?: PersonWhereInput
+  }
+
+  export type PersonUpdateToOneWithWhereWithoutInvitesInput = {
+    where?: PersonWhereInput
+    data: XOR<PersonUpdateWithoutInvitesInput, PersonUncheckedUpdateWithoutInvitesInput>
+  }
+
+  export type PersonUpdateWithoutInvitesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUpdateManyWithoutPersonNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
+    user?: UserUpdateOneRequiredWithoutPersonNestedInput
+  }
+
+  export type PersonUncheckedUpdateWithoutInvitesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutPersonNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
+  }
+
+  export type MeetupUpsertWithoutInvitesInput = {
+    update: XOR<MeetupUpdateWithoutInvitesInput, MeetupUncheckedUpdateWithoutInvitesInput>
+    create: XOR<MeetupCreateWithoutInvitesInput, MeetupUncheckedCreateWithoutInvitesInput>
+    where?: MeetupWhereInput
+  }
+
+  export type MeetupUpdateToOneWithWhereWithoutInvitesInput = {
+    where?: MeetupWhereInput
+    data: XOR<MeetupUpdateWithoutInvitesInput, MeetupUncheckedUpdateWithoutInvitesInput>
+  }
+
+  export type MeetupUpdateWithoutInvitesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type MeetupUncheckedUpdateWithoutInvitesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    addressId?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type SubscriptionPaymentCreateWithoutPaymentInput = {
+    id?: string
+    price: Decimal | DecimalJsLike | number | string
+    paymentStatus?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subscription: SubscriptionCreateNestedOneWithoutSubscriptionPaymentsInput
+  }
+
+  export type SubscriptionPaymentUncheckedCreateWithoutPaymentInput = {
+    id?: string
+    subscriptionId: string
+    price: Decimal | DecimalJsLike | number | string
+    paymentStatus?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SubscriptionPaymentCreateOrConnectWithoutPaymentInput = {
+    where: SubscriptionPaymentWhereUniqueInput
+    create: XOR<SubscriptionPaymentCreateWithoutPaymentInput, SubscriptionPaymentUncheckedCreateWithoutPaymentInput>
+  }
+
+  export type SubscriptionPaymentCreateManyPaymentInputEnvelope = {
+    data: SubscriptionPaymentCreateManyPaymentInput | SubscriptionPaymentCreateManyPaymentInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SubscriptionPaymentUpsertWithWhereUniqueWithoutPaymentInput = {
+    where: SubscriptionPaymentWhereUniqueInput
+    update: XOR<SubscriptionPaymentUpdateWithoutPaymentInput, SubscriptionPaymentUncheckedUpdateWithoutPaymentInput>
+    create: XOR<SubscriptionPaymentCreateWithoutPaymentInput, SubscriptionPaymentUncheckedCreateWithoutPaymentInput>
+  }
+
+  export type SubscriptionPaymentUpdateWithWhereUniqueWithoutPaymentInput = {
+    where: SubscriptionPaymentWhereUniqueInput
+    data: XOR<SubscriptionPaymentUpdateWithoutPaymentInput, SubscriptionPaymentUncheckedUpdateWithoutPaymentInput>
+  }
+
+  export type SubscriptionPaymentUpdateManyWithWhereWithoutPaymentInput = {
+    where: SubscriptionPaymentScalarWhereInput
+    data: XOR<SubscriptionPaymentUpdateManyMutationInput, SubscriptionPaymentUncheckedUpdateManyWithoutPaymentInput>
+  }
+
+  export type SubscriptionCreateWithoutSubscriptionPaymentsInput = {
+    id?: string
+    presenceConfirmation?: boolean | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    person: PersonCreateNestedOneWithoutSubscriptionsInput
+    meetup: MeetupCreateNestedOneWithoutSubscriptionsInput
+    meetupRole: MeetupRoleCreateNestedOneWithoutSubscriptionsInput
+  }
+
+  export type SubscriptionUncheckedCreateWithoutSubscriptionPaymentsInput = {
+    id?: string
+    personId: string
+    meetupId: string
+    meetupRoleId: string
+    presenceConfirmation?: boolean | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SubscriptionCreateOrConnectWithoutSubscriptionPaymentsInput = {
+    where: SubscriptionWhereUniqueInput
+    create: XOR<SubscriptionCreateWithoutSubscriptionPaymentsInput, SubscriptionUncheckedCreateWithoutSubscriptionPaymentsInput>
+  }
+
+  export type PaymentCreateWithoutSubscriptionPaymentsInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PaymentUncheckedCreateWithoutSubscriptionPaymentsInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PaymentCreateOrConnectWithoutSubscriptionPaymentsInput = {
+    where: PaymentWhereUniqueInput
+    create: XOR<PaymentCreateWithoutSubscriptionPaymentsInput, PaymentUncheckedCreateWithoutSubscriptionPaymentsInput>
+  }
+
+  export type SubscriptionUpsertWithoutSubscriptionPaymentsInput = {
+    update: XOR<SubscriptionUpdateWithoutSubscriptionPaymentsInput, SubscriptionUncheckedUpdateWithoutSubscriptionPaymentsInput>
+    create: XOR<SubscriptionCreateWithoutSubscriptionPaymentsInput, SubscriptionUncheckedCreateWithoutSubscriptionPaymentsInput>
+    where?: SubscriptionWhereInput
+  }
+
+  export type SubscriptionUpdateToOneWithWhereWithoutSubscriptionPaymentsInput = {
+    where?: SubscriptionWhereInput
+    data: XOR<SubscriptionUpdateWithoutSubscriptionPaymentsInput, SubscriptionUncheckedUpdateWithoutSubscriptionPaymentsInput>
+  }
+
+  export type SubscriptionUpdateWithoutSubscriptionPaymentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    person?: PersonUpdateOneRequiredWithoutSubscriptionsNestedInput
+    meetup?: MeetupUpdateOneRequiredWithoutSubscriptionsNestedInput
+    meetupRole?: MeetupRoleUpdateOneRequiredWithoutSubscriptionsNestedInput
+  }
+
+  export type SubscriptionUncheckedUpdateWithoutSubscriptionPaymentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    meetupRoleId?: StringFieldUpdateOperationsInput | string
+    presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PaymentUpsertWithoutSubscriptionPaymentsInput = {
+    update: XOR<PaymentUpdateWithoutSubscriptionPaymentsInput, PaymentUncheckedUpdateWithoutSubscriptionPaymentsInput>
+    create: XOR<PaymentCreateWithoutSubscriptionPaymentsInput, PaymentUncheckedCreateWithoutSubscriptionPaymentsInput>
+    where?: PaymentWhereInput
+  }
+
+  export type PaymentUpdateToOneWithWhereWithoutSubscriptionPaymentsInput = {
+    where?: PaymentWhereInput
+    data: XOR<PaymentUpdateWithoutSubscriptionPaymentsInput, PaymentUncheckedUpdateWithoutSubscriptionPaymentsInput>
+  }
+
+  export type PaymentUpdateWithoutSubscriptionPaymentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PaymentUncheckedUpdateWithoutSubscriptionPaymentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PersonCreateWithoutCertificatesInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutPersonInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutPersonInput
+    invites?: InviteCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
+    user: UserCreateNestedOneWithoutPersonInput
+  }
+
+  export type PersonUncheckedCreateWithoutCertificatesInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutPersonInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutPersonInput
+    invites?: InviteUncheckedCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
+  }
+
+  export type PersonCreateOrConnectWithoutCertificatesInput = {
+    where: PersonWhereUniqueInput
+    create: XOR<PersonCreateWithoutCertificatesInput, PersonUncheckedCreateWithoutCertificatesInput>
+  }
+
+  export type MeetupCreateWithoutCertificatesInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    address: AddressCreateNestedOneWithoutMeetupsInput
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
+    invites?: InviteCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupUncheckedCreateWithoutCertificatesInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    addressId: string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutMeetupInput
+    invites?: InviteUncheckedCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupCreateOrConnectWithoutCertificatesInput = {
+    where: MeetupWhereUniqueInput
+    create: XOR<MeetupCreateWithoutCertificatesInput, MeetupUncheckedCreateWithoutCertificatesInput>
+  }
+
+  export type PersonUpsertWithoutCertificatesInput = {
+    update: XOR<PersonUpdateWithoutCertificatesInput, PersonUncheckedUpdateWithoutCertificatesInput>
+    create: XOR<PersonCreateWithoutCertificatesInput, PersonUncheckedCreateWithoutCertificatesInput>
+    where?: PersonWhereInput
+  }
+
+  export type PersonUpdateToOneWithWhereWithoutCertificatesInput = {
+    where?: PersonWhereInput
+    data: XOR<PersonUpdateWithoutCertificatesInput, PersonUncheckedUpdateWithoutCertificatesInput>
+  }
+
+  export type PersonUpdateWithoutCertificatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUpdateManyWithoutPersonNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutPersonNestedInput
+    invites?: InviteUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
+    user?: UserUpdateOneRequiredWithoutPersonNestedInput
+  }
+
+  export type PersonUncheckedUpdateWithoutCertificatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutPersonNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutPersonNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
+  }
+
+  export type MeetupUpsertWithoutCertificatesInput = {
+    update: XOR<MeetupUpdateWithoutCertificatesInput, MeetupUncheckedUpdateWithoutCertificatesInput>
+    create: XOR<MeetupCreateWithoutCertificatesInput, MeetupUncheckedCreateWithoutCertificatesInput>
+    where?: MeetupWhereInput
+  }
+
+  export type MeetupUpdateToOneWithWhereWithoutCertificatesInput = {
+    where?: MeetupWhereInput
+    data: XOR<MeetupUpdateWithoutCertificatesInput, MeetupUncheckedUpdateWithoutCertificatesInput>
+  }
+
+  export type MeetupUpdateWithoutCertificatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type MeetupUncheckedUpdateWithoutCertificatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    addressId?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type MeetupCreateWithoutMeetupMediasInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    address: AddressCreateNestedOneWithoutMeetupsInput
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
+    invites?: InviteCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupUncheckedCreateWithoutMeetupMediasInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    addressId: string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutMeetupInput
+    invites?: InviteUncheckedCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupCreateOrConnectWithoutMeetupMediasInput = {
+    where: MeetupWhereUniqueInput
+    create: XOR<MeetupCreateWithoutMeetupMediasInput, MeetupUncheckedCreateWithoutMeetupMediasInput>
+  }
+
+  export type PersonCreateWithoutMeetupMediasInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutPersonInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutPersonInput
+    invites?: InviteCreateNestedManyWithoutPersonInput
+    certificates?: CertificateCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
+    user: UserCreateNestedOneWithoutPersonInput
+  }
+
+  export type PersonUncheckedCreateWithoutMeetupMediasInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutPersonInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutPersonInput
+    invites?: InviteUncheckedCreateNestedManyWithoutPersonInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
+  }
+
+  export type PersonCreateOrConnectWithoutMeetupMediasInput = {
+    where: PersonWhereUniqueInput
+    create: XOR<PersonCreateWithoutMeetupMediasInput, PersonUncheckedCreateWithoutMeetupMediasInput>
+  }
+
+  export type MeetupUpsertWithoutMeetupMediasInput = {
+    update: XOR<MeetupUpdateWithoutMeetupMediasInput, MeetupUncheckedUpdateWithoutMeetupMediasInput>
+    create: XOR<MeetupCreateWithoutMeetupMediasInput, MeetupUncheckedCreateWithoutMeetupMediasInput>
+    where?: MeetupWhereInput
+  }
+
+  export type MeetupUpdateToOneWithWhereWithoutMeetupMediasInput = {
+    where?: MeetupWhereInput
+    data: XOR<MeetupUpdateWithoutMeetupMediasInput, MeetupUncheckedUpdateWithoutMeetupMediasInput>
+  }
+
+  export type MeetupUpdateWithoutMeetupMediasInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type MeetupUncheckedUpdateWithoutMeetupMediasInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    addressId?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type PersonUpsertWithoutMeetupMediasInput = {
+    update: XOR<PersonUpdateWithoutMeetupMediasInput, PersonUncheckedUpdateWithoutMeetupMediasInput>
+    create: XOR<PersonCreateWithoutMeetupMediasInput, PersonUncheckedCreateWithoutMeetupMediasInput>
+    where?: PersonWhereInput
+  }
+
+  export type PersonUpdateToOneWithWhereWithoutMeetupMediasInput = {
+    where?: PersonWhereInput
+    data: XOR<PersonUpdateWithoutMeetupMediasInput, PersonUncheckedUpdateWithoutMeetupMediasInput>
+  }
+
+  export type PersonUpdateWithoutMeetupMediasInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUpdateManyWithoutPersonNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutPersonNestedInput
+    invites?: InviteUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
+    user?: UserUpdateOneRequiredWithoutPersonNestedInput
+  }
+
+  export type PersonUncheckedUpdateWithoutMeetupMediasInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutPersonNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutPersonNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
+  }
+
+  export type MeetupCreateWithoutGuestLoadsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    address: AddressCreateNestedOneWithoutMeetupsInput
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
+    invites?: InviteCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupUncheckedCreateWithoutGuestLoadsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    addressId: string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutMeetupInput
+    invites?: InviteUncheckedCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupCreateOrConnectWithoutGuestLoadsInput = {
+    where: MeetupWhereUniqueInput
+    create: XOR<MeetupCreateWithoutGuestLoadsInput, MeetupUncheckedCreateWithoutGuestLoadsInput>
+  }
+
+  export type PersonCreateWithoutGuestLoadsInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutPersonInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutPersonInput
+    invites?: InviteCreateNestedManyWithoutPersonInput
+    certificates?: CertificateCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutPersonInput
+    user: UserCreateNestedOneWithoutPersonInput
+  }
+
+  export type PersonUncheckedCreateWithoutGuestLoadsInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutPersonInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutPersonInput
+    invites?: InviteUncheckedCreateNestedManyWithoutPersonInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
+  }
+
+  export type PersonCreateOrConnectWithoutGuestLoadsInput = {
+    where: PersonWhereUniqueInput
+    create: XOR<PersonCreateWithoutGuestLoadsInput, PersonUncheckedCreateWithoutGuestLoadsInput>
+  }
+
+  export type MeetupUpsertWithoutGuestLoadsInput = {
+    update: XOR<MeetupUpdateWithoutGuestLoadsInput, MeetupUncheckedUpdateWithoutGuestLoadsInput>
+    create: XOR<MeetupCreateWithoutGuestLoadsInput, MeetupUncheckedCreateWithoutGuestLoadsInput>
+    where?: MeetupWhereInput
+  }
+
+  export type MeetupUpdateToOneWithWhereWithoutGuestLoadsInput = {
+    where?: MeetupWhereInput
+    data: XOR<MeetupUpdateWithoutGuestLoadsInput, MeetupUncheckedUpdateWithoutGuestLoadsInput>
+  }
+
+  export type MeetupUpdateWithoutGuestLoadsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type MeetupUncheckedUpdateWithoutGuestLoadsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    addressId?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type PersonUpsertWithoutGuestLoadsInput = {
+    update: XOR<PersonUpdateWithoutGuestLoadsInput, PersonUncheckedUpdateWithoutGuestLoadsInput>
+    create: XOR<PersonCreateWithoutGuestLoadsInput, PersonUncheckedCreateWithoutGuestLoadsInput>
+    where?: PersonWhereInput
+  }
+
+  export type PersonUpdateToOneWithWhereWithoutGuestLoadsInput = {
+    where?: PersonWhereInput
+    data: XOR<PersonUpdateWithoutGuestLoadsInput, PersonUncheckedUpdateWithoutGuestLoadsInput>
+  }
+
+  export type PersonUpdateWithoutGuestLoadsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUpdateManyWithoutPersonNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutPersonNestedInput
+    invites?: InviteUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutPersonNestedInput
+    user?: UserUpdateOneRequiredWithoutPersonNestedInput
+  }
+
+  export type PersonUncheckedUpdateWithoutGuestLoadsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutPersonNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutPersonNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type SessionCreateManyUserInput = {
@@ -6759,6 +26055,604 @@ export namespace Prisma {
     refreshTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scope?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupAdminCreateManyPersonInput = {
+    id?: string
+    meetupId: string
+    role: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SubscriptionCreateManyPersonInput = {
+    id?: string
+    meetupId: string
+    meetupRoleId: string
+    presenceConfirmation?: boolean | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InviteCreateManyPersonInput = {
+    id?: string
+    meetupId: string
+    link: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CertificateCreateManyPersonInput = {
+    id?: string
+    meetupId: string
+    link: string
+    securityCode: string
+    datetime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupMediaCreateManyPersonInput = {
+    id?: string
+    meetupId: string
+    link: string
+    datetime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GuestLoadCreateManyPersonInput = {
+    id?: string
+    link: string
+    meetupId: string
+    datetime: Date | string
+    count: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupAdminUpdateWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetup?: MeetupUpdateOneRequiredWithoutMeetupAdminsNestedInput
+  }
+
+  export type MeetupAdminUncheckedUpdateWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupAdminUncheckedUpdateManyWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubscriptionUpdateWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetup?: MeetupUpdateOneRequiredWithoutSubscriptionsNestedInput
+    meetupRole?: MeetupRoleUpdateOneRequiredWithoutSubscriptionsNestedInput
+    subscriptionPayments?: SubscriptionPaymentUpdateManyWithoutSubscriptionNestedInput
+  }
+
+  export type SubscriptionUncheckedUpdateWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    meetupRoleId?: StringFieldUpdateOperationsInput | string
+    presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionPayments?: SubscriptionPaymentUncheckedUpdateManyWithoutSubscriptionNestedInput
+  }
+
+  export type SubscriptionUncheckedUpdateManyWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    meetupRoleId?: StringFieldUpdateOperationsInput | string
+    presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InviteUpdateWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetup?: MeetupUpdateOneRequiredWithoutInvitesNestedInput
+  }
+
+  export type InviteUncheckedUpdateWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InviteUncheckedUpdateManyWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CertificateUpdateWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    securityCode?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetup?: MeetupUpdateOneRequiredWithoutCertificatesNestedInput
+  }
+
+  export type CertificateUncheckedUpdateWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    securityCode?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CertificateUncheckedUpdateManyWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    securityCode?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupMediaUpdateWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetup?: MeetupUpdateOneRequiredWithoutMeetupMediasNestedInput
+  }
+
+  export type MeetupMediaUncheckedUpdateWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupMediaUncheckedUpdateManyWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GuestLoadUpdateWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetup?: MeetupUpdateOneRequiredWithoutGuestLoadsNestedInput
+  }
+
+  export type GuestLoadUncheckedUpdateWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GuestLoadUncheckedUpdateManyWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupCreateManyAddressInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupUpdateWithoutAddressInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type MeetupUncheckedUpdateWithoutAddressInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type MeetupUncheckedUpdateManyWithoutAddressInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupAdminCreateManyMeetupInput = {
+    id?: string
+    personId: string
+    role: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SubscriptionCreateManyMeetupInput = {
+    id?: string
+    personId: string
+    meetupRoleId: string
+    presenceConfirmation?: boolean | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InviteCreateManyMeetupInput = {
+    id?: string
+    personId: string
+    link: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CertificateCreateManyMeetupInput = {
+    id?: string
+    personId: string
+    link: string
+    securityCode: string
+    datetime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupMediaCreateManyMeetupInput = {
+    id?: string
+    personId: string
+    link: string
+    datetime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GuestLoadCreateManyMeetupInput = {
+    id?: string
+    link: string
+    personId: string
+    datetime: Date | string
+    count: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupAdminUpdateWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    person?: PersonUpdateOneRequiredWithoutMeetupAdminsNestedInput
+  }
+
+  export type MeetupAdminUncheckedUpdateWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupAdminUncheckedUpdateManyWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubscriptionUpdateWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    person?: PersonUpdateOneRequiredWithoutSubscriptionsNestedInput
+    meetupRole?: MeetupRoleUpdateOneRequiredWithoutSubscriptionsNestedInput
+    subscriptionPayments?: SubscriptionPaymentUpdateManyWithoutSubscriptionNestedInput
+  }
+
+  export type SubscriptionUncheckedUpdateWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    meetupRoleId?: StringFieldUpdateOperationsInput | string
+    presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionPayments?: SubscriptionPaymentUncheckedUpdateManyWithoutSubscriptionNestedInput
+  }
+
+  export type SubscriptionUncheckedUpdateManyWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    meetupRoleId?: StringFieldUpdateOperationsInput | string
+    presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InviteUpdateWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    person?: PersonUpdateOneRequiredWithoutInvitesNestedInput
+  }
+
+  export type InviteUncheckedUpdateWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InviteUncheckedUpdateManyWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CertificateUpdateWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    securityCode?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    person?: PersonUpdateOneRequiredWithoutCertificatesNestedInput
+  }
+
+  export type CertificateUncheckedUpdateWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    securityCode?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CertificateUncheckedUpdateManyWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    securityCode?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupMediaUpdateWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    person?: PersonUpdateOneRequiredWithoutMeetupMediasNestedInput
+  }
+
+  export type MeetupMediaUncheckedUpdateWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupMediaUncheckedUpdateManyWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GuestLoadUpdateWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    person?: PersonUpdateOneRequiredWithoutGuestLoadsNestedInput
+  }
+
+  export type GuestLoadUncheckedUpdateWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GuestLoadUncheckedUpdateManyWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubscriptionCreateManyMeetupRoleInput = {
+    id?: string
+    personId: string
+    meetupId: string
+    presenceConfirmation?: boolean | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SubscriptionUpdateWithoutMeetupRoleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    person?: PersonUpdateOneRequiredWithoutSubscriptionsNestedInput
+    meetup?: MeetupUpdateOneRequiredWithoutSubscriptionsNestedInput
+    subscriptionPayments?: SubscriptionPaymentUpdateManyWithoutSubscriptionNestedInput
+  }
+
+  export type SubscriptionUncheckedUpdateWithoutMeetupRoleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionPayments?: SubscriptionPaymentUncheckedUpdateManyWithoutSubscriptionNestedInput
+  }
+
+  export type SubscriptionUncheckedUpdateManyWithoutMeetupRoleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubscriptionPaymentCreateManySubscriptionInput = {
+    id?: string
+    paymentId: string
+    price: Decimal | DecimalJsLike | number | string
+    paymentStatus?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SubscriptionPaymentUpdateWithoutSubscriptionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentStatus?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    payment?: PaymentUpdateOneRequiredWithoutSubscriptionPaymentsNestedInput
+  }
+
+  export type SubscriptionPaymentUncheckedUpdateWithoutSubscriptionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    paymentId?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentStatus?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubscriptionPaymentUncheckedUpdateManyWithoutSubscriptionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    paymentId?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentStatus?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubscriptionPaymentCreateManyPaymentInput = {
+    id?: string
+    subscriptionId: string
+    price: Decimal | DecimalJsLike | number | string
+    paymentStatus?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SubscriptionPaymentUpdateWithoutPaymentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentStatus?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscription?: SubscriptionUpdateOneRequiredWithoutSubscriptionPaymentsNestedInput
+  }
+
+  export type SubscriptionPaymentUncheckedUpdateWithoutPaymentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subscriptionId?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentStatus?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubscriptionPaymentUncheckedUpdateManyWithoutPaymentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subscriptionId?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentStatus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

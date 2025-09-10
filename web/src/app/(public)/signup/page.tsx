@@ -19,6 +19,7 @@ import Link from 'next/link'
 
 const signupSchema = z.object({
 	name: z.string("Digite seu nome"),
+	phone: z.string("Digite seu celular"),
 	email: z.email("Digite um e-mail válido"),
 	password: z.string().min(6, "A senha deve ter pelo menos 6 caracteres")
 })
@@ -38,6 +39,7 @@ export default function SignUp() {
 		defaultValues: {
 			name: 'Felipe Leite',
 			email: 'felipe@robot.rio.br',
+			phone: '(91) 98129-3338',
 			password: '12345678'
 		}
 	})
@@ -82,6 +84,12 @@ export default function SignUp() {
 						<Input
 							placeholder="Seu nome"
 							{...register('name')}
+							className="bg-white border-gray-300 dark:bg-slate-700 dark:border-slate-600"
+						/>
+
+						<Input
+							placeholder="Seu celular"
+							{...register('phone')}
 							className="bg-white border-gray-300 dark:bg-slate-700 dark:border-slate-600"
 						/>
 

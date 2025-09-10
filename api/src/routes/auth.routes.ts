@@ -1,10 +1,12 @@
 import { FastifyInstance } from 'fastify'
 import { auth } from '../lib/auth'
+import { prisma } from '../lib/prisma'
 
 interface SignUpProps {
 	name: string
 	email: string
 	password: string
+	phone: string
 }
 
 interface SignInProps {
@@ -18,13 +20,22 @@ export async function authRoutes(app: FastifyInstance) {
 		url: '/sign-up/*',
 		async handler(request, reply) {
 			try {
-				const { name, email, password } = request.body as SignUpProps
+				const { name, email, password, phone } = request.body as SignUpProps
 
 				const data = await auth.api.signUpEmail({
 					body: {
 						name, 
 						email, 
 						password
+					}
+				})
+
+				await prisma.person.create({
+					data: {
+						userId: data.user.id,
+						name,
+						email,
+						phone
 					}
 				})
 
