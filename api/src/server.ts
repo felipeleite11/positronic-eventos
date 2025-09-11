@@ -11,6 +11,8 @@ import { socketRoutes } from './routes/socket.routes'
 import { queueRoutes } from './routes/queue.routes'
 import { uploadRoutes } from './routes/upload.routes'
 import { authRoutes } from './routes/auth.routes'
+import { meetupRoutes } from './routes/meetup.routes'
+import { categoryRoutes } from './routes/category.routes'
 
 const fastify = Fastify({
 	logger: false
@@ -35,6 +37,8 @@ fastify.register(socketRoutes, { prefix: '/test_socket' })
 fastify.register(queueRoutes, { prefix: '/test_queue' })
 fastify.register(uploadRoutes, { prefix: '/test_upload' })
 fastify.register(authRoutes, { prefix: '/api/auth' })
+fastify.register(meetupRoutes, { prefix: '/meetup' })
+fastify.register(categoryRoutes, { prefix: '/category' })
 
 fastify.listen({ port: +process.env.PORT!, host: '0.0.0.0' }, function (err, address) {
 	if (err) {

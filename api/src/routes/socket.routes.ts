@@ -14,7 +14,7 @@ export async function socketRoutes(app: FastifyInstance) {
 			io.to(socket_id).emit('message', { sender: 'message from testRoutes' })
 	
 			return {
-				message: `message event was sent to ${person.name} -> ${socket_id}`
+				message: `Message event was sent to ${person.name} -> ${socket_id}`
 			}
 		}
 	)

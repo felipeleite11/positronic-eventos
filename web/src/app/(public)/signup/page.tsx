@@ -53,7 +53,7 @@ export default function SignUp() {
 				onSuccess: ctx => {
 					setIsLoading(false)
 
-					router.replace('/')
+					router.replace('/home')
 				},
 				onError: ctx => {
 					setIsLoading(false)

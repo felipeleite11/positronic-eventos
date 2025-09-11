@@ -7,14 +7,14 @@ import Image from "next/image"
 
 type UploadProps = Omit<React.ComponentProps<"div">, "children"> & 
 	{ 
-		value: string
+		id: string
 		children: (props: { 
-			image: File | null,
-			value: string
+			id: string
 		}) => ReactNode
+		onFileChange?: (file: File | null) => void
 	}
 
-function Upload({ className, children, value, ...props }: UploadProps) {
+function Upload({ className, children, id, onFileChange, ...props }: UploadProps) {
 	const [image, setImage] = React.useState<null | File>(null)
 
 	return (
@@ -22,33 +22,44 @@ function Upload({ className, children, value, ...props }: UploadProps) {
 			className={cn('flex flex-col items-center w-full h-80 relative', className) }
 			{...props}
 		>
-			{children({ image, value })}
+			{children({ id })}
 
 			<input 
-				id={value} 
+				id={id}
+				name={id} 
 				type="file" 
 				className="hidden" 
 				onChange={e => {
 					setImage(e.target.files?.[0] || null)
+
+					onFileChange?.(e.target.files?.[0] || null)
 				}} 
 			/>
 		</div>
 	)
 }
 
-function UploadTrigger({ className, value, children, file, ...props }: React.ComponentProps<"label"> & { value: string, file: File | null }) {
+function UploadTrigger({ className, id, children, file, ...props }: React.ComponentProps<"label"> & { id: string, file: File | null }) {
 	return (
 		<label
-			className={cn("absolute top-0 cursor-pointer shadow-xs h-full w-full text-sm flex flex-col justify-center items-center px-8 py-4 rounded-md border-1 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors text-slate-500", className)}
-			htmlFor={value}
+			className={cn(
+				'absolute top-0 cursor-pointer shadow-xs h-full w-full text-sm flex flex-col justify-center items-center px-8 py-4 rounded-md border-1 bg-white hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-800 text-slate-400 hover:opacity-70 transition-all', 
+				{ 'opacity-0': !!file },
+				className
+			)}
+			htmlFor={id}
 			{...props}
 		>
 			{file ? (
-				<div className="flex flex-col gap-4 items-center text-white">
-					<span>Alterar arquivo</span>
+				<div className="flex flex-col gap-4 items-center text-slate-600 dark:text-white">
+					<span className="font-semibold">Alterar arquivo</span>
 					<span className="text-xs">{file.name} ({Math.round(file.size / 1024)} KB)</span>
 				</div>
-			) : children}
+			) : (children || (
+				<div className="flex flex-col gap-4 items-center">
+					<span>Enviar arquivo</span>
+				</div>
+			))}
 		</label>
 	)
 }
@@ -65,7 +76,7 @@ function UploadViewer({ className, children, file, ...props }: React.ComponentPr
 			className={cn("absolute top-0 h-full rounded-md overflow-hidden", className)}
 			{...props}
 		>
-			<Image src={url} alt="" width={500} height={500} className="object-cover object-center rounded-md opacity-50 w-full h-full" />
+			<Image src={url} alt="" width={500} height={500} className="object-cover object-center rounded-md w-full h-full" />
 		</div>
 	)
 }

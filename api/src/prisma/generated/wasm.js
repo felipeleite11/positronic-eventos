@@ -5,13 +5,28 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 
 const {
+  PrismaClientKnownRequestError,
+  PrismaClientUnknownRequestError,
+  PrismaClientRustPanicError,
+  PrismaClientInitializationError,
+  PrismaClientValidationError,
+  getPrismaClient,
+  sqltag,
+  empty,
+  join,
+  raw,
+  skip,
   Decimal,
+  Debug,
   objectEnumValues,
   makeStrictEnum,
+  Extensions,
+  warnOnce,
+  defineDmmfProperty,
   Public,
   getRuntime,
-  skip
-} = require('./runtime/index-browser.js')
+  createParam,
+} = require('./runtime/wasm-engine-edge.js')
 
 
 const Prisma = {}
@@ -20,79 +35,35 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.15.0
- * Query Engine version: 85179d7826409ee107a6ba334b5e305ae3fba9fb
+ * Prisma Client JS version: 6.16.1
+ * Query Engine version: 1c57fdcd7e44b29b9313256c76699e91c3ac3c43
  */
 Prisma.prismaVersion = {
-  client: "6.15.0",
-  engine: "85179d7826409ee107a6ba334b5e305ae3fba9fb"
+  client: "6.16.1",
+  engine: "1c57fdcd7e44b29b9313256c76699e91c3ac3c43"
 }
 
-Prisma.PrismaClientKnownRequestError = () => {
-  const runtimeName = getRuntime().prettyName;
-  throw new Error(`PrismaClientKnownRequestError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
-In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)};
-Prisma.PrismaClientUnknownRequestError = () => {
-  const runtimeName = getRuntime().prettyName;
-  throw new Error(`PrismaClientUnknownRequestError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
-In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
-Prisma.PrismaClientRustPanicError = () => {
-  const runtimeName = getRuntime().prettyName;
-  throw new Error(`PrismaClientRustPanicError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
-In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
-Prisma.PrismaClientInitializationError = () => {
-  const runtimeName = getRuntime().prettyName;
-  throw new Error(`PrismaClientInitializationError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
-In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
-Prisma.PrismaClientValidationError = () => {
-  const runtimeName = getRuntime().prettyName;
-  throw new Error(`PrismaClientValidationError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
-In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
+Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
+Prisma.PrismaClientUnknownRequestError = PrismaClientUnknownRequestError
+Prisma.PrismaClientRustPanicError = PrismaClientRustPanicError
+Prisma.PrismaClientInitializationError = PrismaClientInitializationError
+Prisma.PrismaClientValidationError = PrismaClientValidationError
 Prisma.Decimal = Decimal
 
 /**
  * Re-export of sql-template-tag
  */
-Prisma.sql = () => {
-  const runtimeName = getRuntime().prettyName;
-  throw new Error(`sqltag is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
-In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
-Prisma.empty = () => {
-  const runtimeName = getRuntime().prettyName;
-  throw new Error(`empty is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
-In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
-Prisma.join = () => {
-  const runtimeName = getRuntime().prettyName;
-  throw new Error(`join is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
-In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
-Prisma.raw = () => {
-  const runtimeName = getRuntime().prettyName;
-  throw new Error(`raw is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
-In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
+Prisma.sql = sqltag
+Prisma.empty = empty
+Prisma.join = join
+Prisma.raw = raw
 Prisma.validator = Public.validator
 
 /**
 * Extensions
 */
-Prisma.getExtensionContext = () => {
-  const runtimeName = getRuntime().prettyName;
-  throw new Error(`Extensions.getExtensionContext is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
-In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
-Prisma.defineExtension = () => {
-  const runtimeName = getRuntime().prettyName;
-  throw new Error(`Extensions.defineExtension is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
-In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
+Prisma.getExtensionContext = Extensions.getExtensionContext
+Prisma.defineExtension = Extensions.defineExtension
 
 /**
  * Shorthand utilities for JSON filtering
@@ -109,10 +80,11 @@ Prisma.NullTypes = {
 
 
 
+
+
 /**
  * Enums
  */
-
 exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   ReadUncommitted: 'ReadUncommitted',
   ReadCommitted: 'ReadCommitted',
@@ -199,7 +171,15 @@ exports.Prisma.MeetupScalarFieldEnum = {
   description: 'description',
   datetime: 'datetime',
   addressId: 'addressId',
+  categoryId: 'categoryId',
   image: 'image',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -358,7 +338,13 @@ exports.Prisma.MeetupOrderByRelevanceFieldEnum = {
   title: 'title',
   description: 'description',
   addressId: 'addressId',
+  categoryId: 'categoryId',
   image: 'image'
+};
+
+exports.Prisma.CategoryOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name'
 };
 
 exports.Prisma.MeetupRoleOrderByRelevanceFieldEnum = {
@@ -428,6 +414,7 @@ exports.Prisma.ModelName = {
   Person: 'Person',
   Address: 'Address',
   Meetup: 'Meetup',
+  Category: 'Category',
   MeetupRole: 'MeetupRole',
   MeetupAdmin: 'MeetupAdmin',
   Subscription: 'Subscription',
@@ -438,34 +425,82 @@ exports.Prisma.ModelName = {
   MeetupMedia: 'MeetupMedia',
   GuestLoad: 'GuestLoad'
 };
-
 /**
- * This is a stub Prisma Client that will error at runtime if called.
+ * Create the Client
  */
-class PrismaClient {
-  constructor() {
-    return new Proxy(this, {
-      get(target, prop) {
-        let message
-        const runtime = getRuntime()
-        if (runtime.isEdge) {
-          message = `PrismaClient is not configured to run in ${runtime.prettyName}. In order to run Prisma Client on edge runtime, either:
-- Use Prisma Accelerate: https://pris.ly/d/accelerate
-- Use Driver Adapters: https://pris.ly/d/driver-adapters
-`;
-        } else {
-          message = 'PrismaClient is unable to run in this browser environment, or has been bundled for the browser (running in `' + runtime.prettyName + '`).'
-        }
-
-        message += `
-If this is unexpected, please open an issue: https://pris.ly/prisma-prisma-bug-report`
-
-        throw new Error(message)
+const config = {
+  "generator": {
+    "name": "client",
+    "provider": {
+      "fromEnvVar": null,
+      "value": "prisma-client-js"
+    },
+    "output": {
+      "value": "C:\\Users\\felip\\OneDrive\\Documentos\\PROJETOS\\NodeReact\\positronic-eventos\\api\\src\\prisma\\generated",
+      "fromEnvVar": null
+    },
+    "config": {
+      "engineType": "library"
+    },
+    "binaryTargets": [
+      {
+        "fromEnvVar": null,
+        "value": "windows",
+        "native": true
       }
-    })
+    ],
+    "previewFeatures": [],
+    "sourceFilePath": "C:\\Users\\felip\\OneDrive\\Documentos\\PROJETOS\\NodeReact\\positronic-eventos\\api\\prisma\\schema.prisma",
+    "isCustomOutput": true
+  },
+  "relativeEnvPaths": {
+    "rootEnvPath": null,
+    "schemaEnvPath": "../../../.env"
+  },
+  "relativePath": "../../../prisma",
+  "clientVersion": "6.16.1",
+  "engineVersion": "1c57fdcd7e44b29b9313256c76699e91c3ac3c43",
+  "datasourceNames": [
+    "db"
+  ],
+  "activeProvider": "mysql",
+  "inlineDatasources": {
+    "db": {
+      "url": {
+        "fromEnvVar": "DATABASE_URL",
+        "value": null
+      }
+    }
+  },
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/prisma/generated\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id            String    @id\n  name          String    @db.Text\n  email         String\n  emailVerified Boolean   @default(false)\n  image         String?   @db.Text\n  createdAt     DateTime  @default(now())\n  updatedAt     DateTime  @default(now()) @updatedAt\n  sessions      Session[]\n  accounts      Account[]\n  person        Person?\n\n  @@unique([email])\n  @@map(\"user\")\n}\n\nmodel Session {\n  id        String   @id\n  expiresAt DateTime\n  token     String\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n  ipAddress String?  @db.Text\n  userAgent String?  @db.Text\n  userId    String\n  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@unique([token])\n  @@map(\"session\")\n}\n\nmodel Account {\n  id                    String    @id\n  accountId             String    @db.Text\n  providerId            String    @db.Text\n  userId                String\n  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)\n  accessToken           String?   @db.Text\n  refreshToken          String?   @db.Text\n  idToken               String?   @db.Text\n  accessTokenExpiresAt  DateTime?\n  refreshTokenExpiresAt DateTime?\n  scope                 String?   @db.Text\n  password              String?   @db.Text\n  createdAt             DateTime  @default(now())\n  updatedAt             DateTime  @updatedAt\n\n  @@map(\"account\")\n}\n\nmodel Verification {\n  id         String   @id\n  identifier String   @db.Text\n  value      String   @db.Text\n  expiresAt  DateTime\n  createdAt  DateTime @default(now())\n  updatedAt  DateTime @default(now()) @updatedAt\n\n  @@map(\"verification\")\n}\n\nmodel Person {\n  id        String    @id @default(cuid())\n  name      String\n  email     String    @unique\n  phone     String?\n  gender    String?\n  birthdate DateTime?\n  cpf       String?   @unique\n  createdAt DateTime  @default(now())\n  updatedAt DateTime  @updatedAt\n  userId    String    @unique @map(\"user_id\")\n\n  // Relacionamentos\n  meetupAdmins  MeetupAdmin[]\n  subscriptions Subscription[]\n  invites       Invite[]\n  certificates  Certificate[]\n  meetupMedias  MeetupMedia[]\n  guestLoads    GuestLoad[]\n  user          User           @relation(fields: [userId], references: [id])\n\n  @@map(\"person\")\n}\n\nmodel Address {\n  id         String   @id @default(cuid())\n  mapLink    String?  @map(\"map_link\")\n  state      String\n  city       String\n  district   String\n  street     String\n  number     String\n  complement String?\n  zipcode    String\n  createdAt  DateTime @default(now())\n  updatedAt  DateTime @updatedAt\n\n  // Relacionamentos\n  meetups Meetup[]\n\n  @@map(\"address\")\n}\n\nmodel Meetup {\n  id          String   @id @default(cuid())\n  title       String\n  description String?  @db.Text\n  datetime    DateTime\n  addressId   String   @map(\"address_id\")\n  categoryId  String   @map(\"category_id\")\n  image       String?\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n\n  // Relacionamentos\n  address       Address        @relation(fields: [addressId], references: [id], onDelete: Cascade)\n  meetupAdmins  MeetupAdmin[]\n  subscriptions Subscription[]\n  invites       Invite[]\n  certificates  Certificate[]\n  meetupMedias  MeetupMedia[]\n  guestLoads    GuestLoad[]\n  category      Category       @relation(fields: [categoryId], references: [id])\n\n  @@map(\"meetup\")\n}\n\nmodel Category {\n  id        String   @id @default(cuid())\n  name      String\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  // Relacionamento\n  meetups Meetup[]\n\n  @@map(\"category\")\n}\n\nmodel MeetupRole {\n  id                String   @id @default(cuid())\n  name              String\n  subscriptionPrice Decimal  @map(\"subscription_price\") @db.Decimal(10, 2)\n  createdAt         DateTime @default(now())\n  updatedAt         DateTime @updatedAt\n\n  // Relacionamentos\n  subscriptions Subscription[]\n\n  @@map(\"meetup_role\")\n}\n\nmodel MeetupAdmin {\n  id        String   @id @default(cuid())\n  meetupId  String   @map(\"meetup_id\")\n  personId  String   @map(\"person_id\")\n  role      String\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  // Relacionamentos\n  meetup Meetup @relation(fields: [meetupId], references: [id], onDelete: Cascade)\n  person Person @relation(fields: [personId], references: [id], onDelete: Cascade)\n\n  @@unique([meetupId, personId])\n  @@map(\"meetup_admin\")\n}\n\nmodel Subscription {\n  id                   String   @id @default(cuid())\n  personId             String   @map(\"person_id\")\n  meetupId             String   @map(\"meetup_id\")\n  meetupRoleId         String   @map(\"meetup_role_id\")\n  presenceConfirmation Boolean? @map(\"presence_confirmation\")\n  createdAt            DateTime @default(now())\n  updatedAt            DateTime @updatedAt\n\n  // Relacionamentos\n  person               Person                @relation(fields: [personId], references: [id], onDelete: Cascade)\n  meetup               Meetup                @relation(fields: [meetupId], references: [id], onDelete: Cascade)\n  meetupRole           MeetupRole            @relation(fields: [meetupRoleId], references: [id], onDelete: Restrict)\n  subscriptionPayments SubscriptionPayment[]\n\n  @@unique([personId, meetupId])\n  @@map(\"subscription\")\n}\n\nmodel Invite {\n  id        String   @id @default(cuid())\n  personId  String   @map(\"person_id\")\n  meetupId  String   @map(\"meetup_id\")\n  link      String\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  // Relacionamentos\n  person Person @relation(fields: [personId], references: [id], onDelete: Cascade)\n  meetup Meetup @relation(fields: [meetupId], references: [id], onDelete: Cascade)\n\n  @@unique([personId, meetupId])\n  @@map(\"invite\")\n}\n\nmodel Payment {\n  id        String   @id @default(cuid())\n  // Adicione aqui outras colunas específicas do pagamento se necessário\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  // Relacionamentos\n  subscriptionPayments SubscriptionPayment[]\n\n  @@map(\"payment\")\n}\n\nmodel SubscriptionPayment {\n  id             String   @id @default(cuid())\n  subscriptionId String   @map(\"subscription_id\")\n  paymentId      String   @map(\"payment_id\")\n  price          Decimal  @db.Decimal(10, 2)\n  paymentStatus  Boolean  @default(false) @map(\"payment_status\")\n  createdAt      DateTime @default(now())\n  updatedAt      DateTime @updatedAt\n\n  // Relacionamentos\n  subscription Subscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)\n  payment      Payment      @relation(fields: [paymentId], references: [id], onDelete: Restrict)\n\n  @@map(\"subscription_payment\")\n}\n\nmodel Certificate {\n  id           String   @id @default(cuid())\n  personId     String   @map(\"person_id\")\n  meetupId     String   @map(\"meetup_id\")\n  link         String\n  securityCode String   @unique @map(\"security_code\")\n  datetime     DateTime\n  createdAt    DateTime @default(now())\n  updatedAt    DateTime @updatedAt\n\n  // Relacionamentos\n  person Person @relation(fields: [personId], references: [id], onDelete: Cascade)\n  meetup Meetup @relation(fields: [meetupId], references: [id], onDelete: Cascade)\n\n  @@unique([personId, meetupId])\n  @@map(\"certificate\")\n}\n\nmodel MeetupMedia {\n  id        String   @id @default(cuid())\n  meetupId  String   @map(\"meetup_id\")\n  personId  String   @map(\"person_id\")\n  link      String\n  datetime  DateTime\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  // Relacionamentos\n  meetup Meetup @relation(fields: [meetupId], references: [id], onDelete: Cascade)\n  person Person @relation(fields: [personId], references: [id], onDelete: Cascade)\n\n  @@map(\"meetup_media\")\n}\n\nmodel GuestLoad {\n  id        String   @id @default(cuid())\n  link      String\n  meetupId  String   @map(\"meetup_id\")\n  personId  String   @map(\"person_id\")\n  datetime  DateTime\n  count     Int\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  // Relacionamentos\n  meetup Meetup @relation(fields: [meetupId], references: [id], onDelete: Cascade)\n  person Person @relation(fields: [personId], references: [id], onDelete: Cascade)\n\n  @@map(\"guest_load\")\n}\n",
+  "inlineSchemaHash": "8d9ff6e5034ae4ef2a60bd1bf3a8d31662b8d02b65b7c0f07fcc8d3666bd366b",
+  "copyEngine": true
+}
+config.dirname = '/'
+
+config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"emailVerified\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"sessions\",\"kind\":\"object\",\"type\":\"Session\",\"relationName\":\"SessionToUser\"},{\"name\":\"accounts\",\"kind\":\"object\",\"type\":\"Account\",\"relationName\":\"AccountToUser\"},{\"name\":\"person\",\"kind\":\"object\",\"type\":\"Person\",\"relationName\":\"PersonToUser\"}],\"dbName\":\"user\"},\"Session\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expiresAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"ipAddress\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userAgent\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"SessionToUser\"}],\"dbName\":\"session\"},\"Account\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"accountId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"providerId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"AccountToUser\"},{\"name\":\"accessToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"refreshToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"idToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"accessTokenExpiresAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"refreshTokenExpiresAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"scope\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"account\"},\"Verification\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"identifier\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"value\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expiresAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"verification\"},\"Person\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"gender\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"birthdate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"cpf\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"user_id\"},{\"name\":\"meetupAdmins\",\"kind\":\"object\",\"type\":\"MeetupAdmin\",\"relationName\":\"MeetupAdminToPerson\"},{\"name\":\"subscriptions\",\"kind\":\"object\",\"type\":\"Subscription\",\"relationName\":\"PersonToSubscription\"},{\"name\":\"invites\",\"kind\":\"object\",\"type\":\"Invite\",\"relationName\":\"InviteToPerson\"},{\"name\":\"certificates\",\"kind\":\"object\",\"type\":\"Certificate\",\"relationName\":\"CertificateToPerson\"},{\"name\":\"meetupMedias\",\"kind\":\"object\",\"type\":\"MeetupMedia\",\"relationName\":\"MeetupMediaToPerson\"},{\"name\":\"guestLoads\",\"kind\":\"object\",\"type\":\"GuestLoad\",\"relationName\":\"GuestLoadToPerson\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"PersonToUser\"}],\"dbName\":\"person\"},\"Address\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"mapLink\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"map_link\"},{\"name\":\"state\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"city\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"district\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"street\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"number\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"complement\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"zipcode\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"meetups\",\"kind\":\"object\",\"type\":\"Meetup\",\"relationName\":\"AddressToMeetup\"}],\"dbName\":\"address\"},\"Meetup\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"datetime\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"addressId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"address_id\"},{\"name\":\"categoryId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"category_id\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"address\",\"kind\":\"object\",\"type\":\"Address\",\"relationName\":\"AddressToMeetup\"},{\"name\":\"meetupAdmins\",\"kind\":\"object\",\"type\":\"MeetupAdmin\",\"relationName\":\"MeetupToMeetupAdmin\"},{\"name\":\"subscriptions\",\"kind\":\"object\",\"type\":\"Subscription\",\"relationName\":\"MeetupToSubscription\"},{\"name\":\"invites\",\"kind\":\"object\",\"type\":\"Invite\",\"relationName\":\"InviteToMeetup\"},{\"name\":\"certificates\",\"kind\":\"object\",\"type\":\"Certificate\",\"relationName\":\"CertificateToMeetup\"},{\"name\":\"meetupMedias\",\"kind\":\"object\",\"type\":\"MeetupMedia\",\"relationName\":\"MeetupToMeetupMedia\"},{\"name\":\"guestLoads\",\"kind\":\"object\",\"type\":\"GuestLoad\",\"relationName\":\"GuestLoadToMeetup\"},{\"name\":\"category\",\"kind\":\"object\",\"type\":\"Category\",\"relationName\":\"CategoryToMeetup\"}],\"dbName\":\"meetup\"},\"Category\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"meetups\",\"kind\":\"object\",\"type\":\"Meetup\",\"relationName\":\"CategoryToMeetup\"}],\"dbName\":\"category\"},\"MeetupRole\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"subscriptionPrice\",\"kind\":\"scalar\",\"type\":\"Decimal\",\"dbName\":\"subscription_price\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"subscriptions\",\"kind\":\"object\",\"type\":\"Subscription\",\"relationName\":\"MeetupRoleToSubscription\"}],\"dbName\":\"meetup_role\"},\"MeetupAdmin\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"meetupId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"meetup_id\"},{\"name\":\"personId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"person_id\"},{\"name\":\"role\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"meetup\",\"kind\":\"object\",\"type\":\"Meetup\",\"relationName\":\"MeetupToMeetupAdmin\"},{\"name\":\"person\",\"kind\":\"object\",\"type\":\"Person\",\"relationName\":\"MeetupAdminToPerson\"}],\"dbName\":\"meetup_admin\"},\"Subscription\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"personId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"person_id\"},{\"name\":\"meetupId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"meetup_id\"},{\"name\":\"meetupRoleId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"meetup_role_id\"},{\"name\":\"presenceConfirmation\",\"kind\":\"scalar\",\"type\":\"Boolean\",\"dbName\":\"presence_confirmation\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"person\",\"kind\":\"object\",\"type\":\"Person\",\"relationName\":\"PersonToSubscription\"},{\"name\":\"meetup\",\"kind\":\"object\",\"type\":\"Meetup\",\"relationName\":\"MeetupToSubscription\"},{\"name\":\"meetupRole\",\"kind\":\"object\",\"type\":\"MeetupRole\",\"relationName\":\"MeetupRoleToSubscription\"},{\"name\":\"subscriptionPayments\",\"kind\":\"object\",\"type\":\"SubscriptionPayment\",\"relationName\":\"SubscriptionToSubscriptionPayment\"}],\"dbName\":\"subscription\"},\"Invite\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"personId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"person_id\"},{\"name\":\"meetupId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"meetup_id\"},{\"name\":\"link\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"person\",\"kind\":\"object\",\"type\":\"Person\",\"relationName\":\"InviteToPerson\"},{\"name\":\"meetup\",\"kind\":\"object\",\"type\":\"Meetup\",\"relationName\":\"InviteToMeetup\"}],\"dbName\":\"invite\"},\"Payment\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"subscriptionPayments\",\"kind\":\"object\",\"type\":\"SubscriptionPayment\",\"relationName\":\"PaymentToSubscriptionPayment\"}],\"dbName\":\"payment\"},\"SubscriptionPayment\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"subscriptionId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"subscription_id\"},{\"name\":\"paymentId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"payment_id\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"paymentStatus\",\"kind\":\"scalar\",\"type\":\"Boolean\",\"dbName\":\"payment_status\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"subscription\",\"kind\":\"object\",\"type\":\"Subscription\",\"relationName\":\"SubscriptionToSubscriptionPayment\"},{\"name\":\"payment\",\"kind\":\"object\",\"type\":\"Payment\",\"relationName\":\"PaymentToSubscriptionPayment\"}],\"dbName\":\"subscription_payment\"},\"Certificate\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"personId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"person_id\"},{\"name\":\"meetupId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"meetup_id\"},{\"name\":\"link\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"securityCode\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"security_code\"},{\"name\":\"datetime\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"person\",\"kind\":\"object\",\"type\":\"Person\",\"relationName\":\"CertificateToPerson\"},{\"name\":\"meetup\",\"kind\":\"object\",\"type\":\"Meetup\",\"relationName\":\"CertificateToMeetup\"}],\"dbName\":\"certificate\"},\"MeetupMedia\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"meetupId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"meetup_id\"},{\"name\":\"personId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"person_id\"},{\"name\":\"link\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"datetime\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"meetup\",\"kind\":\"object\",\"type\":\"Meetup\",\"relationName\":\"MeetupToMeetupMedia\"},{\"name\":\"person\",\"kind\":\"object\",\"type\":\"Person\",\"relationName\":\"MeetupMediaToPerson\"}],\"dbName\":\"meetup_media\"},\"GuestLoad\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"link\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"meetupId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"meetup_id\"},{\"name\":\"personId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"person_id\"},{\"name\":\"datetime\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"count\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"meetup\",\"kind\":\"object\",\"type\":\"Meetup\",\"relationName\":\"GuestLoadToMeetup\"},{\"name\":\"person\",\"kind\":\"object\",\"type\":\"Person\",\"relationName\":\"GuestLoadToPerson\"}],\"dbName\":\"guest_load\"}},\"enums\":{},\"types\":{}}")
+defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
+config.engineWasm = {
+  getRuntime: async () => require('./query_engine_bg.js'),
+  getQueryEngineWasmModule: async () => {
+    const loader = (await import('#wasm-engine-loader')).default
+    const engine = (await loader).default
+    return engine
   }
 }
+config.compilerWasm = undefined
 
+config.injectableEdgeEnv = () => ({
+  parsed: {
+    DATABASE_URL: typeof globalThis !== 'undefined' && globalThis['DATABASE_URL'] || typeof process !== 'undefined' && process.env && process.env.DATABASE_URL || undefined
+  }
+})
+
+if (typeof globalThis !== 'undefined' && globalThis['DEBUG'] || typeof process !== 'undefined' && process.env && process.env.DEBUG || undefined) {
+  Debug.enable(typeof globalThis !== 'undefined' && globalThis['DEBUG'] || typeof process !== 'undefined' && process.env && process.env.DEBUG || undefined)
+}
+
+const PrismaClient = getPrismaClient(config)
 exports.PrismaClient = PrismaClient
-
 Object.assign(exports, Prisma)
+

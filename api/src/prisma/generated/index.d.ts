@@ -49,6 +49,11 @@ export type Address = $Result.DefaultSelection<Prisma.$AddressPayload>
  */
 export type Meetup = $Result.DefaultSelection<Prisma.$MeetupPayload>
 /**
+ * Model Category
+ * 
+ */
+export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>
+/**
  * Model MeetupRole
  * 
  */
@@ -283,6 +288,16 @@ export class PrismaClient<
   get meetup(): Prisma.MeetupDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.category`: Exposes CRUD operations for the **Category** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Categories
+    * const categories = await prisma.category.findMany()
+    * ```
+    */
+  get category(): Prisma.CategoryDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.meetupRole`: Exposes CRUD operations for the **MeetupRole** model.
     * Example usage:
     * ```ts
@@ -429,8 +444,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.15.0
-   * Query Engine version: 85179d7826409ee107a6ba334b5e305ae3fba9fb
+   * Prisma Client JS version: 6.16.1
+   * Query Engine version: 1c57fdcd7e44b29b9313256c76699e91c3ac3c43
    */
   export type PrismaVersion = {
     client: string
@@ -818,6 +833,7 @@ export namespace Prisma {
     Person: 'Person',
     Address: 'Address',
     Meetup: 'Meetup',
+    Category: 'Category',
     MeetupRole: 'MeetupRole',
     MeetupAdmin: 'MeetupAdmin',
     Subscription: 'Subscription',
@@ -845,7 +861,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "verification" | "person" | "address" | "meetup" | "meetupRole" | "meetupAdmin" | "subscription" | "invite" | "payment" | "subscriptionPayment" | "certificate" | "meetupMedia" | "guestLoad"
+      modelProps: "user" | "session" | "account" | "verification" | "person" | "address" | "meetup" | "category" | "meetupRole" | "meetupAdmin" | "subscription" | "invite" | "payment" | "subscriptionPayment" | "certificate" | "meetupMedia" | "guestLoad"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1308,6 +1324,72 @@ export namespace Prisma {
           count: {
             args: Prisma.MeetupCountArgs<ExtArgs>
             result: $Utils.Optional<MeetupCountAggregateOutputType> | number
+          }
+        }
+      }
+      Category: {
+        payload: Prisma.$CategoryPayload<ExtArgs>
+        fields: Prisma.CategoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CategoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CategoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          findFirst: {
+            args: Prisma.CategoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CategoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          findMany: {
+            args: Prisma.CategoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
+          }
+          create: {
+            args: Prisma.CategoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          createMany: {
+            args: Prisma.CategoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.CategoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          update: {
+            args: Prisma.CategoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.CategoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CategoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.CategoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          aggregate: {
+            args: Prisma.CategoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCategory>
+          }
+          groupBy: {
+            args: Prisma.CategoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CategoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CategoryCountArgs<ExtArgs>
+            result: $Utils.Optional<CategoryCountAggregateOutputType> | number
           }
         }
       }
@@ -1981,6 +2063,10 @@ export namespace Prisma {
       isolationLevel?: Prisma.TransactionIsolationLevel
     }
     /**
+     * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-planetscale`
+     */
+    adapter?: runtime.SqlDriverAdapterFactory | null
+    /**
      * Global configuration for omitting model fields by default.
      * 
      * @example
@@ -2004,6 +2090,7 @@ export namespace Prisma {
     person?: PersonOmit
     address?: AddressOmit
     meetup?: MeetupOmit
+    category?: CategoryOmit
     meetupRole?: MeetupRoleOmit
     meetupAdmin?: MeetupAdminOmit
     subscription?: SubscriptionOmit
@@ -2308,6 +2395,37 @@ export namespace Prisma {
    */
   export type MeetupCountOutputTypeCountGuestLoadsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: GuestLoadWhereInput
+  }
+
+
+  /**
+   * Count Type CategoryCountOutputType
+   */
+
+  export type CategoryCountOutputType = {
+    meetups: number
+  }
+
+  export type CategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meetups?: boolean | CategoryCountOutputTypeCountMeetupsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryCountOutputType
+     */
+    select?: CategoryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeCountMeetupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetupWhereInput
   }
 
 
@@ -8499,6 +8617,7 @@ export namespace Prisma {
     description: string | null
     datetime: Date | null
     addressId: string | null
+    categoryId: string | null
     image: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -8510,6 +8629,7 @@ export namespace Prisma {
     description: string | null
     datetime: Date | null
     addressId: string | null
+    categoryId: string | null
     image: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -8521,6 +8641,7 @@ export namespace Prisma {
     description: number
     datetime: number
     addressId: number
+    categoryId: number
     image: number
     createdAt: number
     updatedAt: number
@@ -8534,6 +8655,7 @@ export namespace Prisma {
     description?: true
     datetime?: true
     addressId?: true
+    categoryId?: true
     image?: true
     createdAt?: true
     updatedAt?: true
@@ -8545,6 +8667,7 @@ export namespace Prisma {
     description?: true
     datetime?: true
     addressId?: true
+    categoryId?: true
     image?: true
     createdAt?: true
     updatedAt?: true
@@ -8556,6 +8679,7 @@ export namespace Prisma {
     description?: true
     datetime?: true
     addressId?: true
+    categoryId?: true
     image?: true
     createdAt?: true
     updatedAt?: true
@@ -8640,6 +8764,7 @@ export namespace Prisma {
     description: string | null
     datetime: Date
     addressId: string
+    categoryId: string
     image: string | null
     createdAt: Date
     updatedAt: Date
@@ -8668,6 +8793,7 @@ export namespace Prisma {
     description?: boolean
     datetime?: boolean
     addressId?: boolean
+    categoryId?: boolean
     image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8678,6 +8804,7 @@ export namespace Prisma {
     certificates?: boolean | Meetup$certificatesArgs<ExtArgs>
     meetupMedias?: boolean | Meetup$meetupMediasArgs<ExtArgs>
     guestLoads?: boolean | Meetup$guestLoadsArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
     _count?: boolean | MeetupCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["meetup"]>
 
@@ -8689,12 +8816,13 @@ export namespace Prisma {
     description?: boolean
     datetime?: boolean
     addressId?: boolean
+    categoryId?: boolean
     image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type MeetupOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "datetime" | "addressId" | "image" | "createdAt" | "updatedAt", ExtArgs["result"]["meetup"]>
+  export type MeetupOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "datetime" | "addressId" | "categoryId" | "image" | "createdAt" | "updatedAt", ExtArgs["result"]["meetup"]>
   export type MeetupInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     address?: boolean | AddressDefaultArgs<ExtArgs>
     meetupAdmins?: boolean | Meetup$meetupAdminsArgs<ExtArgs>
@@ -8703,6 +8831,7 @@ export namespace Prisma {
     certificates?: boolean | Meetup$certificatesArgs<ExtArgs>
     meetupMedias?: boolean | Meetup$meetupMediasArgs<ExtArgs>
     guestLoads?: boolean | Meetup$guestLoadsArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
     _count?: boolean | MeetupCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -8716,6 +8845,7 @@ export namespace Prisma {
       certificates: Prisma.$CertificatePayload<ExtArgs>[]
       meetupMedias: Prisma.$MeetupMediaPayload<ExtArgs>[]
       guestLoads: Prisma.$GuestLoadPayload<ExtArgs>[]
+      category: Prisma.$CategoryPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -8723,6 +8853,7 @@ export namespace Prisma {
       description: string | null
       datetime: Date
       addressId: string
+      categoryId: string
       image: string | null
       createdAt: Date
       updatedAt: Date
@@ -9073,6 +9204,7 @@ export namespace Prisma {
     certificates<T extends Meetup$certificatesArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$certificatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     meetupMedias<T extends Meetup$meetupMediasArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$meetupMediasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupMediaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     guestLoads<T extends Meetup$guestLoadsArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$guestLoadsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GuestLoadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9107,6 +9239,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Meetup", 'String'>
     readonly datetime: FieldRef<"Meetup", 'DateTime'>
     readonly addressId: FieldRef<"Meetup", 'String'>
+    readonly categoryId: FieldRef<"Meetup", 'String'>
     readonly image: FieldRef<"Meetup", 'String'>
     readonly createdAt: FieldRef<"Meetup", 'DateTime'>
     readonly updatedAt: FieldRef<"Meetup", 'DateTime'>
@@ -9612,6 +9745,950 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: MeetupInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Category
+   */
+
+  export type AggregateCategory = {
+    _count: CategoryCountAggregateOutputType | null
+    _min: CategoryMinAggregateOutputType | null
+    _max: CategoryMaxAggregateOutputType | null
+  }
+
+  export type CategoryMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CategoryMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CategoryCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CategoryMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CategoryMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CategoryCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CategoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Category to aggregate.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Categories
+    **/
+    _count?: true | CategoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CategoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CategoryMaxAggregateInputType
+  }
+
+  export type GetCategoryAggregateType<T extends CategoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateCategory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCategory[P]>
+      : GetScalarType<T[P], AggregateCategory[P]>
+  }
+
+
+
+
+  export type CategoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryWhereInput
+    orderBy?: CategoryOrderByWithAggregationInput | CategoryOrderByWithAggregationInput[]
+    by: CategoryScalarFieldEnum[] | CategoryScalarFieldEnum
+    having?: CategoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CategoryCountAggregateInputType | true
+    _min?: CategoryMinAggregateInputType
+    _max?: CategoryMaxAggregateInputType
+  }
+
+  export type CategoryGroupByOutputType = {
+    id: string
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    _count: CategoryCountAggregateOutputType | null
+    _min: CategoryMinAggregateOutputType | null
+    _max: CategoryMaxAggregateOutputType | null
+  }
+
+  type GetCategoryGroupByPayload<T extends CategoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CategoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CategoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CategoryGroupByOutputType[P]>
+            : GetScalarType<T[P], CategoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    meetups?: boolean | Category$meetupsArgs<ExtArgs>
+    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["category"]>
+
+
+
+  export type CategorySelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["category"]>
+  export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meetups?: boolean | Category$meetupsArgs<ExtArgs>
+    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $CategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Category"
+    objects: {
+      meetups: Prisma.$MeetupPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["category"]>
+    composites: {}
+  }
+
+  type CategoryGetPayload<S extends boolean | null | undefined | CategoryDefaultArgs> = $Result.GetResult<Prisma.$CategoryPayload, S>
+
+  type CategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CategoryCountAggregateInputType | true
+    }
+
+  export interface CategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Category'], meta: { name: 'Category' } }
+    /**
+     * Find zero or one Category that matches the filter.
+     * @param {CategoryFindUniqueArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CategoryFindUniqueArgs>(args: SelectSubset<T, CategoryFindUniqueArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Category that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CategoryFindUniqueOrThrowArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, CategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Category that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryFindFirstArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CategoryFindFirstArgs>(args?: SelectSubset<T, CategoryFindFirstArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Category that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryFindFirstOrThrowArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, CategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Categories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Categories
+     * const categories = await prisma.category.findMany()
+     * 
+     * // Get first 10 Categories
+     * const categories = await prisma.category.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const categoryWithIdOnly = await prisma.category.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CategoryFindManyArgs>(args?: SelectSubset<T, CategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Category.
+     * @param {CategoryCreateArgs} args - Arguments to create a Category.
+     * @example
+     * // Create one Category
+     * const Category = await prisma.category.create({
+     *   data: {
+     *     // ... data to create a Category
+     *   }
+     * })
+     * 
+     */
+    create<T extends CategoryCreateArgs>(args: SelectSubset<T, CategoryCreateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Categories.
+     * @param {CategoryCreateManyArgs} args - Arguments to create many Categories.
+     * @example
+     * // Create many Categories
+     * const category = await prisma.category.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CategoryCreateManyArgs>(args?: SelectSubset<T, CategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Category.
+     * @param {CategoryDeleteArgs} args - Arguments to delete one Category.
+     * @example
+     * // Delete one Category
+     * const Category = await prisma.category.delete({
+     *   where: {
+     *     // ... filter to delete one Category
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CategoryDeleteArgs>(args: SelectSubset<T, CategoryDeleteArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Category.
+     * @param {CategoryUpdateArgs} args - Arguments to update one Category.
+     * @example
+     * // Update one Category
+     * const category = await prisma.category.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CategoryUpdateArgs>(args: SelectSubset<T, CategoryUpdateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Categories.
+     * @param {CategoryDeleteManyArgs} args - Arguments to filter Categories to delete.
+     * @example
+     * // Delete a few Categories
+     * const { count } = await prisma.category.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CategoryDeleteManyArgs>(args?: SelectSubset<T, CategoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Categories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Categories
+     * const category = await prisma.category.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CategoryUpdateManyArgs>(args: SelectSubset<T, CategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Category.
+     * @param {CategoryUpsertArgs} args - Arguments to update or create a Category.
+     * @example
+     * // Update or create a Category
+     * const category = await prisma.category.upsert({
+     *   create: {
+     *     // ... data to create a Category
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Category we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CategoryUpsertArgs>(args: SelectSubset<T, CategoryUpsertArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Categories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryCountArgs} args - Arguments to filter Categories to count.
+     * @example
+     * // Count the number of Categories
+     * const count = await prisma.category.count({
+     *   where: {
+     *     // ... the filter for the Categories we want to count
+     *   }
+     * })
+    **/
+    count<T extends CategoryCountArgs>(
+      args?: Subset<T, CategoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CategoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Category.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CategoryAggregateArgs>(args: Subset<T, CategoryAggregateArgs>): Prisma.PrismaPromise<GetCategoryAggregateType<T>>
+
+    /**
+     * Group by Category.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CategoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CategoryGroupByArgs['orderBy'] }
+        : { orderBy?: CategoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Category model
+   */
+  readonly fields: CategoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Category.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    meetups<T extends Category$meetupsArgs<ExtArgs> = {}>(args?: Subset<T, Category$meetupsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Category model
+   */
+  interface CategoryFieldRefs {
+    readonly id: FieldRef<"Category", 'String'>
+    readonly name: FieldRef<"Category", 'String'>
+    readonly createdAt: FieldRef<"Category", 'DateTime'>
+    readonly updatedAt: FieldRef<"Category", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Category findUnique
+   */
+  export type CategoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category findUniqueOrThrow
+   */
+  export type CategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category findFirst
+   */
+  export type CategoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Categories.
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Categories.
+     */
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category findFirstOrThrow
+   */
+  export type CategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Categories.
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Categories.
+     */
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category findMany
+   */
+  export type CategoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Categories to fetch.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Categories.
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category create
+   */
+  export type CategoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Category.
+     */
+    data: XOR<CategoryCreateInput, CategoryUncheckedCreateInput>
+  }
+
+  /**
+   * Category createMany
+   */
+  export type CategoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Categories.
+     */
+    data: CategoryCreateManyInput | CategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Category update
+   */
+  export type CategoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Category.
+     */
+    data: XOR<CategoryUpdateInput, CategoryUncheckedUpdateInput>
+    /**
+     * Choose, which Category to update.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category updateMany
+   */
+  export type CategoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Categories.
+     */
+    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which Categories to update
+     */
+    where?: CategoryWhereInput
+    /**
+     * Limit how many Categories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Category upsert
+   */
+  export type CategoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Category to update in case it exists.
+     */
+    where: CategoryWhereUniqueInput
+    /**
+     * In case the Category found by the `where` argument doesn't exist, create a new Category with this data.
+     */
+    create: XOR<CategoryCreateInput, CategoryUncheckedCreateInput>
+    /**
+     * In case the Category was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CategoryUpdateInput, CategoryUncheckedUpdateInput>
+  }
+
+  /**
+   * Category delete
+   */
+  export type CategoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter which Category to delete.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category deleteMany
+   */
+  export type CategoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Categories to delete
+     */
+    where?: CategoryWhereInput
+    /**
+     * Limit how many Categories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Category.meetups
+   */
+  export type Category$meetupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Meetup
+     */
+    select?: MeetupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Meetup
+     */
+    omit?: MeetupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupInclude<ExtArgs> | null
+    where?: MeetupWhereInput
+    orderBy?: MeetupOrderByWithRelationInput | MeetupOrderByWithRelationInput[]
+    cursor?: MeetupWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MeetupScalarFieldEnum | MeetupScalarFieldEnum[]
+  }
+
+  /**
+   * Category without action
+   */
+  export type CategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
   }
 
 
@@ -18435,12 +19512,23 @@ export namespace Prisma {
     description: 'description',
     datetime: 'datetime',
     addressId: 'addressId',
+    categoryId: 'categoryId',
     image: 'image',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
   export type MeetupScalarFieldEnum = (typeof MeetupScalarFieldEnum)[keyof typeof MeetupScalarFieldEnum]
+
+
+  export const CategoryScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
 
 
   export const MeetupRoleScalarFieldEnum: {
@@ -18648,10 +19736,19 @@ export namespace Prisma {
     title: 'title',
     description: 'description',
     addressId: 'addressId',
+    categoryId: 'categoryId',
     image: 'image'
   };
 
   export type MeetupOrderByRelevanceFieldEnum = (typeof MeetupOrderByRelevanceFieldEnum)[keyof typeof MeetupOrderByRelevanceFieldEnum]
+
+
+  export const CategoryOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type CategoryOrderByRelevanceFieldEnum = (typeof CategoryOrderByRelevanceFieldEnum)[keyof typeof CategoryOrderByRelevanceFieldEnum]
 
 
   export const MeetupRoleOrderByRelevanceFieldEnum: {
@@ -19280,6 +20377,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Meetup"> | string | null
     datetime?: DateTimeFilter<"Meetup"> | Date | string
     addressId?: StringFilter<"Meetup"> | string
+    categoryId?: StringFilter<"Meetup"> | string
     image?: StringNullableFilter<"Meetup"> | string | null
     createdAt?: DateTimeFilter<"Meetup"> | Date | string
     updatedAt?: DateTimeFilter<"Meetup"> | Date | string
@@ -19290,6 +20388,7 @@ export namespace Prisma {
     certificates?: CertificateListRelationFilter
     meetupMedias?: MeetupMediaListRelationFilter
     guestLoads?: GuestLoadListRelationFilter
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
   }
 
   export type MeetupOrderByWithRelationInput = {
@@ -19298,6 +20397,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     datetime?: SortOrder
     addressId?: SortOrder
+    categoryId?: SortOrder
     image?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -19308,6 +20408,7 @@ export namespace Prisma {
     certificates?: CertificateOrderByRelationAggregateInput
     meetupMedias?: MeetupMediaOrderByRelationAggregateInput
     guestLoads?: GuestLoadOrderByRelationAggregateInput
+    category?: CategoryOrderByWithRelationInput
     _relevance?: MeetupOrderByRelevanceInput
   }
 
@@ -19320,6 +20421,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Meetup"> | string | null
     datetime?: DateTimeFilter<"Meetup"> | Date | string
     addressId?: StringFilter<"Meetup"> | string
+    categoryId?: StringFilter<"Meetup"> | string
     image?: StringNullableFilter<"Meetup"> | string | null
     createdAt?: DateTimeFilter<"Meetup"> | Date | string
     updatedAt?: DateTimeFilter<"Meetup"> | Date | string
@@ -19330,6 +20432,7 @@ export namespace Prisma {
     certificates?: CertificateListRelationFilter
     meetupMedias?: MeetupMediaListRelationFilter
     guestLoads?: GuestLoadListRelationFilter
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
   }, "id">
 
   export type MeetupOrderByWithAggregationInput = {
@@ -19338,6 +20441,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     datetime?: SortOrder
     addressId?: SortOrder
+    categoryId?: SortOrder
     image?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -19355,9 +20459,61 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"Meetup"> | string | null
     datetime?: DateTimeWithAggregatesFilter<"Meetup"> | Date | string
     addressId?: StringWithAggregatesFilter<"Meetup"> | string
+    categoryId?: StringWithAggregatesFilter<"Meetup"> | string
     image?: StringNullableWithAggregatesFilter<"Meetup"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Meetup"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Meetup"> | Date | string
+  }
+
+  export type CategoryWhereInput = {
+    AND?: CategoryWhereInput | CategoryWhereInput[]
+    OR?: CategoryWhereInput[]
+    NOT?: CategoryWhereInput | CategoryWhereInput[]
+    id?: StringFilter<"Category"> | string
+    name?: StringFilter<"Category"> | string
+    createdAt?: DateTimeFilter<"Category"> | Date | string
+    updatedAt?: DateTimeFilter<"Category"> | Date | string
+    meetups?: MeetupListRelationFilter
+  }
+
+  export type CategoryOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    meetups?: MeetupOrderByRelationAggregateInput
+    _relevance?: CategoryOrderByRelevanceInput
+  }
+
+  export type CategoryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CategoryWhereInput | CategoryWhereInput[]
+    OR?: CategoryWhereInput[]
+    NOT?: CategoryWhereInput | CategoryWhereInput[]
+    name?: StringFilter<"Category"> | string
+    createdAt?: DateTimeFilter<"Category"> | Date | string
+    updatedAt?: DateTimeFilter<"Category"> | Date | string
+    meetups?: MeetupListRelationFilter
+  }, "id">
+
+  export type CategoryOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CategoryCountOrderByAggregateInput
+    _max?: CategoryMaxOrderByAggregateInput
+    _min?: CategoryMinOrderByAggregateInput
+  }
+
+  export type CategoryScalarWhereWithAggregatesInput = {
+    AND?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
+    OR?: CategoryScalarWhereWithAggregatesInput[]
+    NOT?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Category"> | string
+    name?: StringWithAggregatesFilter<"Category"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
   }
 
   export type MeetupRoleWhereInput = {
@@ -20524,6 +21680,7 @@ export namespace Prisma {
     certificates?: CertificateCreateNestedManyWithoutMeetupInput
     meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+    category: CategoryCreateNestedOneWithoutMeetupsInput
   }
 
   export type MeetupUncheckedCreateInput = {
@@ -20532,6 +21689,7 @@ export namespace Prisma {
     description?: string | null
     datetime: Date | string
     addressId: string
+    categoryId: string
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20558,6 +21716,7 @@ export namespace Prisma {
     certificates?: CertificateUpdateManyWithoutMeetupNestedInput
     meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+    category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
   }
 
   export type MeetupUncheckedUpdateInput = {
@@ -20566,6 +21725,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20583,6 +21743,7 @@ export namespace Prisma {
     description?: string | null
     datetime: Date | string
     addressId: string
+    categoryId: string
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20604,7 +21765,61 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategoryCreateInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetups?: MeetupCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryUncheckedCreateInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetups?: MeetupUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetups?: MeetupUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetups?: MeetupUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryCreateManyInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CategoryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategoryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -21688,6 +22903,11 @@ export namespace Prisma {
     isNot?: AddressWhereInput
   }
 
+  export type CategoryScalarRelationFilter = {
+    is?: CategoryWhereInput
+    isNot?: CategoryWhereInput
+  }
+
   export type MeetupOrderByRelevanceInput = {
     fields: MeetupOrderByRelevanceFieldEnum | MeetupOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -21700,6 +22920,7 @@ export namespace Prisma {
     description?: SortOrder
     datetime?: SortOrder
     addressId?: SortOrder
+    categoryId?: SortOrder
     image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -21711,6 +22932,7 @@ export namespace Prisma {
     description?: SortOrder
     datetime?: SortOrder
     addressId?: SortOrder
+    categoryId?: SortOrder
     image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -21722,7 +22944,35 @@ export namespace Prisma {
     description?: SortOrder
     datetime?: SortOrder
     addressId?: SortOrder
+    categoryId?: SortOrder
     image?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CategoryOrderByRelevanceInput = {
+    fields: CategoryOrderByRelevanceFieldEnum | CategoryOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type CategoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CategoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CategoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -22699,6 +23949,12 @@ export namespace Prisma {
     connect?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
   }
 
+  export type CategoryCreateNestedOneWithoutMeetupsInput = {
+    create?: XOR<CategoryCreateWithoutMeetupsInput, CategoryUncheckedCreateWithoutMeetupsInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutMeetupsInput
+    connect?: CategoryWhereUniqueInput
+  }
+
   export type MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput = {
     create?: XOR<MeetupAdminCreateWithoutMeetupInput, MeetupAdminUncheckedCreateWithoutMeetupInput> | MeetupAdminCreateWithoutMeetupInput[] | MeetupAdminUncheckedCreateWithoutMeetupInput[]
     connectOrCreate?: MeetupAdminCreateOrConnectWithoutMeetupInput | MeetupAdminCreateOrConnectWithoutMeetupInput[]
@@ -22833,6 +24089,14 @@ export namespace Prisma {
     deleteMany?: GuestLoadScalarWhereInput | GuestLoadScalarWhereInput[]
   }
 
+  export type CategoryUpdateOneRequiredWithoutMeetupsNestedInput = {
+    create?: XOR<CategoryCreateWithoutMeetupsInput, CategoryUncheckedCreateWithoutMeetupsInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutMeetupsInput
+    upsert?: CategoryUpsertWithoutMeetupsInput
+    connect?: CategoryWhereUniqueInput
+    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutMeetupsInput, CategoryUpdateWithoutMeetupsInput>, CategoryUncheckedUpdateWithoutMeetupsInput>
+  }
+
   export type MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput = {
     create?: XOR<MeetupAdminCreateWithoutMeetupInput, MeetupAdminUncheckedCreateWithoutMeetupInput> | MeetupAdminCreateWithoutMeetupInput[] | MeetupAdminUncheckedCreateWithoutMeetupInput[]
     connectOrCreate?: MeetupAdminCreateOrConnectWithoutMeetupInput | MeetupAdminCreateOrConnectWithoutMeetupInput[]
@@ -22915,6 +24179,48 @@ export namespace Prisma {
     update?: GuestLoadUpdateWithWhereUniqueWithoutMeetupInput | GuestLoadUpdateWithWhereUniqueWithoutMeetupInput[]
     updateMany?: GuestLoadUpdateManyWithWhereWithoutMeetupInput | GuestLoadUpdateManyWithWhereWithoutMeetupInput[]
     deleteMany?: GuestLoadScalarWhereInput | GuestLoadScalarWhereInput[]
+  }
+
+  export type MeetupCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<MeetupCreateWithoutCategoryInput, MeetupUncheckedCreateWithoutCategoryInput> | MeetupCreateWithoutCategoryInput[] | MeetupUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: MeetupCreateOrConnectWithoutCategoryInput | MeetupCreateOrConnectWithoutCategoryInput[]
+    createMany?: MeetupCreateManyCategoryInputEnvelope
+    connect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+  }
+
+  export type MeetupUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<MeetupCreateWithoutCategoryInput, MeetupUncheckedCreateWithoutCategoryInput> | MeetupCreateWithoutCategoryInput[] | MeetupUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: MeetupCreateOrConnectWithoutCategoryInput | MeetupCreateOrConnectWithoutCategoryInput[]
+    createMany?: MeetupCreateManyCategoryInputEnvelope
+    connect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+  }
+
+  export type MeetupUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<MeetupCreateWithoutCategoryInput, MeetupUncheckedCreateWithoutCategoryInput> | MeetupCreateWithoutCategoryInput[] | MeetupUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: MeetupCreateOrConnectWithoutCategoryInput | MeetupCreateOrConnectWithoutCategoryInput[]
+    upsert?: MeetupUpsertWithWhereUniqueWithoutCategoryInput | MeetupUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: MeetupCreateManyCategoryInputEnvelope
+    set?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    disconnect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    delete?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    connect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    update?: MeetupUpdateWithWhereUniqueWithoutCategoryInput | MeetupUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: MeetupUpdateManyWithWhereWithoutCategoryInput | MeetupUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: MeetupScalarWhereInput | MeetupScalarWhereInput[]
+  }
+
+  export type MeetupUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<MeetupCreateWithoutCategoryInput, MeetupUncheckedCreateWithoutCategoryInput> | MeetupCreateWithoutCategoryInput[] | MeetupUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: MeetupCreateOrConnectWithoutCategoryInput | MeetupCreateOrConnectWithoutCategoryInput[]
+    upsert?: MeetupUpsertWithWhereUniqueWithoutCategoryInput | MeetupUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: MeetupCreateManyCategoryInputEnvelope
+    set?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    disconnect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    delete?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    connect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    update?: MeetupUpdateWithWhereUniqueWithoutCategoryInput | MeetupUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: MeetupUpdateManyWithWhereWithoutCategoryInput | MeetupUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: MeetupScalarWhereInput | MeetupScalarWhereInput[]
   }
 
   export type SubscriptionCreateNestedManyWithoutMeetupRoleInput = {
@@ -24264,6 +25570,7 @@ export namespace Prisma {
     certificates?: CertificateCreateNestedManyWithoutMeetupInput
     meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+    category: CategoryCreateNestedOneWithoutMeetupsInput
   }
 
   export type MeetupUncheckedCreateWithoutAddressInput = {
@@ -24271,6 +25578,7 @@ export namespace Prisma {
     title: string
     description?: string | null
     datetime: Date | string
+    categoryId: string
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -24317,6 +25625,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Meetup"> | string | null
     datetime?: DateTimeFilter<"Meetup"> | Date | string
     addressId?: StringFilter<"Meetup"> | string
+    categoryId?: StringFilter<"Meetup"> | string
     image?: StringNullableFilter<"Meetup"> | string | null
     createdAt?: DateTimeFilter<"Meetup"> | Date | string
     updatedAt?: DateTimeFilter<"Meetup"> | Date | string
@@ -24525,6 +25834,25 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CategoryCreateWithoutMeetupsInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CategoryUncheckedCreateWithoutMeetupsInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CategoryCreateOrConnectWithoutMeetupsInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutMeetupsInput, CategoryUncheckedCreateWithoutMeetupsInput>
+  }
+
   export type AddressUpsertWithoutMeetupsInput = {
     update: XOR<AddressUpdateWithoutMeetupsInput, AddressUncheckedUpdateWithoutMeetupsInput>
     create: XOR<AddressCreateWithoutMeetupsInput, AddressUncheckedCreateWithoutMeetupsInput>
@@ -24660,6 +25988,91 @@ export namespace Prisma {
     data: XOR<GuestLoadUpdateManyMutationInput, GuestLoadUncheckedUpdateManyWithoutMeetupInput>
   }
 
+  export type CategoryUpsertWithoutMeetupsInput = {
+    update: XOR<CategoryUpdateWithoutMeetupsInput, CategoryUncheckedUpdateWithoutMeetupsInput>
+    create: XOR<CategoryCreateWithoutMeetupsInput, CategoryUncheckedCreateWithoutMeetupsInput>
+    where?: CategoryWhereInput
+  }
+
+  export type CategoryUpdateToOneWithWhereWithoutMeetupsInput = {
+    where?: CategoryWhereInput
+    data: XOR<CategoryUpdateWithoutMeetupsInput, CategoryUncheckedUpdateWithoutMeetupsInput>
+  }
+
+  export type CategoryUpdateWithoutMeetupsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategoryUncheckedUpdateWithoutMeetupsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupCreateWithoutCategoryInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    address: AddressCreateNestedOneWithoutMeetupsInput
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
+    invites?: InviteCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupUncheckedCreateWithoutCategoryInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    addressId: string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutMeetupInput
+    invites?: InviteUncheckedCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupCreateOrConnectWithoutCategoryInput = {
+    where: MeetupWhereUniqueInput
+    create: XOR<MeetupCreateWithoutCategoryInput, MeetupUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type MeetupCreateManyCategoryInputEnvelope = {
+    data: MeetupCreateManyCategoryInput | MeetupCreateManyCategoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MeetupUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: MeetupWhereUniqueInput
+    update: XOR<MeetupUpdateWithoutCategoryInput, MeetupUncheckedUpdateWithoutCategoryInput>
+    create: XOR<MeetupCreateWithoutCategoryInput, MeetupUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type MeetupUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: MeetupWhereUniqueInput
+    data: XOR<MeetupUpdateWithoutCategoryInput, MeetupUncheckedUpdateWithoutCategoryInput>
+  }
+
+  export type MeetupUpdateManyWithWhereWithoutCategoryInput = {
+    where: MeetupScalarWhereInput
+    data: XOR<MeetupUpdateManyMutationInput, MeetupUncheckedUpdateManyWithoutCategoryInput>
+  }
+
   export type SubscriptionCreateWithoutMeetupRoleInput = {
     id?: string
     presenceConfirmation?: boolean | null
@@ -24720,6 +26133,7 @@ export namespace Prisma {
     certificates?: CertificateCreateNestedManyWithoutMeetupInput
     meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+    category: CategoryCreateNestedOneWithoutMeetupsInput
   }
 
   export type MeetupUncheckedCreateWithoutMeetupAdminsInput = {
@@ -24728,6 +26142,7 @@ export namespace Prisma {
     description?: string | null
     datetime: Date | string
     addressId: string
+    categoryId: string
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -24809,6 +26224,7 @@ export namespace Prisma {
     certificates?: CertificateUpdateManyWithoutMeetupNestedInput
     meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+    category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutMeetupAdminsInput = {
@@ -24817,6 +26233,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24929,6 +26346,7 @@ export namespace Prisma {
     certificates?: CertificateCreateNestedManyWithoutMeetupInput
     meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+    category: CategoryCreateNestedOneWithoutMeetupsInput
   }
 
   export type MeetupUncheckedCreateWithoutSubscriptionsInput = {
@@ -24937,6 +26355,7 @@ export namespace Prisma {
     description?: string | null
     datetime: Date | string
     addressId: string
+    categoryId: string
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -25073,6 +26492,7 @@ export namespace Prisma {
     certificates?: CertificateUpdateManyWithoutMeetupNestedInput
     meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+    category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutSubscriptionsInput = {
@@ -25081,6 +26501,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25202,6 +26623,7 @@ export namespace Prisma {
     certificates?: CertificateCreateNestedManyWithoutMeetupInput
     meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+    category: CategoryCreateNestedOneWithoutMeetupsInput
   }
 
   export type MeetupUncheckedCreateWithoutInvitesInput = {
@@ -25210,6 +26632,7 @@ export namespace Prisma {
     description?: string | null
     datetime: Date | string
     addressId: string
+    categoryId: string
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -25297,6 +26720,7 @@ export namespace Prisma {
     certificates?: CertificateUpdateManyWithoutMeetupNestedInput
     meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+    category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutInvitesInput = {
@@ -25305,6 +26729,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25510,6 +26935,7 @@ export namespace Prisma {
     invites?: InviteCreateNestedManyWithoutMeetupInput
     meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+    category: CategoryCreateNestedOneWithoutMeetupsInput
   }
 
   export type MeetupUncheckedCreateWithoutCertificatesInput = {
@@ -25518,6 +26944,7 @@ export namespace Prisma {
     description?: string | null
     datetime: Date | string
     addressId: string
+    categoryId: string
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -25605,6 +27032,7 @@ export namespace Prisma {
     invites?: InviteUpdateManyWithoutMeetupNestedInput
     meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+    category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutCertificatesInput = {
@@ -25613,6 +27041,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25637,6 +27066,7 @@ export namespace Prisma {
     invites?: InviteCreateNestedManyWithoutMeetupInput
     certificates?: CertificateCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+    category: CategoryCreateNestedOneWithoutMeetupsInput
   }
 
   export type MeetupUncheckedCreateWithoutMeetupMediasInput = {
@@ -25645,6 +27075,7 @@ export namespace Prisma {
     description?: string | null
     datetime: Date | string
     addressId: string
+    categoryId: string
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -25726,6 +27157,7 @@ export namespace Prisma {
     invites?: InviteUpdateManyWithoutMeetupNestedInput
     certificates?: CertificateUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+    category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutMeetupMediasInput = {
@@ -25734,6 +27166,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25805,6 +27238,7 @@ export namespace Prisma {
     invites?: InviteCreateNestedManyWithoutMeetupInput
     certificates?: CertificateCreateNestedManyWithoutMeetupInput
     meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
+    category: CategoryCreateNestedOneWithoutMeetupsInput
   }
 
   export type MeetupUncheckedCreateWithoutGuestLoadsInput = {
@@ -25813,6 +27247,7 @@ export namespace Prisma {
     description?: string | null
     datetime: Date | string
     addressId: string
+    categoryId: string
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -25894,6 +27329,7 @@ export namespace Prisma {
     invites?: InviteUpdateManyWithoutMeetupNestedInput
     certificates?: CertificateUpdateManyWithoutMeetupNestedInput
     meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
+    category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutGuestLoadsInput = {
@@ -25902,6 +27338,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26282,6 +27719,7 @@ export namespace Prisma {
     title: string
     description?: string | null
     datetime: Date | string
+    categoryId: string
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -26301,6 +27739,7 @@ export namespace Prisma {
     certificates?: CertificateUpdateManyWithoutMeetupNestedInput
     meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+    category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutAddressInput = {
@@ -26308,6 +27747,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26324,6 +27764,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26543,6 +27984,62 @@ export namespace Prisma {
     personId?: StringFieldUpdateOperationsInput | string
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     count?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupCreateManyCategoryInput = {
+    id?: string
+    title: string
+    description?: string | null
+    datetime: Date | string
+    addressId: string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type MeetupUncheckedUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    addressId?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type MeetupUncheckedUpdateManyWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    addressId?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

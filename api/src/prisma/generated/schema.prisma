@@ -115,10 +115,11 @@ model Address {
 model Meetup {
   id          String   @id @default(cuid())
   title       String
-  description String?
+  description String?  @db.Text
   datetime    DateTime
   addressId   String   @map("address_id")
-  image       String? // URL da imagem
+  categoryId  String   @map("category_id")
+  image       String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -130,8 +131,21 @@ model Meetup {
   certificates  Certificate[]
   meetupMedias  MeetupMedia[]
   guestLoads    GuestLoad[]
+  category      Category       @relation(fields: [categoryId], references: [id])
 
   @@map("meetup")
+}
+
+model Category {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relacionamento
+  meetups Meetup[]
+
+  @@map("category")
 }
 
 model MeetupRole {

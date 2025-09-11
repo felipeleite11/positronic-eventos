@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.15.0
- * Query Engine version: 85179d7826409ee107a6ba334b5e305ae3fba9fb
+ * Prisma Client JS version: 6.16.1
+ * Query Engine version: 1c57fdcd7e44b29b9313256c76699e91c3ac3c43
  */
 Prisma.prismaVersion = {
-  client: "6.15.0",
-  engine: "85179d7826409ee107a6ba334b5e305ae3fba9fb"
+  client: "6.16.1",
+  engine: "1c57fdcd7e44b29b9313256c76699e91c3ac3c43"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -199,7 +199,15 @@ exports.Prisma.MeetupScalarFieldEnum = {
   description: 'description',
   datetime: 'datetime',
   addressId: 'addressId',
+  categoryId: 'categoryId',
   image: 'image',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -358,7 +366,13 @@ exports.Prisma.MeetupOrderByRelevanceFieldEnum = {
   title: 'title',
   description: 'description',
   addressId: 'addressId',
+  categoryId: 'categoryId',
   image: 'image'
+};
+
+exports.Prisma.CategoryOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name'
 };
 
 exports.Prisma.MeetupRoleOrderByRelevanceFieldEnum = {
@@ -428,6 +442,7 @@ exports.Prisma.ModelName = {
   Person: 'Person',
   Address: 'Address',
   Meetup: 'Meetup',
+  Category: 'Category',
   MeetupRole: 'MeetupRole',
   MeetupAdmin: 'MeetupAdmin',
   Subscription: 'Subscription',

@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Event } from "@/types/Event"
 import { checkSeedDataOnStorage } from "@/util/storage"
 import { GlobalContext } from "@/contexts/GlobalContext"
-import SubscribedEvents from "@/components/EventLists/Followed"
+import SubscribedEvents from "@/components/EventLists/Subscribed"
 import ManagedEvents from "@/components/EventLists/Managed"
 import FollowedEvents from "@/components/EventLists/Followed"
 
@@ -25,8 +25,6 @@ export default function Home() {
 			setFollowedEvents(eventsOnDatabase.filter(event => event.likes?.some(like => like.id === person?.id)))
 		}
 	}, [])
-
-	console.log('followedEvents', followedEvents)
 
 	return (
 		<div className="flex flex-col gap-6">
