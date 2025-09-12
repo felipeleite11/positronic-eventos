@@ -15,6 +15,18 @@ interface MeetupCreateProps {
 
 export async function meetupRoutes(app: FastifyInstance) {
 	app.route({
+		method: ["GET"],
+		url: '/',
+		async handler(request, reply) {
+			const meetups = await prisma.meetup.findMany({
+				// where: {}
+			})
+
+			return meetups
+		}
+	})
+
+	app.route({
 		method: ["POST"],
 		url: '/',
 		async handler(request, reply) {

@@ -1,8 +1,7 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { authClient } from '@/lib/auth'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { useRouter } from 'next/navigation'
@@ -16,6 +15,8 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '@/components/ui/input'
 import Link from 'next/link'
+import { GlobalContext } from '@/contexts/GlobalContext'
+import { signIn } from '@/lib/auth'
 
 const loginSchema = z.object({
 	email: z.email("Digite um e-mail válido"),
@@ -25,6 +26,8 @@ const loginSchema = z.object({
 type LoginFormValues = z.infer<typeof loginSchema>
 
 export default function SignIn() {
+	const { setUser } = useContext(GlobalContext)
+
 	const [isLoading, setIsLoading] = useState(false)
 
 	const router = useRouter()
@@ -42,27 +45,17 @@ export default function SignIn() {
 
 	async function handleSignIn(values: LoginFormValues) {
 		try {
-			const data = await authClient.signIn.email({
-				...values,
-				callbackURL: '/home'
-			}, {
-				onRequest: () => {
-					setIsLoading(true)
-				},
-				onSuccess: ctx => {
-					setIsLoading(false)
+			const formData = new FormData()
+			formData.append('email', values.email)
+			formData.append('password', values.password)
+			
+			'use server'
+			const response = await signIn('credentials', formData)
 
-					console.log('onSuccess.ctx', ctx.data)
-
-					router.replace('/home')
-				},
-				onError: ctx => {
-					setIsLoading(false)
-
-					toast.error(ctx.error.error)
-				}
-			})
+			console.log('response signin', response)
 		} catch (e: any) {
+			console.log('erro signin', e)
+
 			toast.error(e.message)
 		}
 	}

@@ -2,9 +2,9 @@ import { FastifyInstance } from 'fastify'
 import { publisher } from '../config/queue'
 
 export async function queueRoutes(app: FastifyInstance) {
-	app.get<{Params: { id: string }}>(
+	app.get(
 		'/', 
-		async (request, reply) => {
+		async () => {
 			try {
 				publisher.send(process.env.QUEUE_NAME!, {
 					type: 'invite_send',

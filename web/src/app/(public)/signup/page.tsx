@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { authClient } from '@/lib/auth'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { useRouter } from 'next/navigation'
@@ -10,7 +9,7 @@ import {
 	Card,
 	CardContent,
 	CardHeader,
-	CardTitle,
+	CardTitle
 } from "@/components/ui/card"
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -46,23 +45,7 @@ export default function SignUp() {
 
 	async function handleSignUp(values: SignupFormValues) {
 		try {
-			const data = await authClient.signUp.email(values, {
-				onRequest: () => {
-					setIsLoading(true)
-				},
-				onSuccess: ctx => {
-					setIsLoading(false)
-
-					router.replace('/home')
-				},
-				onError: ctx => {
-					setIsLoading(false)
-
-					toast.error(ctx.error.error)
-				}
-			})
-
-			console.log('data', data)
+			// cadastrar usuario e fazer login
 		} catch (e: any) {
 			toast.error(e.message)
 		}

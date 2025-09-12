@@ -189,7 +189,6 @@ export default function Add() {
 								<SelectContent>
 									{categories?.map(category => (
 										<SelectItem key={category.id} value={category.id}>{category.name}</SelectItem>
-
 									))}
 								</SelectContent>
 							</Select>

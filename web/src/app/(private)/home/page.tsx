@@ -8,6 +8,8 @@ import { GlobalContext } from "@/contexts/GlobalContext"
 import SubscribedEvents from "@/components/EventLists/Subscribed"
 import ManagedEvents from "@/components/EventLists/Managed"
 import FollowedEvents from "@/components/EventLists/Followed"
+import { useQuery } from "@tanstack/react-query"
+import { api } from "@/services/api"
 
 export default function Home() {
 	const { person } = useContext(GlobalContext)
@@ -15,6 +17,19 @@ export default function Home() {
 	const [managedEvents, setManagedEvents] = useState<Event[]>([])
 	const [subscribedEvents, setSubscribedEvents] = useState<Event[]>([])
 	const [followedEvents, setFollowedEvents] = useState<Event[]>([])
+
+	const { data: meetups } = useQuery({
+		queryKey: ['get-meetups'],
+		queryFn: async () => {
+			const { data: response } = await api.get('meetup', {
+				params: {
+					
+				}
+			})
+			
+			return response
+		}
+	})
 
 	useEffect(() => {
 		const eventsOnDatabase = checkSeedDataOnStorage()
@@ -25,6 +40,8 @@ export default function Home() {
 			setFollowedEvents(eventsOnDatabase.filter(event => event.likes?.some(like => like.id === person?.id)))
 		}
 	}, [])
+
+	console.log('meetups', meetups)
 
 	return (
 		<div className="flex flex-col gap-6">
