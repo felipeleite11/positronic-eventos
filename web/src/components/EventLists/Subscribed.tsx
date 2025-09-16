@@ -1,20 +1,20 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
-import { Event } from "@/types/Event"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table'
+import { Meetup } from '@/types/Meetup'
 
 interface EventListProps {
-	events: Event[]
+	meetups: Meetup[]
 }
 
-export default function SubscribedEvents({ events }: EventListProps) {
+export default function SubscribedEvents({ meetups }: EventListProps) {
 	const router = useRouter()
 
-	function handleOpenEvent(event: Event) {
-		router.push(`/event/${event.id}`)
+	function handleOpenMeetup(meetup: Meetup) {
+		router.push(`/meetup/${meetup.id}`)
 	}
 	
-	if (events.length === 0) {
+	if (meetups.length === 0) {
 		return <div className="text-sm text-slate-400 italic mx-5">Você não está inscrito em nenhum evento.</div>
 	}
 
@@ -32,18 +32,18 @@ export default function SubscribedEvents({ events }: EventListProps) {
 					</TableRow>
 				</TableHeader>
 				<TableBody>
-					{events.map(item => (
-						<TableRow key={item.id} onClick={() => { handleOpenEvent(item) }} className="cursor-pointer">
+					{meetups.map(item => (
+						<TableRow key={item.id} onClick={() => { handleOpenMeetup(item) }} className="cursor-pointer">
 							<TableCell className="font-semibold">
 								<div className="lg:w-80 truncate">
-									{item.name}
+									{item.title}
 								</div>
 							</TableCell>
-							<TableCell>{item.period.start}</TableCell>
-							<TableCell>{item.status}</TableCell>
+							<TableCell>{item.datetime}</TableCell>
+							<TableCell>{item.status || 'DESCONHECIDO'}</TableCell>
 							<TableCell>
 								<div className="lg:w-80 truncate">
-									{item.place.name}
+									{item.address?.city}
 								</div>
 							</TableCell>
 						</TableRow>

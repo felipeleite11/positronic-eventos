@@ -1,7 +1,7 @@
 'use client'
 
 import { events, people } from "@/seed-data"
-import { Event } from "@/types/Event"
+import { Event } from "@/types/Meetup"
 import { normalizeText } from "./string"
 
 const storageKey = 'positronic-eventos:data'

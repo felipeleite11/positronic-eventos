@@ -82,13 +82,14 @@ model Person {
   userId    String    @unique @map("user_id")
 
   // Relacionamentos
-  meetupAdmins  MeetupAdmin[]
-  subscriptions Subscription[]
-  invites       Invite[]
-  certificates  Certificate[]
-  meetupMedias  MeetupMedia[]
-  guestLoads    GuestLoad[]
-  user          User           @relation(fields: [userId], references: [id])
+  meetupAdmins    MeetupAdmin[]
+  subscriptions   Subscription[]
+  invites         Invite[]
+  certificates    Certificate[]
+  meetupMedias    MeetupMedia[]
+  guestLoads      GuestLoad[]
+  user            User           @relation(fields: [userId], references: [id])
+  created_meetups Meetup[]
 
   @@map("person")
 }
@@ -119,6 +120,7 @@ model Meetup {
   datetime    DateTime
   addressId   String   @map("address_id")
   categoryId  String   @map("category_id")
+  creatorId   String   @map("creator_id")
   image       String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -132,6 +134,7 @@ model Meetup {
   meetupMedias  MeetupMedia[]
   guestLoads    GuestLoad[]
   category      Category       @relation(fields: [categoryId], references: [id])
+  creator       Person         @relation(fields: [creatorId], references: [id])
 
   @@map("meetup")
 }

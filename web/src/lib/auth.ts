@@ -41,24 +41,36 @@ export const handler = NextAuth({
 			}
 		})
 	],
+	secret: '12345678',
+	session: {
+		strategy: 'jwt'
+	},
 	callbacks: {
-		async jwt({ token, user }) {
+		async jwt({ token, user, account }) {
+			// console.log(account?.access_token)
+			
 			if (user) {
+				token.id = user.id
 				token.name = user.name
 				token.email = user.email
 				token.picture = user.image
 				token.person_id = user.person_id
+				token.person = user.person
+				// token.token = account?.access_token
 			}
 
 			return token
 		},
 		async session({ session, token }) {
 			session.user = {
-				name: token.name,
+				id: token.id as string,
+				name: token.name!,
 				image: token.picture,
-				email: token.email,
-				person_id: token.person_id
+				email: token.email!,
+				person_id: token.person_id as string,
+				person: token.person as Person
 			}
+			// session.token = token.token as string
 
 			return session
 		}

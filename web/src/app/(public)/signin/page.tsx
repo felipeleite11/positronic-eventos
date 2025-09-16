@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useContext, useState } from 'react'
+import React from 'react'
 import { Button } from '@/components/ui/button'
 import { toast } from 'sonner'
 import { z } from 'zod'
@@ -16,7 +16,6 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '@/components/ui/input'
 import Link from 'next/link'
-import { GlobalContext } from '@/contexts/GlobalContext'
 
 const loginSchema = z.object({
 	email: z.email("Digite um e-mail válido"),
@@ -26,8 +25,6 @@ const loginSchema = z.object({
 type LoginFormValues = z.infer<typeof loginSchema>
 
 export default function SignIn() {
-	const { setUser } = useContext(GlobalContext)
-
 	const router = useRouter()
 
 	const {

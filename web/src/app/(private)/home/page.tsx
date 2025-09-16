@@ -1,9 +1,7 @@
 'use client'
 
-import { useEffect, useState } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Event } from "@/types/Event"
-import { checkSeedDataOnStorage } from "@/util/storage"
+import { Meetup } from "@/types/Meetup"
 import SubscribedEvents from "@/components/EventLists/Subscribed"
 import ManagedEvents from "@/components/EventLists/Managed"
 import FollowedEvents from "@/components/EventLists/Followed"
@@ -11,35 +9,38 @@ import { useQuery } from "@tanstack/react-query"
 import { api } from "@/services/api"
 import { useSession } from "next-auth/react"
 
+interface MeetupLists {
+	managedEvents: Meetup[]
+	subscribedEvents: Meetup[]
+}
+
 export default function Home() {
 	const { data: session } = useSession()
 
-	const [managedEvents, setManagedEvents] = useState<Event[]>([])
-	const [subscribedEvents, setSubscribedEvents] = useState<Event[]>([])
-	const [followedEvents, setFollowedEvents] = useState<Event[]>([])
-
-	const { data: meetups } = useQuery({
+	const { data: meetups } = useQuery<MeetupLists>({
 		queryKey: ['get-meetups'],
 		queryFn: async () => {
-			const { data: response } = await api.get('meetup', {
-				params: {
-					
+			const { data: response } = await api.get<Meetup[]>('meetup', {
+				headers: {
+					auth: session?.user.person_id
 				}
 			})
+
+			const managedEvents = response.filter(meetup => meetup.creatorId === session?.user.person_id)
+			const subscribedEvents = response.filter(meetup => meetup.subscriptions?.some(item => item.personId === session?.user.person_id))
 			
-			return response
+			return {
+				managedEvents,
+				subscribedEvents
+			}
 		}
 	})
-
-	useEffect(() => {
-		const eventsOnDatabase = checkSeedDataOnStorage()
-
-		if(eventsOnDatabase.length > 0) {
-			setManagedEvents(eventsOnDatabase.filter(event => event.creator.id === session?.user?.person_id))
-			setSubscribedEvents(eventsOnDatabase.filter(event => event.participants?.some(part => part.id === session?.user?.person_id)))
-			setFollowedEvents(eventsOnDatabase.filter(event => event.likes?.some(like => like.id === session?.user?.person_id)))
-		}
-	}, [])
+	
+	if(!meetups) {
+		return (
+			<div>Agaurde...</div>
+		)
+	}
 
 	console.log('meetups', meetups)
 
@@ -55,15 +56,15 @@ export default function Home() {
 				</TabsList>
 
 				<TabsContent value="managed" className="flex flex-col gap-6 pt-4">
-					<ManagedEvents events={managedEvents} />
+					<ManagedEvents meetups={meetups.managedEvents} />
 				</TabsContent>
 
 				<TabsContent value="subscribed" className="flex flex-col gap-6 pt-4">
-					<SubscribedEvents events={subscribedEvents} />
+					<SubscribedEvents meetups={meetups.subscribedEvents} />
 				</TabsContent>
 
 				<TabsContent value="followed" className="flex flex-col gap-6 pt-4">
-					<FollowedEvents events={followedEvents} />
+					<FollowedEvents meetups={[]} />
 				</TabsContent>
 			</Tabs>
 		</div>

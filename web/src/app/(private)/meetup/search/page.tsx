@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton"
 import { toast } from "sonner"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Event } from "@/types/Event"
+import { Event } from "@/types/Meetup"
 import { events } from "@/seed-data"
 import { normalizeText } from '@/util/string'
 import { searchEvent } from "@/util/storage";
@@ -50,7 +50,7 @@ export default function Search() {
 	}
 
 	function handleOpenEvent(event: Event) {
-		router.push(`/event/${event.id}`)
+		router.push(`/meetup/${event.id}`)
 	}
 
 	return (

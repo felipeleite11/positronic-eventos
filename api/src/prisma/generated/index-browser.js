@@ -200,6 +200,7 @@ exports.Prisma.MeetupScalarFieldEnum = {
   datetime: 'datetime',
   addressId: 'addressId',
   categoryId: 'categoryId',
+  creatorId: 'creatorId',
   image: 'image',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -367,6 +368,7 @@ exports.Prisma.MeetupOrderByRelevanceFieldEnum = {
   description: 'description',
   addressId: 'addressId',
   categoryId: 'categoryId',
+  creatorId: 'creatorId',
   image: 'image'
 };
 

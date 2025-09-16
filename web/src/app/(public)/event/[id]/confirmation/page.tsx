@@ -47,7 +47,7 @@ export default function Event() {
 
 	if(event === null) {
 		return (
-			<div className="text-slate-800">Este evento não existe.</div>
+			<div className="text-slate-800 dark:text-slate-300">Este evento não existe.</div>
 		)
 	}
 

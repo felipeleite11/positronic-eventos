@@ -20,6 +20,10 @@ export async function meetupRoutes(app: FastifyInstance) {
 		async handler(request, reply) {
 			const meetups = await prisma.meetup.findMany({
 				// where: {}
+				include: {
+					subscriptions: true,
+					address: true
+				}
 			})
 
 			return meetups
@@ -65,7 +69,14 @@ export async function meetupRoutes(app: FastifyInstance) {
 						datetime: new Date(data.start!),
 						categoryId: data.category_id!,
 						image: data.image,
-						addressId: address.id
+						addressId: address.id,
+						// TODO: TERMINAR
+						creatorId: 'xxx'
+					},
+					include: {
+						meetupAdmins: {
+
+						}
 					}
 				})
 

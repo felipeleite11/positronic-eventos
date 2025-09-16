@@ -1,6 +1,6 @@
 'use client'
 
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -12,7 +12,6 @@ import { useForm, SubmitHandler, Controller } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
 import { z } from "zod"
-import { GlobalContext } from "@/contexts/GlobalContext"
 import { Image } from "lucide-react"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { queryClient } from "@/components/Providers"

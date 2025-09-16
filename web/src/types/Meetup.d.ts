@@ -1,8 +1,9 @@
-export interface Event {
+export interface Meetup {
 	id: number
-	name: string
+	title: string
 	description?: string
 	status: 'agendado' | 'em curso' | 'finalizado' | 'cancelado'
+	datetime: string
 	period: {
 		start: string
 		end: string
@@ -12,6 +13,11 @@ export interface Event {
 	image?: string
 	available_subscriptions?: number
 	creator: Person
-	participants?: Person[]
+	creatorId: string
+	address?: Address
+	subscriptions?: {
+		id: string
+		personId: string
+	}[]
 	likes?: Person[]
 }

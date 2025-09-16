@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'integrare-os-minio.nyr4mj.easypanel.host',
-        pathname: '/sigas/**'
+        pathname: '/positronic-eventos/**'
       }
     ]
   }

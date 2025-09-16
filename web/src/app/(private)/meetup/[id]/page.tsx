@@ -1,7 +1,6 @@
 'use client'
 
 import { Button } from "@/components/ui/button"
-import { GlobalContext } from "@/contexts/GlobalContext"
 import { cn } from "@/lib/utils"
 import { people } from "@/seed-data"
 import { notify } from "@/util/notification"
@@ -10,20 +9,22 @@ import { useQuery } from "@tanstack/react-query"
 import { Bell, BellOff, Calendar, Check, LogIn, MapPin, MessageCircle, UploadCloud, User } from "lucide-react"
 import Image from "next/image"
 import { useParams } from "next/navigation"
-import { useContext } from "react"
 import { toast } from "sonner"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import { useSession } from "next-auth/react"
 
 export default function Event() {
 	const { id } = useParams()
 
-	const { person } = useContext(GlobalContext)
+	const { data: session } = useSession()
 
-	const eventPageLink = `${process.env.NEXT_PUBLIC_WEB_BASE_URL}/event/${id}/confirmation?p=${person?.id}`
+	const personId = session?.user.person_id
+
+	const eventPageLink = `${process.env.NEXT_PUBLIC_WEB_BASE_URL}/meetup/	${id}/confirmation?p=${personId}`
 
 	const { data: event, refetch: refetchEvent } = useQuery({
 		queryKey: ['event'],
@@ -83,7 +84,7 @@ export default function Event() {
 
 	if(event === null) {
 		return (
-			<div className="text-slate-800">Este evento não existe.</div>
+			<div className="text-slate-800 dark:text-slate-300">Este evento não existe.</div>
 		)
 	}
 

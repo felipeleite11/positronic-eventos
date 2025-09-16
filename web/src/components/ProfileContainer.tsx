@@ -38,15 +38,15 @@ export default function ProfileContainer() {
 			</DropdownMenuTrigger>
 
 			<DropdownMenuContent>
-				<DropdownMenuLabel>
-					<Link href="/" className="hover:opacity-80 w-full flex gap-2 items-center">
+				<DropdownMenuItem>
+					<Link href="/account" className="font-normal hover:opacity-80 w-full flex gap-2 items-center hover:bg-slate-800 rounded-md">
 						<User2Icon size={16} />
 						Minha conta
 					</Link>
-				</DropdownMenuLabel>
+				</DropdownMenuItem>
 
 				<DropdownMenuItem>
-					<Link href="/" className="hover:opacity-80 w-full flex gap-2 items-center">
+					<Link href="/settings" className="font-normal hover:opacity-80 w-full flex gap-2 items-center">
 						<Settings size={16} />
 						Configurações
 					</Link>
@@ -55,7 +55,7 @@ export default function ProfileContainer() {
 				<DropdownMenuSeparator />
 
 				<DropdownMenuItem>
-					<div className="hover:opacity-80 w-full flex gap-2 items-center" onClick={handleSignout}>
+					<div className="font-normal hover:opacity-80 w-full flex gap-2 items-center cursor-pointer" onClick={handleSignout}>
 						<LogOut size={16} />
 						Sair
 					</div>

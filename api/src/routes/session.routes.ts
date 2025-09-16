@@ -1,26 +1,38 @@
-import { FastifyInstance } from 'fastify'
+import { FastifyInstance, FastifyRequest } from 'fastify'
 import { prisma } from '../lib/prisma'
+
+interface SessionRequestBody {
+	email: string
+	password: string
+}
 
 export async function sessionRoutes(app: FastifyInstance) {
 	app.post(
 		'/', 
-		async (request, reply) => {
+		async (request: FastifyRequest<{ Body: SessionRequestBody }>, reply) => {
 			try {
-				// const person = await prisma.person.findUnique({
-				// 	where: {
-				// 		id: 'cmfegl6uj0001zcs4g0nrbitm'
-				// 	}
-				// })
+				const { email, password } = request.body
 
-				// if(!person) {
-				// 	throw new Error('Pessoa não encontrada.')
-				// }
+				const user = await prisma.user.findUnique({
+					include: {
+						person: true
+					},
+					where: {
+						email
+					}
+				})
+
+				if(!user) {
+					throw new Error('Usuário não encontrado.')
+				}
 
 				return {
-					name: 'Felipe Leite',
-					email: 'felipe@robot.rio.br',
-					image: '/images/meetup.jpg',
-					person_id: 'abc123'
+					id: user.id,
+					name: user.name,
+					email: user.email,
+					image: user.image,
+					person_id: user.person?.id,
+					person: user.person
 				}
 			} catch(e: any) {
 				return {

@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation"
 
 export default function PrivateLayout({ children }: { children: ReactNode }) {
 	const { data: session, status } = useSession()
+	// const token = getToken({ req })
 
 	const router = useRouter()
 
@@ -20,6 +21,8 @@ export default function PrivateLayout({ children }: { children: ReactNode }) {
 	if (status === 'loading' || status === 'unauthenticated') {
 		return <p>Aguarde...</p>
 	}
+
+	// console.log('session', session)
 	
 	return (
 		<div className="grid grid-cols-[14rem_auto] grid-rows-[auto_1fr] min-h-screen dark:bg-[url(/images/bg.png)] dark:bg-cover">

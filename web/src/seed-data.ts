@@ -1,4 +1,4 @@
-import { Event } from "@/types/Event"
+import { Event } from "@/types/Meetup"
 
 export const events: Event[] = [
 	{
