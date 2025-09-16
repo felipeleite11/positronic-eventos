@@ -1,4 +1,6 @@
-import React, { useContext } from 'react'
+'use client'
+
+import React from 'react'
 import { LogOut, Settings, User2Icon } from 'lucide-react'
 import {
 	DropdownMenu,
@@ -9,22 +11,29 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import Link from 'next/link'
+import { signOut, useSession } from "next-auth/react"
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
-import { GlobalContext } from '@/contexts/GlobalContext'
 
 export default function ProfileContainer() {
-	const { user } = useContext(GlobalContext)
+	const { data: session } = useSession()
+
+	async function handleSignout() {
+		signOut({ 
+			callbackUrl: '/signin', 
+			redirect: true 
+		})
+	}
 
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger>
 				<div className="flex items-center gap-2 dark:hover:bg-slate-900 h-13 px-3 cursor-pointer">
 					<Avatar className="w-10 h-10">
-						{user?.image && <AvatarImage src={user.image} />}
-						<AvatarFallback>{user?.name[0].toUpperCase()}</AvatarFallback>
+						{session?.user?.image && <AvatarImage src={session.user.image} className="object-cover" />}
+						<AvatarFallback>{session?.user?.name?.[0].toUpperCase()}</AvatarFallback>
 					</Avatar>
 
-					<span className="text-sm">{user?.name}</span>
+					<span className="text-sm">{session?.user?.name}</span>
 				</div>
 			</DropdownMenuTrigger>
 
@@ -46,7 +55,7 @@ export default function ProfileContainer() {
 				<DropdownMenuSeparator />
 
 				<DropdownMenuItem>
-					<div className="hover:opacity-80 w-full flex gap-2 items-center" onClick={() => {}}>
+					<div className="hover:opacity-80 w-full flex gap-2 items-center" onClick={handleSignout}>
 						<LogOut size={16} />
 						Sair
 					</div>

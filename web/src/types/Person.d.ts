@@ -1,5 +1,5 @@
 interface Person {
-	id: number
+	id: string
 	name: string
 	whatsapp?: string
 }

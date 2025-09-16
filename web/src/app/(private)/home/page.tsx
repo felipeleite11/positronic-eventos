@@ -1,18 +1,18 @@
 'use client'
 
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Event } from "@/types/Event"
 import { checkSeedDataOnStorage } from "@/util/storage"
-import { GlobalContext } from "@/contexts/GlobalContext"
 import SubscribedEvents from "@/components/EventLists/Subscribed"
 import ManagedEvents from "@/components/EventLists/Managed"
 import FollowedEvents from "@/components/EventLists/Followed"
 import { useQuery } from "@tanstack/react-query"
 import { api } from "@/services/api"
+import { useSession } from "next-auth/react"
 
 export default function Home() {
-	const { person } = useContext(GlobalContext)
+	const { data: session } = useSession()
 
 	const [managedEvents, setManagedEvents] = useState<Event[]>([])
 	const [subscribedEvents, setSubscribedEvents] = useState<Event[]>([])
@@ -35,9 +35,9 @@ export default function Home() {
 		const eventsOnDatabase = checkSeedDataOnStorage()
 
 		if(eventsOnDatabase.length > 0) {
-			setManagedEvents(eventsOnDatabase.filter(event => event.creator.id === person?.id))
-			setSubscribedEvents(eventsOnDatabase.filter(event => event.participants?.some(part => part.id === person?.id)))
-			setFollowedEvents(eventsOnDatabase.filter(event => event.likes?.some(like => like.id === person?.id)))
+			setManagedEvents(eventsOnDatabase.filter(event => event.creator.id === session?.user?.person_id))
+			setSubscribedEvents(eventsOnDatabase.filter(event => event.participants?.some(part => part.id === session?.user?.person_id)))
+			setFollowedEvents(eventsOnDatabase.filter(event => event.likes?.some(like => like.id === session?.user?.person_id)))
 		}
 	}, [])
 

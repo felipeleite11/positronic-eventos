@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { useRouter } from 'next/navigation'
+import { signIn } from "next-auth/react"
 import {
 	Card,
 	CardContent,
@@ -16,7 +17,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '@/components/ui/input'
 import Link from 'next/link'
 import { GlobalContext } from '@/contexts/GlobalContext'
-import { signIn } from '@/lib/auth'
 
 const loginSchema = z.object({
 	email: z.email("Digite um e-mail válido"),
@@ -28,13 +28,14 @@ type LoginFormValues = z.infer<typeof loginSchema>
 export default function SignIn() {
 	const { setUser } = useContext(GlobalContext)
 
-	const [isLoading, setIsLoading] = useState(false)
-
 	const router = useRouter()
 
 	const {
 		register,
-		handleSubmit
+		handleSubmit,
+		formState: {
+			isSubmitting
+		}
 	} = useForm<LoginFormValues>({
 		resolver: zodResolver(loginSchema),
 		defaultValues: {
@@ -45,17 +46,17 @@ export default function SignIn() {
 
 	async function handleSignIn(values: LoginFormValues) {
 		try {
-			const formData = new FormData()
-			formData.append('email', values.email)
-			formData.append('password', values.password)
-			
-			'use server'
-			const response = await signIn('credentials', formData)
+			const response = await signIn('credentials', {
+				redirect: false,
+				...values
+			})
 
-			console.log('response signin', response)
+			if(response?.error) {
+				throw new Error('Credenciais inválidas.')
+			}
+
+			router.replace('/home')
 		} catch (e: any) {
-			console.log('erro signin', e)
-
 			toast.error(e.message)
 		}
 	}
@@ -104,7 +105,7 @@ export default function SignIn() {
 							</Link>
 						</div>
 
-						<Button type="submit" className="w-full" disabled={isLoading}>
+						<Button type="submit" className="w-full disabled:opacity-60 disabled:cursor-wait" disabled={isSubmitting}>
 							Entrar
 						</Button>
 					</form>

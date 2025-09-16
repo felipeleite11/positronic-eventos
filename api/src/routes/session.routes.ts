@@ -17,7 +17,10 @@ export async function sessionRoutes(app: FastifyInstance) {
 				// }
 
 				return {
-					name: 'Felipe Leite'
+					name: 'Felipe Leite',
+					email: 'felipe@robot.rio.br',
+					image: '/images/meetup.jpg',
+					person_id: 'abc123'
 				}
 			} catch(e: any) {
 				return {
