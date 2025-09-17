@@ -2,11 +2,9 @@
 
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { people } from "@/seed-data"
 import { notify } from "@/util/notification"
-import { getEventById, toggleLike, subscribe } from "@/util/storage"
-import { useQuery } from "@tanstack/react-query"
-import { Bell, BellOff, Calendar, Check, LogIn, MapPin, MessageCircle, UploadCloud, User } from "lucide-react"
+import { useMutation, useQuery } from "@tanstack/react-query"
+import { Bell, BellOff, Calendar, Check, LogIn, MapPin, UploadCloud, User } from "lucide-react"
 import Image from "next/image"
 import { useParams } from "next/navigation"
 import { toast } from "sonner"
@@ -16,31 +14,50 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { useSession } from "next-auth/react"
+import { api } from "@/services/api"
+import { Meetup, MeetupFollowing } from "@/types/Meetup"
+import { extractNumbers } from "@/util/string"
 
 export default function Event() {
 	const { id } = useParams()
 
 	const { data: session } = useSession()
 
-	const personId = session?.user.person_id
+	const { person } = session?.user!
 
-	const eventPageLink = `${process.env.NEXT_PUBLIC_WEB_BASE_URL}/meetup/	${id}/confirmation?p=${personId}`
+	const meetupPageLink = `${process.env.NEXT_PUBLIC_WEB_BASE_URL}/meetup/${id}/confirmation?p=${person.id}`
 
-	const { data: event, refetch: refetchEvent } = useQuery({
-		queryKey: ['event'],
+	const { data: meetup, refetch: refetchMeetup } = useQuery<Meetup | null>({
+		queryKey: ['get-meetup'],
 		queryFn: async () => {
-			return getEventById(+id!) || null
+			const { data } = await api.get(`meetup/${id}`)
+
+			return data
 		}
 	})
 
-	function handleSubscribe() {
-		if(event) {
+	const { mutate: handleToggleFollowing } = useMutation({
+		mutationFn: async () => {
+			const { data: response } = await api.patch<MeetupFollowing | null>(`meetup/${id}/following_toggle/${person.id}`)
+
+			if(response) {
+				toast.success('Agora você receberá as notificações deste evento.')
+			} else {
+				toast.info('Você não receberá mais as notificações deste evento.')
+			}
+
+			refetchMeetup()
+		}
+	})
+
+	async function handleSubscribe() {
+		if(meetup) {
 			try {
-				subscribe(event, person!)
+				const { data } = await api.post<Subscription>(`meetup/${id}/subscribe/${person.id}`)
 
 				toast.success('Sua inscrição está confirmada!')
 
-				refetchEvent()
+				refetchMeetup()
 			} catch(e: any) {
 				toast.error(e.message)
 			}
@@ -55,19 +72,19 @@ export default function Event() {
 
 	async function handleNotify() {
 		try {
-			if(!event) {
+			if(!meetup) {
 				return
 			}
 
-			// people são todas as pessoas da base, devem ser filtradas apenas pessoas que foram convidadas pela planilha 
+			const { data } = await api.get<Meetup>(`meetup/${id}/invitations`)
 
-			const guestsToNotify = people.filter(person => person.whatsapp && !event.participants?.some(part => part.id === person.id))
-				.filter(person => person.id === 1)
-
-			console.log('people', people)
+			const guestsToNotify = data.invites?.filter(item => item.person.phone && !data.subscriptions?.some(subs => subs.personId === item.personId)) || []
 
 			for(const guest of guestsToNotify) {
-				notify(`Olá, ${guest.name}!\n\nVocê está convidado para o evento ${event.name}.\n\nConfirme sua presença na página do evento:\n${eventPageLink}\n\nTe aguardamos lá!`, guest.whatsapp!)
+				notify(
+					`Olá, ${guest.person.name}!\n\nVocê está convidad${guest.person.gender === 'F' ? 'a' : 'o'} para o evento ${meetup?.title}.\n\nConfirme sua presença na página do evento:\n${meetupPageLink}\n\nTe aguardamos lá!`, 
+					`55${extractNumbers(guest.person.phone!)}`
+				)
 			}
 			
 			toast.success('Os convidados foram notificados!')
@@ -76,73 +93,67 @@ export default function Event() {
 		}
 	}
 
-	async function handleToggleLike() {
-		toggleLike(event!, person!)
-
-		refetchEvent()
-	}
-
-	if(event === null) {
+	if(meetup === null) {
 		return (
 			<div className="text-slate-800 dark:text-slate-300">Este evento não existe.</div>
 		)
 	}
 
-	if(!event) {
+	if(!meetup) {
 		return null
 	}
 
-	const isSubscribed = event.participants?.some(part => part.id === person?.id)
-	const isCreator = event.creator.id === person?.id
-	const isLiked = event.likes?.some(like => like.id === person?.id)
+	const isSubscribed = meetup.subscriptions?.some(subs => subs.personId === person?.id)
+	const isCreator = meetup.creatorId === person.id
+	const isFollowed = meetup.followers?.some(follower => follower.personId === person?.id)
 
 	return (
 		<div className="flex flex-col gap-10">
 			<div>
-				{event.image && <Image src={event.image} alt="" width={1000} height={1000} className="float-left mr-10 mb-5 w-96 rounded-md object-contain shadow-sm" />}
+				{meetup.image && <Image src={meetup.image} alt="" width={1000} height={1000} className="float-left mr-10 mb-5 w-96 rounded-md object-contain shadow-sm" />}
 				
 				<div className="text-sm">
-					<h1 className="font-bold text-2xl mb-6">{event.name}</h1>
+					<h1 className="font-bold text-2xl mb-6">{meetup.title}</h1>
 
 					<div className="flex flex-wrap gap-6 mb-6">
 						<div className="flex items-center gap-2">
 							<Calendar size={16} />
-							Data/hora: {event.period.start}
+							Data/hora: {meetup.datetime}
 						</div>
 
 						<div className="flex items-center gap-2">
 							<MapPin size={16} />
-							Local: {event.place.name}
+							Local: {meetup.address?.street}
 						</div>
 
 						<div className="flex items-center gap-2">
 							<User size={16} />
-							Criado por: {event.creator.name}
+							Criado por: {meetup.creator.name}
 						</div>
 					</div>
 
 					<div className="flex gap-4 mb-6 justify-end">
 						{!isCreator ? (
 							<>
-								<Button onClick={handleSubscribe}>
+								{/* <Button onClick={handleSubscribe}>
 									Contatar a organização
 									<MessageCircle size={16} />
-								</Button>
+								</Button> */}
 
 								<Tooltip>
 									<TooltipTrigger
 										asChild
 									>
 										<Button
-											className={cn('hover:bg-red-500 hover:text-white', { 'bg-red-500 hover:bg-red-400 text-white': isLiked })}
-											onClick={handleToggleLike}
+											className={cn('hover:bg-red-500 hover:text-white', { 'bg-red-500 hover:bg-red-400 text-white': isFollowed })}
+											onClick={() => handleToggleFollowing()}
 										>
-											{isLiked ? <BellOff size={16} /> : <Bell size={16} />}
+											{isFollowed ? <BellOff size={16} /> : <Bell size={16} />}
 										</Button>
 									</TooltipTrigger>
 									
 									<TooltipContent>
-										<p>{isLiked ? 'Remover acompanhamento' : 'Acompanhar'}</p>
+										<p>{isFollowed ? 'Remover acompanhamento' : 'Acompanhar'}</p>
 									</TooltipContent>
 								</Tooltip>
 							</>

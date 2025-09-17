@@ -16,6 +16,7 @@ import { Image } from "lucide-react"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { queryClient } from "@/components/Providers"
 import { api } from "@/services/api"
+import { useSession } from "next-auth/react"
 
 const meetupSchema = z.object({
 	name: z.string().min(1, "Informe o nome do evento"),
@@ -46,6 +47,8 @@ type MeetupSchema = z.infer<typeof meetupSchema>
 
 export default function Add() {
 	const router = useRouter()
+
+	const { data: session } = useSession()
 
 	const [isWaiting, setIsWaiting] = useState(false)
 
@@ -92,7 +95,7 @@ export default function Add() {
 
 			// formData.append('image', data.image, data.image.name)
 
-			await api.post('meetup', formData)
+			await api.post(`meetup/${session?.user.person_id}`, formData)
 		},
 		onSuccess: () => {
 			queryClient.invalidateQueries({

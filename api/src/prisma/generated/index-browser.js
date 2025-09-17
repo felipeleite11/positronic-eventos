@@ -197,6 +197,7 @@ exports.Prisma.MeetupScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
+  status: 'status',
   datetime: 'datetime',
   addressId: 'addressId',
   categoryId: 'categoryId',
@@ -204,6 +205,13 @@ exports.Prisma.MeetupScalarFieldEnum = {
   image: 'image',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MeetupFollowerScalarFieldEnum = {
+  id: 'id',
+  meetupId: 'meetupId',
+  personId: 'personId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.CategoryScalarFieldEnum = {
@@ -372,6 +380,12 @@ exports.Prisma.MeetupOrderByRelevanceFieldEnum = {
   image: 'image'
 };
 
+exports.Prisma.MeetupFollowerOrderByRelevanceFieldEnum = {
+  id: 'id',
+  meetupId: 'meetupId',
+  personId: 'personId'
+};
+
 exports.Prisma.CategoryOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name'
@@ -434,7 +448,13 @@ exports.Prisma.GuestLoadOrderByRelevanceFieldEnum = {
   meetupId: 'meetupId',
   personId: 'personId'
 };
-
+exports.MeetupStatus = exports.$Enums.MeetupStatus = {
+  created: 'created',
+  in_subscription: 'in_subscription',
+  in_progress: 'in_progress',
+  finished: 'finished',
+  cancelled: 'cancelled'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
@@ -444,6 +464,7 @@ exports.Prisma.ModelName = {
   Person: 'Person',
   Address: 'Address',
   Meetup: 'Meetup',
+  MeetupFollower: 'MeetupFollower',
   Category: 'Category',
   MeetupRole: 'MeetupRole',
   MeetupAdmin: 'MeetupAdmin',

@@ -49,6 +49,11 @@ export type Address = $Result.DefaultSelection<Prisma.$AddressPayload>
  */
 export type Meetup = $Result.DefaultSelection<Prisma.$MeetupPayload>
 /**
+ * Model MeetupFollower
+ * 
+ */
+export type MeetupFollower = $Result.DefaultSelection<Prisma.$MeetupFollowerPayload>
+/**
  * Model Category
  * 
  */
@@ -98,6 +103,26 @@ export type MeetupMedia = $Result.DefaultSelection<Prisma.$MeetupMediaPayload>
  * 
  */
 export type GuestLoad = $Result.DefaultSelection<Prisma.$GuestLoadPayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const MeetupStatus: {
+  created: 'created',
+  in_subscription: 'in_subscription',
+  in_progress: 'in_progress',
+  finished: 'finished',
+  cancelled: 'cancelled'
+};
+
+export type MeetupStatus = (typeof MeetupStatus)[keyof typeof MeetupStatus]
+
+}
+
+export type MeetupStatus = $Enums.MeetupStatus
+
+export const MeetupStatus: typeof $Enums.MeetupStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -286,6 +311,16 @@ export class PrismaClient<
     * ```
     */
   get meetup(): Prisma.MeetupDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.meetupFollower`: Exposes CRUD operations for the **MeetupFollower** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MeetupFollowers
+    * const meetupFollowers = await prisma.meetupFollower.findMany()
+    * ```
+    */
+  get meetupFollower(): Prisma.MeetupFollowerDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.category`: Exposes CRUD operations for the **Category** model.
@@ -833,6 +868,7 @@ export namespace Prisma {
     Person: 'Person',
     Address: 'Address',
     Meetup: 'Meetup',
+    MeetupFollower: 'MeetupFollower',
     Category: 'Category',
     MeetupRole: 'MeetupRole',
     MeetupAdmin: 'MeetupAdmin',
@@ -861,7 +897,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "verification" | "person" | "address" | "meetup" | "category" | "meetupRole" | "meetupAdmin" | "subscription" | "invite" | "payment" | "subscriptionPayment" | "certificate" | "meetupMedia" | "guestLoad"
+      modelProps: "user" | "session" | "account" | "verification" | "person" | "address" | "meetup" | "meetupFollower" | "category" | "meetupRole" | "meetupAdmin" | "subscription" | "invite" | "payment" | "subscriptionPayment" | "certificate" | "meetupMedia" | "guestLoad"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1324,6 +1360,72 @@ export namespace Prisma {
           count: {
             args: Prisma.MeetupCountArgs<ExtArgs>
             result: $Utils.Optional<MeetupCountAggregateOutputType> | number
+          }
+        }
+      }
+      MeetupFollower: {
+        payload: Prisma.$MeetupFollowerPayload<ExtArgs>
+        fields: Prisma.MeetupFollowerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MeetupFollowerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MeetupFollowerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>
+          }
+          findFirst: {
+            args: Prisma.MeetupFollowerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MeetupFollowerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>
+          }
+          findMany: {
+            args: Prisma.MeetupFollowerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>[]
+          }
+          create: {
+            args: Prisma.MeetupFollowerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>
+          }
+          createMany: {
+            args: Prisma.MeetupFollowerCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.MeetupFollowerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>
+          }
+          update: {
+            args: Prisma.MeetupFollowerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>
+          }
+          deleteMany: {
+            args: Prisma.MeetupFollowerDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MeetupFollowerUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.MeetupFollowerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>
+          }
+          aggregate: {
+            args: Prisma.MeetupFollowerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMeetupFollower>
+          }
+          groupBy: {
+            args: Prisma.MeetupFollowerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MeetupFollowerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MeetupFollowerCountArgs<ExtArgs>
+            result: $Utils.Optional<MeetupFollowerCountAggregateOutputType> | number
           }
         }
       }
@@ -2090,6 +2192,7 @@ export namespace Prisma {
     person?: PersonOmit
     address?: AddressOmit
     meetup?: MeetupOmit
+    meetupFollower?: MeetupFollowerOmit
     category?: CategoryOmit
     meetupRole?: MeetupRoleOmit
     meetupAdmin?: MeetupAdminOmit
@@ -2227,6 +2330,7 @@ export namespace Prisma {
     meetupMedias: number
     guestLoads: number
     created_meetups: number
+    followingMeetups: number
   }
 
   export type PersonCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2237,6 +2341,7 @@ export namespace Prisma {
     meetupMedias?: boolean | PersonCountOutputTypeCountMeetupMediasArgs
     guestLoads?: boolean | PersonCountOutputTypeCountGuestLoadsArgs
     created_meetups?: boolean | PersonCountOutputTypeCountCreated_meetupsArgs
+    followingMeetups?: boolean | PersonCountOutputTypeCountFollowingMeetupsArgs
   }
 
   // Custom InputTypes
@@ -2299,6 +2404,13 @@ export namespace Prisma {
     where?: MeetupWhereInput
   }
 
+  /**
+   * PersonCountOutputType without action
+   */
+  export type PersonCountOutputTypeCountFollowingMeetupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetupFollowerWhereInput
+  }
+
 
   /**
    * Count Type AddressCountOutputType
@@ -2342,6 +2454,7 @@ export namespace Prisma {
     certificates: number
     meetupMedias: number
     guestLoads: number
+    followers: number
   }
 
   export type MeetupCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2351,6 +2464,7 @@ export namespace Prisma {
     certificates?: boolean | MeetupCountOutputTypeCountCertificatesArgs
     meetupMedias?: boolean | MeetupCountOutputTypeCountMeetupMediasArgs
     guestLoads?: boolean | MeetupCountOutputTypeCountGuestLoadsArgs
+    followers?: boolean | MeetupCountOutputTypeCountFollowersArgs
   }
 
   // Custom InputTypes
@@ -2404,6 +2518,13 @@ export namespace Prisma {
    */
   export type MeetupCountOutputTypeCountGuestLoadsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: GuestLoadWhereInput
+  }
+
+  /**
+   * MeetupCountOutputType without action
+   */
+  export type MeetupCountOutputTypeCountFollowersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetupFollowerWhereInput
   }
 
 
@@ -6647,6 +6768,7 @@ export namespace Prisma {
     guestLoads?: boolean | Person$guestLoadsArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
     created_meetups?: boolean | Person$created_meetupsArgs<ExtArgs>
+    followingMeetups?: boolean | Person$followingMeetupsArgs<ExtArgs>
     _count?: boolean | PersonCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["person"]>
 
@@ -6675,6 +6797,7 @@ export namespace Prisma {
     guestLoads?: boolean | Person$guestLoadsArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
     created_meetups?: boolean | Person$created_meetupsArgs<ExtArgs>
+    followingMeetups?: boolean | Person$followingMeetupsArgs<ExtArgs>
     _count?: boolean | PersonCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -6689,6 +6812,7 @@ export namespace Prisma {
       guestLoads: Prisma.$GuestLoadPayload<ExtArgs>[]
       user: Prisma.$UserPayload<ExtArgs>
       created_meetups: Prisma.$MeetupPayload<ExtArgs>[]
+      followingMeetups: Prisma.$MeetupFollowerPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7049,6 +7173,7 @@ export namespace Prisma {
     guestLoads<T extends Person$guestLoadsArgs<ExtArgs> = {}>(args?: Subset<T, Person$guestLoadsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GuestLoadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     created_meetups<T extends Person$created_meetupsArgs<ExtArgs> = {}>(args?: Subset<T, Person$created_meetupsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    followingMeetups<T extends Person$followingMeetupsArgs<ExtArgs> = {}>(args?: Subset<T, Person$followingMeetupsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7596,6 +7721,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: MeetupScalarFieldEnum | MeetupScalarFieldEnum[]
+  }
+
+  /**
+   * Person.followingMeetups
+   */
+  export type Person$followingMeetupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    where?: MeetupFollowerWhereInput
+    orderBy?: MeetupFollowerOrderByWithRelationInput | MeetupFollowerOrderByWithRelationInput[]
+    cursor?: MeetupFollowerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MeetupFollowerScalarFieldEnum | MeetupFollowerScalarFieldEnum[]
   }
 
   /**
@@ -8652,6 +8801,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     description: string | null
+    status: $Enums.MeetupStatus | null
     datetime: Date | null
     addressId: string | null
     categoryId: string | null
@@ -8665,6 +8815,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     description: string | null
+    status: $Enums.MeetupStatus | null
     datetime: Date | null
     addressId: string | null
     categoryId: string | null
@@ -8678,6 +8829,7 @@ export namespace Prisma {
     id: number
     title: number
     description: number
+    status: number
     datetime: number
     addressId: number
     categoryId: number
@@ -8693,6 +8845,7 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
+    status?: true
     datetime?: true
     addressId?: true
     categoryId?: true
@@ -8706,6 +8859,7 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
+    status?: true
     datetime?: true
     addressId?: true
     categoryId?: true
@@ -8719,6 +8873,7 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
+    status?: true
     datetime?: true
     addressId?: true
     categoryId?: true
@@ -8805,6 +8960,7 @@ export namespace Prisma {
     id: string
     title: string
     description: string | null
+    status: $Enums.MeetupStatus
     datetime: Date
     addressId: string
     categoryId: string
@@ -8835,6 +8991,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
+    status?: boolean
     datetime?: boolean
     addressId?: boolean
     categoryId?: boolean
@@ -8851,6 +9008,7 @@ export namespace Prisma {
     guestLoads?: boolean | Meetup$guestLoadsArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     creator?: boolean | PersonDefaultArgs<ExtArgs>
+    followers?: boolean | Meetup$followersArgs<ExtArgs>
     _count?: boolean | MeetupCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["meetup"]>
 
@@ -8860,6 +9018,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
+    status?: boolean
     datetime?: boolean
     addressId?: boolean
     categoryId?: boolean
@@ -8869,7 +9028,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type MeetupOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "datetime" | "addressId" | "categoryId" | "creatorId" | "image" | "createdAt" | "updatedAt", ExtArgs["result"]["meetup"]>
+  export type MeetupOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "status" | "datetime" | "addressId" | "categoryId" | "creatorId" | "image" | "createdAt" | "updatedAt", ExtArgs["result"]["meetup"]>
   export type MeetupInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     address?: boolean | AddressDefaultArgs<ExtArgs>
     meetupAdmins?: boolean | Meetup$meetupAdminsArgs<ExtArgs>
@@ -8880,6 +9039,7 @@ export namespace Prisma {
     guestLoads?: boolean | Meetup$guestLoadsArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     creator?: boolean | PersonDefaultArgs<ExtArgs>
+    followers?: boolean | Meetup$followersArgs<ExtArgs>
     _count?: boolean | MeetupCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -8895,11 +9055,13 @@ export namespace Prisma {
       guestLoads: Prisma.$GuestLoadPayload<ExtArgs>[]
       category: Prisma.$CategoryPayload<ExtArgs>
       creator: Prisma.$PersonPayload<ExtArgs>
+      followers: Prisma.$MeetupFollowerPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
       description: string | null
+      status: $Enums.MeetupStatus
       datetime: Date
       addressId: string
       categoryId: string
@@ -9256,6 +9418,7 @@ export namespace Prisma {
     guestLoads<T extends Meetup$guestLoadsArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$guestLoadsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GuestLoadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     creator<T extends PersonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PersonDefaultArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    followers<T extends Meetup$followersArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$followersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9288,6 +9451,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Meetup", 'String'>
     readonly title: FieldRef<"Meetup", 'String'>
     readonly description: FieldRef<"Meetup", 'String'>
+    readonly status: FieldRef<"Meetup", 'MeetupStatus'>
     readonly datetime: FieldRef<"Meetup", 'DateTime'>
     readonly addressId: FieldRef<"Meetup", 'String'>
     readonly categoryId: FieldRef<"Meetup", 'String'>
@@ -9782,6 +9946,30 @@ export namespace Prisma {
   }
 
   /**
+   * Meetup.followers
+   */
+  export type Meetup$followersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    where?: MeetupFollowerWhereInput
+    orderBy?: MeetupFollowerOrderByWithRelationInput | MeetupFollowerOrderByWithRelationInput[]
+    cursor?: MeetupFollowerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MeetupFollowerScalarFieldEnum | MeetupFollowerScalarFieldEnum[]
+  }
+
+  /**
    * Meetup without action
    */
   export type MeetupDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9797,6 +9985,928 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: MeetupInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MeetupFollower
+   */
+
+  export type AggregateMeetupFollower = {
+    _count: MeetupFollowerCountAggregateOutputType | null
+    _min: MeetupFollowerMinAggregateOutputType | null
+    _max: MeetupFollowerMaxAggregateOutputType | null
+  }
+
+  export type MeetupFollowerMinAggregateOutputType = {
+    id: string | null
+    meetupId: string | null
+    personId: string | null
+    createdAt: Date | null
+  }
+
+  export type MeetupFollowerMaxAggregateOutputType = {
+    id: string | null
+    meetupId: string | null
+    personId: string | null
+    createdAt: Date | null
+  }
+
+  export type MeetupFollowerCountAggregateOutputType = {
+    id: number
+    meetupId: number
+    personId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type MeetupFollowerMinAggregateInputType = {
+    id?: true
+    meetupId?: true
+    personId?: true
+    createdAt?: true
+  }
+
+  export type MeetupFollowerMaxAggregateInputType = {
+    id?: true
+    meetupId?: true
+    personId?: true
+    createdAt?: true
+  }
+
+  export type MeetupFollowerCountAggregateInputType = {
+    id?: true
+    meetupId?: true
+    personId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type MeetupFollowerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MeetupFollower to aggregate.
+     */
+    where?: MeetupFollowerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupFollowers to fetch.
+     */
+    orderBy?: MeetupFollowerOrderByWithRelationInput | MeetupFollowerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MeetupFollowerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupFollowers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupFollowers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MeetupFollowers
+    **/
+    _count?: true | MeetupFollowerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MeetupFollowerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MeetupFollowerMaxAggregateInputType
+  }
+
+  export type GetMeetupFollowerAggregateType<T extends MeetupFollowerAggregateArgs> = {
+        [P in keyof T & keyof AggregateMeetupFollower]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMeetupFollower[P]>
+      : GetScalarType<T[P], AggregateMeetupFollower[P]>
+  }
+
+
+
+
+  export type MeetupFollowerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetupFollowerWhereInput
+    orderBy?: MeetupFollowerOrderByWithAggregationInput | MeetupFollowerOrderByWithAggregationInput[]
+    by: MeetupFollowerScalarFieldEnum[] | MeetupFollowerScalarFieldEnum
+    having?: MeetupFollowerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MeetupFollowerCountAggregateInputType | true
+    _min?: MeetupFollowerMinAggregateInputType
+    _max?: MeetupFollowerMaxAggregateInputType
+  }
+
+  export type MeetupFollowerGroupByOutputType = {
+    id: string
+    meetupId: string
+    personId: string
+    createdAt: Date
+    _count: MeetupFollowerCountAggregateOutputType | null
+    _min: MeetupFollowerMinAggregateOutputType | null
+    _max: MeetupFollowerMaxAggregateOutputType | null
+  }
+
+  type GetMeetupFollowerGroupByPayload<T extends MeetupFollowerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MeetupFollowerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MeetupFollowerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MeetupFollowerGroupByOutputType[P]>
+            : GetScalarType<T[P], MeetupFollowerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MeetupFollowerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    meetupId?: boolean
+    personId?: boolean
+    createdAt?: boolean
+    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
+    person?: boolean | PersonDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["meetupFollower"]>
+
+
+
+  export type MeetupFollowerSelectScalar = {
+    id?: boolean
+    meetupId?: boolean
+    personId?: boolean
+    createdAt?: boolean
+  }
+
+  export type MeetupFollowerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "meetupId" | "personId" | "createdAt", ExtArgs["result"]["meetupFollower"]>
+  export type MeetupFollowerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
+    person?: boolean | PersonDefaultArgs<ExtArgs>
+  }
+
+  export type $MeetupFollowerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MeetupFollower"
+    objects: {
+      meetup: Prisma.$MeetupPayload<ExtArgs>
+      person: Prisma.$PersonPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      meetupId: string
+      personId: string
+      createdAt: Date
+    }, ExtArgs["result"]["meetupFollower"]>
+    composites: {}
+  }
+
+  type MeetupFollowerGetPayload<S extends boolean | null | undefined | MeetupFollowerDefaultArgs> = $Result.GetResult<Prisma.$MeetupFollowerPayload, S>
+
+  type MeetupFollowerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MeetupFollowerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MeetupFollowerCountAggregateInputType | true
+    }
+
+  export interface MeetupFollowerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MeetupFollower'], meta: { name: 'MeetupFollower' } }
+    /**
+     * Find zero or one MeetupFollower that matches the filter.
+     * @param {MeetupFollowerFindUniqueArgs} args - Arguments to find a MeetupFollower
+     * @example
+     * // Get one MeetupFollower
+     * const meetupFollower = await prisma.meetupFollower.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MeetupFollowerFindUniqueArgs>(args: SelectSubset<T, MeetupFollowerFindUniqueArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MeetupFollower that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MeetupFollowerFindUniqueOrThrowArgs} args - Arguments to find a MeetupFollower
+     * @example
+     * // Get one MeetupFollower
+     * const meetupFollower = await prisma.meetupFollower.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MeetupFollowerFindUniqueOrThrowArgs>(args: SelectSubset<T, MeetupFollowerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MeetupFollower that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupFollowerFindFirstArgs} args - Arguments to find a MeetupFollower
+     * @example
+     * // Get one MeetupFollower
+     * const meetupFollower = await prisma.meetupFollower.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MeetupFollowerFindFirstArgs>(args?: SelectSubset<T, MeetupFollowerFindFirstArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MeetupFollower that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupFollowerFindFirstOrThrowArgs} args - Arguments to find a MeetupFollower
+     * @example
+     * // Get one MeetupFollower
+     * const meetupFollower = await prisma.meetupFollower.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MeetupFollowerFindFirstOrThrowArgs>(args?: SelectSubset<T, MeetupFollowerFindFirstOrThrowArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MeetupFollowers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupFollowerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MeetupFollowers
+     * const meetupFollowers = await prisma.meetupFollower.findMany()
+     * 
+     * // Get first 10 MeetupFollowers
+     * const meetupFollowers = await prisma.meetupFollower.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const meetupFollowerWithIdOnly = await prisma.meetupFollower.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MeetupFollowerFindManyArgs>(args?: SelectSubset<T, MeetupFollowerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MeetupFollower.
+     * @param {MeetupFollowerCreateArgs} args - Arguments to create a MeetupFollower.
+     * @example
+     * // Create one MeetupFollower
+     * const MeetupFollower = await prisma.meetupFollower.create({
+     *   data: {
+     *     // ... data to create a MeetupFollower
+     *   }
+     * })
+     * 
+     */
+    create<T extends MeetupFollowerCreateArgs>(args: SelectSubset<T, MeetupFollowerCreateArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MeetupFollowers.
+     * @param {MeetupFollowerCreateManyArgs} args - Arguments to create many MeetupFollowers.
+     * @example
+     * // Create many MeetupFollowers
+     * const meetupFollower = await prisma.meetupFollower.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MeetupFollowerCreateManyArgs>(args?: SelectSubset<T, MeetupFollowerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a MeetupFollower.
+     * @param {MeetupFollowerDeleteArgs} args - Arguments to delete one MeetupFollower.
+     * @example
+     * // Delete one MeetupFollower
+     * const MeetupFollower = await prisma.meetupFollower.delete({
+     *   where: {
+     *     // ... filter to delete one MeetupFollower
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MeetupFollowerDeleteArgs>(args: SelectSubset<T, MeetupFollowerDeleteArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MeetupFollower.
+     * @param {MeetupFollowerUpdateArgs} args - Arguments to update one MeetupFollower.
+     * @example
+     * // Update one MeetupFollower
+     * const meetupFollower = await prisma.meetupFollower.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MeetupFollowerUpdateArgs>(args: SelectSubset<T, MeetupFollowerUpdateArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MeetupFollowers.
+     * @param {MeetupFollowerDeleteManyArgs} args - Arguments to filter MeetupFollowers to delete.
+     * @example
+     * // Delete a few MeetupFollowers
+     * const { count } = await prisma.meetupFollower.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MeetupFollowerDeleteManyArgs>(args?: SelectSubset<T, MeetupFollowerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MeetupFollowers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupFollowerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MeetupFollowers
+     * const meetupFollower = await prisma.meetupFollower.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MeetupFollowerUpdateManyArgs>(args: SelectSubset<T, MeetupFollowerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MeetupFollower.
+     * @param {MeetupFollowerUpsertArgs} args - Arguments to update or create a MeetupFollower.
+     * @example
+     * // Update or create a MeetupFollower
+     * const meetupFollower = await prisma.meetupFollower.upsert({
+     *   create: {
+     *     // ... data to create a MeetupFollower
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MeetupFollower we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MeetupFollowerUpsertArgs>(args: SelectSubset<T, MeetupFollowerUpsertArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MeetupFollowers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupFollowerCountArgs} args - Arguments to filter MeetupFollowers to count.
+     * @example
+     * // Count the number of MeetupFollowers
+     * const count = await prisma.meetupFollower.count({
+     *   where: {
+     *     // ... the filter for the MeetupFollowers we want to count
+     *   }
+     * })
+    **/
+    count<T extends MeetupFollowerCountArgs>(
+      args?: Subset<T, MeetupFollowerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MeetupFollowerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MeetupFollower.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupFollowerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MeetupFollowerAggregateArgs>(args: Subset<T, MeetupFollowerAggregateArgs>): Prisma.PrismaPromise<GetMeetupFollowerAggregateType<T>>
+
+    /**
+     * Group by MeetupFollower.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupFollowerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MeetupFollowerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MeetupFollowerGroupByArgs['orderBy'] }
+        : { orderBy?: MeetupFollowerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MeetupFollowerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMeetupFollowerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MeetupFollower model
+   */
+  readonly fields: MeetupFollowerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MeetupFollower.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MeetupFollowerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    meetup<T extends MeetupDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MeetupDefaultArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    person<T extends PersonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PersonDefaultArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MeetupFollower model
+   */
+  interface MeetupFollowerFieldRefs {
+    readonly id: FieldRef<"MeetupFollower", 'String'>
+    readonly meetupId: FieldRef<"MeetupFollower", 'String'>
+    readonly personId: FieldRef<"MeetupFollower", 'String'>
+    readonly createdAt: FieldRef<"MeetupFollower", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MeetupFollower findUnique
+   */
+  export type MeetupFollowerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupFollower to fetch.
+     */
+    where: MeetupFollowerWhereUniqueInput
+  }
+
+  /**
+   * MeetupFollower findUniqueOrThrow
+   */
+  export type MeetupFollowerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupFollower to fetch.
+     */
+    where: MeetupFollowerWhereUniqueInput
+  }
+
+  /**
+   * MeetupFollower findFirst
+   */
+  export type MeetupFollowerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupFollower to fetch.
+     */
+    where?: MeetupFollowerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupFollowers to fetch.
+     */
+    orderBy?: MeetupFollowerOrderByWithRelationInput | MeetupFollowerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MeetupFollowers.
+     */
+    cursor?: MeetupFollowerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupFollowers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupFollowers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MeetupFollowers.
+     */
+    distinct?: MeetupFollowerScalarFieldEnum | MeetupFollowerScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupFollower findFirstOrThrow
+   */
+  export type MeetupFollowerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupFollower to fetch.
+     */
+    where?: MeetupFollowerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupFollowers to fetch.
+     */
+    orderBy?: MeetupFollowerOrderByWithRelationInput | MeetupFollowerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MeetupFollowers.
+     */
+    cursor?: MeetupFollowerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupFollowers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupFollowers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MeetupFollowers.
+     */
+    distinct?: MeetupFollowerScalarFieldEnum | MeetupFollowerScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupFollower findMany
+   */
+  export type MeetupFollowerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupFollowers to fetch.
+     */
+    where?: MeetupFollowerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupFollowers to fetch.
+     */
+    orderBy?: MeetupFollowerOrderByWithRelationInput | MeetupFollowerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MeetupFollowers.
+     */
+    cursor?: MeetupFollowerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupFollowers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupFollowers.
+     */
+    skip?: number
+    distinct?: MeetupFollowerScalarFieldEnum | MeetupFollowerScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupFollower create
+   */
+  export type MeetupFollowerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MeetupFollower.
+     */
+    data: XOR<MeetupFollowerCreateInput, MeetupFollowerUncheckedCreateInput>
+  }
+
+  /**
+   * MeetupFollower createMany
+   */
+  export type MeetupFollowerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MeetupFollowers.
+     */
+    data: MeetupFollowerCreateManyInput | MeetupFollowerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MeetupFollower update
+   */
+  export type MeetupFollowerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MeetupFollower.
+     */
+    data: XOR<MeetupFollowerUpdateInput, MeetupFollowerUncheckedUpdateInput>
+    /**
+     * Choose, which MeetupFollower to update.
+     */
+    where: MeetupFollowerWhereUniqueInput
+  }
+
+  /**
+   * MeetupFollower updateMany
+   */
+  export type MeetupFollowerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MeetupFollowers.
+     */
+    data: XOR<MeetupFollowerUpdateManyMutationInput, MeetupFollowerUncheckedUpdateManyInput>
+    /**
+     * Filter which MeetupFollowers to update
+     */
+    where?: MeetupFollowerWhereInput
+    /**
+     * Limit how many MeetupFollowers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MeetupFollower upsert
+   */
+  export type MeetupFollowerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MeetupFollower to update in case it exists.
+     */
+    where: MeetupFollowerWhereUniqueInput
+    /**
+     * In case the MeetupFollower found by the `where` argument doesn't exist, create a new MeetupFollower with this data.
+     */
+    create: XOR<MeetupFollowerCreateInput, MeetupFollowerUncheckedCreateInput>
+    /**
+     * In case the MeetupFollower was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MeetupFollowerUpdateInput, MeetupFollowerUncheckedUpdateInput>
+  }
+
+  /**
+   * MeetupFollower delete
+   */
+  export type MeetupFollowerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    /**
+     * Filter which MeetupFollower to delete.
+     */
+    where: MeetupFollowerWhereUniqueInput
+  }
+
+  /**
+   * MeetupFollower deleteMany
+   */
+  export type MeetupFollowerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MeetupFollowers to delete
+     */
+    where?: MeetupFollowerWhereInput
+    /**
+     * Limit how many MeetupFollowers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MeetupFollower without action
+   */
+  export type MeetupFollowerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
   }
 
 
@@ -19562,6 +20672,7 @@ export namespace Prisma {
     id: 'id',
     title: 'title',
     description: 'description',
+    status: 'status',
     datetime: 'datetime',
     addressId: 'addressId',
     categoryId: 'categoryId',
@@ -19572,6 +20683,16 @@ export namespace Prisma {
   };
 
   export type MeetupScalarFieldEnum = (typeof MeetupScalarFieldEnum)[keyof typeof MeetupScalarFieldEnum]
+
+
+  export const MeetupFollowerScalarFieldEnum: {
+    id: 'id',
+    meetupId: 'meetupId',
+    personId: 'personId',
+    createdAt: 'createdAt'
+  };
+
+  export type MeetupFollowerScalarFieldEnum = (typeof MeetupFollowerScalarFieldEnum)[keyof typeof MeetupFollowerScalarFieldEnum]
 
 
   export const CategoryScalarFieldEnum: {
@@ -19797,6 +20918,15 @@ export namespace Prisma {
   export type MeetupOrderByRelevanceFieldEnum = (typeof MeetupOrderByRelevanceFieldEnum)[keyof typeof MeetupOrderByRelevanceFieldEnum]
 
 
+  export const MeetupFollowerOrderByRelevanceFieldEnum: {
+    id: 'id',
+    meetupId: 'meetupId',
+    personId: 'personId'
+  };
+
+  export type MeetupFollowerOrderByRelevanceFieldEnum = (typeof MeetupFollowerOrderByRelevanceFieldEnum)[keyof typeof MeetupFollowerOrderByRelevanceFieldEnum]
+
+
   export const CategoryOrderByRelevanceFieldEnum: {
     id: 'id',
     name: 'name'
@@ -19913,6 +21043,13 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'MeetupStatus'
+   */
+  export type EnumMeetupStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MeetupStatus'>
     
 
 
@@ -20259,6 +21396,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadListRelationFilter
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     created_meetups?: MeetupListRelationFilter
+    followingMeetups?: MeetupFollowerListRelationFilter
   }
 
   export type PersonOrderByWithRelationInput = {
@@ -20280,6 +21418,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadOrderByRelationAggregateInput
     user?: UserOrderByWithRelationInput
     created_meetups?: MeetupOrderByRelationAggregateInput
+    followingMeetups?: MeetupFollowerOrderByRelationAggregateInput
     _relevance?: PersonOrderByRelevanceInput
   }
 
@@ -20305,6 +21444,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadListRelationFilter
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     created_meetups?: MeetupListRelationFilter
+    followingMeetups?: MeetupFollowerListRelationFilter
   }, "id" | "email" | "cpf" | "userId">
 
   export type PersonOrderByWithAggregationInput = {
@@ -20432,6 +21572,7 @@ export namespace Prisma {
     id?: StringFilter<"Meetup"> | string
     title?: StringFilter<"Meetup"> | string
     description?: StringNullableFilter<"Meetup"> | string | null
+    status?: EnumMeetupStatusFilter<"Meetup"> | $Enums.MeetupStatus
     datetime?: DateTimeFilter<"Meetup"> | Date | string
     addressId?: StringFilter<"Meetup"> | string
     categoryId?: StringFilter<"Meetup"> | string
@@ -20448,12 +21589,14 @@ export namespace Prisma {
     guestLoads?: GuestLoadListRelationFilter
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     creator?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+    followers?: MeetupFollowerListRelationFilter
   }
 
   export type MeetupOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrderInput | SortOrder
+    status?: SortOrder
     datetime?: SortOrder
     addressId?: SortOrder
     categoryId?: SortOrder
@@ -20470,6 +21613,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadOrderByRelationAggregateInput
     category?: CategoryOrderByWithRelationInput
     creator?: PersonOrderByWithRelationInput
+    followers?: MeetupFollowerOrderByRelationAggregateInput
     _relevance?: MeetupOrderByRelevanceInput
   }
 
@@ -20480,6 +21624,7 @@ export namespace Prisma {
     NOT?: MeetupWhereInput | MeetupWhereInput[]
     title?: StringFilter<"Meetup"> | string
     description?: StringNullableFilter<"Meetup"> | string | null
+    status?: EnumMeetupStatusFilter<"Meetup"> | $Enums.MeetupStatus
     datetime?: DateTimeFilter<"Meetup"> | Date | string
     addressId?: StringFilter<"Meetup"> | string
     categoryId?: StringFilter<"Meetup"> | string
@@ -20496,12 +21641,14 @@ export namespace Prisma {
     guestLoads?: GuestLoadListRelationFilter
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     creator?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+    followers?: MeetupFollowerListRelationFilter
   }, "id">
 
   export type MeetupOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrderInput | SortOrder
+    status?: SortOrder
     datetime?: SortOrder
     addressId?: SortOrder
     categoryId?: SortOrder
@@ -20521,6 +21668,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Meetup"> | string
     title?: StringWithAggregatesFilter<"Meetup"> | string
     description?: StringNullableWithAggregatesFilter<"Meetup"> | string | null
+    status?: EnumMeetupStatusWithAggregatesFilter<"Meetup"> | $Enums.MeetupStatus
     datetime?: DateTimeWithAggregatesFilter<"Meetup"> | Date | string
     addressId?: StringWithAggregatesFilter<"Meetup"> | string
     categoryId?: StringWithAggregatesFilter<"Meetup"> | string
@@ -20528,6 +21676,61 @@ export namespace Prisma {
     image?: StringNullableWithAggregatesFilter<"Meetup"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Meetup"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Meetup"> | Date | string
+  }
+
+  export type MeetupFollowerWhereInput = {
+    AND?: MeetupFollowerWhereInput | MeetupFollowerWhereInput[]
+    OR?: MeetupFollowerWhereInput[]
+    NOT?: MeetupFollowerWhereInput | MeetupFollowerWhereInput[]
+    id?: StringFilter<"MeetupFollower"> | string
+    meetupId?: StringFilter<"MeetupFollower"> | string
+    personId?: StringFilter<"MeetupFollower"> | string
+    createdAt?: DateTimeFilter<"MeetupFollower"> | Date | string
+    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
+    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+  }
+
+  export type MeetupFollowerOrderByWithRelationInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    createdAt?: SortOrder
+    meetup?: MeetupOrderByWithRelationInput
+    person?: PersonOrderByWithRelationInput
+    _relevance?: MeetupFollowerOrderByRelevanceInput
+  }
+
+  export type MeetupFollowerWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    meetupId_personId?: MeetupFollowerMeetupIdPersonIdCompoundUniqueInput
+    AND?: MeetupFollowerWhereInput | MeetupFollowerWhereInput[]
+    OR?: MeetupFollowerWhereInput[]
+    NOT?: MeetupFollowerWhereInput | MeetupFollowerWhereInput[]
+    meetupId?: StringFilter<"MeetupFollower"> | string
+    personId?: StringFilter<"MeetupFollower"> | string
+    createdAt?: DateTimeFilter<"MeetupFollower"> | Date | string
+    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
+    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+  }, "id" | "meetupId_personId">
+
+  export type MeetupFollowerOrderByWithAggregationInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    createdAt?: SortOrder
+    _count?: MeetupFollowerCountOrderByAggregateInput
+    _max?: MeetupFollowerMaxOrderByAggregateInput
+    _min?: MeetupFollowerMinOrderByAggregateInput
+  }
+
+  export type MeetupFollowerScalarWhereWithAggregatesInput = {
+    AND?: MeetupFollowerScalarWhereWithAggregatesInput | MeetupFollowerScalarWhereWithAggregatesInput[]
+    OR?: MeetupFollowerScalarWhereWithAggregatesInput[]
+    NOT?: MeetupFollowerScalarWhereWithAggregatesInput | MeetupFollowerScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MeetupFollower"> | string
+    meetupId?: StringWithAggregatesFilter<"MeetupFollower"> | string
+    personId?: StringWithAggregatesFilter<"MeetupFollower"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"MeetupFollower"> | Date | string
   }
 
   export type CategoryWhereInput = {
@@ -21532,6 +22735,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
     user: UserCreateNestedOneWithoutPersonInput
     created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
+    followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateInput = {
@@ -21552,6 +22756,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
+    followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUpdateInput = {
@@ -21572,6 +22777,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
     user?: UserUpdateOneRequiredWithoutPersonNestedInput
     created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
+    followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateInput = {
@@ -21592,6 +22798,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
+    followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonCreateManyInput = {
@@ -21738,6 +22945,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
     createdAt?: Date | string
@@ -21751,12 +22959,14 @@ export namespace Prisma {
     guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
     category: CategoryCreateNestedOneWithoutMeetupsInput
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
+    followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateInput = {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
     categoryId: string
@@ -21770,12 +22980,14 @@ export namespace Prisma {
     certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+    followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21789,12 +23001,14 @@ export namespace Prisma {
     guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
     category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
+    followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
@@ -21808,12 +23022,14 @@ export namespace Prisma {
     certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+    followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupCreateManyInput = {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
     categoryId: string
@@ -21827,6 +23043,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21837,6 +23054,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
@@ -21844,6 +23062,53 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupFollowerCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    meetup: MeetupCreateNestedOneWithoutFollowersInput
+    person: PersonCreateNestedOneWithoutFollowingMeetupsInput
+  }
+
+  export type MeetupFollowerUncheckedCreateInput = {
+    id?: string
+    meetupId: string
+    personId: string
+    createdAt?: Date | string
+  }
+
+  export type MeetupFollowerUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetup?: MeetupUpdateOneRequiredWithoutFollowersNestedInput
+    person?: PersonUpdateOneRequiredWithoutFollowingMeetupsNestedInput
+  }
+
+  export type MeetupFollowerUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupFollowerCreateManyInput = {
+    id?: string
+    meetupId: string
+    personId: string
+    createdAt?: Date | string
+  }
+
+  export type MeetupFollowerUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupFollowerUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CategoryCreateInput = {
@@ -22852,6 +24117,12 @@ export namespace Prisma {
     none?: MeetupWhereInput
   }
 
+  export type MeetupFollowerListRelationFilter = {
+    every?: MeetupFollowerWhereInput
+    some?: MeetupFollowerWhereInput
+    none?: MeetupFollowerWhereInput
+  }
+
   export type MeetupAdminOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -22877,6 +24148,10 @@ export namespace Prisma {
   }
 
   export type MeetupOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MeetupFollowerOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -22973,6 +24248,13 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type EnumMeetupStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.MeetupStatus | EnumMeetupStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MeetupStatus[]
+    notIn?: $Enums.MeetupStatus[]
+    not?: NestedEnumMeetupStatusFilter<$PrismaModel> | $Enums.MeetupStatus
+  }
+
   export type AddressScalarRelationFilter = {
     is?: AddressWhereInput
     isNot?: AddressWhereInput
@@ -22998,6 +24280,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     datetime?: SortOrder
     addressId?: SortOrder
     categoryId?: SortOrder
@@ -23011,6 +24294,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     datetime?: SortOrder
     addressId?: SortOrder
     categoryId?: SortOrder
@@ -23024,6 +24308,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     datetime?: SortOrder
     addressId?: SortOrder
     categoryId?: SortOrder
@@ -23031,6 +24316,53 @@ export namespace Prisma {
     image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type EnumMeetupStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MeetupStatus | EnumMeetupStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MeetupStatus[]
+    notIn?: $Enums.MeetupStatus[]
+    not?: NestedEnumMeetupStatusWithAggregatesFilter<$PrismaModel> | $Enums.MeetupStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMeetupStatusFilter<$PrismaModel>
+    _max?: NestedEnumMeetupStatusFilter<$PrismaModel>
+  }
+
+  export type MeetupScalarRelationFilter = {
+    is?: MeetupWhereInput
+    isNot?: MeetupWhereInput
+  }
+
+  export type MeetupFollowerOrderByRelevanceInput = {
+    fields: MeetupFollowerOrderByRelevanceFieldEnum | MeetupFollowerOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type MeetupFollowerMeetupIdPersonIdCompoundUniqueInput = {
+    meetupId: string
+    personId: string
+  }
+
+  export type MeetupFollowerCountOrderByAggregateInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MeetupFollowerMaxOrderByAggregateInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MeetupFollowerMinOrderByAggregateInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type CategoryOrderByRelevanceInput = {
@@ -23123,11 +24455,6 @@ export namespace Prisma {
     _sum?: NestedDecimalFilter<$PrismaModel>
     _min?: NestedDecimalFilter<$PrismaModel>
     _max?: NestedDecimalFilter<$PrismaModel>
-  }
-
-  export type MeetupScalarRelationFilter = {
-    is?: MeetupWhereInput
-    isNot?: MeetupWhereInput
   }
 
   export type MeetupAdminOrderByRelevanceInput = {
@@ -23726,6 +25053,13 @@ export namespace Prisma {
     connect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
   }
 
+  export type MeetupFollowerCreateNestedManyWithoutPersonInput = {
+    create?: XOR<MeetupFollowerCreateWithoutPersonInput, MeetupFollowerUncheckedCreateWithoutPersonInput> | MeetupFollowerCreateWithoutPersonInput[] | MeetupFollowerUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: MeetupFollowerCreateOrConnectWithoutPersonInput | MeetupFollowerCreateOrConnectWithoutPersonInput[]
+    createMany?: MeetupFollowerCreateManyPersonInputEnvelope
+    connect?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+  }
+
   export type MeetupAdminUncheckedCreateNestedManyWithoutPersonInput = {
     create?: XOR<MeetupAdminCreateWithoutPersonInput, MeetupAdminUncheckedCreateWithoutPersonInput> | MeetupAdminCreateWithoutPersonInput[] | MeetupAdminUncheckedCreateWithoutPersonInput[]
     connectOrCreate?: MeetupAdminCreateOrConnectWithoutPersonInput | MeetupAdminCreateOrConnectWithoutPersonInput[]
@@ -23773,6 +25107,13 @@ export namespace Prisma {
     connectOrCreate?: MeetupCreateOrConnectWithoutCreatorInput | MeetupCreateOrConnectWithoutCreatorInput[]
     createMany?: MeetupCreateManyCreatorInputEnvelope
     connect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+  }
+
+  export type MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput = {
+    create?: XOR<MeetupFollowerCreateWithoutPersonInput, MeetupFollowerUncheckedCreateWithoutPersonInput> | MeetupFollowerCreateWithoutPersonInput[] | MeetupFollowerUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: MeetupFollowerCreateOrConnectWithoutPersonInput | MeetupFollowerCreateOrConnectWithoutPersonInput[]
+    createMany?: MeetupFollowerCreateManyPersonInputEnvelope
+    connect?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
   }
 
   export type MeetupAdminUpdateManyWithoutPersonNestedInput = {
@@ -23881,6 +25222,20 @@ export namespace Prisma {
     deleteMany?: MeetupScalarWhereInput | MeetupScalarWhereInput[]
   }
 
+  export type MeetupFollowerUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<MeetupFollowerCreateWithoutPersonInput, MeetupFollowerUncheckedCreateWithoutPersonInput> | MeetupFollowerCreateWithoutPersonInput[] | MeetupFollowerUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: MeetupFollowerCreateOrConnectWithoutPersonInput | MeetupFollowerCreateOrConnectWithoutPersonInput[]
+    upsert?: MeetupFollowerUpsertWithWhereUniqueWithoutPersonInput | MeetupFollowerUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: MeetupFollowerCreateManyPersonInputEnvelope
+    set?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+    disconnect?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+    delete?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+    connect?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+    update?: MeetupFollowerUpdateWithWhereUniqueWithoutPersonInput | MeetupFollowerUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: MeetupFollowerUpdateManyWithWhereWithoutPersonInput | MeetupFollowerUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: MeetupFollowerScalarWhereInput | MeetupFollowerScalarWhereInput[]
+  }
+
   export type MeetupAdminUncheckedUpdateManyWithoutPersonNestedInput = {
     create?: XOR<MeetupAdminCreateWithoutPersonInput, MeetupAdminUncheckedCreateWithoutPersonInput> | MeetupAdminCreateWithoutPersonInput[] | MeetupAdminUncheckedCreateWithoutPersonInput[]
     connectOrCreate?: MeetupAdminCreateOrConnectWithoutPersonInput | MeetupAdminCreateOrConnectWithoutPersonInput[]
@@ -23977,6 +25332,20 @@ export namespace Prisma {
     update?: MeetupUpdateWithWhereUniqueWithoutCreatorInput | MeetupUpdateWithWhereUniqueWithoutCreatorInput[]
     updateMany?: MeetupUpdateManyWithWhereWithoutCreatorInput | MeetupUpdateManyWithWhereWithoutCreatorInput[]
     deleteMany?: MeetupScalarWhereInput | MeetupScalarWhereInput[]
+  }
+
+  export type MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<MeetupFollowerCreateWithoutPersonInput, MeetupFollowerUncheckedCreateWithoutPersonInput> | MeetupFollowerCreateWithoutPersonInput[] | MeetupFollowerUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: MeetupFollowerCreateOrConnectWithoutPersonInput | MeetupFollowerCreateOrConnectWithoutPersonInput[]
+    upsert?: MeetupFollowerUpsertWithWhereUniqueWithoutPersonInput | MeetupFollowerUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: MeetupFollowerCreateManyPersonInputEnvelope
+    set?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+    disconnect?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+    delete?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+    connect?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+    update?: MeetupFollowerUpdateWithWhereUniqueWithoutPersonInput | MeetupFollowerUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: MeetupFollowerUpdateManyWithWhereWithoutPersonInput | MeetupFollowerUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: MeetupFollowerScalarWhereInput | MeetupFollowerScalarWhereInput[]
   }
 
   export type MeetupCreateNestedManyWithoutAddressInput = {
@@ -24081,6 +25450,13 @@ export namespace Prisma {
     connect?: PersonWhereUniqueInput
   }
 
+  export type MeetupFollowerCreateNestedManyWithoutMeetupInput = {
+    create?: XOR<MeetupFollowerCreateWithoutMeetupInput, MeetupFollowerUncheckedCreateWithoutMeetupInput> | MeetupFollowerCreateWithoutMeetupInput[] | MeetupFollowerUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: MeetupFollowerCreateOrConnectWithoutMeetupInput | MeetupFollowerCreateOrConnectWithoutMeetupInput[]
+    createMany?: MeetupFollowerCreateManyMeetupInputEnvelope
+    connect?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+  }
+
   export type MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput = {
     create?: XOR<MeetupAdminCreateWithoutMeetupInput, MeetupAdminUncheckedCreateWithoutMeetupInput> | MeetupAdminCreateWithoutMeetupInput[] | MeetupAdminUncheckedCreateWithoutMeetupInput[]
     connectOrCreate?: MeetupAdminCreateOrConnectWithoutMeetupInput | MeetupAdminCreateOrConnectWithoutMeetupInput[]
@@ -24121,6 +25497,17 @@ export namespace Prisma {
     connectOrCreate?: GuestLoadCreateOrConnectWithoutMeetupInput | GuestLoadCreateOrConnectWithoutMeetupInput[]
     createMany?: GuestLoadCreateManyMeetupInputEnvelope
     connect?: GuestLoadWhereUniqueInput | GuestLoadWhereUniqueInput[]
+  }
+
+  export type MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput = {
+    create?: XOR<MeetupFollowerCreateWithoutMeetupInput, MeetupFollowerUncheckedCreateWithoutMeetupInput> | MeetupFollowerCreateWithoutMeetupInput[] | MeetupFollowerUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: MeetupFollowerCreateOrConnectWithoutMeetupInput | MeetupFollowerCreateOrConnectWithoutMeetupInput[]
+    createMany?: MeetupFollowerCreateManyMeetupInputEnvelope
+    connect?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+  }
+
+  export type EnumMeetupStatusFieldUpdateOperationsInput = {
+    set?: $Enums.MeetupStatus
   }
 
   export type AddressUpdateOneRequiredWithoutMeetupsNestedInput = {
@@ -24231,6 +25618,20 @@ export namespace Prisma {
     update?: XOR<XOR<PersonUpdateToOneWithWhereWithoutCreated_meetupsInput, PersonUpdateWithoutCreated_meetupsInput>, PersonUncheckedUpdateWithoutCreated_meetupsInput>
   }
 
+  export type MeetupFollowerUpdateManyWithoutMeetupNestedInput = {
+    create?: XOR<MeetupFollowerCreateWithoutMeetupInput, MeetupFollowerUncheckedCreateWithoutMeetupInput> | MeetupFollowerCreateWithoutMeetupInput[] | MeetupFollowerUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: MeetupFollowerCreateOrConnectWithoutMeetupInput | MeetupFollowerCreateOrConnectWithoutMeetupInput[]
+    upsert?: MeetupFollowerUpsertWithWhereUniqueWithoutMeetupInput | MeetupFollowerUpsertWithWhereUniqueWithoutMeetupInput[]
+    createMany?: MeetupFollowerCreateManyMeetupInputEnvelope
+    set?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+    disconnect?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+    delete?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+    connect?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+    update?: MeetupFollowerUpdateWithWhereUniqueWithoutMeetupInput | MeetupFollowerUpdateWithWhereUniqueWithoutMeetupInput[]
+    updateMany?: MeetupFollowerUpdateManyWithWhereWithoutMeetupInput | MeetupFollowerUpdateManyWithWhereWithoutMeetupInput[]
+    deleteMany?: MeetupFollowerScalarWhereInput | MeetupFollowerScalarWhereInput[]
+  }
+
   export type MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput = {
     create?: XOR<MeetupAdminCreateWithoutMeetupInput, MeetupAdminUncheckedCreateWithoutMeetupInput> | MeetupAdminCreateWithoutMeetupInput[] | MeetupAdminUncheckedCreateWithoutMeetupInput[]
     connectOrCreate?: MeetupAdminCreateOrConnectWithoutMeetupInput | MeetupAdminCreateOrConnectWithoutMeetupInput[]
@@ -24313,6 +25714,48 @@ export namespace Prisma {
     update?: GuestLoadUpdateWithWhereUniqueWithoutMeetupInput | GuestLoadUpdateWithWhereUniqueWithoutMeetupInput[]
     updateMany?: GuestLoadUpdateManyWithWhereWithoutMeetupInput | GuestLoadUpdateManyWithWhereWithoutMeetupInput[]
     deleteMany?: GuestLoadScalarWhereInput | GuestLoadScalarWhereInput[]
+  }
+
+  export type MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput = {
+    create?: XOR<MeetupFollowerCreateWithoutMeetupInput, MeetupFollowerUncheckedCreateWithoutMeetupInput> | MeetupFollowerCreateWithoutMeetupInput[] | MeetupFollowerUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: MeetupFollowerCreateOrConnectWithoutMeetupInput | MeetupFollowerCreateOrConnectWithoutMeetupInput[]
+    upsert?: MeetupFollowerUpsertWithWhereUniqueWithoutMeetupInput | MeetupFollowerUpsertWithWhereUniqueWithoutMeetupInput[]
+    createMany?: MeetupFollowerCreateManyMeetupInputEnvelope
+    set?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+    disconnect?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+    delete?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+    connect?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+    update?: MeetupFollowerUpdateWithWhereUniqueWithoutMeetupInput | MeetupFollowerUpdateWithWhereUniqueWithoutMeetupInput[]
+    updateMany?: MeetupFollowerUpdateManyWithWhereWithoutMeetupInput | MeetupFollowerUpdateManyWithWhereWithoutMeetupInput[]
+    deleteMany?: MeetupFollowerScalarWhereInput | MeetupFollowerScalarWhereInput[]
+  }
+
+  export type MeetupCreateNestedOneWithoutFollowersInput = {
+    create?: XOR<MeetupCreateWithoutFollowersInput, MeetupUncheckedCreateWithoutFollowersInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutFollowersInput
+    connect?: MeetupWhereUniqueInput
+  }
+
+  export type PersonCreateNestedOneWithoutFollowingMeetupsInput = {
+    create?: XOR<PersonCreateWithoutFollowingMeetupsInput, PersonUncheckedCreateWithoutFollowingMeetupsInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutFollowingMeetupsInput
+    connect?: PersonWhereUniqueInput
+  }
+
+  export type MeetupUpdateOneRequiredWithoutFollowersNestedInput = {
+    create?: XOR<MeetupCreateWithoutFollowersInput, MeetupUncheckedCreateWithoutFollowersInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutFollowersInput
+    upsert?: MeetupUpsertWithoutFollowersInput
+    connect?: MeetupWhereUniqueInput
+    update?: XOR<XOR<MeetupUpdateToOneWithWhereWithoutFollowersInput, MeetupUpdateWithoutFollowersInput>, MeetupUncheckedUpdateWithoutFollowersInput>
+  }
+
+  export type PersonUpdateOneRequiredWithoutFollowingMeetupsNestedInput = {
+    create?: XOR<PersonCreateWithoutFollowingMeetupsInput, PersonUncheckedCreateWithoutFollowingMeetupsInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutFollowingMeetupsInput
+    upsert?: PersonUpsertWithoutFollowingMeetupsInput
+    connect?: PersonWhereUniqueInput
+    update?: XOR<XOR<PersonUpdateToOneWithWhereWithoutFollowingMeetupsInput, PersonUpdateWithoutFollowingMeetupsInput>, PersonUncheckedUpdateWithoutFollowingMeetupsInput>
   }
 
   export type MeetupCreateNestedManyWithoutCategoryInput = {
@@ -24864,6 +26307,23 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumMeetupStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.MeetupStatus | EnumMeetupStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MeetupStatus[]
+    notIn?: $Enums.MeetupStatus[]
+    not?: NestedEnumMeetupStatusFilter<$PrismaModel> | $Enums.MeetupStatus
+  }
+
+  export type NestedEnumMeetupStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MeetupStatus | EnumMeetupStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MeetupStatus[]
+    notIn?: $Enums.MeetupStatus[]
+    not?: NestedEnumMeetupStatusWithAggregatesFilter<$PrismaModel> | $Enums.MeetupStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMeetupStatusFilter<$PrismaModel>
+    _max?: NestedEnumMeetupStatusFilter<$PrismaModel>
+  }
+
   export type NestedDecimalFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     in?: Decimal[] | DecimalJsLike[] | number[] | string[]
@@ -25018,6 +26478,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaCreateNestedManyWithoutPersonInput
     guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
+    followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateWithoutUserInput = {
@@ -25037,6 +26498,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
+    followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonCreateOrConnectWithoutUserInput = {
@@ -25137,6 +26599,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUpdateManyWithoutPersonNestedInput
     guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
+    followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateWithoutUserInput = {
@@ -25156,6 +26619,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
+    followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type UserCreateWithoutSessionsInput = {
@@ -25489,6 +26953,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
     createdAt?: Date | string
@@ -25501,12 +26966,14 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
     category: CategoryCreateNestedOneWithoutMeetupsInput
+    followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutCreatorInput = {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
     categoryId: string
@@ -25519,6 +26986,7 @@ export namespace Prisma {
     certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+    followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutCreatorInput = {
@@ -25528,6 +26996,28 @@ export namespace Prisma {
 
   export type MeetupCreateManyCreatorInputEnvelope = {
     data: MeetupCreateManyCreatorInput | MeetupCreateManyCreatorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MeetupFollowerCreateWithoutPersonInput = {
+    id?: string
+    createdAt?: Date | string
+    meetup: MeetupCreateNestedOneWithoutFollowersInput
+  }
+
+  export type MeetupFollowerUncheckedCreateWithoutPersonInput = {
+    id?: string
+    meetupId: string
+    createdAt?: Date | string
+  }
+
+  export type MeetupFollowerCreateOrConnectWithoutPersonInput = {
+    where: MeetupFollowerWhereUniqueInput
+    create: XOR<MeetupFollowerCreateWithoutPersonInput, MeetupFollowerUncheckedCreateWithoutPersonInput>
+  }
+
+  export type MeetupFollowerCreateManyPersonInputEnvelope = {
+    data: MeetupFollowerCreateManyPersonInput | MeetupFollowerCreateManyPersonInput[]
     skipDuplicates?: boolean
   }
 
@@ -25763,6 +27253,7 @@ export namespace Prisma {
     id?: StringFilter<"Meetup"> | string
     title?: StringFilter<"Meetup"> | string
     description?: StringNullableFilter<"Meetup"> | string | null
+    status?: EnumMeetupStatusFilter<"Meetup"> | $Enums.MeetupStatus
     datetime?: DateTimeFilter<"Meetup"> | Date | string
     addressId?: StringFilter<"Meetup"> | string
     categoryId?: StringFilter<"Meetup"> | string
@@ -25772,10 +27263,37 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Meetup"> | Date | string
   }
 
+  export type MeetupFollowerUpsertWithWhereUniqueWithoutPersonInput = {
+    where: MeetupFollowerWhereUniqueInput
+    update: XOR<MeetupFollowerUpdateWithoutPersonInput, MeetupFollowerUncheckedUpdateWithoutPersonInput>
+    create: XOR<MeetupFollowerCreateWithoutPersonInput, MeetupFollowerUncheckedCreateWithoutPersonInput>
+  }
+
+  export type MeetupFollowerUpdateWithWhereUniqueWithoutPersonInput = {
+    where: MeetupFollowerWhereUniqueInput
+    data: XOR<MeetupFollowerUpdateWithoutPersonInput, MeetupFollowerUncheckedUpdateWithoutPersonInput>
+  }
+
+  export type MeetupFollowerUpdateManyWithWhereWithoutPersonInput = {
+    where: MeetupFollowerScalarWhereInput
+    data: XOR<MeetupFollowerUpdateManyMutationInput, MeetupFollowerUncheckedUpdateManyWithoutPersonInput>
+  }
+
+  export type MeetupFollowerScalarWhereInput = {
+    AND?: MeetupFollowerScalarWhereInput | MeetupFollowerScalarWhereInput[]
+    OR?: MeetupFollowerScalarWhereInput[]
+    NOT?: MeetupFollowerScalarWhereInput | MeetupFollowerScalarWhereInput[]
+    id?: StringFilter<"MeetupFollower"> | string
+    meetupId?: StringFilter<"MeetupFollower"> | string
+    personId?: StringFilter<"MeetupFollower"> | string
+    createdAt?: DateTimeFilter<"MeetupFollower"> | Date | string
+  }
+
   export type MeetupCreateWithoutAddressInput = {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
     createdAt?: Date | string
@@ -25788,12 +27306,14 @@ export namespace Prisma {
     guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
     category: CategoryCreateNestedOneWithoutMeetupsInput
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
+    followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutAddressInput = {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     categoryId: string
     creatorId: string
@@ -25806,6 +27326,7 @@ export namespace Prisma {
     certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+    followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutAddressInput = {
@@ -26073,6 +27594,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaCreateNestedManyWithoutPersonInput
     guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
     user: UserCreateNestedOneWithoutPersonInput
+    followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateWithoutCreated_meetupsInput = {
@@ -26092,11 +27614,34 @@ export namespace Prisma {
     certificates?: CertificateUncheckedCreateNestedManyWithoutPersonInput
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
+    followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonCreateOrConnectWithoutCreated_meetupsInput = {
     where: PersonWhereUniqueInput
     create: XOR<PersonCreateWithoutCreated_meetupsInput, PersonUncheckedCreateWithoutCreated_meetupsInput>
+  }
+
+  export type MeetupFollowerCreateWithoutMeetupInput = {
+    id?: string
+    createdAt?: Date | string
+    person: PersonCreateNestedOneWithoutFollowingMeetupsInput
+  }
+
+  export type MeetupFollowerUncheckedCreateWithoutMeetupInput = {
+    id?: string
+    personId: string
+    createdAt?: Date | string
+  }
+
+  export type MeetupFollowerCreateOrConnectWithoutMeetupInput = {
+    where: MeetupFollowerWhereUniqueInput
+    create: XOR<MeetupFollowerCreateWithoutMeetupInput, MeetupFollowerUncheckedCreateWithoutMeetupInput>
+  }
+
+  export type MeetupFollowerCreateManyMeetupInputEnvelope = {
+    data: MeetupFollowerCreateManyMeetupInput | MeetupFollowerCreateManyMeetupInput[]
+    skipDuplicates?: boolean
   }
 
   export type AddressUpsertWithoutMeetupsInput = {
@@ -26287,6 +27832,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUpdateManyWithoutPersonNestedInput
     guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
     user?: UserUpdateOneRequiredWithoutPersonNestedInput
+    followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateWithoutCreated_meetupsInput = {
@@ -26306,12 +27852,222 @@ export namespace Prisma {
     certificates?: CertificateUncheckedUpdateManyWithoutPersonNestedInput
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
+    followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
+  }
+
+  export type MeetupFollowerUpsertWithWhereUniqueWithoutMeetupInput = {
+    where: MeetupFollowerWhereUniqueInput
+    update: XOR<MeetupFollowerUpdateWithoutMeetupInput, MeetupFollowerUncheckedUpdateWithoutMeetupInput>
+    create: XOR<MeetupFollowerCreateWithoutMeetupInput, MeetupFollowerUncheckedCreateWithoutMeetupInput>
+  }
+
+  export type MeetupFollowerUpdateWithWhereUniqueWithoutMeetupInput = {
+    where: MeetupFollowerWhereUniqueInput
+    data: XOR<MeetupFollowerUpdateWithoutMeetupInput, MeetupFollowerUncheckedUpdateWithoutMeetupInput>
+  }
+
+  export type MeetupFollowerUpdateManyWithWhereWithoutMeetupInput = {
+    where: MeetupFollowerScalarWhereInput
+    data: XOR<MeetupFollowerUpdateManyMutationInput, MeetupFollowerUncheckedUpdateManyWithoutMeetupInput>
+  }
+
+  export type MeetupCreateWithoutFollowersInput = {
+    id?: string
+    title: string
+    description?: string | null
+    status?: $Enums.MeetupStatus
+    datetime: Date | string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    address: AddressCreateNestedOneWithoutMeetupsInput
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
+    invites?: InviteCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+    category: CategoryCreateNestedOneWithoutMeetupsInput
+    creator: PersonCreateNestedOneWithoutCreated_meetupsInput
+  }
+
+  export type MeetupUncheckedCreateWithoutFollowersInput = {
+    id?: string
+    title: string
+    description?: string | null
+    status?: $Enums.MeetupStatus
+    datetime: Date | string
+    addressId: string
+    categoryId: string
+    creatorId: string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutMeetupInput
+    invites?: InviteUncheckedCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupCreateOrConnectWithoutFollowersInput = {
+    where: MeetupWhereUniqueInput
+    create: XOR<MeetupCreateWithoutFollowersInput, MeetupUncheckedCreateWithoutFollowersInput>
+  }
+
+  export type PersonCreateWithoutFollowingMeetupsInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutPersonInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutPersonInput
+    invites?: InviteCreateNestedManyWithoutPersonInput
+    certificates?: CertificateCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
+    user: UserCreateNestedOneWithoutPersonInput
+    created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
+  }
+
+  export type PersonUncheckedCreateWithoutFollowingMeetupsInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutPersonInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutPersonInput
+    invites?: InviteUncheckedCreateNestedManyWithoutPersonInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
+    created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
+  }
+
+  export type PersonCreateOrConnectWithoutFollowingMeetupsInput = {
+    where: PersonWhereUniqueInput
+    create: XOR<PersonCreateWithoutFollowingMeetupsInput, PersonUncheckedCreateWithoutFollowingMeetupsInput>
+  }
+
+  export type MeetupUpsertWithoutFollowersInput = {
+    update: XOR<MeetupUpdateWithoutFollowersInput, MeetupUncheckedUpdateWithoutFollowersInput>
+    create: XOR<MeetupCreateWithoutFollowersInput, MeetupUncheckedCreateWithoutFollowersInput>
+    where?: MeetupWhereInput
+  }
+
+  export type MeetupUpdateToOneWithWhereWithoutFollowersInput = {
+    where?: MeetupWhereInput
+    data: XOR<MeetupUpdateWithoutFollowersInput, MeetupUncheckedUpdateWithoutFollowersInput>
+  }
+
+  export type MeetupUpdateWithoutFollowersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+    category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
+    creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
+  }
+
+  export type MeetupUncheckedUpdateWithoutFollowersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    addressId?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
+    creatorId?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type PersonUpsertWithoutFollowingMeetupsInput = {
+    update: XOR<PersonUpdateWithoutFollowingMeetupsInput, PersonUncheckedUpdateWithoutFollowingMeetupsInput>
+    create: XOR<PersonCreateWithoutFollowingMeetupsInput, PersonUncheckedCreateWithoutFollowingMeetupsInput>
+    where?: PersonWhereInput
+  }
+
+  export type PersonUpdateToOneWithWhereWithoutFollowingMeetupsInput = {
+    where?: PersonWhereInput
+    data: XOR<PersonUpdateWithoutFollowingMeetupsInput, PersonUncheckedUpdateWithoutFollowingMeetupsInput>
+  }
+
+  export type PersonUpdateWithoutFollowingMeetupsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUpdateManyWithoutPersonNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutPersonNestedInput
+    invites?: InviteUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
+    user?: UserUpdateOneRequiredWithoutPersonNestedInput
+    created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type PersonUncheckedUpdateWithoutFollowingMeetupsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutPersonNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutPersonNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
+    created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type MeetupCreateWithoutCategoryInput = {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
     createdAt?: Date | string
@@ -26324,12 +28080,14 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
+    followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutCategoryInput = {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
     creatorId: string
@@ -26342,6 +28100,7 @@ export namespace Prisma {
     certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+    followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutCategoryInput = {
@@ -26420,6 +28179,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
     createdAt?: Date | string
@@ -26432,12 +28192,14 @@ export namespace Prisma {
     guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
     category: CategoryCreateNestedOneWithoutMeetupsInput
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
+    followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutMeetupAdminsInput = {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
     categoryId: string
@@ -26450,6 +28212,7 @@ export namespace Prisma {
     certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+    followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutMeetupAdminsInput = {
@@ -26474,6 +28237,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
     user: UserCreateNestedOneWithoutPersonInput
     created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
+    followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateWithoutMeetupAdminsInput = {
@@ -26493,6 +28257,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
+    followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonCreateOrConnectWithoutMeetupAdminsInput = {
@@ -26515,6 +28280,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26527,12 +28293,14 @@ export namespace Prisma {
     guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
     category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
+    followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutMeetupAdminsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
@@ -26545,6 +28313,7 @@ export namespace Prisma {
     certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+    followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type PersonUpsertWithoutMeetupAdminsInput = {
@@ -26575,6 +28344,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
     user?: UserUpdateOneRequiredWithoutPersonNestedInput
     created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
+    followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateWithoutMeetupAdminsInput = {
@@ -26594,6 +28364,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
+    followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonCreateWithoutSubscriptionsInput = {
@@ -26613,6 +28384,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
     user: UserCreateNestedOneWithoutPersonInput
     created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
+    followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateWithoutSubscriptionsInput = {
@@ -26632,6 +28404,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
+    followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonCreateOrConnectWithoutSubscriptionsInput = {
@@ -26643,6 +28416,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
     createdAt?: Date | string
@@ -26655,12 +28429,14 @@ export namespace Prisma {
     guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
     category: CategoryCreateNestedOneWithoutMeetupsInput
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
+    followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutSubscriptionsInput = {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
     categoryId: string
@@ -26673,6 +28449,7 @@ export namespace Prisma {
     certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+    followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutSubscriptionsInput = {
@@ -26757,6 +28534,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
     user?: UserUpdateOneRequiredWithoutPersonNestedInput
     created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
+    followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateWithoutSubscriptionsInput = {
@@ -26776,6 +28554,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
+    followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type MeetupUpsertWithoutSubscriptionsInput = {
@@ -26793,6 +28572,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26805,12 +28585,14 @@ export namespace Prisma {
     guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
     category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
+    followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutSubscriptionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
@@ -26823,6 +28605,7 @@ export namespace Prisma {
     certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+    followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupRoleUpsertWithoutSubscriptionsInput = {
@@ -26898,6 +28681,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
     user: UserCreateNestedOneWithoutPersonInput
     created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
+    followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateWithoutInvitesInput = {
@@ -26917,6 +28701,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
+    followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonCreateOrConnectWithoutInvitesInput = {
@@ -26928,6 +28713,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
     createdAt?: Date | string
@@ -26940,12 +28726,14 @@ export namespace Prisma {
     guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
     category: CategoryCreateNestedOneWithoutMeetupsInput
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
+    followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutInvitesInput = {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
     categoryId: string
@@ -26958,6 +28746,7 @@ export namespace Prisma {
     certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+    followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutInvitesInput = {
@@ -26993,6 +28782,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
     user?: UserUpdateOneRequiredWithoutPersonNestedInput
     created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
+    followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateWithoutInvitesInput = {
@@ -27012,6 +28802,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
+    followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type MeetupUpsertWithoutInvitesInput = {
@@ -27029,6 +28820,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27041,12 +28833,14 @@ export namespace Prisma {
     guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
     category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
+    followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutInvitesInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
@@ -27059,6 +28853,7 @@ export namespace Prisma {
     certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+    followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type SubscriptionPaymentCreateWithoutPaymentInput = {
@@ -27218,6 +29013,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
     user: UserCreateNestedOneWithoutPersonInput
     created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
+    followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateWithoutCertificatesInput = {
@@ -27237,6 +29033,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
+    followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonCreateOrConnectWithoutCertificatesInput = {
@@ -27248,6 +29045,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
     createdAt?: Date | string
@@ -27260,12 +29058,14 @@ export namespace Prisma {
     guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
     category: CategoryCreateNestedOneWithoutMeetupsInput
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
+    followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutCertificatesInput = {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
     categoryId: string
@@ -27278,6 +29078,7 @@ export namespace Prisma {
     invites?: InviteUncheckedCreateNestedManyWithoutMeetupInput
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+    followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutCertificatesInput = {
@@ -27313,6 +29114,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
     user?: UserUpdateOneRequiredWithoutPersonNestedInput
     created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
+    followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateWithoutCertificatesInput = {
@@ -27332,6 +29134,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
+    followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type MeetupUpsertWithoutCertificatesInput = {
@@ -27349,6 +29152,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27361,12 +29165,14 @@ export namespace Prisma {
     guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
     category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
+    followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutCertificatesInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
@@ -27379,12 +29185,14 @@ export namespace Prisma {
     invites?: InviteUncheckedUpdateManyWithoutMeetupNestedInput
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+    followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupCreateWithoutMeetupMediasInput = {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
     createdAt?: Date | string
@@ -27397,12 +29205,14 @@ export namespace Prisma {
     guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
     category: CategoryCreateNestedOneWithoutMeetupsInput
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
+    followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutMeetupMediasInput = {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
     categoryId: string
@@ -27415,6 +29225,7 @@ export namespace Prisma {
     invites?: InviteUncheckedCreateNestedManyWithoutMeetupInput
     certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+    followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutMeetupMediasInput = {
@@ -27439,6 +29250,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
     user: UserCreateNestedOneWithoutPersonInput
     created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
+    followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateWithoutMeetupMediasInput = {
@@ -27458,6 +29270,7 @@ export namespace Prisma {
     certificates?: CertificateUncheckedCreateNestedManyWithoutPersonInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
+    followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonCreateOrConnectWithoutMeetupMediasInput = {
@@ -27480,6 +29293,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27492,12 +29306,14 @@ export namespace Prisma {
     guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
     category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
+    followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutMeetupMediasInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
@@ -27510,6 +29326,7 @@ export namespace Prisma {
     invites?: InviteUncheckedUpdateManyWithoutMeetupNestedInput
     certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+    followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type PersonUpsertWithoutMeetupMediasInput = {
@@ -27540,6 +29357,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
     user?: UserUpdateOneRequiredWithoutPersonNestedInput
     created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
+    followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateWithoutMeetupMediasInput = {
@@ -27559,12 +29377,14 @@ export namespace Prisma {
     certificates?: CertificateUncheckedUpdateManyWithoutPersonNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
+    followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type MeetupCreateWithoutGuestLoadsInput = {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
     createdAt?: Date | string
@@ -27577,12 +29397,14 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
     category: CategoryCreateNestedOneWithoutMeetupsInput
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
+    followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutGuestLoadsInput = {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
     categoryId: string
@@ -27595,6 +29417,7 @@ export namespace Prisma {
     invites?: InviteUncheckedCreateNestedManyWithoutMeetupInput
     certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
+    followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutGuestLoadsInput = {
@@ -27619,6 +29442,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaCreateNestedManyWithoutPersonInput
     user: UserCreateNestedOneWithoutPersonInput
     created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
+    followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateWithoutGuestLoadsInput = {
@@ -27638,6 +29462,7 @@ export namespace Prisma {
     certificates?: CertificateUncheckedCreateNestedManyWithoutPersonInput
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
+    followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonCreateOrConnectWithoutGuestLoadsInput = {
@@ -27660,6 +29485,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27672,12 +29498,14 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
     category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
+    followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutGuestLoadsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
@@ -27690,6 +29518,7 @@ export namespace Prisma {
     invites?: InviteUncheckedUpdateManyWithoutMeetupNestedInput
     certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
+    followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type PersonUpsertWithoutGuestLoadsInput = {
@@ -27720,6 +29549,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUpdateManyWithoutPersonNestedInput
     user?: UserUpdateOneRequiredWithoutPersonNestedInput
     created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
+    followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateWithoutGuestLoadsInput = {
@@ -27739,6 +29569,7 @@ export namespace Prisma {
     certificates?: CertificateUncheckedUpdateManyWithoutPersonNestedInput
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
+    followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type SessionCreateManyUserInput = {
@@ -27899,12 +29730,19 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
     categoryId: string
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type MeetupFollowerCreateManyPersonInput = {
+    id?: string
+    meetupId: string
+    createdAt?: Date | string
   }
 
   export type MeetupAdminUpdateWithoutPersonInput = {
@@ -28075,6 +29913,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28087,12 +29926,14 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
     category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
+    followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutCreatorInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
@@ -28105,12 +29946,14 @@ export namespace Prisma {
     certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+    followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateManyWithoutCreatorInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
@@ -28119,10 +29962,29 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type MeetupFollowerUpdateWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetup?: MeetupUpdateOneRequiredWithoutFollowersNestedInput
+  }
+
+  export type MeetupFollowerUncheckedUpdateWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupFollowerUncheckedUpdateManyWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type MeetupCreateManyAddressInput = {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     categoryId: string
     creatorId: string
@@ -28135,6 +29997,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28147,12 +30010,14 @@ export namespace Prisma {
     guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
     category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
+    followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutAddressInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
@@ -28165,12 +30030,14 @@ export namespace Prisma {
     certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+    followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateManyWithoutAddressInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
@@ -28231,6 +30098,12 @@ export namespace Prisma {
     count: number
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type MeetupFollowerCreateManyMeetupInput = {
+    id?: string
+    personId: string
+    createdAt?: Date | string
   }
 
   export type MeetupAdminUpdateWithoutMeetupInput = {
@@ -28397,10 +30270,29 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type MeetupFollowerUpdateWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    person?: PersonUpdateOneRequiredWithoutFollowingMeetupsNestedInput
+  }
+
+  export type MeetupFollowerUncheckedUpdateWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupFollowerUncheckedUpdateManyWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type MeetupCreateManyCategoryInput = {
     id?: string
     title: string
     description?: string | null
+    status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
     creatorId: string
@@ -28413,6 +30305,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28425,12 +30318,14 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
+    followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
@@ -28443,12 +30338,14 @@ export namespace Prisma {
     certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+    followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateManyWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string

@@ -14,26 +14,197 @@ interface MeetupCreateProps {
 }
 
 export async function meetupRoutes(app: FastifyInstance) {
-	app.route({
-		method: ["GET"],
-		url: '/',
-		async handler(request, reply) {
+	app.get<{ Headers: { auth: string } }>(
+		'/', 
+		async (request, reply) => {
 			const meetups = await prisma.meetup.findMany({
-				// where: {}
 				include: {
-					subscriptions: true,
-					address: true
+					subscriptions: {
+						where: {
+							personId: request.headers.auth
+						}
+					},
+					address: true,
+					followers: {
+						where: {
+							personId: request.headers.auth
+						}
+					}
 				}
 			})
 
 			return meetups
 		}
-	})
+	)
 
-	app.route({
-		method: ["POST"],
-		url: '/',
-		async handler(request, reply) {
+	app.get<{Params: { id: string }}>(
+		'/:id/invitations', 
+		async (request, reply) => {
+			const meetups = await prisma.meetup.findUnique({
+				where: {
+					id: request.params.id
+				},
+				include: {
+					subscriptions: true,
+					invites: {
+						include: {
+							person: true
+						}
+					}
+				}
+			})
+
+			return meetups
+		}
+	)
+
+	app.get<{Params: { id: string }}>(
+		'/:id', 
+		async (request, reply) => {
+			try {
+				const meetup = await prisma.meetup.findUnique({
+					where: {
+						id: request.params.id
+					},
+					include: {
+						address: true,
+						creator: true,
+						subscriptions: true,
+						meetupAdmins: true,
+						followers: true
+					}
+				})
+
+				if(!meetup) {
+					throw new Error('Evento não encontrado.')
+				}
+
+				return meetup
+			} catch(e: any) {
+				return {
+					message: e.message || 'Error: Cannot get the meetup.'
+				}
+			}
+		}
+	)
+
+	app.get<{Params: { id: string, person_id: string }}>(
+		'/:id/confirmation/:person_id',
+		async (request, reply) => {
+			const { id, person_id } = request.params
+
+			const response = await prisma.subscription.findUnique({
+				where: {
+					personId_meetupId: {
+						meetupId: id,
+						personId: person_id
+					}
+				}
+			})
+
+			return response
+		}
+	)
+
+	app.get<{Params: { id: string, person_id: string }}>(
+		'/:id/invitation/:person_id',
+		async (request, reply) => {
+			const { id, person_id } = request.params
+
+			console.log(id, person_id)
+
+			const response = await prisma.invite.findUnique({
+				where: {
+					personId_meetupId: {
+						meetupId: id,
+						personId: person_id
+					}
+				}
+			})
+
+			return response
+		}
+	)
+
+	app.post<{Params: { id: string, person_id: string }}>(
+		'/:id/subscribe/:person_id',
+		async (request, reply) => {
+			const { id, person_id } = request.params
+
+			const subscription = await prisma.subscription.create({
+				data: {
+					meetupId: id,
+					personId: person_id,
+					meetupRoleId: '1'
+				}
+			})
+
+			return subscription
+		}
+	)
+
+	app.patch<{Params: { id: string, person_id: string }}>(
+		'/:id/confirmation/:person_id',
+		async (request, reply) => {
+			const { id, person_id } = request.params
+
+			const reponse = await prisma.subscription.update({
+				where: {
+					personId_meetupId: {
+						meetupId: id,
+						personId: person_id
+					}
+				},
+				data: {
+					presenceConfirmation: true
+				}
+			})
+
+			return reponse
+		}
+	)
+
+	app.patch<{Params: { id: string, person_id: string }}>(
+		'/:id/following_toggle/:person_id', 
+		async (request, reply) => {
+			const { id, person_id } = request.params
+
+			const meetupFollower = await prisma.meetupFollower.findUnique({
+				where: {
+					meetupId_personId: {
+						meetupId: id,
+						personId: person_id
+					}
+				}
+			})
+
+			if(!meetupFollower) {
+				const response = await prisma.meetupFollower.create({
+					data: {
+						meetupId: id,
+						personId: person_id
+					}
+				})
+
+				return response
+			} else {
+				await prisma.meetupFollower.delete({
+					where: {
+						meetupId_personId: {
+							meetupId: id,
+							personId: person_id
+						}
+					}
+				})
+
+				return null
+			}
+		}
+	)
+
+	app.post<{Params: { person_id: string }}>(
+		'/:person_id', 
+		async (request, reply) => {
 			try {
 				const parts = request.parts()
 
@@ -70,8 +241,7 @@ export async function meetupRoutes(app: FastifyInstance) {
 						categoryId: data.category_id!,
 						image: data.image,
 						addressId: address.id,
-						// TODO: TERMINAR
-						creatorId: 'xxx'
+						creatorId: request.params.person_id
 					},
 					include: {
 						meetupAdmins: {
@@ -89,5 +259,5 @@ export async function meetupRoutes(app: FastifyInstance) {
 				}
 			}
 		}
-	})
+	)
 }

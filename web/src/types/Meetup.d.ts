@@ -1,8 +1,8 @@
 export interface Meetup {
-	id: number
+	id: string
 	title: string
 	description?: string
-	status: 'agendado' | 'em curso' | 'finalizado' | 'cancelado'
+	status: 'created' | 'in_subscription' | 'in_progress' | 'finished' | 'cancelled'
 	datetime: string
 	period: {
 		start: string
@@ -19,5 +19,17 @@ export interface Meetup {
 		id: string
 		personId: string
 	}[]
-	likes?: Person[]
+	invites?: {
+		person: Person
+		personId: string
+		meetupId: string
+		link: string
+	}[]
+	followers?: MeetupFollowing[]
+}
+
+interface MeetupFollowing {
+	id: string
+	meetupId: string
+	personId: string
 }

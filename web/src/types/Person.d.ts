@@ -1,5 +1,8 @@
 interface Person {
 	id: string
 	name: string
-	whatsapp?: string
+	phone?: string
+	email?: string
+	cpf?: string
+	gender?: 'M' | 'F'
 }

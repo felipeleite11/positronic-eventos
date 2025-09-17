@@ -8,6 +8,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum MeetupStatus {
+  created
+  in_subscription
+  in_progress
+  finished
+  cancelled
+}
+
 model User {
   id            String    @id
   name          String    @db.Text
@@ -82,14 +90,15 @@ model Person {
   userId    String    @unique @map("user_id")
 
   // Relacionamentos
-  meetupAdmins    MeetupAdmin[]
-  subscriptions   Subscription[]
-  invites         Invite[]
-  certificates    Certificate[]
-  meetupMedias    MeetupMedia[]
-  guestLoads      GuestLoad[]
-  user            User           @relation(fields: [userId], references: [id])
-  created_meetups Meetup[]
+  meetupAdmins     MeetupAdmin[]
+  subscriptions    Subscription[]
+  invites          Invite[]
+  certificates     Certificate[]
+  meetupMedias     MeetupMedia[]
+  guestLoads       GuestLoad[]
+  user             User             @relation(fields: [userId], references: [id])
+  created_meetups  Meetup[]
+  followingMeetups MeetupFollower[]
 
   @@map("person")
 }
@@ -114,29 +123,46 @@ model Address {
 }
 
 model Meetup {
-  id          String   @id @default(cuid())
+  id          String       @id @default(cuid())
   title       String
-  description String?  @db.Text
+  description String?      @db.Text
+  status      MeetupStatus @default(created)
   datetime    DateTime
-  addressId   String   @map("address_id")
-  categoryId  String   @map("category_id")
-  creatorId   String   @map("creator_id")
+  addressId   String       @map("address_id")
+  categoryId  String       @map("category_id")
+  creatorId   String       @map("creator_id")
   image       String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 
   // Relacionamentos
-  address       Address        @relation(fields: [addressId], references: [id], onDelete: Cascade)
+  address       Address          @relation(fields: [addressId], references: [id], onDelete: Cascade)
   meetupAdmins  MeetupAdmin[]
   subscriptions Subscription[]
   invites       Invite[]
   certificates  Certificate[]
   meetupMedias  MeetupMedia[]
   guestLoads    GuestLoad[]
-  category      Category       @relation(fields: [categoryId], references: [id])
-  creator       Person         @relation(fields: [creatorId], references: [id])
+  category      Category         @relation(fields: [categoryId], references: [id])
+  creator       Person           @relation(fields: [creatorId], references: [id])
+  followers     MeetupFollower[]
 
   @@map("meetup")
+}
+
+model MeetupFollower {
+  id        String   @id @default(cuid())
+  meetupId  String   @map("meetup_id")
+  personId  String   @map("person_id")
+  createdAt DateTime @default(now())
+
+  // Relacionamentos
+  meetup Meetup @relation(fields: [meetupId], references: [id], onDelete: Cascade)
+  person Person @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  // Garantir que uma pessoa não possa seguir o mesmo meetup mais de uma vez
+  @@unique([meetupId, personId])
+  @@map("meetup_follower")
 }
 
 model Category {

@@ -3,7 +3,7 @@ import 'dotenv/config'
 import Fastify from 'fastify'
 import fastifyCors from "@fastify/cors"
 import fastifyMultipart from '@fastify/multipart'
-import fastifyJwt from '@fastify/jwt'
+// import fastifyJwt from '@fastify/jwt'
 
 import { initSocketIO } from './config/socket'
 import { onShutdown as onShutdownRabbitMQ } from './config/queue'
@@ -15,6 +15,7 @@ import { meetupRoutes } from './routes/meetup.routes'
 import { categoryRoutes } from './routes/category.routes'
 import { personRoutes } from './routes/person.routes'
 import { sessionRoutes } from './routes/session.routes'
+import { subscriptionRoutes } from './routes/subscription.routes'
 
 const fastify = Fastify({
 	logger: false
@@ -23,7 +24,9 @@ const fastify = Fastify({
 fastify.register(fastifyMultipart)
 
 fastify.register(fastifyCors, {
-	origin: process.env.WEB_URL || 'http://localhost:3000'
+	origin: process.env.WEB_URL || 'http://localhost:3000',
+	methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+	// preflight: true
 })
 
 fastify.get('/', () => {
@@ -50,6 +53,7 @@ fastify.register(sessionRoutes, { prefix: '/auth' })
 // })
 
 fastify.register(meetupRoutes, { prefix: '/meetup' })
+fastify.register(subscriptionRoutes, { prefix: '/subscription' })
 fastify.register(categoryRoutes, { prefix: '/category' })
 fastify.register(personRoutes, { prefix: '/person' })
 
