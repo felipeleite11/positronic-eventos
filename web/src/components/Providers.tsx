@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { ThemeProvider } from "next-themes"
 import { GlobalContextProvider } from "@/contexts/GlobalContext"
 import { SessionProvider } from "next-auth/react"
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
 export const queryClient = new QueryClient()
 
@@ -14,7 +15,9 @@ export function Providers({ children }: { children: ReactNode }) {
 		<QueryClientProvider client={queryClient}>
 			<SessionProvider>
 				<GlobalContextProvider>
-					{children}
+					<NuqsAdapter>
+						{children}
+					</NuqsAdapter>
 				</GlobalContextProvider>
 			</SessionProvider>
     	</QueryClientProvider>

@@ -651,6 +651,11 @@
   resolved "https://registry.yarnpkg.com/@react-leaflet/core/-/core-3.0.0.tgz#34ccc280ce7d8ac5c09f2b3d5fffded450bdf1a2"
   integrity sha512-3EWmekh4Nz+pGcr+xjf0KNyYfC3U2JjnkWsh0zcqaexYqmmB5ZhH37kz41JXGmKzpaMZCnPofBBm64i+YrEvGQ==
 
+"@standard-schema/spec@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@standard-schema/spec/-/spec-1.0.0.tgz#f193b73dc316c4170f2e82a881da0f550d551b9c"
+  integrity sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==
+
 "@standard-schema/utils@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@standard-schema/utils/-/utils-0.3.0.tgz#3d5e608f16c2390c10528e98e59aef6bf73cae7b"
@@ -1285,6 +1290,13 @@ next@15.5.2:
     "@next/swc-win32-arm64-msvc" "15.5.2"
     "@next/swc-win32-x64-msvc" "15.5.2"
     sharp "^0.34.3"
+
+nuqs@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/nuqs/-/nuqs-2.6.0.tgz#05e661182b9d5255dd4602bed9bde3b17d8b530e"
+  integrity sha512-EvIKBvfJeyL8n6lxfebxoAbkHJutNsxmy1oo4noFUYNUESbnecxWxgnxXoa0/4fYiFwdEuyMQx1Z9rV0h4bnkg==
+  dependencies:
+    "@standard-schema/spec" "1.0.0"
 
 oauth@^0.9.15:
   version "0.9.15"

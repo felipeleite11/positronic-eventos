@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SearchIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form"
@@ -13,6 +13,7 @@ import { formatAddress, formatStatus } from "@/util/format";
 import { Meetup } from "@/types/Meetup";
 import { api } from "@/services/api";
 import { format } from "date-fns";
+import { useQueryState } from "nuqs"
 
 interface SearchProps {
 	search: string
@@ -23,13 +24,16 @@ export default function Search() {
 
 	const [isSearching, setIsSearching] = useState(false)
 	const [searchResult, setSearchResult] = useState<null | Meetup[]>(null)
+	const [filter, setFilter] = useQueryState('filter', { defaultValue: '',  })
+
+	const firstRender = useRef(true)
 
 	const {
 		handleSubmit,
 		register
 	} = useForm<SearchProps>({
 		defaultValues: {
-			search: ''
+			search: filter
 		}
 	})
 
@@ -61,13 +65,27 @@ export default function Search() {
 		router.push(`/meetup/${meetup.id}`)
 	}
 
+	useEffect(() => {
+		if (firstRender.current) {
+			firstRender.current = false
+
+			if (filter) {
+				handleSearch({ search: filter })
+			}
+		}
+	}, [filter])
+
 	return (
 		<div className="flex flex-col gap-10 p-8">
 			<form className="flex gap-2" onSubmit={handleSubmit(handleSearch)}>
 				<Input 
 					placeholder="Nome do evento" 
 					className="w-96" 
-					{...register('search')}
+					{...register('search', {
+						onChange(e) {
+							setFilter(e.target.value)	
+						}
+					})}
 				/>
 
 				<Button type="submit">
