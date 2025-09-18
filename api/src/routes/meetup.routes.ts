@@ -98,7 +98,11 @@ export async function meetupRoutes(app: FastifyInstance) {
 					include: {
 						address: true,
 						creator: true,
-						subscriptions: true,
+						subscriptions: {
+							include: {
+								person: true
+							}
+						},
 						meetupAdmins: true,
 						followers: true,
 						category: true

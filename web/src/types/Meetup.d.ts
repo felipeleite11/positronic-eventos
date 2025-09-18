@@ -13,10 +13,7 @@ export interface Meetup {
 	creator: Person
 	creatorId: string
 	address?: Address
-	subscriptions?: {
-		id: string
-		personId: string
-	}[]
+	subscriptions?: Subscription[]
 	invites?: {
 		person: Person
 		personId: string

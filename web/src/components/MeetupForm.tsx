@@ -188,94 +188,94 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 
 	return (
 		<form className="grid grid-cols-[1fr_2fr] gap-8" onSubmit={handleSubmit(submitFunction)}>
+			<Controller
+				name="image"
+				control={control}
+				render={({ field }) => (
+					<div className="space-y-2">
+						<Upload id="image" onFileChange={field.onChange}>
+							{({ id }) => (
+								<>
+									<UploadViewer file={field.value} />
+
+									<UploadTrigger id={id} file={field.value} className="flex flex-col gap-2">
+										<Image size={28} />
+										Enviar imagem
+									</UploadTrigger>
+								</>
+							)}
+						</Upload>
+
+						{errors.image && (
+							<p className="text-sm text-red-500">{errors.image.message}</p>
+						)}
+					</div>
+				)}
+			/>
+
+			<div className="flex flex-col gap-4">
+				<Input 
+					label="Nome do evento" 
+					placeholder="Ex.: Palestra sobre comunicação"
+					{...register("title")}
+				/>
+
+				<Textarea 
+					label="Detalhes do evento" 
+					placeholder="Ex.: A palestra vem este ano recheada de novidades."
+					{...register("description")}
+				/>
+
+				<Input 
+					label="Nome do local" 
+					placeholder="Ex.: Avenida Central, 123" 
+					{...register("place")}
+				/>
+
+				<div className="flex gap-4">
+					<Input 
+						label="Data/hora de início" 
+						placeholder="Ex.: 01/01/2021 10:00h" 
+						{...register("start")}
+					/>
+					<Input
+						label="Data/hora de término" 
+						placeholder="Ex.: 01/01/2021 11:00h" 
+						{...register("end")}
+					/>
+				</div>
+
 				<Controller
-					name="image"
+					name="category_id"
 					control={control}
 					render={({ field }) => (
-						<div className="space-y-2">
-							<Upload id="image" onFileChange={field.onChange}>
-								{({ id }) => (
-									<>
-										<UploadViewer file={field.value} />
+						<Select
+							value={field.value}
+							onValueChange={field.onChange}
+						>
+							<SelectTrigger className="w-full" id="category" label="Tipo de evento">
+								<SelectValue placeholder="Selecione o tipo de evento" />
+							</SelectTrigger>
 
-										<UploadTrigger id={id} file={field.value} className="flex flex-col gap-2">
-											<Image size={28} />
-											Enviar imagem
-										</UploadTrigger>
-									</>
-								)}
-							</Upload>
-
-							{errors.image && (
-								<p className="text-sm text-red-500">{errors.image.message}</p>
-							)}
-						</div>
+							<SelectContent>
+								{categories?.map(category => (
+									<SelectItem key={category.id} value={category.id}>{category.name}</SelectItem>
+								))}
+							</SelectContent>
+						</Select>
 					)}
 				/>
 
-				<div className="flex flex-col gap-4">
-					<Input 
-						label="Nome do evento" 
-						placeholder="Ex.: Palestra sobre comunicação"
-						{...register("title")}
-					/>
+				<ul className="flex flex-col leading-loose text-sm text-yellow-500 ml-2">
+					{errorMessages.length > 0 && errorMessages.map(({ message }) => (
+						<li key={message}>{message}</li>
+					))}
+				</ul>
 
-					<Textarea 
-						label="Detalhes do evento" 
-						placeholder="Ex.: A palestra vem este ano recheada de novidades."
-						{...register("description")}
-					/>
-
-					<Input 
-						label="Nome do local" 
-						placeholder="Ex.: Avenida Central, 123" 
-						{...register("place")}
-					/>
-
-					<div className="flex gap-4">
-						<Input 
-							label="Data/hora de início" 
-							placeholder="Ex.: 01/01/2021 10:00h" 
-							{...register("start")}
-						/>
-						<Input
-							label="Data/hora de término" 
-							placeholder="Ex.: 01/01/2021 11:00h" 
-							{...register("end")}
-						/>
-					</div>
-
-					<Controller
-						name="category_id"
-						control={control}
-						render={({ field }) => (
-							<Select
-								value={field.value}
-								onValueChange={field.onChange}
-							>
-								<SelectTrigger className="w-full" id="category" label="Tipo de evento">
-									<SelectValue placeholder="Selecione o tipo de evento" />
-								</SelectTrigger>
-
-								<SelectContent>
-									{categories?.map(category => (
-										<SelectItem key={category.id} value={category.id}>{category.name}</SelectItem>
-									))}
-								</SelectContent>
-							</Select>
-						)}
-					/>
-
-					<ul className="flex flex-col leading-loose text-sm text-yellow-500 ml-2">
-						{errorMessages.length > 0 && errorMessages.map(({ message }) => (
-							<li key={message}>{message}</li>
-						))}
-					</ul>
-
-					<Button disabled={isWaiting} type="submit">
-						{mode === 'create' ? 'Criar evento' : 'Atualizar evento'}
-					</Button>
-				</div>
-			</form>
+				<Button disabled={isWaiting} type="submit">
+					{mode === 'create' ? 'Criar evento' : 'Atualizar evento'}
+				</Button>
+			</div>
+		</form>
 	)
 }

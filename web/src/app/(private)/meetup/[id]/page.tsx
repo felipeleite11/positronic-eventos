@@ -18,7 +18,7 @@ import { api } from "@/services/api"
 import { Meetup, MeetupFollowing } from "@/types/Meetup"
 import { extractNumbers } from "@/util/string"
 import { formatAddress } from "@/util/format"
-import { format } from "date-fns"
+import { format, isBefore } from "date-fns"
 import Link from "next/link"
 
 export default function Event() {
@@ -36,9 +36,6 @@ export default function Event() {
 		queryKey: ['get-meetup'],
 		queryFn: async () => {
 			const { data } = await api.get<Meetup>(`meetup/${id}`)
-
-			data.start = format(new Date(data.start), 'dd/MM/yyyy HH:mm\'h\'')
-			data.end = format(new Date(data.end), 'dd/MM/yyyy HH:mm\'h\'')
 
 			return data
 		}
@@ -114,10 +111,10 @@ export default function Event() {
 	const isSubscribed = meetup.subscriptions?.some(subs => subs.personId === person?.id)
 	const isCreator = meetup.creatorId === person.id
 	const isFollowed = meetup.followers?.some(follower => follower.personId === person?.id)
+	const wasStarted = isBefore(new Date(meetup.start), new Date())
 
 	return (
 		<div className="flex flex-col">
-			<div>
 				<div className="flex justify-between gap-8 mb-6">
 					<Button variant="ghost" onClick={() => router.back()} className="text-sm text-slate-600 dark:text-slate-400 hover:opacity-70 transition-opacity">
 						<ArrowLeft size={15} />
@@ -134,89 +131,92 @@ export default function Event() {
 					)}
 				</div>
 
-				{meetup.image && <Image src={meetup.image} alt="" width={1000} height={1000} className="float-left mr-10 mb-5 w-96 rounded-md object-contain shadow-sm" />}
+				<div className="grid grid-cols-[24rem_auto] gap-8">
+					{meetup.image && <Image src={meetup.image} alt="" width={1000} height={1000} className="float-left mr-10 mb-5 w-96 rounded-md object-contain shadow-sm" />}
+
+					<div className={cn('text-sm', { 'col-span-2': !meetup.image })}>
+						<h1 className="font-bold text-2xl mb-6">{meetup.title}</h1>
+
+						<div className="flex flex-col gap-6 mb-6">
+							<div className="grid grid-cols-[1.4rem_auto] gap-2">
+								<Calendar size={19} />
+								Data/hora: {format(new Date(meetup.start), 'dd/MM/yyyy HH:mm\'h\'')}
+							</div>
+
+							<div className="grid grid-cols-[1.4rem_auto] gap-2">
+								<MapPin size={19} />
+								Local: {formatAddress(meetup.address)}
+							</div>
+
+							<div className="grid grid-cols-[1.4rem_auto] gap-2">
+								<User size={19} />
+								Criado por: {isCreator ? 'você' : meetup.creator.name}
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div className="flex my-6">
+					{!isCreator ? (
+						<Tooltip>
+							<TooltipTrigger asChild>
+								<Button
+									className={cn('hover:bg-red-500 hover:text-white rounded-r-none', { 'bg-red-500 hover:bg-red-400 text-white': isFollowed })}
+									onClick={() => handleToggleFollowing()}
+								>
+									{isFollowed ? <BellOff size={16} /> : <Bell size={16} />}
+								</Button>
+							</TooltipTrigger>
+							
+							<TooltipContent>
+								<p>{isFollowed ? 'Remover acompanhamento' : 'Acompanhar'}</p>
+							</TooltipContent>
+						</Tooltip>
+					) : (
+						<div className="flex">
+							<input type="file" className="hidden" id="file" onChange={handleUpload} />
+
+							<Button asChild className="rounded-r-none bg-sky-700 hover:bg-sky-600 text-white border-r border-sky-500">
+								<label htmlFor="file">
+									Carregar convidados
+									<UploadCloud size={16} />
+								</label>
+							</Button>
+
+							<Button className="bg-sky-700 hover:bg-sky-600 text-white rounded-none border-x border-sky-500" onClick={handleSendInvitations}>
+								Enviar convites
+								<ArrowRight size={16} />
+							</Button>
+
+							{wasStarted && (
+								<Button asChild className="bg-sky-700 hover:bg-sky-600 text-white rounded-none border-x border-sky-500">
+									<Link href={`/meetup/${id}/confirmation`} className="flex items-center gap-2">
+										Confirmar presenças
+										<ArrowRight size={16} />
+									</Link>
+								</Button>
+							)}
+						</div>
+					)}
+
+					{isSubscribed ? (
+						<Button onClick={handleSubscribe} className="bg-emerald-600 hover:bg-emerald-600 text-white rounded-l-none cursor-default">
+							Você já está inscrito
+							<Check size={16} />
+						</Button>
+					) : (
+						<Button onClick={handleSubscribe} className="bg-sky-700 text-white hover:bg-sky-600 rounded-l-none border-l border-sky-500">							
+							Inscrever-se
+							<LogIn size={16} />
+						</Button>
+					)}
+				</div>
 				
 				<div className="text-sm">
-					<h1 className="font-bold text-2xl mb-6">{meetup.title}</h1>
-
-					<div className="flex flex-col gap-6 mb-6">
-						<div className="grid grid-cols-[1.4rem_auto] gap-2">
-							<Calendar size={19} />
-							Data/hora: {meetup.start}
-						</div>
-
-						<div className="grid grid-cols-[1.4rem_auto] gap-2">
-							<MapPin size={19} />
-							Local: {formatAddress(meetup.address)}
-						</div>
-
-						<div className="grid grid-cols-[1.4rem_auto] gap-2">
-							<User size={19} />
-							Criado por: {isCreator ? 'você' : meetup.creator.name}
-						</div>
-					</div>
-
-					<div className="flex gap-4 mb-6 justify-end">
-						{!isCreator ? (
-							<>
-								{/* <Button onClick={handleSubscribe}>
-									Contatar a organização
-									<MessageCircle size={16} />
-								</Button> */}
-
-								<Tooltip>
-									<TooltipTrigger
-										asChild
-									>
-										<Button
-											className={cn('hover:bg-red-500 hover:text-white', { 'bg-red-500 hover:bg-red-400 text-white': isFollowed })}
-											onClick={() => handleToggleFollowing()}
-										>
-											{isFollowed ? <BellOff size={16} /> : <Bell size={16} />}
-										</Button>
-									</TooltipTrigger>
-									
-									<TooltipContent>
-										<p>{isFollowed ? 'Remover acompanhamento' : 'Acompanhar'}</p>
-									</TooltipContent>
-								</Tooltip>
-							</>
-						) : (
-							<div className="flex gap-4">
-								<input type="file" className="hidden" id="file" onChange={handleUpload} />
-
-								<Button asChild>
-									<label htmlFor="file">
-										Carregar convidados
-										<UploadCloud size={16} />
-									</label>
-								</Button>
-
-								<Button className="bg-yellow-600 hover:bg-yellow-700 text-white" onClick={handleSendInvitations}>
-									Enviar convites
-									<ArrowRight size={16} />
-								</Button>
-							</div>
-						)}
-
-						{isSubscribed ? (
-							<Button onClick={handleSubscribe} className="bg-emerald-500 hover:bg-emerald-500 text-white cursor-default">
-								Você já está inscrito
-								<Check size={16} />
-							</Button>
-						) : (
-							<Button onClick={handleSubscribe} className="bg-sky-600 text-white hover:bg-sky-700">							
-								Inscrever-se
-								<LogIn size={16} />
-							</Button>
-						)}
-					</div>
-					
 					<span className="leading-loose text-slate-700 dark:text-slate-200">
 						{meetup.description}
 					</span>
 				</div>
-			</div>
 		</div>
 	)
 }
