@@ -83,8 +83,6 @@ export async function meetupRoutes(app: FastifyInstance) {
 				}
 			})
 
-			console.log('result', result)
-
 			return result
 		}
 	)
