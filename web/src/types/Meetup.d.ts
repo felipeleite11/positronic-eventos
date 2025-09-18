@@ -2,15 +2,12 @@ export interface Meetup {
 	id: string
 	title: string
 	description?: string
-	locationName?: string
+	location_name?: string
 	status: 'created' | 'in_subscription' | 'in_progress' | 'finished' | 'cancelled'
-	datetime: string
-	period: {
-		start: string
-		end: string
-	}
+	start: string
+	end: string
 	place: Partial<Place>
-	category?: string
+	category?: Category
 	image?: string
 	available_subscriptions?: number
 	creator: Person

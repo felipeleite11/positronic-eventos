@@ -45,7 +45,8 @@ export default function Search() {
 
 			meetupList = meetupList.map(item => ({
 				...item,
-				datetime: format(new Date(item.datetime), 'dd/MM/yyyy HH:mm\'h\'')
+				start: format(new Date(item.start), 'dd/MM/yyyy HH:mm\'h\''),
+				end: format(new Date(item.end), 'dd/MM/yyyy HH:mm\'h\'')
 			}))
 
 			setSearchResult(meetupList)
@@ -97,7 +98,7 @@ export default function Search() {
 										{item.title}
 									</div>
 								</TableCell>
-								<TableCell>{ item.datetime}</TableCell>
+								<TableCell>{item.start}</TableCell>
 								<TableCell>{formatStatus(item.status)}</TableCell>
 								<TableCell>
 									<div className="lg:w-80 truncate">

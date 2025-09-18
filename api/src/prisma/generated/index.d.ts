@@ -8802,12 +8802,13 @@ export namespace Prisma {
     title: string | null
     description: string | null
     locationName: string | null
-    status: $Enums.MeetupStatus | null
-    datetime: Date | null
+    start: Date | null
+    end: Date | null
     addressId: string | null
     categoryId: string | null
     creatorId: string | null
     image: string | null
+    status: $Enums.MeetupStatus | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -8817,12 +8818,13 @@ export namespace Prisma {
     title: string | null
     description: string | null
     locationName: string | null
-    status: $Enums.MeetupStatus | null
-    datetime: Date | null
+    start: Date | null
+    end: Date | null
     addressId: string | null
     categoryId: string | null
     creatorId: string | null
     image: string | null
+    status: $Enums.MeetupStatus | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -8832,12 +8834,13 @@ export namespace Prisma {
     title: number
     description: number
     locationName: number
-    status: number
-    datetime: number
+    start: number
+    end: number
     addressId: number
     categoryId: number
     creatorId: number
     image: number
+    status: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -8849,12 +8852,13 @@ export namespace Prisma {
     title?: true
     description?: true
     locationName?: true
-    status?: true
-    datetime?: true
+    start?: true
+    end?: true
     addressId?: true
     categoryId?: true
     creatorId?: true
     image?: true
+    status?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -8864,12 +8868,13 @@ export namespace Prisma {
     title?: true
     description?: true
     locationName?: true
-    status?: true
-    datetime?: true
+    start?: true
+    end?: true
     addressId?: true
     categoryId?: true
     creatorId?: true
     image?: true
+    status?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -8879,12 +8884,13 @@ export namespace Prisma {
     title?: true
     description?: true
     locationName?: true
-    status?: true
-    datetime?: true
+    start?: true
+    end?: true
     addressId?: true
     categoryId?: true
     creatorId?: true
     image?: true
+    status?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -8967,12 +8973,13 @@ export namespace Prisma {
     title: string
     description: string | null
     locationName: string | null
-    status: $Enums.MeetupStatus
-    datetime: Date
-    addressId: string
+    start: Date | null
+    end: Date | null
+    addressId: string | null
     categoryId: string
     creatorId: string
     image: string | null
+    status: $Enums.MeetupStatus
     createdAt: Date
     updatedAt: Date
     _count: MeetupCountAggregateOutputType | null
@@ -8999,15 +9006,16 @@ export namespace Prisma {
     title?: boolean
     description?: boolean
     locationName?: boolean
-    status?: boolean
-    datetime?: boolean
+    start?: boolean
+    end?: boolean
     addressId?: boolean
     categoryId?: boolean
     creatorId?: boolean
     image?: boolean
+    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    address?: boolean | AddressDefaultArgs<ExtArgs>
+    address?: boolean | Meetup$addressArgs<ExtArgs>
     meetupAdmins?: boolean | Meetup$meetupAdminsArgs<ExtArgs>
     subscriptions?: boolean | Meetup$subscriptionsArgs<ExtArgs>
     invites?: boolean | Meetup$invitesArgs<ExtArgs>
@@ -9027,19 +9035,20 @@ export namespace Prisma {
     title?: boolean
     description?: boolean
     locationName?: boolean
-    status?: boolean
-    datetime?: boolean
+    start?: boolean
+    end?: boolean
     addressId?: boolean
     categoryId?: boolean
     creatorId?: boolean
     image?: boolean
+    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type MeetupOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "locationName" | "status" | "datetime" | "addressId" | "categoryId" | "creatorId" | "image" | "createdAt" | "updatedAt", ExtArgs["result"]["meetup"]>
+  export type MeetupOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "locationName" | "start" | "end" | "addressId" | "categoryId" | "creatorId" | "image" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["meetup"]>
   export type MeetupInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    address?: boolean | AddressDefaultArgs<ExtArgs>
+    address?: boolean | Meetup$addressArgs<ExtArgs>
     meetupAdmins?: boolean | Meetup$meetupAdminsArgs<ExtArgs>
     subscriptions?: boolean | Meetup$subscriptionsArgs<ExtArgs>
     invites?: boolean | Meetup$invitesArgs<ExtArgs>
@@ -9055,7 +9064,7 @@ export namespace Prisma {
   export type $MeetupPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Meetup"
     objects: {
-      address: Prisma.$AddressPayload<ExtArgs>
+      address: Prisma.$AddressPayload<ExtArgs> | null
       meetupAdmins: Prisma.$MeetupAdminPayload<ExtArgs>[]
       subscriptions: Prisma.$SubscriptionPayload<ExtArgs>[]
       invites: Prisma.$InvitePayload<ExtArgs>[]
@@ -9071,12 +9080,13 @@ export namespace Prisma {
       title: string
       description: string | null
       locationName: string | null
-      status: $Enums.MeetupStatus
-      datetime: Date
-      addressId: string
+      start: Date | null
+      end: Date | null
+      addressId: string | null
       categoryId: string
       creatorId: string
       image: string | null
+      status: $Enums.MeetupStatus
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["meetup"]>
@@ -9419,7 +9429,7 @@ export namespace Prisma {
    */
   export interface Prisma__MeetupClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    address<T extends AddressDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AddressDefaultArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    address<T extends Meetup$addressArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$addressArgs<ExtArgs>>): Prisma__AddressClient<$Result.GetResult<Prisma.$AddressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     meetupAdmins<T extends Meetup$meetupAdminsArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$meetupAdminsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupAdminPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     subscriptions<T extends Meetup$subscriptionsArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$subscriptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     invites<T extends Meetup$invitesArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$invitesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -9462,12 +9472,13 @@ export namespace Prisma {
     readonly title: FieldRef<"Meetup", 'String'>
     readonly description: FieldRef<"Meetup", 'String'>
     readonly locationName: FieldRef<"Meetup", 'String'>
-    readonly status: FieldRef<"Meetup", 'MeetupStatus'>
-    readonly datetime: FieldRef<"Meetup", 'DateTime'>
+    readonly start: FieldRef<"Meetup", 'DateTime'>
+    readonly end: FieldRef<"Meetup", 'DateTime'>
     readonly addressId: FieldRef<"Meetup", 'String'>
     readonly categoryId: FieldRef<"Meetup", 'String'>
     readonly creatorId: FieldRef<"Meetup", 'String'>
     readonly image: FieldRef<"Meetup", 'String'>
+    readonly status: FieldRef<"Meetup", 'MeetupStatus'>
     readonly createdAt: FieldRef<"Meetup", 'DateTime'>
     readonly updatedAt: FieldRef<"Meetup", 'DateTime'>
   }
@@ -9810,6 +9821,25 @@ export namespace Prisma {
      * Limit how many Meetups to delete.
      */
     limit?: number
+  }
+
+  /**
+   * Meetup.address
+   */
+  export type Meetup$addressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Address
+     */
+    select?: AddressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Address
+     */
+    omit?: AddressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AddressInclude<ExtArgs> | null
+    where?: AddressWhereInput
   }
 
   /**
@@ -20684,12 +20714,13 @@ export namespace Prisma {
     title: 'title',
     description: 'description',
     locationName: 'locationName',
-    status: 'status',
-    datetime: 'datetime',
+    start: 'start',
+    end: 'end',
     addressId: 'addressId',
     categoryId: 'categoryId',
     creatorId: 'creatorId',
     image: 'image',
+    status: 'status',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -21586,15 +21617,16 @@ export namespace Prisma {
     title?: StringFilter<"Meetup"> | string
     description?: StringNullableFilter<"Meetup"> | string | null
     locationName?: StringNullableFilter<"Meetup"> | string | null
-    status?: EnumMeetupStatusFilter<"Meetup"> | $Enums.MeetupStatus
-    datetime?: DateTimeFilter<"Meetup"> | Date | string
-    addressId?: StringFilter<"Meetup"> | string
+    start?: DateTimeNullableFilter<"Meetup"> | Date | string | null
+    end?: DateTimeNullableFilter<"Meetup"> | Date | string | null
+    addressId?: StringNullableFilter<"Meetup"> | string | null
     categoryId?: StringFilter<"Meetup"> | string
     creatorId?: StringFilter<"Meetup"> | string
     image?: StringNullableFilter<"Meetup"> | string | null
+    status?: EnumMeetupStatusFilter<"Meetup"> | $Enums.MeetupStatus
     createdAt?: DateTimeFilter<"Meetup"> | Date | string
     updatedAt?: DateTimeFilter<"Meetup"> | Date | string
-    address?: XOR<AddressScalarRelationFilter, AddressWhereInput>
+    address?: XOR<AddressNullableScalarRelationFilter, AddressWhereInput> | null
     meetupAdmins?: MeetupAdminListRelationFilter
     subscriptions?: SubscriptionListRelationFilter
     invites?: InviteListRelationFilter
@@ -21611,12 +21643,13 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrderInput | SortOrder
     locationName?: SortOrderInput | SortOrder
-    status?: SortOrder
-    datetime?: SortOrder
-    addressId?: SortOrder
+    start?: SortOrderInput | SortOrder
+    end?: SortOrderInput | SortOrder
+    addressId?: SortOrderInput | SortOrder
     categoryId?: SortOrder
     creatorId?: SortOrder
     image?: SortOrderInput | SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     address?: AddressOrderByWithRelationInput
@@ -21640,15 +21673,16 @@ export namespace Prisma {
     title?: StringFilter<"Meetup"> | string
     description?: StringNullableFilter<"Meetup"> | string | null
     locationName?: StringNullableFilter<"Meetup"> | string | null
-    status?: EnumMeetupStatusFilter<"Meetup"> | $Enums.MeetupStatus
-    datetime?: DateTimeFilter<"Meetup"> | Date | string
-    addressId?: StringFilter<"Meetup"> | string
+    start?: DateTimeNullableFilter<"Meetup"> | Date | string | null
+    end?: DateTimeNullableFilter<"Meetup"> | Date | string | null
+    addressId?: StringNullableFilter<"Meetup"> | string | null
     categoryId?: StringFilter<"Meetup"> | string
     creatorId?: StringFilter<"Meetup"> | string
     image?: StringNullableFilter<"Meetup"> | string | null
+    status?: EnumMeetupStatusFilter<"Meetup"> | $Enums.MeetupStatus
     createdAt?: DateTimeFilter<"Meetup"> | Date | string
     updatedAt?: DateTimeFilter<"Meetup"> | Date | string
-    address?: XOR<AddressScalarRelationFilter, AddressWhereInput>
+    address?: XOR<AddressNullableScalarRelationFilter, AddressWhereInput> | null
     meetupAdmins?: MeetupAdminListRelationFilter
     subscriptions?: SubscriptionListRelationFilter
     invites?: InviteListRelationFilter
@@ -21665,12 +21699,13 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrderInput | SortOrder
     locationName?: SortOrderInput | SortOrder
-    status?: SortOrder
-    datetime?: SortOrder
-    addressId?: SortOrder
+    start?: SortOrderInput | SortOrder
+    end?: SortOrderInput | SortOrder
+    addressId?: SortOrderInput | SortOrder
     categoryId?: SortOrder
     creatorId?: SortOrder
     image?: SortOrderInput | SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: MeetupCountOrderByAggregateInput
@@ -21686,12 +21721,13 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"Meetup"> | string
     description?: StringNullableWithAggregatesFilter<"Meetup"> | string | null
     locationName?: StringNullableWithAggregatesFilter<"Meetup"> | string | null
-    status?: EnumMeetupStatusWithAggregatesFilter<"Meetup"> | $Enums.MeetupStatus
-    datetime?: DateTimeWithAggregatesFilter<"Meetup"> | Date | string
-    addressId?: StringWithAggregatesFilter<"Meetup"> | string
+    start?: DateTimeNullableWithAggregatesFilter<"Meetup"> | Date | string | null
+    end?: DateTimeNullableWithAggregatesFilter<"Meetup"> | Date | string | null
+    addressId?: StringNullableWithAggregatesFilter<"Meetup"> | string | null
     categoryId?: StringWithAggregatesFilter<"Meetup"> | string
     creatorId?: StringWithAggregatesFilter<"Meetup"> | string
     image?: StringNullableWithAggregatesFilter<"Meetup"> | string | null
+    status?: EnumMeetupStatusWithAggregatesFilter<"Meetup"> | $Enums.MeetupStatus
     createdAt?: DateTimeWithAggregatesFilter<"Meetup"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Meetup"> | Date | string
   }
@@ -22964,12 +23000,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
+    start?: Date | string | null
+    end?: Date | string | null
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    address: AddressCreateNestedOneWithoutMeetupsInput
+    address?: AddressCreateNestedOneWithoutMeetupsInput
     meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
     subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
     invites?: InviteCreateNestedManyWithoutMeetupInput
@@ -22986,12 +23023,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
-    addressId: string
+    start?: Date | string | null
+    end?: Date | string | null
+    addressId?: string | null
     categoryId: string
     creatorId: string
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
@@ -23008,12 +23046,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    address?: AddressUpdateOneWithoutMeetupsNestedInput
     meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
     subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
     invites?: InviteUpdateManyWithoutMeetupNestedInput
@@ -23030,12 +23069,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
-    addressId?: StringFieldUpdateOperationsInput | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
@@ -23052,12 +23092,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
-    addressId: string
+    start?: Date | string | null
+    end?: Date | string | null
+    addressId?: string | null
     categoryId: string
     creatorId: string
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -23067,9 +23108,10 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23079,12 +23121,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
-    addressId?: StringFieldUpdateOperationsInput | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -24280,9 +24323,9 @@ export namespace Prisma {
     not?: NestedEnumMeetupStatusFilter<$PrismaModel> | $Enums.MeetupStatus
   }
 
-  export type AddressScalarRelationFilter = {
-    is?: AddressWhereInput
-    isNot?: AddressWhereInput
+  export type AddressNullableScalarRelationFilter = {
+    is?: AddressWhereInput | null
+    isNot?: AddressWhereInput | null
   }
 
   export type CategoryScalarRelationFilter = {
@@ -24306,12 +24349,13 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrder
     locationName?: SortOrder
-    status?: SortOrder
-    datetime?: SortOrder
+    start?: SortOrder
+    end?: SortOrder
     addressId?: SortOrder
     categoryId?: SortOrder
     creatorId?: SortOrder
     image?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -24321,12 +24365,13 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrder
     locationName?: SortOrder
-    status?: SortOrder
-    datetime?: SortOrder
+    start?: SortOrder
+    end?: SortOrder
     addressId?: SortOrder
     categoryId?: SortOrder
     creatorId?: SortOrder
     image?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -24336,12 +24381,13 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrder
     locationName?: SortOrder
-    status?: SortOrder
-    datetime?: SortOrder
+    start?: SortOrder
+    end?: SortOrder
     addressId?: SortOrder
     categoryId?: SortOrder
     creatorId?: SortOrder
     image?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -25538,10 +25584,12 @@ export namespace Prisma {
     set?: $Enums.MeetupStatus
   }
 
-  export type AddressUpdateOneRequiredWithoutMeetupsNestedInput = {
+  export type AddressUpdateOneWithoutMeetupsNestedInput = {
     create?: XOR<AddressCreateWithoutMeetupsInput, AddressUncheckedCreateWithoutMeetupsInput>
     connectOrCreate?: AddressCreateOrConnectWithoutMeetupsInput
     upsert?: AddressUpsertWithoutMeetupsInput
+    disconnect?: AddressWhereInput | boolean
+    delete?: AddressWhereInput | boolean
     connect?: AddressWhereUniqueInput
     update?: XOR<XOR<AddressUpdateToOneWithWhereWithoutMeetupsInput, AddressUpdateWithoutMeetupsInput>, AddressUncheckedUpdateWithoutMeetupsInput>
   }
@@ -26982,12 +27030,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
+    start?: Date | string | null
+    end?: Date | string | null
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    address: AddressCreateNestedOneWithoutMeetupsInput
+    address?: AddressCreateNestedOneWithoutMeetupsInput
     meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
     subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
     invites?: InviteCreateNestedManyWithoutMeetupInput
@@ -27003,11 +27052,12 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
-    addressId: string
+    start?: Date | string | null
+    end?: Date | string | null
+    addressId?: string | null
     categoryId: string
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
@@ -27284,12 +27334,13 @@ export namespace Prisma {
     title?: StringFilter<"Meetup"> | string
     description?: StringNullableFilter<"Meetup"> | string | null
     locationName?: StringNullableFilter<"Meetup"> | string | null
-    status?: EnumMeetupStatusFilter<"Meetup"> | $Enums.MeetupStatus
-    datetime?: DateTimeFilter<"Meetup"> | Date | string
-    addressId?: StringFilter<"Meetup"> | string
+    start?: DateTimeNullableFilter<"Meetup"> | Date | string | null
+    end?: DateTimeNullableFilter<"Meetup"> | Date | string | null
+    addressId?: StringNullableFilter<"Meetup"> | string | null
     categoryId?: StringFilter<"Meetup"> | string
     creatorId?: StringFilter<"Meetup"> | string
     image?: StringNullableFilter<"Meetup"> | string | null
+    status?: EnumMeetupStatusFilter<"Meetup"> | $Enums.MeetupStatus
     createdAt?: DateTimeFilter<"Meetup"> | Date | string
     updatedAt?: DateTimeFilter<"Meetup"> | Date | string
   }
@@ -27325,9 +27376,10 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
+    start?: Date | string | null
+    end?: Date | string | null
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
@@ -27346,11 +27398,12 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
+    start?: Date | string | null
+    end?: Date | string | null
     categoryId: string
     creatorId: string
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
@@ -27909,12 +27962,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
+    start?: Date | string | null
+    end?: Date | string | null
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    address: AddressCreateNestedOneWithoutMeetupsInput
+    address?: AddressCreateNestedOneWithoutMeetupsInput
     meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
     subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
     invites?: InviteCreateNestedManyWithoutMeetupInput
@@ -27930,12 +27984,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
-    addressId: string
+    start?: Date | string | null
+    end?: Date | string | null
+    addressId?: string | null
     categoryId: string
     creatorId: string
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
@@ -28012,12 +28067,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    address?: AddressUpdateOneWithoutMeetupsNestedInput
     meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
     subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
     invites?: InviteUpdateManyWithoutMeetupNestedInput
@@ -28033,12 +28089,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
-    addressId?: StringFieldUpdateOperationsInput | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
@@ -28105,12 +28162,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
+    start?: Date | string | null
+    end?: Date | string | null
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    address: AddressCreateNestedOneWithoutMeetupsInput
+    address?: AddressCreateNestedOneWithoutMeetupsInput
     meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
     subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
     invites?: InviteCreateNestedManyWithoutMeetupInput
@@ -28126,11 +28184,12 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
-    addressId: string
+    start?: Date | string | null
+    end?: Date | string | null
+    addressId?: string | null
     creatorId: string
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
@@ -28219,12 +28278,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
+    start?: Date | string | null
+    end?: Date | string | null
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    address: AddressCreateNestedOneWithoutMeetupsInput
+    address?: AddressCreateNestedOneWithoutMeetupsInput
     subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
     invites?: InviteCreateNestedManyWithoutMeetupInput
     certificates?: CertificateCreateNestedManyWithoutMeetupInput
@@ -28240,12 +28300,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
-    addressId: string
+    start?: Date | string | null
+    end?: Date | string | null
+    addressId?: string | null
     categoryId: string
     creatorId: string
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutMeetupInput
@@ -28322,12 +28383,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    address?: AddressUpdateOneWithoutMeetupsNestedInput
     subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
     invites?: InviteUpdateManyWithoutMeetupNestedInput
     certificates?: CertificateUpdateManyWithoutMeetupNestedInput
@@ -28343,12 +28405,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
-    addressId?: StringFieldUpdateOperationsInput | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptions?: SubscriptionUncheckedUpdateManyWithoutMeetupNestedInput
@@ -28460,12 +28523,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
+    start?: Date | string | null
+    end?: Date | string | null
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    address: AddressCreateNestedOneWithoutMeetupsInput
+    address?: AddressCreateNestedOneWithoutMeetupsInput
     meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
     invites?: InviteCreateNestedManyWithoutMeetupInput
     certificates?: CertificateCreateNestedManyWithoutMeetupInput
@@ -28481,12 +28545,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
-    addressId: string
+    start?: Date | string | null
+    end?: Date | string | null
+    addressId?: string | null
     categoryId: string
     creatorId: string
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
@@ -28618,12 +28683,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    address?: AddressUpdateOneWithoutMeetupsNestedInput
     meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
     invites?: InviteUpdateManyWithoutMeetupNestedInput
     certificates?: CertificateUpdateManyWithoutMeetupNestedInput
@@ -28639,12 +28705,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
-    addressId?: StringFieldUpdateOperationsInput | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
@@ -28761,12 +28828,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
+    start?: Date | string | null
+    end?: Date | string | null
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    address: AddressCreateNestedOneWithoutMeetupsInput
+    address?: AddressCreateNestedOneWithoutMeetupsInput
     meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
     subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
     certificates?: CertificateCreateNestedManyWithoutMeetupInput
@@ -28782,12 +28850,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
-    addressId: string
+    start?: Date | string | null
+    end?: Date | string | null
+    addressId?: string | null
     categoryId: string
     creatorId: string
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
@@ -28870,12 +28939,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    address?: AddressUpdateOneWithoutMeetupsNestedInput
     meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
     subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
     certificates?: CertificateUpdateManyWithoutMeetupNestedInput
@@ -28891,12 +28961,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
-    addressId?: StringFieldUpdateOperationsInput | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
@@ -29097,12 +29168,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
+    start?: Date | string | null
+    end?: Date | string | null
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    address: AddressCreateNestedOneWithoutMeetupsInput
+    address?: AddressCreateNestedOneWithoutMeetupsInput
     meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
     subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
     invites?: InviteCreateNestedManyWithoutMeetupInput
@@ -29118,12 +29190,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
-    addressId: string
+    start?: Date | string | null
+    end?: Date | string | null
+    addressId?: string | null
     categoryId: string
     creatorId: string
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
@@ -29206,12 +29279,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    address?: AddressUpdateOneWithoutMeetupsNestedInput
     meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
     subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
     invites?: InviteUpdateManyWithoutMeetupNestedInput
@@ -29227,12 +29301,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
-    addressId?: StringFieldUpdateOperationsInput | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
@@ -29248,12 +29323,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
+    start?: Date | string | null
+    end?: Date | string | null
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    address: AddressCreateNestedOneWithoutMeetupsInput
+    address?: AddressCreateNestedOneWithoutMeetupsInput
     meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
     subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
     invites?: InviteCreateNestedManyWithoutMeetupInput
@@ -29269,12 +29345,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
-    addressId: string
+    start?: Date | string | null
+    end?: Date | string | null
+    addressId?: string | null
     categoryId: string
     creatorId: string
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
@@ -29351,12 +29428,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    address?: AddressUpdateOneWithoutMeetupsNestedInput
     meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
     subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
     invites?: InviteUpdateManyWithoutMeetupNestedInput
@@ -29372,12 +29450,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
-    addressId?: StringFieldUpdateOperationsInput | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
@@ -29444,12 +29523,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
+    start?: Date | string | null
+    end?: Date | string | null
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    address: AddressCreateNestedOneWithoutMeetupsInput
+    address?: AddressCreateNestedOneWithoutMeetupsInput
     meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
     subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
     invites?: InviteCreateNestedManyWithoutMeetupInput
@@ -29465,12 +29545,13 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
-    addressId: string
+    start?: Date | string | null
+    end?: Date | string | null
+    addressId?: string | null
     categoryId: string
     creatorId: string
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
@@ -29547,12 +29628,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    address?: AddressUpdateOneWithoutMeetupsNestedInput
     meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
     subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
     invites?: InviteUpdateManyWithoutMeetupNestedInput
@@ -29568,12 +29650,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
-    addressId?: StringFieldUpdateOperationsInput | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
@@ -29794,11 +29877,12 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
-    addressId: string
+    start?: Date | string | null
+    end?: Date | string | null
+    addressId?: string | null
     categoryId: string
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -29978,12 +30062,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    address?: AddressUpdateOneWithoutMeetupsNestedInput
     meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
     subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
     invites?: InviteUpdateManyWithoutMeetupNestedInput
@@ -29999,11 +30084,12 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
-    addressId?: StringFieldUpdateOperationsInput | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
@@ -30020,11 +30106,12 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
-    addressId?: StringFieldUpdateOperationsInput | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -30052,11 +30139,12 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
+    start?: Date | string | null
+    end?: Date | string | null
     categoryId: string
     creatorId: string
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -30066,9 +30154,10 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
@@ -30087,11 +30176,12 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
@@ -30108,11 +30198,12 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -30364,11 +30455,12 @@ export namespace Prisma {
     title: string
     description?: string | null
     locationName?: string | null
-    status?: $Enums.MeetupStatus
-    datetime: Date | string
-    addressId: string
+    start?: Date | string | null
+    end?: Date | string | null
+    addressId?: string | null
     creatorId: string
     image?: string | null
+    status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -30378,12 +30470,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: AddressUpdateOneRequiredWithoutMeetupsNestedInput
+    address?: AddressUpdateOneWithoutMeetupsNestedInput
     meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
     subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
     invites?: InviteUpdateManyWithoutMeetupNestedInput
@@ -30399,11 +30492,12 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
-    addressId?: StringFieldUpdateOperationsInput | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addressId?: NullableStringFieldUpdateOperationsInput | string | null
     creatorId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
@@ -30420,11 +30514,12 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
-    addressId?: StringFieldUpdateOperationsInput | string
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addressId?: NullableStringFieldUpdateOperationsInput | string | null
     creatorId?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

@@ -2,8 +2,8 @@ import { FastifyInstance } from 'fastify'
 import { prisma } from '../lib/prisma'
 import { uploadToMinio } from '../config/file-storage'
 
-interface MeetupCreateProps {
-	name: string
+interface MeetupProps {
+	title: string
 	description?: string
 	category_id: string
 	image?: string
@@ -100,7 +100,8 @@ export async function meetupRoutes(app: FastifyInstance) {
 						creator: true,
 						subscriptions: true,
 						meetupAdmins: true,
-						followers: true
+						followers: true,
+						category: true
 					}
 				})
 
@@ -237,47 +238,91 @@ export async function meetupRoutes(app: FastifyInstance) {
 			try {
 				const parts = request.parts()
 
-				const data: Partial<MeetupCreateProps> = {}
+				const data: Partial<MeetupProps> = {}
 
 				for await (const part of parts) {
 					if (part.type === "file") {
 						const link = await uploadToMinio(part)
 
-						data[part.fieldname as keyof MeetupCreateProps] = link as any
+						data[part.fieldname as keyof MeetupProps] = link as any
 					} else {
-						data[part.fieldname as keyof MeetupCreateProps] = part.value as any
+						data[part.fieldname as keyof MeetupProps] = part.value as any
 					}
 				}
 				
-				const address = await prisma.address.create({
-					data: {
-						street: data.place!,
-						city: data.place!,
-						district: data.place!,
-						number: data.place!,
-						state: data.place!,
-						zipcode: data.place!
-					}
-				})
+				// const address = await prisma.address.create({
+				// 	data: {
+				// 		street: data.place!,
+				// 		city: data.place!,
+				// 		district: data.place!,
+				// 		number: data.place!,
+				// 		state: data.place!,
+				// 		zipcode: data.place!
+				// 	}
+				// })
 
 				const meetup = await prisma.meetup.create({
 					data: {
-						title: data.name!,
+						title: data.title!,
 						description: data.description,
-						datetime: new Date(data.start!),
+						start: new Date(data.start!),
+						end: new Date(data.end!),
 						categoryId: data.category_id!,
 						image: data.image,
-						addressId: address.id,
-						creatorId: request.params.person_id
-					},
-					include: {
-						meetupAdmins: {
-
-						}
+						// addressId: address.id,
+						creatorId: request.params.person_id,
+						locationName: data.place
 					}
 				})
 
 				return meetup
+			} catch(e: any) {
+				return {
+					message: `Error: ${e.message}`
+				}
+			}
+		}
+	)
+
+	app.put<{Params: { id: String, person_id: string }}>(
+		'/:id/:person_id',
+		async (request, reply) => {
+			try {
+				const { id } = request.params
+				const parts = request.parts()
+
+				const data: Partial<MeetupProps> = {}
+
+				for await (const part of parts) {
+					if (part.type === "file") {
+						const link = await uploadToMinio(part)
+
+						data[part.fieldname as keyof MeetupProps] = link as any
+					} else {
+						data[part.fieldname as keyof MeetupProps] = part.value as any
+					}
+				}
+
+				const response = await prisma.meetup.update({
+					data: {
+						title: data.title!,
+						description: data.description,
+						start: new Date(data.start!),
+						end: new Date(data.end!),
+						categoryId: data.category_id!,
+						image: data.image,
+						// addressId: address.id,
+						creatorId: request.params.person_id,
+						locationName: data.place
+					},
+					where: {
+						id: id.toString()
+					}
+				})
+
+				console.log('meetup atualizado:', response)
+
+				return response
 			} catch(e: any) {
 				return {
 					message: `Error: ${e.message}`

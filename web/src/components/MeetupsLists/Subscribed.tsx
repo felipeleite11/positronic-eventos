@@ -40,7 +40,7 @@ export default function SubscribedMeetups({ meetups }: EventListProps) {
 									{item.title}
 								</div>
 							</TableCell>
-							<TableCell>{item.datetime}</TableCell>
+							<TableCell>{item.start}</TableCell>
 							<TableCell>{formatStatus(item.status)}</TableCell>
 							<TableCell>
 								<div className="lg:w-80 truncate">

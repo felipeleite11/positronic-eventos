@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { notify } from "@/util/notification"
 import { useMutation, useQuery } from "@tanstack/react-query"
-import { ArrowLeft, ArrowRight, Bell, BellOff, Calendar, Check, LogIn, MapPin, UploadCloud, User } from "lucide-react"
+import { ArrowLeft, ArrowRight, Bell, BellOff, Calendar, Check, Edit, LogIn, MapPin, UploadCloud, User } from "lucide-react"
 import Image from "next/image"
 import { useParams, useRouter } from "next/navigation"
 import { toast } from "sonner"
@@ -19,6 +19,7 @@ import { Meetup, MeetupFollowing } from "@/types/Meetup"
 import { extractNumbers } from "@/util/string"
 import { formatAddress } from "@/util/format"
 import { format } from "date-fns"
+import Link from "next/link"
 
 export default function Event() {
 	const { id } = useParams()
@@ -36,7 +37,8 @@ export default function Event() {
 		queryFn: async () => {
 			const { data } = await api.get<Meetup>(`meetup/${id}`)
 
-			data.datetime = format(new Date(data.datetime), 'dd/MM/yyyy HH:mm\'h\'')
+			data.start = format(new Date(data.start), 'dd/MM/yyyy HH:mm\'h\'')
+			data.end = format(new Date(data.end), 'dd/MM/yyyy HH:mm\'h\'')
 
 			return data
 		}
@@ -116,9 +118,20 @@ export default function Event() {
 	return (
 		<div className="flex flex-col">
 			<div>
-				<div className="w-fit text-sm flex gap-1 mb-4 items-center p-2 text-slate-600 dark:text-slate-400 hover:opacity-70 transition-opacity cursor-pointer" onClick={() => router.back()}>
-					<ArrowLeft size={15} />
-					Voltar
+				<div className="flex justify-between gap-8 mb-6">
+					<Button variant="ghost" onClick={() => router.back()} className="text-sm text-slate-600 dark:text-slate-400 hover:opacity-70 transition-opacity">
+						<ArrowLeft size={15} />
+						Voltar
+					</Button>
+
+					{isCreator && (
+						<Button asChild variant="ghost" className="text-sm text-slate-600 dark:text-slate-400 hover:opacity-70 transition-opacity">
+							<Link href={`/meetup/${id}/edit`} className="flex gap-2 items-center">
+								Editar
+								<Edit size={16} />
+							</Link>
+						</Button>
+					)}
 				</div>
 
 				{meetup.image && <Image src={meetup.image} alt="" width={1000} height={1000} className="float-left mr-10 mb-5 w-96 rounded-md object-contain shadow-sm" />}
@@ -129,7 +142,7 @@ export default function Event() {
 					<div className="flex flex-col gap-6 mb-6">
 						<div className="grid grid-cols-[1.4rem_auto] gap-2">
 							<Calendar size={19} />
-							Data/hora: {meetup.datetime}
+							Data/hora: {meetup.start}
 						</div>
 
 						<div className="grid grid-cols-[1.4rem_auto] gap-2">
@@ -192,7 +205,7 @@ export default function Event() {
 								<Check size={16} />
 							</Button>
 						) : (
-							<Button onClick={handleSubscribe} className="bg-sky-500 text-white hover:bg-sky-500">							
+							<Button onClick={handleSubscribe} className="bg-sky-600 text-white hover:bg-sky-700">							
 								Inscrever-se
 								<LogIn size={16} />
 							</Button>

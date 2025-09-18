@@ -198,12 +198,13 @@ exports.Prisma.MeetupScalarFieldEnum = {
   title: 'title',
   description: 'description',
   locationName: 'locationName',
-  status: 'status',
-  datetime: 'datetime',
+  start: 'start',
+  end: 'end',
   addressId: 'addressId',
   categoryId: 'categoryId',
   creatorId: 'creatorId',
   image: 'image',
+  status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

@@ -32,7 +32,8 @@ export default function Home() {
 
 			response = response.map(item => ({
 				...item,
-				datetime: format(new Date(item.datetime), 'dd/MM/yyyy HH:mm\'h\'')
+				start: format(new Date(item.start), 'dd/MM/yyyy HH:mm\'h\''),
+				end: format(new Date(item.end), 'dd/MM/yyyy HH:mm\'h\'')
 			}))
 
 			const managedEvents = response.filter(meetup => meetup.creatorId === personId)
@@ -44,12 +45,7 @@ export default function Home() {
 				subscribedEvents,
 				followingEvents
 			}
-		},
-		// TODO: verificar essas props
-		staleTime: 0,
-		refetchOnWindowFocus: false,
-		refetchOnMount: 'always',
-		refetchOnReconnect: true
+		}
 	})
 	
 	if(!meetups) {
