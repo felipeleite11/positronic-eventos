@@ -2,6 +2,7 @@ export interface Meetup {
 	id: string
 	title: string
 	description?: string
+	locationName?: string
 	status: 'created' | 'in_subscription' | 'in_progress' | 'finished' | 'cancelled'
 	datetime: string
 	period: {

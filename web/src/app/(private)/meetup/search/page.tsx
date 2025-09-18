@@ -9,10 +9,10 @@ import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton"
 import { toast } from "sonner"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Event } from "@/types/Meetup"
-import { events } from "@/seed-data"
-import { normalizeText } from '@/util/string'
-import { searchEvent } from "@/util/storage";
+import { formatAddress, formatStatus } from "@/util/format";
+import { Meetup } from "@/types/Meetup";
+import { api } from "@/services/api";
+import { format } from "date-fns";
 
 interface SearchProps {
 	search: string
@@ -22,7 +22,7 @@ export default function Search() {
 	const router = useRouter()
 
 	const [isSearching, setIsSearching] = useState(false)
-	const [searchResult, setSearchResult] = useState<null | Event[]>(null)
+	const [searchResult, setSearchResult] = useState<null | Meetup[]>(null)
 
 	const {
 		handleSubmit,
@@ -37,11 +37,18 @@ export default function Search() {
 		try {
 			setIsSearching(true)
 
-			await new Promise(r => setTimeout(r, 2000))
+			let { data: meetupList } = await api.get<Meetup[]>('meetup/search', {
+				params: {
+					q: data.search
+				}
+			})
 
-			const eventList = searchEvent(data.search)
-			
-			setSearchResult(eventList)
+			meetupList = meetupList.map(item => ({
+				...item,
+				datetime: format(new Date(item.datetime), 'dd/MM/yyyy HH:mm\'h\'')
+			}))
+
+			setSearchResult(meetupList)
 		} catch (e: any) {
 			toast.error(e.message)
 		} finally {
@@ -49,12 +56,12 @@ export default function Search() {
 		}
 	}
 
-	function handleOpenEvent(event: Event) {
-		router.push(`/meetup/${event.id}`)
+	function handleOpenMeetup(meetup: Meetup) {
+		router.push(`/meetup/${meetup.id}`)
 	}
 
 	return (
-		<div className="flex flex-col gap-10">
+		<div className="flex flex-col gap-10 p-8">
 			<form className="flex gap-2" onSubmit={handleSubmit(handleSearch)}>
 				<Input 
 					placeholder="Nome do evento" 
@@ -80,31 +87,29 @@ export default function Search() {
 							<TableHead>Data / hora</TableHead>
 							<TableHead>Status</TableHead>
 							<TableHead className="lg:w-80">Local</TableHead>
-							<TableHead className="text-right">Vagas</TableHead>
 						</TableRow>
 					</TableHeader>
 					<TableBody>
 						{searchResult.map(item => (
-							<TableRow key={item.id} onClick={() => { handleOpenEvent(item) }} className="cursor-pointer">
+							<TableRow key={item.id} onClick={() => { handleOpenMeetup(item) }} className="cursor-pointer">
 								<TableCell className="font-semibold">
 									<div className="lg:w-80 truncate">
-										{item.name}
+										{item.title}
 									</div>
 								</TableCell>
-								<TableCell>{item.period?.start}</TableCell>
-								<TableCell>{item.status}</TableCell>
+								<TableCell>{ item.datetime}</TableCell>
+								<TableCell>{formatStatus(item.status)}</TableCell>
 								<TableCell>
 									<div className="lg:w-80 truncate">
-										{item.place.address_text || ''}
+										{formatAddress(item.address)}
 									</div>
 								</TableCell>
-								<TableCell className="text-right">{item.available_subscriptions}</TableCell>
 							</TableRow>
 						))}
 					</TableBody>
 				</Table>
 			) : (
-				<div className="text-slate-400 italic text-sm">Nenhum evento correspondente à sua busca.</div>
+				<div className="text-slate-400 italic text-sm text-center mt-8">Nenhum evento correspondente à sua busca.</div>
 			)}
 		</div>
 	)

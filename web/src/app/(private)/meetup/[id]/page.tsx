@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { notify } from "@/util/notification"
 import { useMutation, useQuery } from "@tanstack/react-query"
-import { Bell, BellOff, Calendar, Check, LogIn, MapPin, UploadCloud, User } from "lucide-react"
+import { ArrowLeft, ArrowRight, Bell, BellOff, Calendar, Check, LogIn, MapPin, UploadCloud, User } from "lucide-react"
 import Image from "next/image"
-import { useParams } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import { toast } from "sonner"
 import {
   Tooltip,
@@ -17,20 +17,26 @@ import { useSession } from "next-auth/react"
 import { api } from "@/services/api"
 import { Meetup, MeetupFollowing } from "@/types/Meetup"
 import { extractNumbers } from "@/util/string"
+import { formatAddress } from "@/util/format"
+import { format } from "date-fns"
 
 export default function Event() {
 	const { id } = useParams()
+
+	const router = useRouter()
 
 	const { data: session } = useSession()
 
 	const { person } = session?.user!
 
-	const meetupPageLink = `${process.env.NEXT_PUBLIC_WEB_BASE_URL}/meetup/${id}/confirmation?p=${person.id}`
+	const meetupPageLink = `${process.env.NEXT_PUBLIC_WEB_BASE_URL}/meetup/${id}/invite?p=${person.id}`
 
 	const { data: meetup, refetch: refetchMeetup } = useQuery<Meetup | null>({
 		queryKey: ['get-meetup'],
 		queryFn: async () => {
-			const { data } = await api.get(`meetup/${id}`)
+			const { data } = await api.get<Meetup>(`meetup/${id}`)
+
+			data.datetime = format(new Date(data.datetime), 'dd/MM/yyyy HH:mm\'h\'')
 
 			return data
 		}
@@ -53,7 +59,7 @@ export default function Event() {
 	async function handleSubscribe() {
 		if(meetup) {
 			try {
-				const { data } = await api.post<Subscription>(`meetup/${id}/subscribe/${person.id}`)
+				await api.post<Subscription>(`meetup/${id}/subscribe/${person.id}`)
 
 				toast.success('Sua inscrição está confirmada!')
 
@@ -70,7 +76,7 @@ export default function Event() {
 		toast.success('Carga concluída com sucesso!')
 	}
 
-	async function handleNotify() {
+	async function handleSendInvitations() {
 		try {
 			if(!meetup) {
 				return
@@ -108,27 +114,32 @@ export default function Event() {
 	const isFollowed = meetup.followers?.some(follower => follower.personId === person?.id)
 
 	return (
-		<div className="flex flex-col gap-10">
+		<div className="flex flex-col">
 			<div>
+				<div className="w-fit text-sm flex gap-1 mb-4 items-center p-2 text-slate-600 dark:text-slate-400 hover:opacity-70 transition-opacity cursor-pointer" onClick={() => router.back()}>
+					<ArrowLeft size={15} />
+					Voltar
+				</div>
+
 				{meetup.image && <Image src={meetup.image} alt="" width={1000} height={1000} className="float-left mr-10 mb-5 w-96 rounded-md object-contain shadow-sm" />}
 				
 				<div className="text-sm">
 					<h1 className="font-bold text-2xl mb-6">{meetup.title}</h1>
 
-					<div className="flex flex-wrap gap-6 mb-6">
-						<div className="flex items-center gap-2">
-							<Calendar size={16} />
+					<div className="flex flex-col gap-6 mb-6">
+						<div className="grid grid-cols-[1.4rem_auto] gap-2">
+							<Calendar size={19} />
 							Data/hora: {meetup.datetime}
 						</div>
 
-						<div className="flex items-center gap-2">
-							<MapPin size={16} />
-							Local: {meetup.address?.street}
+						<div className="grid grid-cols-[1.4rem_auto] gap-2">
+							<MapPin size={19} />
+							Local: {formatAddress(meetup.address)}
 						</div>
 
-						<div className="flex items-center gap-2">
-							<User size={16} />
-							Criado por: {meetup.creator.name}
+						<div className="grid grid-cols-[1.4rem_auto] gap-2">
+							<User size={19} />
+							Criado por: {isCreator ? 'você' : meetup.creator.name}
 						</div>
 					</div>
 
@@ -168,9 +179,9 @@ export default function Event() {
 									</label>
 								</Button>
 
-								<Button className="bg-yellow-600 hover:bg-yellow-700 text-white" onClick={handleNotify}>
-									Notificar convidados
-									<Bell size={16} />
+								<Button className="bg-yellow-600 hover:bg-yellow-700 text-white" onClick={handleSendInvitations}>
+									Enviar convites
+									<ArrowRight size={16} />
 								</Button>
 							</div>
 						)}
@@ -188,7 +199,9 @@ export default function Event() {
 						)}
 					</div>
 					
-					<span className="leading-loose text-slate-700 dark:text-slate-200">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, quasi vero, natus laborum facilis quas corporis nobis neque laboriosam veritatis maiores. Blanditiis, numquam ducimus! Cumque quo harum sit sunt ipsa? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, quasi vero, natus laborum facilis quas corporis nobis neque laboriosam veritatis maiores. Blanditiis, numquam ducimus! Cumque quo harum sit sunt ipsa? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, quasi vero, natus laborum facilis quas corporis nobis neque laboriosam veritatis maiores. Blanditiis, numquam ducimus! Cumque quo harum sit sunt ipsa? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, quasi vero, natus laborum facilis quas corporis nobis neque laboriosam veritatis maiores. Blanditiis, numquam ducimus! Cumque quo harum sit sunt ipsa? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, quasi vero, natus laborum facilis quas corporis nobis neque laboriosam veritatis maiores. Blanditiis, numquam ducimus! Cumque quo harum sit sunt ipsa? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, quasi vero, natus laborum facilis quas corporis nobis neque laboriosam veritatis maiores. Blanditiis, numquam ducimus! Cumque quo harum sit sunt ipsa? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, quasi vero, natus laborum facilis quas corporis nobis neque laboriosam veritatis maiores. Blanditiis, numquam ducimus! Cumque quo harum sit sunt ipsa? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, quasi vero, natus laborum facilis quas corporis nobis neque laboriosam veritatis maiores. Blanditiis, numquam ducimus! Cumque quo harum sit sunt ipsa? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, quasi vero, natus laborum facilis quas corporis nobis neque laboriosam veritatis maiores. Blanditiis, numquam ducimus! Cumque quo harum sit sunt ipsa? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, quasi vero, natus laborum facilis quas corporis nobis neque laboriosam veritatis maiores. Blanditiis, numquam ducimus! Cumque quo harum sit sunt ipsa? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, quasi vero, natus laborum facilis quas corporis nobis neque laboriosam veritatis maiores. Blanditiis, numquam ducimus! Cumque quo harum sit sunt ipsa? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, quasi vero, natus laborum facilis quas corporis nobis neque laboriosam veritatis maiores. Blanditiis, numquam ducimus! Cumque quo harum sit sunt ipsa? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, quasi vero, natus laborum facilis quas corporis nobis neque laboriosam veritatis maiores. Blanditiis, numquam ducimus! Cumque quo harum sit sunt ipsa? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, quasi vero, natus laborum facilis quas corporis nobis neque laboriosam veritatis maiores. Blanditiis, numquam ducimus! Cumque quo harum sit sunt ipsa?</span>
+					<span className="leading-loose text-slate-700 dark:text-slate-200">
+						{meetup.description}
+					</span>
 				</div>
 			</div>
 		</div>

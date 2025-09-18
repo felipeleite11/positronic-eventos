@@ -6,9 +6,8 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Upload, UploadTrigger, UploadViewer } from "@/components/ui/upload"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-// import { addEvent, getNextEventId } from "@/util/storage"
 import { toast } from "sonner"
-import { useForm, SubmitHandler, Controller } from "react-hook-form"
+import { useForm, Controller } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
 import { z } from "zod"
@@ -79,7 +78,7 @@ export default function Add() {
 		}
 	})
 
-	const { mutate: handleAdd } = useMutation({
+	const { mutate: handleCreate } = useMutation({
 		mutationFn: async (data: MeetupSchema) => {
 			setIsWaiting(true)
 
@@ -92,8 +91,6 @@ export default function Add() {
 					formData.append(key, value, value.name)
 				}
 			})
-
-			// formData.append('image', data.image, data.image.name)
 
 			await api.post(`meetup/${session?.user.person_id}`, formData)
 		},
@@ -113,6 +110,10 @@ export default function Add() {
 			setIsWaiting(false) 
 		}
 	})
+
+	async function handleAdd(values: MeetupSchema) {
+		handleCreate(values)
+	}
 
 	const errorMessages = Object.values(errors)
 

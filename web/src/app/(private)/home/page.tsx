@@ -2,12 +2,13 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Meetup } from "@/types/Meetup"
-import ManagedMeetups from "@/components/MeetupsLists/Subscribed"
-import SubscribedMeetups from "@/components/MeetupsLists/Managed"
+import SubscribedMeetups from "@/components/MeetupsLists/Subscribed"
+import ManagedMeetups from "@/components/MeetupsLists/Managed"
 import FollowedMeetups from "@/components/MeetupsLists/Followed"
 import { useQuery } from "@tanstack/react-query"
 import { api } from "@/services/api"
 import { useSession } from "next-auth/react"
+import { format } from 'date-fns'
 
 interface MeetupLists {
 	managedEvents: Meetup[]
@@ -23,11 +24,16 @@ export default function Home() {
 	const { data: meetups } = useQuery<MeetupLists>({
 		queryKey: ['get-meetups'],
 		queryFn: async () => {
-			const { data: response } = await api.get<Meetup[]>('meetup', {
+			let { data: response } = await api.get<Meetup[]>('meetup', {
 				headers: {
 					auth: session?.user.person_id
 				}
 			})
+
+			response = response.map(item => ({
+				...item,
+				datetime: format(new Date(item.datetime), 'dd/MM/yyyy HH:mm\'h\'')
+			}))
 
 			const managedEvents = response.filter(meetup => meetup.creatorId === personId)
 			const subscribedEvents = response.filter(meetup => meetup.subscriptions?.some(item => item.personId === personId))
@@ -38,12 +44,17 @@ export default function Home() {
 				subscribedEvents,
 				followingEvents
 			}
-		}
+		},
+		// TODO: verificar essas props
+		staleTime: 0,
+		refetchOnWindowFocus: false,
+		refetchOnMount: 'always',
+		refetchOnReconnect: true
 	})
 	
 	if(!meetups) {
 		return (
-			<div>Agaurde...</div>
+			<div>Aguarde...</div>
 		)
 	}
 

@@ -58,6 +58,37 @@ export async function meetupRoutes(app: FastifyInstance) {
 		}
 	)
 
+	app.get(
+		'/search',
+		async (request, reply) => {
+			const search = (request.query as { q?: string }).q || ''
+
+			const result = await prisma.meetup.findMany({
+				where: {
+					OR: [
+						{
+							title: {
+								contains: search
+							}
+						},
+						{
+							description: {
+								contains: search
+							}
+						}
+					]
+				},
+				include: {
+					address: true
+				}
+			})
+
+			console.log('result', result)
+
+			return result
+		}
+	)
+
 	app.get<{Params: { id: string }}>(
 		'/:id', 
 		async (request, reply) => {
@@ -220,8 +251,6 @@ export async function meetupRoutes(app: FastifyInstance) {
 					}
 				}
 				
-				console.log(data)
-
 				const address = await prisma.address.create({
 					data: {
 						street: data.place!,
@@ -252,8 +281,6 @@ export async function meetupRoutes(app: FastifyInstance) {
 
 				return meetup
 			} catch(e: any) {
-				console.log(e)
-
 				return {
 					message: `Error: ${e.message}`
 				}

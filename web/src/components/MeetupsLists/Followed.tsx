@@ -2,6 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/navigation'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table'
 import { Meetup } from '@/types/Meetup'
+import { formatAddress, formatStatus } from '@/util/format'
 
 interface EventListProps {
 	meetups: Meetup[]
@@ -20,7 +21,7 @@ export default function FollowedMeetups({ meetups }: EventListProps) {
 
 	return (
 		<>
-			<p className="mx-5 text-slate-700 dark:text-slate-200 text-sm">Aqui você verá todos os eventos que optou por acompanhar. Dessa forma, receberá notificações de atualizações de cada evento.</p>
+			<p className="mx-5 text-slate-700 dark:text-slate-200 text-sm">Aqui você verá todos os eventos que optou por <span className="underline underline-offset-2">receber as notificações</span> de atualizações importantes.</p>
 		
 			<Table>
 				<TableHeader>
@@ -44,10 +45,10 @@ export default function FollowedMeetups({ meetups }: EventListProps) {
 								</div>
 							</TableCell>
 							<TableCell>{item.datetime}</TableCell>
-							<TableCell>{item.status}</TableCell>
+							<TableCell>{formatStatus(item.status)}</TableCell>
 							<TableCell>
 								<div className="lg:w-80 truncate">
-									{item.address?.street}
+									{formatAddress(item.address)}
 								</div>
 							</TableCell>
 						</TableRow>

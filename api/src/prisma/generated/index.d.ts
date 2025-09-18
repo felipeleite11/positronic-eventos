@@ -8801,6 +8801,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     description: string | null
+    locationName: string | null
     status: $Enums.MeetupStatus | null
     datetime: Date | null
     addressId: string | null
@@ -8815,6 +8816,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     description: string | null
+    locationName: string | null
     status: $Enums.MeetupStatus | null
     datetime: Date | null
     addressId: string | null
@@ -8829,6 +8831,7 @@ export namespace Prisma {
     id: number
     title: number
     description: number
+    locationName: number
     status: number
     datetime: number
     addressId: number
@@ -8845,6 +8848,7 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
+    locationName?: true
     status?: true
     datetime?: true
     addressId?: true
@@ -8859,6 +8863,7 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
+    locationName?: true
     status?: true
     datetime?: true
     addressId?: true
@@ -8873,6 +8878,7 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
+    locationName?: true
     status?: true
     datetime?: true
     addressId?: true
@@ -8960,6 +8966,7 @@ export namespace Prisma {
     id: string
     title: string
     description: string | null
+    locationName: string | null
     status: $Enums.MeetupStatus
     datetime: Date
     addressId: string
@@ -8991,6 +8998,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
+    locationName?: boolean
     status?: boolean
     datetime?: boolean
     addressId?: boolean
@@ -9018,6 +9026,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
+    locationName?: boolean
     status?: boolean
     datetime?: boolean
     addressId?: boolean
@@ -9028,7 +9037,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type MeetupOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "status" | "datetime" | "addressId" | "categoryId" | "creatorId" | "image" | "createdAt" | "updatedAt", ExtArgs["result"]["meetup"]>
+  export type MeetupOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "locationName" | "status" | "datetime" | "addressId" | "categoryId" | "creatorId" | "image" | "createdAt" | "updatedAt", ExtArgs["result"]["meetup"]>
   export type MeetupInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     address?: boolean | AddressDefaultArgs<ExtArgs>
     meetupAdmins?: boolean | Meetup$meetupAdminsArgs<ExtArgs>
@@ -9061,6 +9070,7 @@ export namespace Prisma {
       id: string
       title: string
       description: string | null
+      locationName: string | null
       status: $Enums.MeetupStatus
       datetime: Date
       addressId: string
@@ -9451,6 +9461,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Meetup", 'String'>
     readonly title: FieldRef<"Meetup", 'String'>
     readonly description: FieldRef<"Meetup", 'String'>
+    readonly locationName: FieldRef<"Meetup", 'String'>
     readonly status: FieldRef<"Meetup", 'MeetupStatus'>
     readonly datetime: FieldRef<"Meetup", 'DateTime'>
     readonly addressId: FieldRef<"Meetup", 'String'>
@@ -20672,6 +20683,7 @@ export namespace Prisma {
     id: 'id',
     title: 'title',
     description: 'description',
+    locationName: 'locationName',
     status: 'status',
     datetime: 'datetime',
     addressId: 'addressId',
@@ -20909,6 +20921,7 @@ export namespace Prisma {
     id: 'id',
     title: 'title',
     description: 'description',
+    locationName: 'locationName',
     addressId: 'addressId',
     categoryId: 'categoryId',
     creatorId: 'creatorId',
@@ -21572,6 +21585,7 @@ export namespace Prisma {
     id?: StringFilter<"Meetup"> | string
     title?: StringFilter<"Meetup"> | string
     description?: StringNullableFilter<"Meetup"> | string | null
+    locationName?: StringNullableFilter<"Meetup"> | string | null
     status?: EnumMeetupStatusFilter<"Meetup"> | $Enums.MeetupStatus
     datetime?: DateTimeFilter<"Meetup"> | Date | string
     addressId?: StringFilter<"Meetup"> | string
@@ -21596,6 +21610,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrderInput | SortOrder
+    locationName?: SortOrderInput | SortOrder
     status?: SortOrder
     datetime?: SortOrder
     addressId?: SortOrder
@@ -21624,6 +21639,7 @@ export namespace Prisma {
     NOT?: MeetupWhereInput | MeetupWhereInput[]
     title?: StringFilter<"Meetup"> | string
     description?: StringNullableFilter<"Meetup"> | string | null
+    locationName?: StringNullableFilter<"Meetup"> | string | null
     status?: EnumMeetupStatusFilter<"Meetup"> | $Enums.MeetupStatus
     datetime?: DateTimeFilter<"Meetup"> | Date | string
     addressId?: StringFilter<"Meetup"> | string
@@ -21648,6 +21664,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrderInput | SortOrder
+    locationName?: SortOrderInput | SortOrder
     status?: SortOrder
     datetime?: SortOrder
     addressId?: SortOrder
@@ -21668,6 +21685,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Meetup"> | string
     title?: StringWithAggregatesFilter<"Meetup"> | string
     description?: StringNullableWithAggregatesFilter<"Meetup"> | string | null
+    locationName?: StringNullableWithAggregatesFilter<"Meetup"> | string | null
     status?: EnumMeetupStatusWithAggregatesFilter<"Meetup"> | $Enums.MeetupStatus
     datetime?: DateTimeWithAggregatesFilter<"Meetup"> | Date | string
     addressId?: StringWithAggregatesFilter<"Meetup"> | string
@@ -22945,6 +22963,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
@@ -22966,6 +22985,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
@@ -22987,6 +23007,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23008,6 +23029,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
@@ -23029,6 +23051,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
@@ -23043,6 +23066,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23054,6 +23078,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
@@ -24280,6 +24305,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    locationName?: SortOrder
     status?: SortOrder
     datetime?: SortOrder
     addressId?: SortOrder
@@ -24294,6 +24320,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    locationName?: SortOrder
     status?: SortOrder
     datetime?: SortOrder
     addressId?: SortOrder
@@ -24308,6 +24335,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    locationName?: SortOrder
     status?: SortOrder
     datetime?: SortOrder
     addressId?: SortOrder
@@ -26953,6 +26981,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
@@ -26973,6 +27002,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
@@ -27253,6 +27283,7 @@ export namespace Prisma {
     id?: StringFilter<"Meetup"> | string
     title?: StringFilter<"Meetup"> | string
     description?: StringNullableFilter<"Meetup"> | string | null
+    locationName?: StringNullableFilter<"Meetup"> | string | null
     status?: EnumMeetupStatusFilter<"Meetup"> | $Enums.MeetupStatus
     datetime?: DateTimeFilter<"Meetup"> | Date | string
     addressId?: StringFilter<"Meetup"> | string
@@ -27293,6 +27324,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
@@ -27313,6 +27345,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     categoryId: string
@@ -27875,6 +27908,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
@@ -27895,6 +27929,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
@@ -27976,6 +28011,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27996,6 +28032,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
@@ -28067,6 +28104,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
@@ -28087,6 +28125,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
@@ -28179,6 +28218,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
@@ -28199,6 +28239,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
@@ -28280,6 +28321,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28300,6 +28342,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
@@ -28416,6 +28459,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
@@ -28436,6 +28480,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
@@ -28572,6 +28617,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28592,6 +28638,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
@@ -28713,6 +28760,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
@@ -28733,6 +28781,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
@@ -28820,6 +28869,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28840,6 +28890,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
@@ -29045,6 +29096,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
@@ -29065,6 +29117,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
@@ -29152,6 +29205,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29172,6 +29226,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
@@ -29192,6 +29247,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
@@ -29212,6 +29268,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
@@ -29293,6 +29350,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29313,6 +29371,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
@@ -29384,6 +29443,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     image?: string | null
@@ -29404,6 +29464,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
@@ -29485,6 +29546,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29505,6 +29567,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
@@ -29730,6 +29793,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
@@ -29913,6 +29977,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29933,6 +29998,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
@@ -29953,6 +30019,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
@@ -29984,6 +30051,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     categoryId: string
@@ -29997,6 +30065,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
@@ -30017,6 +30086,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     categoryId?: StringFieldUpdateOperationsInput | string
@@ -30037,6 +30107,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     categoryId?: StringFieldUpdateOperationsInput | string
@@ -30292,6 +30363,7 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
+    locationName?: string | null
     status?: $Enums.MeetupStatus
     datetime: Date | string
     addressId: string
@@ -30305,6 +30377,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
@@ -30325,6 +30398,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string
@@ -30345,6 +30419,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     addressId?: StringFieldUpdateOperationsInput | string

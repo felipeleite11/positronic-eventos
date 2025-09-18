@@ -1,0 +1,37 @@
+@keyframes rotate-infinite {
+	0% {
+		transform: rotate(0deg);
+	}
+	12% {
+		transform: rotate(-25deg);
+	}
+
+	30% {
+		transform: rotate(385deg);
+	}
+
+	42% {
+		transform: rotate(360deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes jump-infinite {
+	0%, 100% {
+		transform: translateY(0);
+	}
+	30% {
+		transform: translateY(-18px);
+	}
+}
+
+.animation-rotate {
+	animation: rotate-infinite 2s infinite forwards 500ms;
+}
+
+.animation-jump {
+	animation: jump-infinite 1s infinite forwards ease-out;
+}

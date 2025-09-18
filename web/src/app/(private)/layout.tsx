@@ -5,10 +5,10 @@ import MainMenu from "@/components/MainMenu"
 import NavbarAuth from "@/components/NavbarAuth"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 export default function PrivateLayout({ children }: { children: ReactNode }) {
 	const { data: session, status } = useSession()
-	// const token = getToken({ req })
 
 	const router = useRouter()
 
@@ -19,11 +19,14 @@ export default function PrivateLayout({ children }: { children: ReactNode }) {
 	}, [session])
 
 	if (status === 'loading' || status === 'unauthenticated') {
-		return <p>Aguarde...</p>
+		return (
+			<div className="w-full h-screen flex justify-center items-center flex-col gap-4 text-slate-300">
+				<Image alt="" src="/images/positronic.png" width={700} height={200} className="w-48 animation-jump" />
+				Aguarde...
+			</div>
+		)
 	}
 
-	// console.log('session', session)
-	
 	return (
 		<div className="grid grid-cols-[14rem_auto] grid-rows-[auto_1fr] min-h-screen dark:bg-[url(/images/bg.png)] dark:bg-cover">
 			<NavbarAuth />

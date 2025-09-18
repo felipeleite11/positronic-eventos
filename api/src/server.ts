@@ -21,7 +21,11 @@ const fastify = Fastify({
 	logger: false
 })
 
-fastify.register(fastifyMultipart)
+fastify.register(fastifyMultipart, {
+	limits: {
+		fileSize: 20 * 1024 * 1024
+	}
+})
 
 fastify.register(fastifyCors, {
 	origin: process.env.WEB_URL || 'http://localhost:3000',

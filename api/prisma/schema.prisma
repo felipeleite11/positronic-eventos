@@ -123,17 +123,18 @@ model Address {
 }
 
 model Meetup {
-  id          String       @id @default(cuid())
-  title       String
-  description String?      @db.Text
-  status      MeetupStatus @default(created)
-  datetime    DateTime
-  addressId   String       @map("address_id")
-  categoryId  String       @map("category_id")
-  creatorId   String       @map("creator_id")
-  image       String?
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+  id           String       @id @default(cuid())
+  title        String
+  description  String?      @db.Text
+  locationName String?
+  status       MeetupStatus @default(created)
+  datetime     DateTime
+  addressId    String       @map("address_id")
+  categoryId   String       @map("category_id")
+  creatorId    String       @map("creator_id")
+  image        String?
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
 
   // Relacionamentos
   address       Address          @relation(fields: [addressId], references: [id], onDelete: Cascade)
