@@ -14,9 +14,6 @@ export default function Confirmation() {
 
 	const router = useRouter()
 
-	// Ao marcar cada presença, atualizar na base
-	// Falta trazer marcadas as presenças já confirmadas
-
 	const [meetup, setMeetup] = useState<Meetup | null>(null)
 	const [confirmations, setConfirmations] = useState<Subscription[] | null>(null)
 

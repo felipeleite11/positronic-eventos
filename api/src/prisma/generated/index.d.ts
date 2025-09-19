@@ -14889,6 +14889,7 @@ export namespace Prisma {
     personId: string | null
     meetupId: string | null
     meetupRoleId: string | null
+    certificateLink: string | null
     presenceConfirmation: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -14899,6 +14900,7 @@ export namespace Prisma {
     personId: string | null
     meetupId: string | null
     meetupRoleId: string | null
+    certificateLink: string | null
     presenceConfirmation: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -14909,6 +14911,7 @@ export namespace Prisma {
     personId: number
     meetupId: number
     meetupRoleId: number
+    certificateLink: number
     presenceConfirmation: number
     createdAt: number
     updatedAt: number
@@ -14921,6 +14924,7 @@ export namespace Prisma {
     personId?: true
     meetupId?: true
     meetupRoleId?: true
+    certificateLink?: true
     presenceConfirmation?: true
     createdAt?: true
     updatedAt?: true
@@ -14931,6 +14935,7 @@ export namespace Prisma {
     personId?: true
     meetupId?: true
     meetupRoleId?: true
+    certificateLink?: true
     presenceConfirmation?: true
     createdAt?: true
     updatedAt?: true
@@ -14941,6 +14946,7 @@ export namespace Prisma {
     personId?: true
     meetupId?: true
     meetupRoleId?: true
+    certificateLink?: true
     presenceConfirmation?: true
     createdAt?: true
     updatedAt?: true
@@ -15024,6 +15030,7 @@ export namespace Prisma {
     personId: string
     meetupId: string
     meetupRoleId: string
+    certificateLink: string | null
     presenceConfirmation: boolean | null
     createdAt: Date
     updatedAt: Date
@@ -15051,6 +15058,7 @@ export namespace Prisma {
     personId?: boolean
     meetupId?: boolean
     meetupRoleId?: boolean
+    certificateLink?: boolean
     presenceConfirmation?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -15068,12 +15076,13 @@ export namespace Prisma {
     personId?: boolean
     meetupId?: boolean
     meetupRoleId?: boolean
+    certificateLink?: boolean
     presenceConfirmation?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type SubscriptionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "personId" | "meetupId" | "meetupRoleId" | "presenceConfirmation" | "createdAt" | "updatedAt", ExtArgs["result"]["subscription"]>
+  export type SubscriptionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "personId" | "meetupId" | "meetupRoleId" | "certificateLink" | "presenceConfirmation" | "createdAt" | "updatedAt", ExtArgs["result"]["subscription"]>
   export type SubscriptionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     person?: boolean | PersonDefaultArgs<ExtArgs>
     meetup?: boolean | MeetupDefaultArgs<ExtArgs>
@@ -15095,6 +15104,7 @@ export namespace Prisma {
       personId: string
       meetupId: string
       meetupRoleId: string
+      certificateLink: string | null
       presenceConfirmation: boolean | null
       createdAt: Date
       updatedAt: Date
@@ -15475,6 +15485,7 @@ export namespace Prisma {
     readonly personId: FieldRef<"Subscription", 'String'>
     readonly meetupId: FieldRef<"Subscription", 'String'>
     readonly meetupRoleId: FieldRef<"Subscription", 'String'>
+    readonly certificateLink: FieldRef<"Subscription", 'String'>
     readonly presenceConfirmation: FieldRef<"Subscription", 'Boolean'>
     readonly createdAt: FieldRef<"Subscription", 'DateTime'>
     readonly updatedAt: FieldRef<"Subscription", 'DateTime'>
@@ -21831,6 +21842,7 @@ export namespace Prisma {
     personId: 'personId',
     meetupId: 'meetupId',
     meetupRoleId: 'meetupRoleId',
+    certificateLink: 'certificateLink',
     presenceConfirmation: 'presenceConfirmation',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -22065,7 +22077,8 @@ export namespace Prisma {
     id: 'id',
     personId: 'personId',
     meetupId: 'meetupId',
-    meetupRoleId: 'meetupRoleId'
+    meetupRoleId: 'meetupRoleId',
+    certificateLink: 'certificateLink'
   };
 
   export type SubscriptionOrderByRelevanceFieldEnum = (typeof SubscriptionOrderByRelevanceFieldEnum)[keyof typeof SubscriptionOrderByRelevanceFieldEnum]
@@ -23082,6 +23095,7 @@ export namespace Prisma {
     personId?: StringFilter<"Subscription"> | string
     meetupId?: StringFilter<"Subscription"> | string
     meetupRoleId?: StringFilter<"Subscription"> | string
+    certificateLink?: StringNullableFilter<"Subscription"> | string | null
     presenceConfirmation?: BoolNullableFilter<"Subscription"> | boolean | null
     createdAt?: DateTimeFilter<"Subscription"> | Date | string
     updatedAt?: DateTimeFilter<"Subscription"> | Date | string
@@ -23096,6 +23110,7 @@ export namespace Prisma {
     personId?: SortOrder
     meetupId?: SortOrder
     meetupRoleId?: SortOrder
+    certificateLink?: SortOrderInput | SortOrder
     presenceConfirmation?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -23115,6 +23130,7 @@ export namespace Prisma {
     personId?: StringFilter<"Subscription"> | string
     meetupId?: StringFilter<"Subscription"> | string
     meetupRoleId?: StringFilter<"Subscription"> | string
+    certificateLink?: StringNullableFilter<"Subscription"> | string | null
     presenceConfirmation?: BoolNullableFilter<"Subscription"> | boolean | null
     createdAt?: DateTimeFilter<"Subscription"> | Date | string
     updatedAt?: DateTimeFilter<"Subscription"> | Date | string
@@ -23129,6 +23145,7 @@ export namespace Prisma {
     personId?: SortOrder
     meetupId?: SortOrder
     meetupRoleId?: SortOrder
+    certificateLink?: SortOrderInput | SortOrder
     presenceConfirmation?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -23145,6 +23162,7 @@ export namespace Prisma {
     personId?: StringWithAggregatesFilter<"Subscription"> | string
     meetupId?: StringWithAggregatesFilter<"Subscription"> | string
     meetupRoleId?: StringWithAggregatesFilter<"Subscription"> | string
+    certificateLink?: StringNullableWithAggregatesFilter<"Subscription"> | string | null
     presenceConfirmation?: BoolNullableWithAggregatesFilter<"Subscription"> | boolean | null
     createdAt?: DateTimeWithAggregatesFilter<"Subscription"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Subscription"> | Date | string
@@ -24513,6 +24531,7 @@ export namespace Prisma {
 
   export type SubscriptionCreateInput = {
     id?: string
+    certificateLink?: string | null
     presenceConfirmation?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -24527,6 +24546,7 @@ export namespace Prisma {
     personId: string
     meetupId: string
     meetupRoleId: string
+    certificateLink?: string | null
     presenceConfirmation?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -24535,6 +24555,7 @@ export namespace Prisma {
 
   export type SubscriptionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    certificateLink?: NullableStringFieldUpdateOperationsInput | string | null
     presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24549,6 +24570,7 @@ export namespace Prisma {
     personId?: StringFieldUpdateOperationsInput | string
     meetupId?: StringFieldUpdateOperationsInput | string
     meetupRoleId?: StringFieldUpdateOperationsInput | string
+    certificateLink?: NullableStringFieldUpdateOperationsInput | string | null
     presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24560,6 +24582,7 @@ export namespace Prisma {
     personId: string
     meetupId: string
     meetupRoleId: string
+    certificateLink?: string | null
     presenceConfirmation?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -24567,6 +24590,7 @@ export namespace Prisma {
 
   export type SubscriptionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    certificateLink?: NullableStringFieldUpdateOperationsInput | string | null
     presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24577,6 +24601,7 @@ export namespace Prisma {
     personId?: StringFieldUpdateOperationsInput | string
     meetupId?: StringFieldUpdateOperationsInput | string
     meetupRoleId?: StringFieldUpdateOperationsInput | string
+    certificateLink?: NullableStringFieldUpdateOperationsInput | string | null
     presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25802,6 +25827,7 @@ export namespace Prisma {
     personId?: SortOrder
     meetupId?: SortOrder
     meetupRoleId?: SortOrder
+    certificateLink?: SortOrder
     presenceConfirmation?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -25812,6 +25838,7 @@ export namespace Prisma {
     personId?: SortOrder
     meetupId?: SortOrder
     meetupRoleId?: SortOrder
+    certificateLink?: SortOrder
     presenceConfirmation?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -25822,6 +25849,7 @@ export namespace Prisma {
     personId?: SortOrder
     meetupId?: SortOrder
     meetupRoleId?: SortOrder
+    certificateLink?: SortOrder
     presenceConfirmation?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -28109,6 +28137,7 @@ export namespace Prisma {
 
   export type SubscriptionCreateWithoutPersonInput = {
     id?: string
+    certificateLink?: string | null
     presenceConfirmation?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28121,6 +28150,7 @@ export namespace Prisma {
     id?: string
     meetupId: string
     meetupRoleId: string
+    certificateLink?: string | null
     presenceConfirmation?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28410,6 +28440,7 @@ export namespace Prisma {
     personId?: StringFilter<"Subscription"> | string
     meetupId?: StringFilter<"Subscription"> | string
     meetupRoleId?: StringFilter<"Subscription"> | string
+    certificateLink?: StringNullableFilter<"Subscription"> | string | null
     presenceConfirmation?: BoolNullableFilter<"Subscription"> | boolean | null
     createdAt?: DateTimeFilter<"Subscription"> | Date | string
     updatedAt?: DateTimeFilter<"Subscription"> | Date | string
@@ -28761,6 +28792,7 @@ export namespace Prisma {
 
   export type SubscriptionCreateWithoutMeetupInput = {
     id?: string
+    certificateLink?: string | null
     presenceConfirmation?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28773,6 +28805,7 @@ export namespace Prisma {
     id?: string
     personId: string
     meetupRoleId: string
+    certificateLink?: string | null
     presenceConfirmation?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -29647,6 +29680,7 @@ export namespace Prisma {
 
   export type SubscriptionCreateWithoutMeetupRoleInput = {
     id?: string
+    certificateLink?: string | null
     presenceConfirmation?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -29659,6 +29693,7 @@ export namespace Prisma {
     id?: string
     personId: string
     meetupId: string
+    certificateLink?: string | null
     presenceConfirmation?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -30454,6 +30489,7 @@ export namespace Prisma {
 
   export type SubscriptionCreateWithoutSubscriptionPaymentsInput = {
     id?: string
+    certificateLink?: string | null
     presenceConfirmation?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -30467,6 +30503,7 @@ export namespace Prisma {
     personId: string
     meetupId: string
     meetupRoleId: string
+    certificateLink?: string | null
     presenceConfirmation?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -30507,6 +30544,7 @@ export namespace Prisma {
 
   export type SubscriptionUpdateWithoutSubscriptionPaymentsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    certificateLink?: NullableStringFieldUpdateOperationsInput | string | null
     presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30520,6 +30558,7 @@ export namespace Prisma {
     personId?: StringFieldUpdateOperationsInput | string
     meetupId?: StringFieldUpdateOperationsInput | string
     meetupRoleId?: StringFieldUpdateOperationsInput | string
+    certificateLink?: NullableStringFieldUpdateOperationsInput | string | null
     presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31272,6 +31311,7 @@ export namespace Prisma {
     id?: string
     meetupId: string
     meetupRoleId: string
+    certificateLink?: string | null
     presenceConfirmation?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -31361,6 +31401,7 @@ export namespace Prisma {
 
   export type SubscriptionUpdateWithoutPersonInput = {
     id?: StringFieldUpdateOperationsInput | string
+    certificateLink?: NullableStringFieldUpdateOperationsInput | string | null
     presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31373,6 +31414,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     meetupId?: StringFieldUpdateOperationsInput | string
     meetupRoleId?: StringFieldUpdateOperationsInput | string
+    certificateLink?: NullableStringFieldUpdateOperationsInput | string | null
     presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31383,6 +31425,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     meetupId?: StringFieldUpdateOperationsInput | string
     meetupRoleId?: StringFieldUpdateOperationsInput | string
+    certificateLink?: NullableStringFieldUpdateOperationsInput | string | null
     presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31666,6 +31709,7 @@ export namespace Prisma {
     id?: string
     personId: string
     meetupRoleId: string
+    certificateLink?: string | null
     presenceConfirmation?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -31745,6 +31789,7 @@ export namespace Prisma {
 
   export type SubscriptionUpdateWithoutMeetupInput = {
     id?: StringFieldUpdateOperationsInput | string
+    certificateLink?: NullableStringFieldUpdateOperationsInput | string | null
     presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31757,6 +31802,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     personId?: StringFieldUpdateOperationsInput | string
     meetupRoleId?: StringFieldUpdateOperationsInput | string
+    certificateLink?: NullableStringFieldUpdateOperationsInput | string | null
     presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31767,6 +31813,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     personId?: StringFieldUpdateOperationsInput | string
     meetupRoleId?: StringFieldUpdateOperationsInput | string
+    certificateLink?: NullableStringFieldUpdateOperationsInput | string | null
     presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31996,6 +32043,7 @@ export namespace Prisma {
     id?: string
     personId: string
     meetupId: string
+    certificateLink?: string | null
     presenceConfirmation?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -32003,6 +32051,7 @@ export namespace Prisma {
 
   export type SubscriptionUpdateWithoutMeetupRoleInput = {
     id?: StringFieldUpdateOperationsInput | string
+    certificateLink?: NullableStringFieldUpdateOperationsInput | string | null
     presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32015,6 +32064,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     personId?: StringFieldUpdateOperationsInput | string
     meetupId?: StringFieldUpdateOperationsInput | string
+    certificateLink?: NullableStringFieldUpdateOperationsInput | string | null
     presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32025,6 +32075,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     personId?: StringFieldUpdateOperationsInput | string
     meetupId?: StringFieldUpdateOperationsInput | string
+    certificateLink?: NullableStringFieldUpdateOperationsInput | string | null
     presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

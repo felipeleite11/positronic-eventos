@@ -1,5 +1,5 @@
 import { Connection } from 'rabbitmq-client'
-import { inviteSend } from '../routines/inviteSend'
+import { invitationSend } from '../routines/invitationSend'
 
 const rabbit = new Connection(process.env.AMQP_SERVER!)
 
@@ -21,18 +21,22 @@ const subscriber = rabbit.createConsumer({
 	queue: process.env.QUEUE_NAME!,
 	queueOptions: { durable: true },
 	// qos: { prefetchCount: 2 }, // Informa quantas mensagens por vez serão tratadas.
-}, async ({ body: data }) => {
-	console.log('Consumed message:', data)
+}, async ({ body }) => {
+	// console.log('Consumed message:', body)
 
-	if(!data?.type) {
+	if(!body?.type) {
 		throw new Error('RabbitMQ messages must have "data" property.')
 	}
 
-	const { type } = data
+	const { type, data } = body
 
 	switch(type) {
-		case 'invite_send':
-			await inviteSend(data)
+		case 'test_queue':
+			console.log('Consumiu:', body)
+			break
+		
+		case 'invitation_send': 
+			await invitationSend(data)
 			break
 	}
 

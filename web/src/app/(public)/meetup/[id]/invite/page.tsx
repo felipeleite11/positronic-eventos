@@ -20,7 +20,7 @@ export default function Invite() {
 	const personId = searchParams.get('p')
 
 	if(!personId) {
-		router.push('/')
+		router.push('/signin')
 		
 		return null
 	}
@@ -45,7 +45,8 @@ export default function Invite() {
 		queryFn: async () => {
 			const { data } = await api.get<Meetup>(`meetup/${id}`)
 
-			data.datetime = format(new Date(data.datetime), 'dd/MM/yyyy HH:mm\'h\'')
+			data.start = format(new Date(data.start), 'dd/MM/yyyy HH:mm\'h\'')
+			data.end = format(new Date(data.end), 'dd/MM/yyyy HH:mm\'h\'')
 
 			return data
 		},
@@ -108,7 +109,7 @@ export default function Invite() {
 					<div className="flex flex-col gap-6 mb-6">
 						<div className="grid grid-cols-[1.4rem_auto] gap-2">
 							<Calendar size={19} />
-							Data/hora: {meetup.datetime}
+							Data/hora: {meetup.start}
 						</div>
 
 						<div className="grid grid-cols-[1.4rem_auto] gap-2">

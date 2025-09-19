@@ -251,6 +251,7 @@ exports.Prisma.SubscriptionScalarFieldEnum = {
   personId: 'personId',
   meetupId: 'meetupId',
   meetupRoleId: 'meetupRoleId',
+  certificateLink: 'certificateLink',
   presenceConfirmation: 'presenceConfirmation',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -422,7 +423,8 @@ exports.Prisma.SubscriptionOrderByRelevanceFieldEnum = {
   id: 'id',
   personId: 'personId',
   meetupId: 'meetupId',
-  meetupRoleId: 'meetupRoleId'
+  meetupRoleId: 'meetupRoleId',
+  certificateLink: 'certificateLink'
 };
 
 exports.Prisma.InviteOrderByRelevanceFieldEnum = {

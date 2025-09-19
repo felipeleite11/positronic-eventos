@@ -225,6 +225,7 @@ model Subscription {
   personId             String   @map("person_id")
   meetupId             String   @map("meetup_id")
   meetupRoleId         String   @map("meetup_role_id")
+  certificateLink      String?  @map("certificate_link")
   presenceConfirmation Boolean? @map("presence_confirmation")
   createdAt            DateTime @default(now())
   updatedAt            DateTime @updatedAt

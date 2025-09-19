@@ -2,9 +2,8 @@
 
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { notify } from "@/util/notification"
 import { useMutation, useQuery } from "@tanstack/react-query"
-import { ArrowLeft, ArrowRight, Bell, BellOff, Calendar, Check, Edit, LogIn, MapPin, UploadCloud, User } from "lucide-react"
+import { ArrowLeft, ArrowRight, Bell, BellOff, Calendar, Check, CheckCircle, Edit, FileCheck, LogIn, MapPin, Send, UploadCloud, User } from "lucide-react"
 import Image from "next/image"
 import { useParams, useRouter } from "next/navigation"
 import { toast } from "sonner"
@@ -16,7 +15,6 @@ import {
 import { useSession } from "next-auth/react"
 import { api } from "@/services/api"
 import { Meetup, MeetupFollowing } from "@/types/Meetup"
-import { extractNumbers } from "@/util/string"
 import { formatAddress } from "@/util/format"
 import { format, isBefore } from "date-fns"
 import Link from "next/link"
@@ -69,28 +67,24 @@ export default function Event() {
 		}
 	}
 
-	async function handleUpload() {
-		await new Promise(r => setTimeout(r, 800))
-		
-		toast.success('Carga concluída com sucesso!')
-	}
-
 	async function handleSendInvitations() {
 		try {
 			if(!meetup) {
 				return
 			}
 
-			const { data } = await api.get<Meetup>(`meetup/${id}/invitations`)
+			await api.post(`invite/${id}/send_invitations`)
 
-			const guestsToNotify = data.invites?.filter(item => item.person.phone && !data.subscriptions?.some(subs => subs.personId === item.personId)) || []
+			// const { data } = await api.get<Meetup>(`meetup/${id}/invitations`)
 
-			for(const guest of guestsToNotify) {
-				notify(
-					`Olá, ${guest.person.name}!\n\nVocê está convidad${guest.person.gender === 'F' ? 'a' : 'o'} para o evento ${meetup?.title}.\n\nConfirme sua presença na página do evento:\n${meetupPageLink}\n\nTe aguardamos lá!`, 
-					`55${extractNumbers(guest.person.phone!)}`
-				)
-			}
+			// const guestsToNotify = data.invites?.filter(item => item.person.phone && !data.subscriptions?.some(subs => subs.personId === item.personId)) || []
+
+			// for(const guest of guestsToNotify) {
+			// 	notify(
+			// 		`Olá, ${guest.person.name}!\n\nVocê está convidad${guest.person.gender === 'F' ? 'a' : 'o'} para o evento ${meetup?.title}.\n\nConfirme sua presença na página do evento:\n${meetupPageLink}\n\nTe aguardamos lá!`, 
+			// 		`55${extractNumbers(guest.person.phone!)}`
+			// 	)
+			// }
 			
 			toast.success('Os convidados foram notificados!')
 		} catch(e: any) {
@@ -112,6 +106,7 @@ export default function Event() {
 	const isCreator = meetup.creatorId === person.id
 	const isFollowed = meetup.followers?.some(follower => follower.personId === person?.id)
 	const wasStarted = isBefore(new Date(meetup.start), new Date())
+	const wasEnded = isBefore(new Date(), new Date(meetup.end))
 
 	return (
 		<div className="flex flex-col">
@@ -183,14 +178,23 @@ export default function Event() {
 
 						<Button className="bg-sky-700 hover:bg-sky-600 text-white rounded-none border-x border-sky-500" onClick={handleSendInvitations}>
 							Enviar convites
-							<ArrowRight size={16} />
+							<Send size={16} />
 						</Button>
 
 						{wasStarted && (
 							<Button asChild className="bg-sky-700 hover:bg-sky-600 text-white rounded-none border-x border-sky-500">
 								<Link href={`/meetup/${id}/confirmation`} className="flex items-center gap-2">
 									Confirmar presenças
-									<ArrowRight size={16} />
+									<CheckCircle size={16} />
+								</Link>
+							</Button>
+						)}
+
+						{wasEnded && (
+							<Button asChild className="bg-sky-700 hover:bg-sky-600 text-white rounded-none border-x border-sky-500">
+								<Link href={`/meetup/${id}/certificates`} className="flex items-center gap-2">
+									Emitir certificados
+									<FileCheck size={16} />
 								</Link>
 							</Button>
 						)}
@@ -198,7 +202,7 @@ export default function Event() {
 				)}
 
 				{isSubscribed ? (
-					<Button onClick={handleSubscribe} className="bg-emerald-600 hover:bg-emerald-600 text-white rounded-l-none cursor-default">
+					<Button onClick={() => {}} disabled={isSubscribed} className="bg-emerald-600 hover:bg-emerald-600 text-white rounded-l-none cursor-default disabled:opacity-100">
 						Você já está inscrito
 						<Check size={16} />
 					</Button>

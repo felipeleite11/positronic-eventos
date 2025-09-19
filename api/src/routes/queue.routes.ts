@@ -7,7 +7,7 @@ export async function queueRoutes(app: FastifyInstance) {
 		async () => {
 			try {
 				publisher.send(process.env.QUEUE_NAME!, {
-					type: 'invite_send',
+					type: 'test_queue',
 					event_id: 1
 				})
 

@@ -3,7 +3,6 @@ import 'dotenv/config'
 import Fastify from 'fastify'
 import fastifyCors from "@fastify/cors"
 import fastifyMultipart from '@fastify/multipart'
-// import fastifyJwt from '@fastify/jwt'
 
 import { initSocketIO } from './config/socket'
 import { onShutdown as onShutdownRabbitMQ } from './config/queue'
@@ -17,6 +16,7 @@ import { personRoutes } from './routes/person.routes'
 import { sessionRoutes } from './routes/session.routes'
 import { subscriptionRoutes } from './routes/subscription.routes'
 import { inviteRoutes } from './routes/invite.routes'
+import { roleRoutes } from './routes/role.routes'
 
 const fastify = Fastify({
 	logger: false
@@ -30,8 +30,7 @@ fastify.register(fastifyMultipart, {
 
 fastify.register(fastifyCors, {
 	origin: process.env.WEB_URL || 'http://localhost:3000',
-	methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-	// preflight: true
+	methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS']
 })
 
 fastify.get('/', () => {
@@ -43,25 +42,12 @@ fastify.register(queueRoutes, { prefix: '/test_queue' })
 fastify.register(uploadRoutes, { prefix: '/test_upload' })
 fastify.register(sessionRoutes, { prefix: '/auth' })
 
-// fastify.register(fastifyJwt, {
-// 	secret: '12345678'
-// })
-
-// fastify.addHook('preHandler', async (request, reply) => {
-// 	try {
-// 		console.log('preHandler')
-
-// 		await request.jwtVerify()
-// 	} catch (err) {
-// 		return reply.status(401).send({ error: "Não autorizado" })
-// 	}
-// })
-
 fastify.register(meetupRoutes, { prefix: '/meetup' })
 fastify.register(subscriptionRoutes, { prefix: '/subscription' })
 fastify.register(categoryRoutes, { prefix: '/category' })
 fastify.register(personRoutes, { prefix: '/person' })
 fastify.register(inviteRoutes, { prefix: '/invite' })
+fastify.register(roleRoutes, { prefix: '/role' })
 
 fastify.listen({ port: +process.env.PORT!, host: '0.0.0.0' }, function (err, address) {
 	if (err) {

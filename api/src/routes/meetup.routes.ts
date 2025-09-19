@@ -1,6 +1,7 @@
 import { FastifyInstance } from 'fastify'
 import { prisma } from '../lib/prisma'
 import { uploadToMinio } from '../config/file-storage'
+import { generateCertificate } from '../routines/generateCertificate'
 
 interface MeetupProps {
 	title: string
@@ -100,7 +101,8 @@ export async function meetupRoutes(app: FastifyInstance) {
 						creator: true,
 						subscriptions: {
 							include: {
-								person: true
+								person: true,
+								meetupRole: true
 							}
 						},
 						meetupAdmins: true,
@@ -232,6 +234,58 @@ export async function meetupRoutes(app: FastifyInstance) {
 				})
 
 				return null
+			}
+		}
+	)
+
+	app.post<{Params: { id: string, person_id: string }}>(
+		'/:id/certificate/:person_id', 
+		async (request, reply) => {
+			const { id, person_id } = request.params
+
+			try {
+				const meetup = await prisma.meetup.findUniqueOrThrow({
+					where: {
+						id
+					}
+				})
+
+				const person = await prisma.person.findUniqueOrThrow({
+					where: {
+						id: person_id
+					}
+				})
+
+				const buffer = await generateCertificate({
+					meetup,
+					person
+				})
+
+				const link = await uploadToMinio(buffer, '.pdf', 'application/pdf')
+
+				await prisma.subscription.update({
+					where: {
+						personId_meetupId: {
+							meetupId: id,
+							personId: person_id
+						}
+					},
+					data: {
+						certificateLink: link
+					}
+				})
+
+				// ENVIAR O CERTIFICADO POR EMAIL E WHATSAPP
+
+				return {
+					message: 'Certificado gerado!'
+				}
+			} catch(e: any) {
+				console.log(e)
+
+				return {
+					message: `Error: ${e.message}`
+				}
 			}
 		}
 	)
