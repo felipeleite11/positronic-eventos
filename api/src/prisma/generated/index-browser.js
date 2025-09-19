@@ -209,6 +209,12 @@ exports.Prisma.MeetupScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.MeetupInviteSheetScalarFieldEnum = {
+  id: 'id',
+  link: 'link',
+  meetupId: 'meetupId'
+};
+
 exports.Prisma.MeetupFollowerScalarFieldEnum = {
   id: 'id',
   meetupId: 'meetupId',
@@ -383,6 +389,12 @@ exports.Prisma.MeetupOrderByRelevanceFieldEnum = {
   image: 'image'
 };
 
+exports.Prisma.MeetupInviteSheetOrderByRelevanceFieldEnum = {
+  id: 'id',
+  link: 'link',
+  meetupId: 'meetupId'
+};
+
 exports.Prisma.MeetupFollowerOrderByRelevanceFieldEnum = {
   id: 'id',
   meetupId: 'meetupId',
@@ -467,6 +479,7 @@ exports.Prisma.ModelName = {
   Person: 'Person',
   Address: 'Address',
   Meetup: 'Meetup',
+  MeetupInviteSheet: 'MeetupInviteSheet',
   MeetupFollower: 'MeetupFollower',
   Category: 'Category',
   MeetupRole: 'MeetupRole',

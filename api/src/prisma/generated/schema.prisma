@@ -138,18 +138,28 @@ model Meetup {
   updatedAt    DateTime     @updatedAt
 
   // Relacionamentos
-  address       Address?         @relation(fields: [addressId], references: [id], onDelete: Cascade)
+  address       Address?            @relation(fields: [addressId], references: [id], onDelete: Cascade)
   meetupAdmins  MeetupAdmin[]
   subscriptions Subscription[]
   invites       Invite[]
   certificates  Certificate[]
   meetupMedias  MeetupMedia[]
   guestLoads    GuestLoad[]
-  category      Category         @relation(fields: [categoryId], references: [id])
-  creator       Person           @relation(fields: [creatorId], references: [id])
+  category      Category            @relation(fields: [categoryId], references: [id])
+  creator       Person              @relation(fields: [creatorId], references: [id])
   followers     MeetupFollower[]
+  inviteSheets  MeetupInviteSheet[]
 
   @@map("meetup")
+}
+
+model MeetupInviteSheet {
+  id   String @id @default(cuid())
+  link String
+
+  // Relacionamentos
+  meetupId String
+  meetup   Meetup @relation(fields: [meetupId], references: [id])
 }
 
 model MeetupFollower {

@@ -56,7 +56,7 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 	const { id } = useParams()
 
 	const router = useRouter()
-	
+
 	const [isWaiting, setIsWaiting] = useState(false)
 
 	const {
@@ -95,9 +95,9 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 			const formData = new FormData()
 
 			Object.entries(data).forEach(([key, value]) => {
-				if(key !== 'image') {
+				if (key !== 'image') {
 					formData.append(key, value)
-				} else if(value instanceof File) {
+				} else if (value instanceof File) {
 					formData.append(key, value, value.name)
 				}
 			})
@@ -117,7 +117,7 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 			toast.error(error?.message || ' Ocorreu um erro ao cadastrar o torneio.')
 		},
 		onSettled: () => {
-			setIsWaiting(false) 
+			setIsWaiting(false)
 		}
 	})
 
@@ -128,9 +128,9 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 			const formData = new FormData()
 
 			Object.entries(data).forEach(([key, value]) => {
-				if(key !== 'image') {
+				if (key !== 'image') {
 					formData.append(key, value)
-				} else if(value instanceof File) {
+				} else if (value instanceof File) {
 					formData.append(key, value, value.name)
 				}
 			})
@@ -150,7 +150,7 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 			toast.error(error?.message || ' Ocorreu um erro ao cadastrar o torneio.')
 		},
 		onSettled: () => {
-			setIsWaiting(false) 
+			setIsWaiting(false)
 		}
 	})
 
@@ -169,7 +169,7 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 	}
 
 	useEffect(() => {
-		if(meetup) {
+		if (meetup) {
 			fillFormData(meetup)
 		}
 	}, [meetup])
@@ -181,7 +181,7 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 	async function handleEdit(values: MeetupSchema) {
 		handleUpdate(values)
 	}
-	
+
 	const submitFunction = mode === 'create' ? handleAdd : handleEdit
 
 	const errorMessages = Object.values(errors)
@@ -214,33 +214,33 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 			/>
 
 			<div className="flex flex-col gap-4">
-				<Input 
-					label="Nome do evento" 
+				<Input
+					label="Nome do evento"
 					placeholder="Ex.: Palestra sobre comunicação"
 					{...register("title")}
 				/>
 
-				<Textarea 
-					label="Detalhes do evento" 
+				<Textarea
+					label="Detalhes do evento"
 					placeholder="Ex.: A palestra vem este ano recheada de novidades."
 					{...register("description")}
 				/>
 
-				<Input 
-					label="Nome do local" 
-					placeholder="Ex.: Avenida Central, 123" 
+				<Input
+					label="Nome do local"
+					placeholder="Ex.: Avenida Central, 123"
 					{...register("place")}
 				/>
 
 				<div className="flex gap-4">
-					<Input 
-						label="Data/hora de início" 
-						placeholder="Ex.: 01/01/2021 10:00h" 
+					<Input
+						label="Data/hora de início"
+						placeholder="Ex.: 01/01/2021 10:00h"
 						{...register("start")}
 					/>
 					<Input
-						label="Data/hora de término" 
-						placeholder="Ex.: 01/01/2021 11:00h" 
+						label="Data/hora de término"
+						placeholder="Ex.: 01/01/2021 11:00h"
 						{...register("end")}
 					/>
 				</div>

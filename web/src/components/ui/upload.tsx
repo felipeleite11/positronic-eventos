@@ -4,6 +4,9 @@ import * as React from "react"
 import { ReactNode } from 'react'
 import { cn } from "@/lib/utils"
 import Image from "next/image"
+import { extname } from "path"
+import { formatFileSize, IMAGE_FORMATS } from "@/util/file"
+import { File } from "lucide-react"
 
 type UploadProps = Omit<React.ComponentProps<"div">, "children"> & 
 	{ 
@@ -43,7 +46,7 @@ function UploadTrigger({ className, id, children, file, ...props }: React.Compon
 	return (
 		<label
 			className={cn(
-				'absolute top-0 cursor-pointer shadow-xs h-full w-full text-sm flex flex-col justify-center items-center px-8 py-4 rounded-md border-1 bg-white hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-800 text-slate-400 hover:opacity-70 transition-all', 
+				'absolute top-0 cursor-pointer shadow-xs h-full w-full text-sm flex flex-col justify-center items-center px-8 py-4 rounded-md border-1 bg-white hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-800 text-slate-400 hover:opacity-90 transition-all', 
 				{ 'opacity-0': !!file },
 				className
 			)}
@@ -53,7 +56,7 @@ function UploadTrigger({ className, id, children, file, ...props }: React.Compon
 			{file ? (
 				<div className="flex flex-col gap-4 items-center text-slate-600 dark:text-white">
 					<span className="font-semibold">Alterar arquivo</span>
-					<span className="text-xs">{file.name} ({Math.round(file.size / 1024)} KB)</span>
+					<span className="text-xs">{file.name}</span>
 				</div>
 			) : (children || (
 				<div className="flex flex-col gap-4 items-center">
@@ -65,10 +68,25 @@ function UploadTrigger({ className, id, children, file, ...props }: React.Compon
 }
 
 function UploadViewer({ className, children, file, ...props }: React.ComponentProps<"div"> & { file: File | null }) {
-	const url = file ? URL.createObjectURL(file) : null
-
-	if(!url) {
+	if(!file) {
 		return null
+	}
+	
+	const url = URL.createObjectURL(file)
+
+	const extension = extname(file.name)
+	
+	if(!IMAGE_FORMATS.includes(extension)) {
+		return (
+			<div
+				className={cn("flex flex-col gap-2 justify-center items-center text-slate-400 absolute top-0 h-full rounded-md overflow-hidden", className)}
+				{...props}
+			>
+				<File size={64} />
+				<span className="text-sm">{file.name}</span>
+				<span className="text-xs">{formatFileSize(file.size)}</span>
+			</div>
+		)
 	}
 
 	return (

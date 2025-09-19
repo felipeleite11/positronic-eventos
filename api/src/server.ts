@@ -16,6 +16,7 @@ import { categoryRoutes } from './routes/category.routes'
 import { personRoutes } from './routes/person.routes'
 import { sessionRoutes } from './routes/session.routes'
 import { subscriptionRoutes } from './routes/subscription.routes'
+import { inviteRoutes } from './routes/invite.routes'
 
 const fastify = Fastify({
 	logger: false
@@ -60,6 +61,7 @@ fastify.register(meetupRoutes, { prefix: '/meetup' })
 fastify.register(subscriptionRoutes, { prefix: '/subscription' })
 fastify.register(categoryRoutes, { prefix: '/category' })
 fastify.register(personRoutes, { prefix: '/person' })
+fastify.register(inviteRoutes, { prefix: '/invite' })
 
 fastify.listen({ port: +process.env.PORT!, host: '0.0.0.0' }, function (err, address) {
 	if (err) {
