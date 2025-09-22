@@ -49,20 +49,15 @@ export type Address = $Result.DefaultSelection<Prisma.$AddressPayload>
  */
 export type Meetup = $Result.DefaultSelection<Prisma.$MeetupPayload>
 /**
+ * Model CertificateModel
+ * 
+ */
+export type CertificateModel = $Result.DefaultSelection<Prisma.$CertificateModelPayload>
+/**
  * Model MeetupInviteSheet
  * 
  */
 export type MeetupInviteSheet = $Result.DefaultSelection<Prisma.$MeetupInviteSheetPayload>
-/**
- * Model MeetupFollower
- * 
- */
-export type MeetupFollower = $Result.DefaultSelection<Prisma.$MeetupFollowerPayload>
-/**
- * Model Category
- * 
- */
-export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>
 /**
  * Model MeetupRole
  * 
@@ -73,6 +68,16 @@ export type MeetupRole = $Result.DefaultSelection<Prisma.$MeetupRolePayload>
  * 
  */
 export type MeetupAdmin = $Result.DefaultSelection<Prisma.$MeetupAdminPayload>
+/**
+ * Model MeetupFollower
+ * 
+ */
+export type MeetupFollower = $Result.DefaultSelection<Prisma.$MeetupFollowerPayload>
+/**
+ * Model Category
+ * 
+ */
+export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>
 /**
  * Model Subscription
  * 
@@ -318,6 +323,16 @@ export class PrismaClient<
   get meetup(): Prisma.MeetupDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.certificateModel`: Exposes CRUD operations for the **CertificateModel** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CertificateModels
+    * const certificateModels = await prisma.certificateModel.findMany()
+    * ```
+    */
+  get certificateModel(): Prisma.CertificateModelDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.meetupInviteSheet`: Exposes CRUD operations for the **MeetupInviteSheet** model.
     * Example usage:
     * ```ts
@@ -326,26 +341,6 @@ export class PrismaClient<
     * ```
     */
   get meetupInviteSheet(): Prisma.MeetupInviteSheetDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.meetupFollower`: Exposes CRUD operations for the **MeetupFollower** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more MeetupFollowers
-    * const meetupFollowers = await prisma.meetupFollower.findMany()
-    * ```
-    */
-  get meetupFollower(): Prisma.MeetupFollowerDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.category`: Exposes CRUD operations for the **Category** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Categories
-    * const categories = await prisma.category.findMany()
-    * ```
-    */
-  get category(): Prisma.CategoryDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.meetupRole`: Exposes CRUD operations for the **MeetupRole** model.
@@ -366,6 +361,26 @@ export class PrismaClient<
     * ```
     */
   get meetupAdmin(): Prisma.MeetupAdminDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.meetupFollower`: Exposes CRUD operations for the **MeetupFollower** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MeetupFollowers
+    * const meetupFollowers = await prisma.meetupFollower.findMany()
+    * ```
+    */
+  get meetupFollower(): Prisma.MeetupFollowerDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.category`: Exposes CRUD operations for the **Category** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Categories
+    * const categories = await prisma.category.findMany()
+    * ```
+    */
+  get category(): Prisma.CategoryDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.subscription`: Exposes CRUD operations for the **Subscription** model.
@@ -494,7 +509,7 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.16.1
+   * Prisma Client JS version: 6.16.2
    * Query Engine version: 1c57fdcd7e44b29b9313256c76699e91c3ac3c43
    */
   export type PrismaVersion = {
@@ -883,11 +898,12 @@ export namespace Prisma {
     Person: 'Person',
     Address: 'Address',
     Meetup: 'Meetup',
+    CertificateModel: 'CertificateModel',
     MeetupInviteSheet: 'MeetupInviteSheet',
-    MeetupFollower: 'MeetupFollower',
-    Category: 'Category',
     MeetupRole: 'MeetupRole',
     MeetupAdmin: 'MeetupAdmin',
+    MeetupFollower: 'MeetupFollower',
+    Category: 'Category',
     Subscription: 'Subscription',
     Invite: 'Invite',
     Payment: 'Payment',
@@ -913,7 +929,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "verification" | "person" | "address" | "meetup" | "meetupInviteSheet" | "meetupFollower" | "category" | "meetupRole" | "meetupAdmin" | "subscription" | "invite" | "payment" | "subscriptionPayment" | "certificate" | "meetupMedia" | "guestLoad"
+      modelProps: "user" | "session" | "account" | "verification" | "person" | "address" | "meetup" | "certificateModel" | "meetupInviteSheet" | "meetupRole" | "meetupAdmin" | "meetupFollower" | "category" | "subscription" | "invite" | "payment" | "subscriptionPayment" | "certificate" | "meetupMedia" | "guestLoad"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1379,6 +1395,72 @@ export namespace Prisma {
           }
         }
       }
+      CertificateModel: {
+        payload: Prisma.$CertificateModelPayload<ExtArgs>
+        fields: Prisma.CertificateModelFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CertificateModelFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificateModelPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CertificateModelFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificateModelPayload>
+          }
+          findFirst: {
+            args: Prisma.CertificateModelFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificateModelPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CertificateModelFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificateModelPayload>
+          }
+          findMany: {
+            args: Prisma.CertificateModelFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificateModelPayload>[]
+          }
+          create: {
+            args: Prisma.CertificateModelCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificateModelPayload>
+          }
+          createMany: {
+            args: Prisma.CertificateModelCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.CertificateModelDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificateModelPayload>
+          }
+          update: {
+            args: Prisma.CertificateModelUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificateModelPayload>
+          }
+          deleteMany: {
+            args: Prisma.CertificateModelDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CertificateModelUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.CertificateModelUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificateModelPayload>
+          }
+          aggregate: {
+            args: Prisma.CertificateModelAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCertificateModel>
+          }
+          groupBy: {
+            args: Prisma.CertificateModelGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CertificateModelGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CertificateModelCountArgs<ExtArgs>
+            result: $Utils.Optional<CertificateModelCountAggregateOutputType> | number
+          }
+        }
+      }
       MeetupInviteSheet: {
         payload: Prisma.$MeetupInviteSheetPayload<ExtArgs>
         fields: Prisma.MeetupInviteSheetFieldRefs
@@ -1442,138 +1524,6 @@ export namespace Prisma {
           count: {
             args: Prisma.MeetupInviteSheetCountArgs<ExtArgs>
             result: $Utils.Optional<MeetupInviteSheetCountAggregateOutputType> | number
-          }
-        }
-      }
-      MeetupFollower: {
-        payload: Prisma.$MeetupFollowerPayload<ExtArgs>
-        fields: Prisma.MeetupFollowerFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.MeetupFollowerFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.MeetupFollowerFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>
-          }
-          findFirst: {
-            args: Prisma.MeetupFollowerFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.MeetupFollowerFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>
-          }
-          findMany: {
-            args: Prisma.MeetupFollowerFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>[]
-          }
-          create: {
-            args: Prisma.MeetupFollowerCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>
-          }
-          createMany: {
-            args: Prisma.MeetupFollowerCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          delete: {
-            args: Prisma.MeetupFollowerDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>
-          }
-          update: {
-            args: Prisma.MeetupFollowerUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>
-          }
-          deleteMany: {
-            args: Prisma.MeetupFollowerDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.MeetupFollowerUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          upsert: {
-            args: Prisma.MeetupFollowerUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>
-          }
-          aggregate: {
-            args: Prisma.MeetupFollowerAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateMeetupFollower>
-          }
-          groupBy: {
-            args: Prisma.MeetupFollowerGroupByArgs<ExtArgs>
-            result: $Utils.Optional<MeetupFollowerGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.MeetupFollowerCountArgs<ExtArgs>
-            result: $Utils.Optional<MeetupFollowerCountAggregateOutputType> | number
-          }
-        }
-      }
-      Category: {
-        payload: Prisma.$CategoryPayload<ExtArgs>
-        fields: Prisma.CategoryFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.CategoryFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.CategoryFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
-          }
-          findFirst: {
-            args: Prisma.CategoryFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.CategoryFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
-          }
-          findMany: {
-            args: Prisma.CategoryFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
-          }
-          create: {
-            args: Prisma.CategoryCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
-          }
-          createMany: {
-            args: Prisma.CategoryCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          delete: {
-            args: Prisma.CategoryDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
-          }
-          update: {
-            args: Prisma.CategoryUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
-          }
-          deleteMany: {
-            args: Prisma.CategoryDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.CategoryUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          upsert: {
-            args: Prisma.CategoryUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
-          }
-          aggregate: {
-            args: Prisma.CategoryAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCategory>
-          }
-          groupBy: {
-            args: Prisma.CategoryGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CategoryGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.CategoryCountArgs<ExtArgs>
-            result: $Utils.Optional<CategoryCountAggregateOutputType> | number
           }
         }
       }
@@ -1706,6 +1656,138 @@ export namespace Prisma {
           count: {
             args: Prisma.MeetupAdminCountArgs<ExtArgs>
             result: $Utils.Optional<MeetupAdminCountAggregateOutputType> | number
+          }
+        }
+      }
+      MeetupFollower: {
+        payload: Prisma.$MeetupFollowerPayload<ExtArgs>
+        fields: Prisma.MeetupFollowerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MeetupFollowerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MeetupFollowerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>
+          }
+          findFirst: {
+            args: Prisma.MeetupFollowerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MeetupFollowerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>
+          }
+          findMany: {
+            args: Prisma.MeetupFollowerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>[]
+          }
+          create: {
+            args: Prisma.MeetupFollowerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>
+          }
+          createMany: {
+            args: Prisma.MeetupFollowerCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.MeetupFollowerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>
+          }
+          update: {
+            args: Prisma.MeetupFollowerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>
+          }
+          deleteMany: {
+            args: Prisma.MeetupFollowerDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MeetupFollowerUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.MeetupFollowerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupFollowerPayload>
+          }
+          aggregate: {
+            args: Prisma.MeetupFollowerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMeetupFollower>
+          }
+          groupBy: {
+            args: Prisma.MeetupFollowerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MeetupFollowerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MeetupFollowerCountArgs<ExtArgs>
+            result: $Utils.Optional<MeetupFollowerCountAggregateOutputType> | number
+          }
+        }
+      }
+      Category: {
+        payload: Prisma.$CategoryPayload<ExtArgs>
+        fields: Prisma.CategoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CategoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CategoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          findFirst: {
+            args: Prisma.CategoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CategoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          findMany: {
+            args: Prisma.CategoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
+          }
+          create: {
+            args: Prisma.CategoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          createMany: {
+            args: Prisma.CategoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.CategoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          update: {
+            args: Prisma.CategoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.CategoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CategoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.CategoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          aggregate: {
+            args: Prisma.CategoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCategory>
+          }
+          groupBy: {
+            args: Prisma.CategoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CategoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CategoryCountArgs<ExtArgs>
+            result: $Utils.Optional<CategoryCountAggregateOutputType> | number
           }
         }
       }
@@ -2274,11 +2356,12 @@ export namespace Prisma {
     person?: PersonOmit
     address?: AddressOmit
     meetup?: MeetupOmit
+    certificateModel?: CertificateModelOmit
     meetupInviteSheet?: MeetupInviteSheetOmit
-    meetupFollower?: MeetupFollowerOmit
-    category?: CategoryOmit
     meetupRole?: MeetupRoleOmit
     meetupAdmin?: MeetupAdminOmit
+    meetupFollower?: MeetupFollowerOmit
+    category?: CategoryOmit
     subscription?: SubscriptionOmit
     invite?: InviteOmit
     payment?: PaymentOmit
@@ -2621,37 +2704,6 @@ export namespace Prisma {
 
 
   /**
-   * Count Type CategoryCountOutputType
-   */
-
-  export type CategoryCountOutputType = {
-    meetups: number
-  }
-
-  export type CategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    meetups?: boolean | CategoryCountOutputTypeCountMeetupsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * CategoryCountOutputType without action
-   */
-  export type CategoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CategoryCountOutputType
-     */
-    select?: CategoryCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * CategoryCountOutputType without action
-   */
-  export type CategoryCountOutputTypeCountMeetupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: MeetupWhereInput
-  }
-
-
-  /**
    * Count Type MeetupRoleCountOutputType
    */
 
@@ -2679,6 +2731,37 @@ export namespace Prisma {
    */
   export type MeetupRoleCountOutputTypeCountSubscriptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SubscriptionWhereInput
+  }
+
+
+  /**
+   * Count Type CategoryCountOutputType
+   */
+
+  export type CategoryCountOutputType = {
+    meetups: number
+  }
+
+  export type CategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meetups?: boolean | CategoryCountOutputTypeCountMeetupsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryCountOutputType
+     */
+    select?: CategoryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeCountMeetupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetupWhereInput
   }
 
 
@@ -8904,8 +8987,18 @@ export namespace Prisma {
 
   export type AggregateMeetup = {
     _count: MeetupCountAggregateOutputType | null
+    _avg: MeetupAvgAggregateOutputType | null
+    _sum: MeetupSumAggregateOutputType | null
     _min: MeetupMinAggregateOutputType | null
     _max: MeetupMaxAggregateOutputType | null
+  }
+
+  export type MeetupAvgAggregateOutputType = {
+    workload: number | null
+  }
+
+  export type MeetupSumAggregateOutputType = {
+    workload: number | null
   }
 
   export type MeetupMinAggregateOutputType = {
@@ -8918,7 +9011,9 @@ export namespace Prisma {
     addressId: string | null
     categoryId: string | null
     creatorId: string | null
+    certificateModelId: string | null
     image: string | null
+    workload: number | null
     status: $Enums.MeetupStatus | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -8934,7 +9029,9 @@ export namespace Prisma {
     addressId: string | null
     categoryId: string | null
     creatorId: string | null
+    certificateModelId: string | null
     image: string | null
+    workload: number | null
     status: $Enums.MeetupStatus | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -8950,13 +9047,23 @@ export namespace Prisma {
     addressId: number
     categoryId: number
     creatorId: number
+    certificateModelId: number
     image: number
+    workload: number
     status: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
+
+  export type MeetupAvgAggregateInputType = {
+    workload?: true
+  }
+
+  export type MeetupSumAggregateInputType = {
+    workload?: true
+  }
 
   export type MeetupMinAggregateInputType = {
     id?: true
@@ -8968,7 +9075,9 @@ export namespace Prisma {
     addressId?: true
     categoryId?: true
     creatorId?: true
+    certificateModelId?: true
     image?: true
+    workload?: true
     status?: true
     createdAt?: true
     updatedAt?: true
@@ -8984,7 +9093,9 @@ export namespace Prisma {
     addressId?: true
     categoryId?: true
     creatorId?: true
+    certificateModelId?: true
     image?: true
+    workload?: true
     status?: true
     createdAt?: true
     updatedAt?: true
@@ -9000,7 +9111,9 @@ export namespace Prisma {
     addressId?: true
     categoryId?: true
     creatorId?: true
+    certificateModelId?: true
     image?: true
+    workload?: true
     status?: true
     createdAt?: true
     updatedAt?: true
@@ -9045,6 +9158,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: MeetupAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MeetupSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: MeetupMinAggregateInputType
@@ -9075,6 +9200,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: MeetupCountAggregateInputType | true
+    _avg?: MeetupAvgAggregateInputType
+    _sum?: MeetupSumAggregateInputType
     _min?: MeetupMinAggregateInputType
     _max?: MeetupMaxAggregateInputType
   }
@@ -9089,11 +9216,15 @@ export namespace Prisma {
     addressId: string | null
     categoryId: string
     creatorId: string
+    certificateModelId: string | null
     image: string | null
+    workload: number | null
     status: $Enums.MeetupStatus
     createdAt: Date
     updatedAt: Date
     _count: MeetupCountAggregateOutputType | null
+    _avg: MeetupAvgAggregateOutputType | null
+    _sum: MeetupSumAggregateOutputType | null
     _min: MeetupMinAggregateOutputType | null
     _max: MeetupMaxAggregateOutputType | null
   }
@@ -9122,7 +9253,9 @@ export namespace Prisma {
     addressId?: boolean
     categoryId?: boolean
     creatorId?: boolean
+    certificateModelId?: boolean
     image?: boolean
+    workload?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -9137,6 +9270,7 @@ export namespace Prisma {
     creator?: boolean | PersonDefaultArgs<ExtArgs>
     followers?: boolean | Meetup$followersArgs<ExtArgs>
     inviteSheets?: boolean | Meetup$inviteSheetsArgs<ExtArgs>
+    certificateModel?: boolean | Meetup$certificateModelArgs<ExtArgs>
     _count?: boolean | MeetupCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["meetup"]>
 
@@ -9152,13 +9286,15 @@ export namespace Prisma {
     addressId?: boolean
     categoryId?: boolean
     creatorId?: boolean
+    certificateModelId?: boolean
     image?: boolean
+    workload?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type MeetupOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "locationName" | "start" | "end" | "addressId" | "categoryId" | "creatorId" | "image" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["meetup"]>
+  export type MeetupOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "locationName" | "start" | "end" | "addressId" | "categoryId" | "creatorId" | "certificateModelId" | "image" | "workload" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["meetup"]>
   export type MeetupInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     address?: boolean | Meetup$addressArgs<ExtArgs>
     meetupAdmins?: boolean | Meetup$meetupAdminsArgs<ExtArgs>
@@ -9171,6 +9307,7 @@ export namespace Prisma {
     creator?: boolean | PersonDefaultArgs<ExtArgs>
     followers?: boolean | Meetup$followersArgs<ExtArgs>
     inviteSheets?: boolean | Meetup$inviteSheetsArgs<ExtArgs>
+    certificateModel?: boolean | Meetup$certificateModelArgs<ExtArgs>
     _count?: boolean | MeetupCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -9188,6 +9325,7 @@ export namespace Prisma {
       creator: Prisma.$PersonPayload<ExtArgs>
       followers: Prisma.$MeetupFollowerPayload<ExtArgs>[]
       inviteSheets: Prisma.$MeetupInviteSheetPayload<ExtArgs>[]
+      certificateModel: Prisma.$CertificateModelPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -9199,7 +9337,9 @@ export namespace Prisma {
       addressId: string | null
       categoryId: string
       creatorId: string
+      certificateModelId: string | null
       image: string | null
+      workload: number | null
       status: $Enums.MeetupStatus
       createdAt: Date
       updatedAt: Date
@@ -9554,6 +9694,7 @@ export namespace Prisma {
     creator<T extends PersonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PersonDefaultArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     followers<T extends Meetup$followersArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$followersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     inviteSheets<T extends Meetup$inviteSheetsArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$inviteSheetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupInviteSheetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    certificateModel<T extends Meetup$certificateModelArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$certificateModelArgs<ExtArgs>>): Prisma__CertificateModelClient<$Result.GetResult<Prisma.$CertificateModelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9592,7 +9733,9 @@ export namespace Prisma {
     readonly addressId: FieldRef<"Meetup", 'String'>
     readonly categoryId: FieldRef<"Meetup", 'String'>
     readonly creatorId: FieldRef<"Meetup", 'String'>
+    readonly certificateModelId: FieldRef<"Meetup", 'String'>
     readonly image: FieldRef<"Meetup", 'String'>
+    readonly workload: FieldRef<"Meetup", 'Int'>
     readonly status: FieldRef<"Meetup", 'MeetupStatus'>
     readonly createdAt: FieldRef<"Meetup", 'DateTime'>
     readonly updatedAt: FieldRef<"Meetup", 'DateTime'>
@@ -10150,6 +10293,25 @@ export namespace Prisma {
   }
 
   /**
+   * Meetup.certificateModel
+   */
+  export type Meetup$certificateModelArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CertificateModel
+     */
+    select?: CertificateModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CertificateModel
+     */
+    omit?: CertificateModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateModelInclude<ExtArgs> | null
+    where?: CertificateModelWhereInput
+  }
+
+  /**
    * Meetup without action
    */
   export type MeetupDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10165,6 +10327,943 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: MeetupInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CertificateModel
+   */
+
+  export type AggregateCertificateModel = {
+    _count: CertificateModelCountAggregateOutputType | null
+    _min: CertificateModelMinAggregateOutputType | null
+    _max: CertificateModelMaxAggregateOutputType | null
+  }
+
+  export type CertificateModelMinAggregateOutputType = {
+    id: string | null
+    imageLink: string | null
+    content: string | null
+    createdAt: Date | null
+  }
+
+  export type CertificateModelMaxAggregateOutputType = {
+    id: string | null
+    imageLink: string | null
+    content: string | null
+    createdAt: Date | null
+  }
+
+  export type CertificateModelCountAggregateOutputType = {
+    id: number
+    imageLink: number
+    content: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type CertificateModelMinAggregateInputType = {
+    id?: true
+    imageLink?: true
+    content?: true
+    createdAt?: true
+  }
+
+  export type CertificateModelMaxAggregateInputType = {
+    id?: true
+    imageLink?: true
+    content?: true
+    createdAt?: true
+  }
+
+  export type CertificateModelCountAggregateInputType = {
+    id?: true
+    imageLink?: true
+    content?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type CertificateModelAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CertificateModel to aggregate.
+     */
+    where?: CertificateModelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CertificateModels to fetch.
+     */
+    orderBy?: CertificateModelOrderByWithRelationInput | CertificateModelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CertificateModelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CertificateModels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CertificateModels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CertificateModels
+    **/
+    _count?: true | CertificateModelCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CertificateModelMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CertificateModelMaxAggregateInputType
+  }
+
+  export type GetCertificateModelAggregateType<T extends CertificateModelAggregateArgs> = {
+        [P in keyof T & keyof AggregateCertificateModel]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCertificateModel[P]>
+      : GetScalarType<T[P], AggregateCertificateModel[P]>
+  }
+
+
+
+
+  export type CertificateModelGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CertificateModelWhereInput
+    orderBy?: CertificateModelOrderByWithAggregationInput | CertificateModelOrderByWithAggregationInput[]
+    by: CertificateModelScalarFieldEnum[] | CertificateModelScalarFieldEnum
+    having?: CertificateModelScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CertificateModelCountAggregateInputType | true
+    _min?: CertificateModelMinAggregateInputType
+    _max?: CertificateModelMaxAggregateInputType
+  }
+
+  export type CertificateModelGroupByOutputType = {
+    id: string
+    imageLink: string
+    content: string
+    createdAt: Date
+    _count: CertificateModelCountAggregateOutputType | null
+    _min: CertificateModelMinAggregateOutputType | null
+    _max: CertificateModelMaxAggregateOutputType | null
+  }
+
+  type GetCertificateModelGroupByPayload<T extends CertificateModelGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CertificateModelGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CertificateModelGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CertificateModelGroupByOutputType[P]>
+            : GetScalarType<T[P], CertificateModelGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CertificateModelSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    imageLink?: boolean
+    content?: boolean
+    createdAt?: boolean
+    meetup?: boolean | CertificateModel$meetupArgs<ExtArgs>
+  }, ExtArgs["result"]["certificateModel"]>
+
+
+
+  export type CertificateModelSelectScalar = {
+    id?: boolean
+    imageLink?: boolean
+    content?: boolean
+    createdAt?: boolean
+  }
+
+  export type CertificateModelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "imageLink" | "content" | "createdAt", ExtArgs["result"]["certificateModel"]>
+  export type CertificateModelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meetup?: boolean | CertificateModel$meetupArgs<ExtArgs>
+  }
+
+  export type $CertificateModelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CertificateModel"
+    objects: {
+      meetup: Prisma.$MeetupPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      imageLink: string
+      content: string
+      createdAt: Date
+    }, ExtArgs["result"]["certificateModel"]>
+    composites: {}
+  }
+
+  type CertificateModelGetPayload<S extends boolean | null | undefined | CertificateModelDefaultArgs> = $Result.GetResult<Prisma.$CertificateModelPayload, S>
+
+  type CertificateModelCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CertificateModelFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CertificateModelCountAggregateInputType | true
+    }
+
+  export interface CertificateModelDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CertificateModel'], meta: { name: 'CertificateModel' } }
+    /**
+     * Find zero or one CertificateModel that matches the filter.
+     * @param {CertificateModelFindUniqueArgs} args - Arguments to find a CertificateModel
+     * @example
+     * // Get one CertificateModel
+     * const certificateModel = await prisma.certificateModel.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CertificateModelFindUniqueArgs>(args: SelectSubset<T, CertificateModelFindUniqueArgs<ExtArgs>>): Prisma__CertificateModelClient<$Result.GetResult<Prisma.$CertificateModelPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CertificateModel that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CertificateModelFindUniqueOrThrowArgs} args - Arguments to find a CertificateModel
+     * @example
+     * // Get one CertificateModel
+     * const certificateModel = await prisma.certificateModel.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CertificateModelFindUniqueOrThrowArgs>(args: SelectSubset<T, CertificateModelFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CertificateModelClient<$Result.GetResult<Prisma.$CertificateModelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CertificateModel that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateModelFindFirstArgs} args - Arguments to find a CertificateModel
+     * @example
+     * // Get one CertificateModel
+     * const certificateModel = await prisma.certificateModel.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CertificateModelFindFirstArgs>(args?: SelectSubset<T, CertificateModelFindFirstArgs<ExtArgs>>): Prisma__CertificateModelClient<$Result.GetResult<Prisma.$CertificateModelPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CertificateModel that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateModelFindFirstOrThrowArgs} args - Arguments to find a CertificateModel
+     * @example
+     * // Get one CertificateModel
+     * const certificateModel = await prisma.certificateModel.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CertificateModelFindFirstOrThrowArgs>(args?: SelectSubset<T, CertificateModelFindFirstOrThrowArgs<ExtArgs>>): Prisma__CertificateModelClient<$Result.GetResult<Prisma.$CertificateModelPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CertificateModels that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateModelFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CertificateModels
+     * const certificateModels = await prisma.certificateModel.findMany()
+     * 
+     * // Get first 10 CertificateModels
+     * const certificateModels = await prisma.certificateModel.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const certificateModelWithIdOnly = await prisma.certificateModel.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CertificateModelFindManyArgs>(args?: SelectSubset<T, CertificateModelFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CertificateModelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CertificateModel.
+     * @param {CertificateModelCreateArgs} args - Arguments to create a CertificateModel.
+     * @example
+     * // Create one CertificateModel
+     * const CertificateModel = await prisma.certificateModel.create({
+     *   data: {
+     *     // ... data to create a CertificateModel
+     *   }
+     * })
+     * 
+     */
+    create<T extends CertificateModelCreateArgs>(args: SelectSubset<T, CertificateModelCreateArgs<ExtArgs>>): Prisma__CertificateModelClient<$Result.GetResult<Prisma.$CertificateModelPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CertificateModels.
+     * @param {CertificateModelCreateManyArgs} args - Arguments to create many CertificateModels.
+     * @example
+     * // Create many CertificateModels
+     * const certificateModel = await prisma.certificateModel.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CertificateModelCreateManyArgs>(args?: SelectSubset<T, CertificateModelCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a CertificateModel.
+     * @param {CertificateModelDeleteArgs} args - Arguments to delete one CertificateModel.
+     * @example
+     * // Delete one CertificateModel
+     * const CertificateModel = await prisma.certificateModel.delete({
+     *   where: {
+     *     // ... filter to delete one CertificateModel
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CertificateModelDeleteArgs>(args: SelectSubset<T, CertificateModelDeleteArgs<ExtArgs>>): Prisma__CertificateModelClient<$Result.GetResult<Prisma.$CertificateModelPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CertificateModel.
+     * @param {CertificateModelUpdateArgs} args - Arguments to update one CertificateModel.
+     * @example
+     * // Update one CertificateModel
+     * const certificateModel = await prisma.certificateModel.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CertificateModelUpdateArgs>(args: SelectSubset<T, CertificateModelUpdateArgs<ExtArgs>>): Prisma__CertificateModelClient<$Result.GetResult<Prisma.$CertificateModelPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CertificateModels.
+     * @param {CertificateModelDeleteManyArgs} args - Arguments to filter CertificateModels to delete.
+     * @example
+     * // Delete a few CertificateModels
+     * const { count } = await prisma.certificateModel.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CertificateModelDeleteManyArgs>(args?: SelectSubset<T, CertificateModelDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CertificateModels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateModelUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CertificateModels
+     * const certificateModel = await prisma.certificateModel.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CertificateModelUpdateManyArgs>(args: SelectSubset<T, CertificateModelUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one CertificateModel.
+     * @param {CertificateModelUpsertArgs} args - Arguments to update or create a CertificateModel.
+     * @example
+     * // Update or create a CertificateModel
+     * const certificateModel = await prisma.certificateModel.upsert({
+     *   create: {
+     *     // ... data to create a CertificateModel
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CertificateModel we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CertificateModelUpsertArgs>(args: SelectSubset<T, CertificateModelUpsertArgs<ExtArgs>>): Prisma__CertificateModelClient<$Result.GetResult<Prisma.$CertificateModelPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CertificateModels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateModelCountArgs} args - Arguments to filter CertificateModels to count.
+     * @example
+     * // Count the number of CertificateModels
+     * const count = await prisma.certificateModel.count({
+     *   where: {
+     *     // ... the filter for the CertificateModels we want to count
+     *   }
+     * })
+    **/
+    count<T extends CertificateModelCountArgs>(
+      args?: Subset<T, CertificateModelCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CertificateModelCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CertificateModel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateModelAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CertificateModelAggregateArgs>(args: Subset<T, CertificateModelAggregateArgs>): Prisma.PrismaPromise<GetCertificateModelAggregateType<T>>
+
+    /**
+     * Group by CertificateModel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateModelGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CertificateModelGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CertificateModelGroupByArgs['orderBy'] }
+        : { orderBy?: CertificateModelGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CertificateModelGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCertificateModelGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CertificateModel model
+   */
+  readonly fields: CertificateModelFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CertificateModel.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CertificateModelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    meetup<T extends CertificateModel$meetupArgs<ExtArgs> = {}>(args?: Subset<T, CertificateModel$meetupArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CertificateModel model
+   */
+  interface CertificateModelFieldRefs {
+    readonly id: FieldRef<"CertificateModel", 'String'>
+    readonly imageLink: FieldRef<"CertificateModel", 'String'>
+    readonly content: FieldRef<"CertificateModel", 'String'>
+    readonly createdAt: FieldRef<"CertificateModel", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CertificateModel findUnique
+   */
+  export type CertificateModelFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CertificateModel
+     */
+    select?: CertificateModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CertificateModel
+     */
+    omit?: CertificateModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateModelInclude<ExtArgs> | null
+    /**
+     * Filter, which CertificateModel to fetch.
+     */
+    where: CertificateModelWhereUniqueInput
+  }
+
+  /**
+   * CertificateModel findUniqueOrThrow
+   */
+  export type CertificateModelFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CertificateModel
+     */
+    select?: CertificateModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CertificateModel
+     */
+    omit?: CertificateModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateModelInclude<ExtArgs> | null
+    /**
+     * Filter, which CertificateModel to fetch.
+     */
+    where: CertificateModelWhereUniqueInput
+  }
+
+  /**
+   * CertificateModel findFirst
+   */
+  export type CertificateModelFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CertificateModel
+     */
+    select?: CertificateModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CertificateModel
+     */
+    omit?: CertificateModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateModelInclude<ExtArgs> | null
+    /**
+     * Filter, which CertificateModel to fetch.
+     */
+    where?: CertificateModelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CertificateModels to fetch.
+     */
+    orderBy?: CertificateModelOrderByWithRelationInput | CertificateModelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CertificateModels.
+     */
+    cursor?: CertificateModelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CertificateModels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CertificateModels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CertificateModels.
+     */
+    distinct?: CertificateModelScalarFieldEnum | CertificateModelScalarFieldEnum[]
+  }
+
+  /**
+   * CertificateModel findFirstOrThrow
+   */
+  export type CertificateModelFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CertificateModel
+     */
+    select?: CertificateModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CertificateModel
+     */
+    omit?: CertificateModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateModelInclude<ExtArgs> | null
+    /**
+     * Filter, which CertificateModel to fetch.
+     */
+    where?: CertificateModelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CertificateModels to fetch.
+     */
+    orderBy?: CertificateModelOrderByWithRelationInput | CertificateModelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CertificateModels.
+     */
+    cursor?: CertificateModelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CertificateModels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CertificateModels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CertificateModels.
+     */
+    distinct?: CertificateModelScalarFieldEnum | CertificateModelScalarFieldEnum[]
+  }
+
+  /**
+   * CertificateModel findMany
+   */
+  export type CertificateModelFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CertificateModel
+     */
+    select?: CertificateModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CertificateModel
+     */
+    omit?: CertificateModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateModelInclude<ExtArgs> | null
+    /**
+     * Filter, which CertificateModels to fetch.
+     */
+    where?: CertificateModelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CertificateModels to fetch.
+     */
+    orderBy?: CertificateModelOrderByWithRelationInput | CertificateModelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CertificateModels.
+     */
+    cursor?: CertificateModelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CertificateModels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CertificateModels.
+     */
+    skip?: number
+    distinct?: CertificateModelScalarFieldEnum | CertificateModelScalarFieldEnum[]
+  }
+
+  /**
+   * CertificateModel create
+   */
+  export type CertificateModelCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CertificateModel
+     */
+    select?: CertificateModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CertificateModel
+     */
+    omit?: CertificateModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateModelInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CertificateModel.
+     */
+    data: XOR<CertificateModelCreateInput, CertificateModelUncheckedCreateInput>
+  }
+
+  /**
+   * CertificateModel createMany
+   */
+  export type CertificateModelCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CertificateModels.
+     */
+    data: CertificateModelCreateManyInput | CertificateModelCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CertificateModel update
+   */
+  export type CertificateModelUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CertificateModel
+     */
+    select?: CertificateModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CertificateModel
+     */
+    omit?: CertificateModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateModelInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CertificateModel.
+     */
+    data: XOR<CertificateModelUpdateInput, CertificateModelUncheckedUpdateInput>
+    /**
+     * Choose, which CertificateModel to update.
+     */
+    where: CertificateModelWhereUniqueInput
+  }
+
+  /**
+   * CertificateModel updateMany
+   */
+  export type CertificateModelUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CertificateModels.
+     */
+    data: XOR<CertificateModelUpdateManyMutationInput, CertificateModelUncheckedUpdateManyInput>
+    /**
+     * Filter which CertificateModels to update
+     */
+    where?: CertificateModelWhereInput
+    /**
+     * Limit how many CertificateModels to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CertificateModel upsert
+   */
+  export type CertificateModelUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CertificateModel
+     */
+    select?: CertificateModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CertificateModel
+     */
+    omit?: CertificateModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateModelInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CertificateModel to update in case it exists.
+     */
+    where: CertificateModelWhereUniqueInput
+    /**
+     * In case the CertificateModel found by the `where` argument doesn't exist, create a new CertificateModel with this data.
+     */
+    create: XOR<CertificateModelCreateInput, CertificateModelUncheckedCreateInput>
+    /**
+     * In case the CertificateModel was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CertificateModelUpdateInput, CertificateModelUncheckedUpdateInput>
+  }
+
+  /**
+   * CertificateModel delete
+   */
+  export type CertificateModelDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CertificateModel
+     */
+    select?: CertificateModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CertificateModel
+     */
+    omit?: CertificateModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateModelInclude<ExtArgs> | null
+    /**
+     * Filter which CertificateModel to delete.
+     */
+    where: CertificateModelWhereUniqueInput
+  }
+
+  /**
+   * CertificateModel deleteMany
+   */
+  export type CertificateModelDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CertificateModels to delete
+     */
+    where?: CertificateModelWhereInput
+    /**
+     * Limit how many CertificateModels to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CertificateModel.meetup
+   */
+  export type CertificateModel$meetupArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Meetup
+     */
+    select?: MeetupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Meetup
+     */
+    omit?: MeetupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupInclude<ExtArgs> | null
+    where?: MeetupWhereInput
+  }
+
+  /**
+   * CertificateModel without action
+   */
+  export type CertificateModelDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CertificateModel
+     */
+    select?: CertificateModelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CertificateModel
+     */
+    omit?: CertificateModelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateModelInclude<ExtArgs> | null
   }
 
 
@@ -11072,1872 +12171,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: MeetupInviteSheetInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model MeetupFollower
-   */
-
-  export type AggregateMeetupFollower = {
-    _count: MeetupFollowerCountAggregateOutputType | null
-    _min: MeetupFollowerMinAggregateOutputType | null
-    _max: MeetupFollowerMaxAggregateOutputType | null
-  }
-
-  export type MeetupFollowerMinAggregateOutputType = {
-    id: string | null
-    meetupId: string | null
-    personId: string | null
-    createdAt: Date | null
-  }
-
-  export type MeetupFollowerMaxAggregateOutputType = {
-    id: string | null
-    meetupId: string | null
-    personId: string | null
-    createdAt: Date | null
-  }
-
-  export type MeetupFollowerCountAggregateOutputType = {
-    id: number
-    meetupId: number
-    personId: number
-    createdAt: number
-    _all: number
-  }
-
-
-  export type MeetupFollowerMinAggregateInputType = {
-    id?: true
-    meetupId?: true
-    personId?: true
-    createdAt?: true
-  }
-
-  export type MeetupFollowerMaxAggregateInputType = {
-    id?: true
-    meetupId?: true
-    personId?: true
-    createdAt?: true
-  }
-
-  export type MeetupFollowerCountAggregateInputType = {
-    id?: true
-    meetupId?: true
-    personId?: true
-    createdAt?: true
-    _all?: true
-  }
-
-  export type MeetupFollowerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which MeetupFollower to aggregate.
-     */
-    where?: MeetupFollowerWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of MeetupFollowers to fetch.
-     */
-    orderBy?: MeetupFollowerOrderByWithRelationInput | MeetupFollowerOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: MeetupFollowerWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` MeetupFollowers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` MeetupFollowers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned MeetupFollowers
-    **/
-    _count?: true | MeetupFollowerCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: MeetupFollowerMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: MeetupFollowerMaxAggregateInputType
-  }
-
-  export type GetMeetupFollowerAggregateType<T extends MeetupFollowerAggregateArgs> = {
-        [P in keyof T & keyof AggregateMeetupFollower]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateMeetupFollower[P]>
-      : GetScalarType<T[P], AggregateMeetupFollower[P]>
-  }
-
-
-
-
-  export type MeetupFollowerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: MeetupFollowerWhereInput
-    orderBy?: MeetupFollowerOrderByWithAggregationInput | MeetupFollowerOrderByWithAggregationInput[]
-    by: MeetupFollowerScalarFieldEnum[] | MeetupFollowerScalarFieldEnum
-    having?: MeetupFollowerScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: MeetupFollowerCountAggregateInputType | true
-    _min?: MeetupFollowerMinAggregateInputType
-    _max?: MeetupFollowerMaxAggregateInputType
-  }
-
-  export type MeetupFollowerGroupByOutputType = {
-    id: string
-    meetupId: string
-    personId: string
-    createdAt: Date
-    _count: MeetupFollowerCountAggregateOutputType | null
-    _min: MeetupFollowerMinAggregateOutputType | null
-    _max: MeetupFollowerMaxAggregateOutputType | null
-  }
-
-  type GetMeetupFollowerGroupByPayload<T extends MeetupFollowerGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<MeetupFollowerGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof MeetupFollowerGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], MeetupFollowerGroupByOutputType[P]>
-            : GetScalarType<T[P], MeetupFollowerGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type MeetupFollowerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    meetupId?: boolean
-    personId?: boolean
-    createdAt?: boolean
-    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
-    person?: boolean | PersonDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["meetupFollower"]>
-
-
-
-  export type MeetupFollowerSelectScalar = {
-    id?: boolean
-    meetupId?: boolean
-    personId?: boolean
-    createdAt?: boolean
-  }
-
-  export type MeetupFollowerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "meetupId" | "personId" | "createdAt", ExtArgs["result"]["meetupFollower"]>
-  export type MeetupFollowerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
-    person?: boolean | PersonDefaultArgs<ExtArgs>
-  }
-
-  export type $MeetupFollowerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "MeetupFollower"
-    objects: {
-      meetup: Prisma.$MeetupPayload<ExtArgs>
-      person: Prisma.$PersonPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      meetupId: string
-      personId: string
-      createdAt: Date
-    }, ExtArgs["result"]["meetupFollower"]>
-    composites: {}
-  }
-
-  type MeetupFollowerGetPayload<S extends boolean | null | undefined | MeetupFollowerDefaultArgs> = $Result.GetResult<Prisma.$MeetupFollowerPayload, S>
-
-  type MeetupFollowerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<MeetupFollowerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: MeetupFollowerCountAggregateInputType | true
-    }
-
-  export interface MeetupFollowerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MeetupFollower'], meta: { name: 'MeetupFollower' } }
-    /**
-     * Find zero or one MeetupFollower that matches the filter.
-     * @param {MeetupFollowerFindUniqueArgs} args - Arguments to find a MeetupFollower
-     * @example
-     * // Get one MeetupFollower
-     * const meetupFollower = await prisma.meetupFollower.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends MeetupFollowerFindUniqueArgs>(args: SelectSubset<T, MeetupFollowerFindUniqueArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one MeetupFollower that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {MeetupFollowerFindUniqueOrThrowArgs} args - Arguments to find a MeetupFollower
-     * @example
-     * // Get one MeetupFollower
-     * const meetupFollower = await prisma.meetupFollower.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends MeetupFollowerFindUniqueOrThrowArgs>(args: SelectSubset<T, MeetupFollowerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first MeetupFollower that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {MeetupFollowerFindFirstArgs} args - Arguments to find a MeetupFollower
-     * @example
-     * // Get one MeetupFollower
-     * const meetupFollower = await prisma.meetupFollower.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends MeetupFollowerFindFirstArgs>(args?: SelectSubset<T, MeetupFollowerFindFirstArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first MeetupFollower that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {MeetupFollowerFindFirstOrThrowArgs} args - Arguments to find a MeetupFollower
-     * @example
-     * // Get one MeetupFollower
-     * const meetupFollower = await prisma.meetupFollower.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends MeetupFollowerFindFirstOrThrowArgs>(args?: SelectSubset<T, MeetupFollowerFindFirstOrThrowArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more MeetupFollowers that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {MeetupFollowerFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all MeetupFollowers
-     * const meetupFollowers = await prisma.meetupFollower.findMany()
-     * 
-     * // Get first 10 MeetupFollowers
-     * const meetupFollowers = await prisma.meetupFollower.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const meetupFollowerWithIdOnly = await prisma.meetupFollower.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends MeetupFollowerFindManyArgs>(args?: SelectSubset<T, MeetupFollowerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a MeetupFollower.
-     * @param {MeetupFollowerCreateArgs} args - Arguments to create a MeetupFollower.
-     * @example
-     * // Create one MeetupFollower
-     * const MeetupFollower = await prisma.meetupFollower.create({
-     *   data: {
-     *     // ... data to create a MeetupFollower
-     *   }
-     * })
-     * 
-     */
-    create<T extends MeetupFollowerCreateArgs>(args: SelectSubset<T, MeetupFollowerCreateArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many MeetupFollowers.
-     * @param {MeetupFollowerCreateManyArgs} args - Arguments to create many MeetupFollowers.
-     * @example
-     * // Create many MeetupFollowers
-     * const meetupFollower = await prisma.meetupFollower.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends MeetupFollowerCreateManyArgs>(args?: SelectSubset<T, MeetupFollowerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a MeetupFollower.
-     * @param {MeetupFollowerDeleteArgs} args - Arguments to delete one MeetupFollower.
-     * @example
-     * // Delete one MeetupFollower
-     * const MeetupFollower = await prisma.meetupFollower.delete({
-     *   where: {
-     *     // ... filter to delete one MeetupFollower
-     *   }
-     * })
-     * 
-     */
-    delete<T extends MeetupFollowerDeleteArgs>(args: SelectSubset<T, MeetupFollowerDeleteArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one MeetupFollower.
-     * @param {MeetupFollowerUpdateArgs} args - Arguments to update one MeetupFollower.
-     * @example
-     * // Update one MeetupFollower
-     * const meetupFollower = await prisma.meetupFollower.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends MeetupFollowerUpdateArgs>(args: SelectSubset<T, MeetupFollowerUpdateArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more MeetupFollowers.
-     * @param {MeetupFollowerDeleteManyArgs} args - Arguments to filter MeetupFollowers to delete.
-     * @example
-     * // Delete a few MeetupFollowers
-     * const { count } = await prisma.meetupFollower.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends MeetupFollowerDeleteManyArgs>(args?: SelectSubset<T, MeetupFollowerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more MeetupFollowers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {MeetupFollowerUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many MeetupFollowers
-     * const meetupFollower = await prisma.meetupFollower.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends MeetupFollowerUpdateManyArgs>(args: SelectSubset<T, MeetupFollowerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one MeetupFollower.
-     * @param {MeetupFollowerUpsertArgs} args - Arguments to update or create a MeetupFollower.
-     * @example
-     * // Update or create a MeetupFollower
-     * const meetupFollower = await prisma.meetupFollower.upsert({
-     *   create: {
-     *     // ... data to create a MeetupFollower
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the MeetupFollower we want to update
-     *   }
-     * })
-     */
-    upsert<T extends MeetupFollowerUpsertArgs>(args: SelectSubset<T, MeetupFollowerUpsertArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of MeetupFollowers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {MeetupFollowerCountArgs} args - Arguments to filter MeetupFollowers to count.
-     * @example
-     * // Count the number of MeetupFollowers
-     * const count = await prisma.meetupFollower.count({
-     *   where: {
-     *     // ... the filter for the MeetupFollowers we want to count
-     *   }
-     * })
-    **/
-    count<T extends MeetupFollowerCountArgs>(
-      args?: Subset<T, MeetupFollowerCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], MeetupFollowerCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a MeetupFollower.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {MeetupFollowerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends MeetupFollowerAggregateArgs>(args: Subset<T, MeetupFollowerAggregateArgs>): Prisma.PrismaPromise<GetMeetupFollowerAggregateType<T>>
-
-    /**
-     * Group by MeetupFollower.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {MeetupFollowerGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends MeetupFollowerGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: MeetupFollowerGroupByArgs['orderBy'] }
-        : { orderBy?: MeetupFollowerGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, MeetupFollowerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMeetupFollowerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the MeetupFollower model
-   */
-  readonly fields: MeetupFollowerFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for MeetupFollower.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__MeetupFollowerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    meetup<T extends MeetupDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MeetupDefaultArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    person<T extends PersonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PersonDefaultArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the MeetupFollower model
-   */
-  interface MeetupFollowerFieldRefs {
-    readonly id: FieldRef<"MeetupFollower", 'String'>
-    readonly meetupId: FieldRef<"MeetupFollower", 'String'>
-    readonly personId: FieldRef<"MeetupFollower", 'String'>
-    readonly createdAt: FieldRef<"MeetupFollower", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * MeetupFollower findUnique
-   */
-  export type MeetupFollowerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the MeetupFollower
-     */
-    select?: MeetupFollowerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the MeetupFollower
-     */
-    omit?: MeetupFollowerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: MeetupFollowerInclude<ExtArgs> | null
-    /**
-     * Filter, which MeetupFollower to fetch.
-     */
-    where: MeetupFollowerWhereUniqueInput
-  }
-
-  /**
-   * MeetupFollower findUniqueOrThrow
-   */
-  export type MeetupFollowerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the MeetupFollower
-     */
-    select?: MeetupFollowerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the MeetupFollower
-     */
-    omit?: MeetupFollowerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: MeetupFollowerInclude<ExtArgs> | null
-    /**
-     * Filter, which MeetupFollower to fetch.
-     */
-    where: MeetupFollowerWhereUniqueInput
-  }
-
-  /**
-   * MeetupFollower findFirst
-   */
-  export type MeetupFollowerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the MeetupFollower
-     */
-    select?: MeetupFollowerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the MeetupFollower
-     */
-    omit?: MeetupFollowerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: MeetupFollowerInclude<ExtArgs> | null
-    /**
-     * Filter, which MeetupFollower to fetch.
-     */
-    where?: MeetupFollowerWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of MeetupFollowers to fetch.
-     */
-    orderBy?: MeetupFollowerOrderByWithRelationInput | MeetupFollowerOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for MeetupFollowers.
-     */
-    cursor?: MeetupFollowerWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` MeetupFollowers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` MeetupFollowers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of MeetupFollowers.
-     */
-    distinct?: MeetupFollowerScalarFieldEnum | MeetupFollowerScalarFieldEnum[]
-  }
-
-  /**
-   * MeetupFollower findFirstOrThrow
-   */
-  export type MeetupFollowerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the MeetupFollower
-     */
-    select?: MeetupFollowerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the MeetupFollower
-     */
-    omit?: MeetupFollowerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: MeetupFollowerInclude<ExtArgs> | null
-    /**
-     * Filter, which MeetupFollower to fetch.
-     */
-    where?: MeetupFollowerWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of MeetupFollowers to fetch.
-     */
-    orderBy?: MeetupFollowerOrderByWithRelationInput | MeetupFollowerOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for MeetupFollowers.
-     */
-    cursor?: MeetupFollowerWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` MeetupFollowers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` MeetupFollowers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of MeetupFollowers.
-     */
-    distinct?: MeetupFollowerScalarFieldEnum | MeetupFollowerScalarFieldEnum[]
-  }
-
-  /**
-   * MeetupFollower findMany
-   */
-  export type MeetupFollowerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the MeetupFollower
-     */
-    select?: MeetupFollowerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the MeetupFollower
-     */
-    omit?: MeetupFollowerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: MeetupFollowerInclude<ExtArgs> | null
-    /**
-     * Filter, which MeetupFollowers to fetch.
-     */
-    where?: MeetupFollowerWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of MeetupFollowers to fetch.
-     */
-    orderBy?: MeetupFollowerOrderByWithRelationInput | MeetupFollowerOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing MeetupFollowers.
-     */
-    cursor?: MeetupFollowerWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` MeetupFollowers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` MeetupFollowers.
-     */
-    skip?: number
-    distinct?: MeetupFollowerScalarFieldEnum | MeetupFollowerScalarFieldEnum[]
-  }
-
-  /**
-   * MeetupFollower create
-   */
-  export type MeetupFollowerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the MeetupFollower
-     */
-    select?: MeetupFollowerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the MeetupFollower
-     */
-    omit?: MeetupFollowerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: MeetupFollowerInclude<ExtArgs> | null
-    /**
-     * The data needed to create a MeetupFollower.
-     */
-    data: XOR<MeetupFollowerCreateInput, MeetupFollowerUncheckedCreateInput>
-  }
-
-  /**
-   * MeetupFollower createMany
-   */
-  export type MeetupFollowerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many MeetupFollowers.
-     */
-    data: MeetupFollowerCreateManyInput | MeetupFollowerCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * MeetupFollower update
-   */
-  export type MeetupFollowerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the MeetupFollower
-     */
-    select?: MeetupFollowerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the MeetupFollower
-     */
-    omit?: MeetupFollowerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: MeetupFollowerInclude<ExtArgs> | null
-    /**
-     * The data needed to update a MeetupFollower.
-     */
-    data: XOR<MeetupFollowerUpdateInput, MeetupFollowerUncheckedUpdateInput>
-    /**
-     * Choose, which MeetupFollower to update.
-     */
-    where: MeetupFollowerWhereUniqueInput
-  }
-
-  /**
-   * MeetupFollower updateMany
-   */
-  export type MeetupFollowerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update MeetupFollowers.
-     */
-    data: XOR<MeetupFollowerUpdateManyMutationInput, MeetupFollowerUncheckedUpdateManyInput>
-    /**
-     * Filter which MeetupFollowers to update
-     */
-    where?: MeetupFollowerWhereInput
-    /**
-     * Limit how many MeetupFollowers to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * MeetupFollower upsert
-   */
-  export type MeetupFollowerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the MeetupFollower
-     */
-    select?: MeetupFollowerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the MeetupFollower
-     */
-    omit?: MeetupFollowerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: MeetupFollowerInclude<ExtArgs> | null
-    /**
-     * The filter to search for the MeetupFollower to update in case it exists.
-     */
-    where: MeetupFollowerWhereUniqueInput
-    /**
-     * In case the MeetupFollower found by the `where` argument doesn't exist, create a new MeetupFollower with this data.
-     */
-    create: XOR<MeetupFollowerCreateInput, MeetupFollowerUncheckedCreateInput>
-    /**
-     * In case the MeetupFollower was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<MeetupFollowerUpdateInput, MeetupFollowerUncheckedUpdateInput>
-  }
-
-  /**
-   * MeetupFollower delete
-   */
-  export type MeetupFollowerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the MeetupFollower
-     */
-    select?: MeetupFollowerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the MeetupFollower
-     */
-    omit?: MeetupFollowerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: MeetupFollowerInclude<ExtArgs> | null
-    /**
-     * Filter which MeetupFollower to delete.
-     */
-    where: MeetupFollowerWhereUniqueInput
-  }
-
-  /**
-   * MeetupFollower deleteMany
-   */
-  export type MeetupFollowerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which MeetupFollowers to delete
-     */
-    where?: MeetupFollowerWhereInput
-    /**
-     * Limit how many MeetupFollowers to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * MeetupFollower without action
-   */
-  export type MeetupFollowerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the MeetupFollower
-     */
-    select?: MeetupFollowerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the MeetupFollower
-     */
-    omit?: MeetupFollowerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: MeetupFollowerInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Category
-   */
-
-  export type AggregateCategory = {
-    _count: CategoryCountAggregateOutputType | null
-    _min: CategoryMinAggregateOutputType | null
-    _max: CategoryMaxAggregateOutputType | null
-  }
-
-  export type CategoryMinAggregateOutputType = {
-    id: string | null
-    name: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type CategoryMaxAggregateOutputType = {
-    id: string | null
-    name: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type CategoryCountAggregateOutputType = {
-    id: number
-    name: number
-    createdAt: number
-    updatedAt: number
-    _all: number
-  }
-
-
-  export type CategoryMinAggregateInputType = {
-    id?: true
-    name?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type CategoryMaxAggregateInputType = {
-    id?: true
-    name?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type CategoryCountAggregateInputType = {
-    id?: true
-    name?: true
-    createdAt?: true
-    updatedAt?: true
-    _all?: true
-  }
-
-  export type CategoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Category to aggregate.
-     */
-    where?: CategoryWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Categories to fetch.
-     */
-    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: CategoryWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Categories from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Categories.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Categories
-    **/
-    _count?: true | CategoryCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: CategoryMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: CategoryMaxAggregateInputType
-  }
-
-  export type GetCategoryAggregateType<T extends CategoryAggregateArgs> = {
-        [P in keyof T & keyof AggregateCategory]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateCategory[P]>
-      : GetScalarType<T[P], AggregateCategory[P]>
-  }
-
-
-
-
-  export type CategoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CategoryWhereInput
-    orderBy?: CategoryOrderByWithAggregationInput | CategoryOrderByWithAggregationInput[]
-    by: CategoryScalarFieldEnum[] | CategoryScalarFieldEnum
-    having?: CategoryScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: CategoryCountAggregateInputType | true
-    _min?: CategoryMinAggregateInputType
-    _max?: CategoryMaxAggregateInputType
-  }
-
-  export type CategoryGroupByOutputType = {
-    id: string
-    name: string
-    createdAt: Date
-    updatedAt: Date
-    _count: CategoryCountAggregateOutputType | null
-    _min: CategoryMinAggregateOutputType | null
-    _max: CategoryMaxAggregateOutputType | null
-  }
-
-  type GetCategoryGroupByPayload<T extends CategoryGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<CategoryGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof CategoryGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], CategoryGroupByOutputType[P]>
-            : GetScalarType<T[P], CategoryGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type CategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    meetups?: boolean | Category$meetupsArgs<ExtArgs>
-    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["category"]>
-
-
-
-  export type CategorySelectScalar = {
-    id?: boolean
-    name?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }
-
-  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["category"]>
-  export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    meetups?: boolean | Category$meetupsArgs<ExtArgs>
-    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
-  }
-
-  export type $CategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Category"
-    objects: {
-      meetups: Prisma.$MeetupPayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      name: string
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["category"]>
-    composites: {}
-  }
-
-  type CategoryGetPayload<S extends boolean | null | undefined | CategoryDefaultArgs> = $Result.GetResult<Prisma.$CategoryPayload, S>
-
-  type CategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CategoryCountAggregateInputType | true
-    }
-
-  export interface CategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Category'], meta: { name: 'Category' } }
-    /**
-     * Find zero or one Category that matches the filter.
-     * @param {CategoryFindUniqueArgs} args - Arguments to find a Category
-     * @example
-     * // Get one Category
-     * const category = await prisma.category.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends CategoryFindUniqueArgs>(args: SelectSubset<T, CategoryFindUniqueArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Category that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {CategoryFindUniqueOrThrowArgs} args - Arguments to find a Category
-     * @example
-     * // Get one Category
-     * const category = await prisma.category.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends CategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, CategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Category that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CategoryFindFirstArgs} args - Arguments to find a Category
-     * @example
-     * // Get one Category
-     * const category = await prisma.category.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends CategoryFindFirstArgs>(args?: SelectSubset<T, CategoryFindFirstArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Category that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CategoryFindFirstOrThrowArgs} args - Arguments to find a Category
-     * @example
-     * // Get one Category
-     * const category = await prisma.category.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends CategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, CategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Categories that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CategoryFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Categories
-     * const categories = await prisma.category.findMany()
-     * 
-     * // Get first 10 Categories
-     * const categories = await prisma.category.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const categoryWithIdOnly = await prisma.category.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends CategoryFindManyArgs>(args?: SelectSubset<T, CategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Category.
-     * @param {CategoryCreateArgs} args - Arguments to create a Category.
-     * @example
-     * // Create one Category
-     * const Category = await prisma.category.create({
-     *   data: {
-     *     // ... data to create a Category
-     *   }
-     * })
-     * 
-     */
-    create<T extends CategoryCreateArgs>(args: SelectSubset<T, CategoryCreateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Categories.
-     * @param {CategoryCreateManyArgs} args - Arguments to create many Categories.
-     * @example
-     * // Create many Categories
-     * const category = await prisma.category.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends CategoryCreateManyArgs>(args?: SelectSubset<T, CategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Category.
-     * @param {CategoryDeleteArgs} args - Arguments to delete one Category.
-     * @example
-     * // Delete one Category
-     * const Category = await prisma.category.delete({
-     *   where: {
-     *     // ... filter to delete one Category
-     *   }
-     * })
-     * 
-     */
-    delete<T extends CategoryDeleteArgs>(args: SelectSubset<T, CategoryDeleteArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Category.
-     * @param {CategoryUpdateArgs} args - Arguments to update one Category.
-     * @example
-     * // Update one Category
-     * const category = await prisma.category.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends CategoryUpdateArgs>(args: SelectSubset<T, CategoryUpdateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Categories.
-     * @param {CategoryDeleteManyArgs} args - Arguments to filter Categories to delete.
-     * @example
-     * // Delete a few Categories
-     * const { count } = await prisma.category.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends CategoryDeleteManyArgs>(args?: SelectSubset<T, CategoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Categories.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CategoryUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Categories
-     * const category = await prisma.category.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends CategoryUpdateManyArgs>(args: SelectSubset<T, CategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Category.
-     * @param {CategoryUpsertArgs} args - Arguments to update or create a Category.
-     * @example
-     * // Update or create a Category
-     * const category = await prisma.category.upsert({
-     *   create: {
-     *     // ... data to create a Category
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Category we want to update
-     *   }
-     * })
-     */
-    upsert<T extends CategoryUpsertArgs>(args: SelectSubset<T, CategoryUpsertArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Categories.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CategoryCountArgs} args - Arguments to filter Categories to count.
-     * @example
-     * // Count the number of Categories
-     * const count = await prisma.category.count({
-     *   where: {
-     *     // ... the filter for the Categories we want to count
-     *   }
-     * })
-    **/
-    count<T extends CategoryCountArgs>(
-      args?: Subset<T, CategoryCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], CategoryCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Category.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends CategoryAggregateArgs>(args: Subset<T, CategoryAggregateArgs>): Prisma.PrismaPromise<GetCategoryAggregateType<T>>
-
-    /**
-     * Group by Category.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CategoryGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends CategoryGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CategoryGroupByArgs['orderBy'] }
-        : { orderBy?: CategoryGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, CategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Category model
-   */
-  readonly fields: CategoryFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Category.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    meetups<T extends Category$meetupsArgs<ExtArgs> = {}>(args?: Subset<T, Category$meetupsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Category model
-   */
-  interface CategoryFieldRefs {
-    readonly id: FieldRef<"Category", 'String'>
-    readonly name: FieldRef<"Category", 'String'>
-    readonly createdAt: FieldRef<"Category", 'DateTime'>
-    readonly updatedAt: FieldRef<"Category", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Category findUnique
-   */
-  export type CategoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Category
-     */
-    select?: CategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CategoryInclude<ExtArgs> | null
-    /**
-     * Filter, which Category to fetch.
-     */
-    where: CategoryWhereUniqueInput
-  }
-
-  /**
-   * Category findUniqueOrThrow
-   */
-  export type CategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Category
-     */
-    select?: CategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CategoryInclude<ExtArgs> | null
-    /**
-     * Filter, which Category to fetch.
-     */
-    where: CategoryWhereUniqueInput
-  }
-
-  /**
-   * Category findFirst
-   */
-  export type CategoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Category
-     */
-    select?: CategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CategoryInclude<ExtArgs> | null
-    /**
-     * Filter, which Category to fetch.
-     */
-    where?: CategoryWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Categories to fetch.
-     */
-    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Categories.
-     */
-    cursor?: CategoryWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Categories from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Categories.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Categories.
-     */
-    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
-  }
-
-  /**
-   * Category findFirstOrThrow
-   */
-  export type CategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Category
-     */
-    select?: CategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CategoryInclude<ExtArgs> | null
-    /**
-     * Filter, which Category to fetch.
-     */
-    where?: CategoryWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Categories to fetch.
-     */
-    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Categories.
-     */
-    cursor?: CategoryWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Categories from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Categories.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Categories.
-     */
-    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
-  }
-
-  /**
-   * Category findMany
-   */
-  export type CategoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Category
-     */
-    select?: CategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CategoryInclude<ExtArgs> | null
-    /**
-     * Filter, which Categories to fetch.
-     */
-    where?: CategoryWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Categories to fetch.
-     */
-    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Categories.
-     */
-    cursor?: CategoryWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Categories from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Categories.
-     */
-    skip?: number
-    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
-  }
-
-  /**
-   * Category create
-   */
-  export type CategoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Category
-     */
-    select?: CategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CategoryInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Category.
-     */
-    data: XOR<CategoryCreateInput, CategoryUncheckedCreateInput>
-  }
-
-  /**
-   * Category createMany
-   */
-  export type CategoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Categories.
-     */
-    data: CategoryCreateManyInput | CategoryCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Category update
-   */
-  export type CategoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Category
-     */
-    select?: CategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CategoryInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Category.
-     */
-    data: XOR<CategoryUpdateInput, CategoryUncheckedUpdateInput>
-    /**
-     * Choose, which Category to update.
-     */
-    where: CategoryWhereUniqueInput
-  }
-
-  /**
-   * Category updateMany
-   */
-  export type CategoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Categories.
-     */
-    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyInput>
-    /**
-     * Filter which Categories to update
-     */
-    where?: CategoryWhereInput
-    /**
-     * Limit how many Categories to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Category upsert
-   */
-  export type CategoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Category
-     */
-    select?: CategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CategoryInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Category to update in case it exists.
-     */
-    where: CategoryWhereUniqueInput
-    /**
-     * In case the Category found by the `where` argument doesn't exist, create a new Category with this data.
-     */
-    create: XOR<CategoryCreateInput, CategoryUncheckedCreateInput>
-    /**
-     * In case the Category was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<CategoryUpdateInput, CategoryUncheckedUpdateInput>
-  }
-
-  /**
-   * Category delete
-   */
-  export type CategoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Category
-     */
-    select?: CategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CategoryInclude<ExtArgs> | null
-    /**
-     * Filter which Category to delete.
-     */
-    where: CategoryWhereUniqueInput
-  }
-
-  /**
-   * Category deleteMany
-   */
-  export type CategoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Categories to delete
-     */
-    where?: CategoryWhereInput
-    /**
-     * Limit how many Categories to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Category.meetups
-   */
-  export type Category$meetupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Meetup
-     */
-    select?: MeetupSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Meetup
-     */
-    omit?: MeetupOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: MeetupInclude<ExtArgs> | null
-    where?: MeetupWhereInput
-    orderBy?: MeetupOrderByWithRelationInput | MeetupOrderByWithRelationInput[]
-    cursor?: MeetupWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: MeetupScalarFieldEnum | MeetupScalarFieldEnum[]
-  }
-
-  /**
-   * Category without action
-   */
-  export type CategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Category
-     */
-    select?: CategorySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Category
-     */
-    omit?: CategoryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CategoryInclude<ExtArgs> | null
   }
 
 
@@ -14871,6 +14104,1872 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: MeetupAdminInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MeetupFollower
+   */
+
+  export type AggregateMeetupFollower = {
+    _count: MeetupFollowerCountAggregateOutputType | null
+    _min: MeetupFollowerMinAggregateOutputType | null
+    _max: MeetupFollowerMaxAggregateOutputType | null
+  }
+
+  export type MeetupFollowerMinAggregateOutputType = {
+    id: string | null
+    meetupId: string | null
+    personId: string | null
+    createdAt: Date | null
+  }
+
+  export type MeetupFollowerMaxAggregateOutputType = {
+    id: string | null
+    meetupId: string | null
+    personId: string | null
+    createdAt: Date | null
+  }
+
+  export type MeetupFollowerCountAggregateOutputType = {
+    id: number
+    meetupId: number
+    personId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type MeetupFollowerMinAggregateInputType = {
+    id?: true
+    meetupId?: true
+    personId?: true
+    createdAt?: true
+  }
+
+  export type MeetupFollowerMaxAggregateInputType = {
+    id?: true
+    meetupId?: true
+    personId?: true
+    createdAt?: true
+  }
+
+  export type MeetupFollowerCountAggregateInputType = {
+    id?: true
+    meetupId?: true
+    personId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type MeetupFollowerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MeetupFollower to aggregate.
+     */
+    where?: MeetupFollowerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupFollowers to fetch.
+     */
+    orderBy?: MeetupFollowerOrderByWithRelationInput | MeetupFollowerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MeetupFollowerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupFollowers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupFollowers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MeetupFollowers
+    **/
+    _count?: true | MeetupFollowerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MeetupFollowerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MeetupFollowerMaxAggregateInputType
+  }
+
+  export type GetMeetupFollowerAggregateType<T extends MeetupFollowerAggregateArgs> = {
+        [P in keyof T & keyof AggregateMeetupFollower]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMeetupFollower[P]>
+      : GetScalarType<T[P], AggregateMeetupFollower[P]>
+  }
+
+
+
+
+  export type MeetupFollowerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetupFollowerWhereInput
+    orderBy?: MeetupFollowerOrderByWithAggregationInput | MeetupFollowerOrderByWithAggregationInput[]
+    by: MeetupFollowerScalarFieldEnum[] | MeetupFollowerScalarFieldEnum
+    having?: MeetupFollowerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MeetupFollowerCountAggregateInputType | true
+    _min?: MeetupFollowerMinAggregateInputType
+    _max?: MeetupFollowerMaxAggregateInputType
+  }
+
+  export type MeetupFollowerGroupByOutputType = {
+    id: string
+    meetupId: string
+    personId: string
+    createdAt: Date
+    _count: MeetupFollowerCountAggregateOutputType | null
+    _min: MeetupFollowerMinAggregateOutputType | null
+    _max: MeetupFollowerMaxAggregateOutputType | null
+  }
+
+  type GetMeetupFollowerGroupByPayload<T extends MeetupFollowerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MeetupFollowerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MeetupFollowerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MeetupFollowerGroupByOutputType[P]>
+            : GetScalarType<T[P], MeetupFollowerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MeetupFollowerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    meetupId?: boolean
+    personId?: boolean
+    createdAt?: boolean
+    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
+    person?: boolean | PersonDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["meetupFollower"]>
+
+
+
+  export type MeetupFollowerSelectScalar = {
+    id?: boolean
+    meetupId?: boolean
+    personId?: boolean
+    createdAt?: boolean
+  }
+
+  export type MeetupFollowerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "meetupId" | "personId" | "createdAt", ExtArgs["result"]["meetupFollower"]>
+  export type MeetupFollowerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
+    person?: boolean | PersonDefaultArgs<ExtArgs>
+  }
+
+  export type $MeetupFollowerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MeetupFollower"
+    objects: {
+      meetup: Prisma.$MeetupPayload<ExtArgs>
+      person: Prisma.$PersonPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      meetupId: string
+      personId: string
+      createdAt: Date
+    }, ExtArgs["result"]["meetupFollower"]>
+    composites: {}
+  }
+
+  type MeetupFollowerGetPayload<S extends boolean | null | undefined | MeetupFollowerDefaultArgs> = $Result.GetResult<Prisma.$MeetupFollowerPayload, S>
+
+  type MeetupFollowerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MeetupFollowerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MeetupFollowerCountAggregateInputType | true
+    }
+
+  export interface MeetupFollowerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MeetupFollower'], meta: { name: 'MeetupFollower' } }
+    /**
+     * Find zero or one MeetupFollower that matches the filter.
+     * @param {MeetupFollowerFindUniqueArgs} args - Arguments to find a MeetupFollower
+     * @example
+     * // Get one MeetupFollower
+     * const meetupFollower = await prisma.meetupFollower.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MeetupFollowerFindUniqueArgs>(args: SelectSubset<T, MeetupFollowerFindUniqueArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MeetupFollower that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MeetupFollowerFindUniqueOrThrowArgs} args - Arguments to find a MeetupFollower
+     * @example
+     * // Get one MeetupFollower
+     * const meetupFollower = await prisma.meetupFollower.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MeetupFollowerFindUniqueOrThrowArgs>(args: SelectSubset<T, MeetupFollowerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MeetupFollower that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupFollowerFindFirstArgs} args - Arguments to find a MeetupFollower
+     * @example
+     * // Get one MeetupFollower
+     * const meetupFollower = await prisma.meetupFollower.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MeetupFollowerFindFirstArgs>(args?: SelectSubset<T, MeetupFollowerFindFirstArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MeetupFollower that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupFollowerFindFirstOrThrowArgs} args - Arguments to find a MeetupFollower
+     * @example
+     * // Get one MeetupFollower
+     * const meetupFollower = await prisma.meetupFollower.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MeetupFollowerFindFirstOrThrowArgs>(args?: SelectSubset<T, MeetupFollowerFindFirstOrThrowArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MeetupFollowers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupFollowerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MeetupFollowers
+     * const meetupFollowers = await prisma.meetupFollower.findMany()
+     * 
+     * // Get first 10 MeetupFollowers
+     * const meetupFollowers = await prisma.meetupFollower.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const meetupFollowerWithIdOnly = await prisma.meetupFollower.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MeetupFollowerFindManyArgs>(args?: SelectSubset<T, MeetupFollowerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MeetupFollower.
+     * @param {MeetupFollowerCreateArgs} args - Arguments to create a MeetupFollower.
+     * @example
+     * // Create one MeetupFollower
+     * const MeetupFollower = await prisma.meetupFollower.create({
+     *   data: {
+     *     // ... data to create a MeetupFollower
+     *   }
+     * })
+     * 
+     */
+    create<T extends MeetupFollowerCreateArgs>(args: SelectSubset<T, MeetupFollowerCreateArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MeetupFollowers.
+     * @param {MeetupFollowerCreateManyArgs} args - Arguments to create many MeetupFollowers.
+     * @example
+     * // Create many MeetupFollowers
+     * const meetupFollower = await prisma.meetupFollower.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MeetupFollowerCreateManyArgs>(args?: SelectSubset<T, MeetupFollowerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a MeetupFollower.
+     * @param {MeetupFollowerDeleteArgs} args - Arguments to delete one MeetupFollower.
+     * @example
+     * // Delete one MeetupFollower
+     * const MeetupFollower = await prisma.meetupFollower.delete({
+     *   where: {
+     *     // ... filter to delete one MeetupFollower
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MeetupFollowerDeleteArgs>(args: SelectSubset<T, MeetupFollowerDeleteArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MeetupFollower.
+     * @param {MeetupFollowerUpdateArgs} args - Arguments to update one MeetupFollower.
+     * @example
+     * // Update one MeetupFollower
+     * const meetupFollower = await prisma.meetupFollower.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MeetupFollowerUpdateArgs>(args: SelectSubset<T, MeetupFollowerUpdateArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MeetupFollowers.
+     * @param {MeetupFollowerDeleteManyArgs} args - Arguments to filter MeetupFollowers to delete.
+     * @example
+     * // Delete a few MeetupFollowers
+     * const { count } = await prisma.meetupFollower.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MeetupFollowerDeleteManyArgs>(args?: SelectSubset<T, MeetupFollowerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MeetupFollowers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupFollowerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MeetupFollowers
+     * const meetupFollower = await prisma.meetupFollower.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MeetupFollowerUpdateManyArgs>(args: SelectSubset<T, MeetupFollowerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MeetupFollower.
+     * @param {MeetupFollowerUpsertArgs} args - Arguments to update or create a MeetupFollower.
+     * @example
+     * // Update or create a MeetupFollower
+     * const meetupFollower = await prisma.meetupFollower.upsert({
+     *   create: {
+     *     // ... data to create a MeetupFollower
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MeetupFollower we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MeetupFollowerUpsertArgs>(args: SelectSubset<T, MeetupFollowerUpsertArgs<ExtArgs>>): Prisma__MeetupFollowerClient<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MeetupFollowers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupFollowerCountArgs} args - Arguments to filter MeetupFollowers to count.
+     * @example
+     * // Count the number of MeetupFollowers
+     * const count = await prisma.meetupFollower.count({
+     *   where: {
+     *     // ... the filter for the MeetupFollowers we want to count
+     *   }
+     * })
+    **/
+    count<T extends MeetupFollowerCountArgs>(
+      args?: Subset<T, MeetupFollowerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MeetupFollowerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MeetupFollower.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupFollowerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MeetupFollowerAggregateArgs>(args: Subset<T, MeetupFollowerAggregateArgs>): Prisma.PrismaPromise<GetMeetupFollowerAggregateType<T>>
+
+    /**
+     * Group by MeetupFollower.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupFollowerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MeetupFollowerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MeetupFollowerGroupByArgs['orderBy'] }
+        : { orderBy?: MeetupFollowerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MeetupFollowerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMeetupFollowerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MeetupFollower model
+   */
+  readonly fields: MeetupFollowerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MeetupFollower.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MeetupFollowerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    meetup<T extends MeetupDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MeetupDefaultArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    person<T extends PersonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PersonDefaultArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MeetupFollower model
+   */
+  interface MeetupFollowerFieldRefs {
+    readonly id: FieldRef<"MeetupFollower", 'String'>
+    readonly meetupId: FieldRef<"MeetupFollower", 'String'>
+    readonly personId: FieldRef<"MeetupFollower", 'String'>
+    readonly createdAt: FieldRef<"MeetupFollower", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MeetupFollower findUnique
+   */
+  export type MeetupFollowerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupFollower to fetch.
+     */
+    where: MeetupFollowerWhereUniqueInput
+  }
+
+  /**
+   * MeetupFollower findUniqueOrThrow
+   */
+  export type MeetupFollowerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupFollower to fetch.
+     */
+    where: MeetupFollowerWhereUniqueInput
+  }
+
+  /**
+   * MeetupFollower findFirst
+   */
+  export type MeetupFollowerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupFollower to fetch.
+     */
+    where?: MeetupFollowerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupFollowers to fetch.
+     */
+    orderBy?: MeetupFollowerOrderByWithRelationInput | MeetupFollowerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MeetupFollowers.
+     */
+    cursor?: MeetupFollowerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupFollowers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupFollowers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MeetupFollowers.
+     */
+    distinct?: MeetupFollowerScalarFieldEnum | MeetupFollowerScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupFollower findFirstOrThrow
+   */
+  export type MeetupFollowerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupFollower to fetch.
+     */
+    where?: MeetupFollowerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupFollowers to fetch.
+     */
+    orderBy?: MeetupFollowerOrderByWithRelationInput | MeetupFollowerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MeetupFollowers.
+     */
+    cursor?: MeetupFollowerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupFollowers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupFollowers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MeetupFollowers.
+     */
+    distinct?: MeetupFollowerScalarFieldEnum | MeetupFollowerScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupFollower findMany
+   */
+  export type MeetupFollowerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupFollowers to fetch.
+     */
+    where?: MeetupFollowerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupFollowers to fetch.
+     */
+    orderBy?: MeetupFollowerOrderByWithRelationInput | MeetupFollowerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MeetupFollowers.
+     */
+    cursor?: MeetupFollowerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupFollowers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupFollowers.
+     */
+    skip?: number
+    distinct?: MeetupFollowerScalarFieldEnum | MeetupFollowerScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupFollower create
+   */
+  export type MeetupFollowerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MeetupFollower.
+     */
+    data: XOR<MeetupFollowerCreateInput, MeetupFollowerUncheckedCreateInput>
+  }
+
+  /**
+   * MeetupFollower createMany
+   */
+  export type MeetupFollowerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MeetupFollowers.
+     */
+    data: MeetupFollowerCreateManyInput | MeetupFollowerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MeetupFollower update
+   */
+  export type MeetupFollowerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MeetupFollower.
+     */
+    data: XOR<MeetupFollowerUpdateInput, MeetupFollowerUncheckedUpdateInput>
+    /**
+     * Choose, which MeetupFollower to update.
+     */
+    where: MeetupFollowerWhereUniqueInput
+  }
+
+  /**
+   * MeetupFollower updateMany
+   */
+  export type MeetupFollowerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MeetupFollowers.
+     */
+    data: XOR<MeetupFollowerUpdateManyMutationInput, MeetupFollowerUncheckedUpdateManyInput>
+    /**
+     * Filter which MeetupFollowers to update
+     */
+    where?: MeetupFollowerWhereInput
+    /**
+     * Limit how many MeetupFollowers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MeetupFollower upsert
+   */
+  export type MeetupFollowerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MeetupFollower to update in case it exists.
+     */
+    where: MeetupFollowerWhereUniqueInput
+    /**
+     * In case the MeetupFollower found by the `where` argument doesn't exist, create a new MeetupFollower with this data.
+     */
+    create: XOR<MeetupFollowerCreateInput, MeetupFollowerUncheckedCreateInput>
+    /**
+     * In case the MeetupFollower was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MeetupFollowerUpdateInput, MeetupFollowerUncheckedUpdateInput>
+  }
+
+  /**
+   * MeetupFollower delete
+   */
+  export type MeetupFollowerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+    /**
+     * Filter which MeetupFollower to delete.
+     */
+    where: MeetupFollowerWhereUniqueInput
+  }
+
+  /**
+   * MeetupFollower deleteMany
+   */
+  export type MeetupFollowerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MeetupFollowers to delete
+     */
+    where?: MeetupFollowerWhereInput
+    /**
+     * Limit how many MeetupFollowers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MeetupFollower without action
+   */
+  export type MeetupFollowerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupFollower
+     */
+    select?: MeetupFollowerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupFollower
+     */
+    omit?: MeetupFollowerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupFollowerInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Category
+   */
+
+  export type AggregateCategory = {
+    _count: CategoryCountAggregateOutputType | null
+    _min: CategoryMinAggregateOutputType | null
+    _max: CategoryMaxAggregateOutputType | null
+  }
+
+  export type CategoryMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CategoryMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CategoryCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CategoryMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CategoryMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CategoryCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CategoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Category to aggregate.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Categories
+    **/
+    _count?: true | CategoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CategoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CategoryMaxAggregateInputType
+  }
+
+  export type GetCategoryAggregateType<T extends CategoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateCategory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCategory[P]>
+      : GetScalarType<T[P], AggregateCategory[P]>
+  }
+
+
+
+
+  export type CategoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryWhereInput
+    orderBy?: CategoryOrderByWithAggregationInput | CategoryOrderByWithAggregationInput[]
+    by: CategoryScalarFieldEnum[] | CategoryScalarFieldEnum
+    having?: CategoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CategoryCountAggregateInputType | true
+    _min?: CategoryMinAggregateInputType
+    _max?: CategoryMaxAggregateInputType
+  }
+
+  export type CategoryGroupByOutputType = {
+    id: string
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    _count: CategoryCountAggregateOutputType | null
+    _min: CategoryMinAggregateOutputType | null
+    _max: CategoryMaxAggregateOutputType | null
+  }
+
+  type GetCategoryGroupByPayload<T extends CategoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CategoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CategoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CategoryGroupByOutputType[P]>
+            : GetScalarType<T[P], CategoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    meetups?: boolean | Category$meetupsArgs<ExtArgs>
+    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["category"]>
+
+
+
+  export type CategorySelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["category"]>
+  export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meetups?: boolean | Category$meetupsArgs<ExtArgs>
+    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $CategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Category"
+    objects: {
+      meetups: Prisma.$MeetupPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["category"]>
+    composites: {}
+  }
+
+  type CategoryGetPayload<S extends boolean | null | undefined | CategoryDefaultArgs> = $Result.GetResult<Prisma.$CategoryPayload, S>
+
+  type CategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CategoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CategoryCountAggregateInputType | true
+    }
+
+  export interface CategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Category'], meta: { name: 'Category' } }
+    /**
+     * Find zero or one Category that matches the filter.
+     * @param {CategoryFindUniqueArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CategoryFindUniqueArgs>(args: SelectSubset<T, CategoryFindUniqueArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Category that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CategoryFindUniqueOrThrowArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, CategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Category that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryFindFirstArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CategoryFindFirstArgs>(args?: SelectSubset<T, CategoryFindFirstArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Category that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryFindFirstOrThrowArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, CategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Categories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Categories
+     * const categories = await prisma.category.findMany()
+     * 
+     * // Get first 10 Categories
+     * const categories = await prisma.category.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const categoryWithIdOnly = await prisma.category.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CategoryFindManyArgs>(args?: SelectSubset<T, CategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Category.
+     * @param {CategoryCreateArgs} args - Arguments to create a Category.
+     * @example
+     * // Create one Category
+     * const Category = await prisma.category.create({
+     *   data: {
+     *     // ... data to create a Category
+     *   }
+     * })
+     * 
+     */
+    create<T extends CategoryCreateArgs>(args: SelectSubset<T, CategoryCreateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Categories.
+     * @param {CategoryCreateManyArgs} args - Arguments to create many Categories.
+     * @example
+     * // Create many Categories
+     * const category = await prisma.category.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CategoryCreateManyArgs>(args?: SelectSubset<T, CategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Category.
+     * @param {CategoryDeleteArgs} args - Arguments to delete one Category.
+     * @example
+     * // Delete one Category
+     * const Category = await prisma.category.delete({
+     *   where: {
+     *     // ... filter to delete one Category
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CategoryDeleteArgs>(args: SelectSubset<T, CategoryDeleteArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Category.
+     * @param {CategoryUpdateArgs} args - Arguments to update one Category.
+     * @example
+     * // Update one Category
+     * const category = await prisma.category.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CategoryUpdateArgs>(args: SelectSubset<T, CategoryUpdateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Categories.
+     * @param {CategoryDeleteManyArgs} args - Arguments to filter Categories to delete.
+     * @example
+     * // Delete a few Categories
+     * const { count } = await prisma.category.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CategoryDeleteManyArgs>(args?: SelectSubset<T, CategoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Categories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Categories
+     * const category = await prisma.category.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CategoryUpdateManyArgs>(args: SelectSubset<T, CategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Category.
+     * @param {CategoryUpsertArgs} args - Arguments to update or create a Category.
+     * @example
+     * // Update or create a Category
+     * const category = await prisma.category.upsert({
+     *   create: {
+     *     // ... data to create a Category
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Category we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CategoryUpsertArgs>(args: SelectSubset<T, CategoryUpsertArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Categories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryCountArgs} args - Arguments to filter Categories to count.
+     * @example
+     * // Count the number of Categories
+     * const count = await prisma.category.count({
+     *   where: {
+     *     // ... the filter for the Categories we want to count
+     *   }
+     * })
+    **/
+    count<T extends CategoryCountArgs>(
+      args?: Subset<T, CategoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CategoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Category.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CategoryAggregateArgs>(args: Subset<T, CategoryAggregateArgs>): Prisma.PrismaPromise<GetCategoryAggregateType<T>>
+
+    /**
+     * Group by Category.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CategoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CategoryGroupByArgs['orderBy'] }
+        : { orderBy?: CategoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Category model
+   */
+  readonly fields: CategoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Category.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    meetups<T extends Category$meetupsArgs<ExtArgs> = {}>(args?: Subset<T, Category$meetupsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Category model
+   */
+  interface CategoryFieldRefs {
+    readonly id: FieldRef<"Category", 'String'>
+    readonly name: FieldRef<"Category", 'String'>
+    readonly createdAt: FieldRef<"Category", 'DateTime'>
+    readonly updatedAt: FieldRef<"Category", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Category findUnique
+   */
+  export type CategoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category findUniqueOrThrow
+   */
+  export type CategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category findFirst
+   */
+  export type CategoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Categories.
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Categories.
+     */
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category findFirstOrThrow
+   */
+  export type CategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Categories.
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Categories.
+     */
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category findMany
+   */
+  export type CategoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Categories to fetch.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Categories.
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category create
+   */
+  export type CategoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Category.
+     */
+    data: XOR<CategoryCreateInput, CategoryUncheckedCreateInput>
+  }
+
+  /**
+   * Category createMany
+   */
+  export type CategoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Categories.
+     */
+    data: CategoryCreateManyInput | CategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Category update
+   */
+  export type CategoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Category.
+     */
+    data: XOR<CategoryUpdateInput, CategoryUncheckedUpdateInput>
+    /**
+     * Choose, which Category to update.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category updateMany
+   */
+  export type CategoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Categories.
+     */
+    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which Categories to update
+     */
+    where?: CategoryWhereInput
+    /**
+     * Limit how many Categories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Category upsert
+   */
+  export type CategoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Category to update in case it exists.
+     */
+    where: CategoryWhereUniqueInput
+    /**
+     * In case the Category found by the `where` argument doesn't exist, create a new Category with this data.
+     */
+    create: XOR<CategoryCreateInput, CategoryUncheckedCreateInput>
+    /**
+     * In case the Category was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CategoryUpdateInput, CategoryUncheckedUpdateInput>
+  }
+
+  /**
+   * Category delete
+   */
+  export type CategoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter which Category to delete.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category deleteMany
+   */
+  export type CategoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Categories to delete
+     */
+    where?: CategoryWhereInput
+    /**
+     * Limit how many Categories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Category.meetups
+   */
+  export type Category$meetupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Meetup
+     */
+    select?: MeetupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Meetup
+     */
+    omit?: MeetupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupInclude<ExtArgs> | null
+    where?: MeetupWhereInput
+    orderBy?: MeetupOrderByWithRelationInput | MeetupOrderByWithRelationInput[]
+    cursor?: MeetupWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MeetupScalarFieldEnum | MeetupScalarFieldEnum[]
+  }
+
+  /**
+   * Category without action
+   */
+  export type CategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
   }
 
 
@@ -21776,13 +22875,25 @@ export namespace Prisma {
     addressId: 'addressId',
     categoryId: 'categoryId',
     creatorId: 'creatorId',
+    certificateModelId: 'certificateModelId',
     image: 'image',
+    workload: 'workload',
     status: 'status',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
   export type MeetupScalarFieldEnum = (typeof MeetupScalarFieldEnum)[keyof typeof MeetupScalarFieldEnum]
+
+
+  export const CertificateModelScalarFieldEnum: {
+    id: 'id',
+    imageLink: 'imageLink',
+    content: 'content',
+    createdAt: 'createdAt'
+  };
+
+  export type CertificateModelScalarFieldEnum = (typeof CertificateModelScalarFieldEnum)[keyof typeof CertificateModelScalarFieldEnum]
 
 
   export const MeetupInviteSheetScalarFieldEnum: {
@@ -21792,26 +22903,6 @@ export namespace Prisma {
   };
 
   export type MeetupInviteSheetScalarFieldEnum = (typeof MeetupInviteSheetScalarFieldEnum)[keyof typeof MeetupInviteSheetScalarFieldEnum]
-
-
-  export const MeetupFollowerScalarFieldEnum: {
-    id: 'id',
-    meetupId: 'meetupId',
-    personId: 'personId',
-    createdAt: 'createdAt'
-  };
-
-  export type MeetupFollowerScalarFieldEnum = (typeof MeetupFollowerScalarFieldEnum)[keyof typeof MeetupFollowerScalarFieldEnum]
-
-
-  export const CategoryScalarFieldEnum: {
-    id: 'id',
-    name: 'name',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
 
 
   export const MeetupRoleScalarFieldEnum: {
@@ -21835,6 +22926,26 @@ export namespace Prisma {
   };
 
   export type MeetupAdminScalarFieldEnum = (typeof MeetupAdminScalarFieldEnum)[keyof typeof MeetupAdminScalarFieldEnum]
+
+
+  export const MeetupFollowerScalarFieldEnum: {
+    id: 'id',
+    meetupId: 'meetupId',
+    personId: 'personId',
+    createdAt: 'createdAt'
+  };
+
+  export type MeetupFollowerScalarFieldEnum = (typeof MeetupFollowerScalarFieldEnum)[keyof typeof MeetupFollowerScalarFieldEnum]
+
+
+  export const CategoryScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
 
 
   export const SubscriptionScalarFieldEnum: {
@@ -22023,10 +23134,20 @@ export namespace Prisma {
     addressId: 'addressId',
     categoryId: 'categoryId',
     creatorId: 'creatorId',
+    certificateModelId: 'certificateModelId',
     image: 'image'
   };
 
   export type MeetupOrderByRelevanceFieldEnum = (typeof MeetupOrderByRelevanceFieldEnum)[keyof typeof MeetupOrderByRelevanceFieldEnum]
+
+
+  export const CertificateModelOrderByRelevanceFieldEnum: {
+    id: 'id',
+    imageLink: 'imageLink',
+    content: 'content'
+  };
+
+  export type CertificateModelOrderByRelevanceFieldEnum = (typeof CertificateModelOrderByRelevanceFieldEnum)[keyof typeof CertificateModelOrderByRelevanceFieldEnum]
 
 
   export const MeetupInviteSheetOrderByRelevanceFieldEnum: {
@@ -22036,23 +23157,6 @@ export namespace Prisma {
   };
 
   export type MeetupInviteSheetOrderByRelevanceFieldEnum = (typeof MeetupInviteSheetOrderByRelevanceFieldEnum)[keyof typeof MeetupInviteSheetOrderByRelevanceFieldEnum]
-
-
-  export const MeetupFollowerOrderByRelevanceFieldEnum: {
-    id: 'id',
-    meetupId: 'meetupId',
-    personId: 'personId'
-  };
-
-  export type MeetupFollowerOrderByRelevanceFieldEnum = (typeof MeetupFollowerOrderByRelevanceFieldEnum)[keyof typeof MeetupFollowerOrderByRelevanceFieldEnum]
-
-
-  export const CategoryOrderByRelevanceFieldEnum: {
-    id: 'id',
-    name: 'name'
-  };
-
-  export type CategoryOrderByRelevanceFieldEnum = (typeof CategoryOrderByRelevanceFieldEnum)[keyof typeof CategoryOrderByRelevanceFieldEnum]
 
 
   export const MeetupRoleOrderByRelevanceFieldEnum: {
@@ -22071,6 +23175,23 @@ export namespace Prisma {
   };
 
   export type MeetupAdminOrderByRelevanceFieldEnum = (typeof MeetupAdminOrderByRelevanceFieldEnum)[keyof typeof MeetupAdminOrderByRelevanceFieldEnum]
+
+
+  export const MeetupFollowerOrderByRelevanceFieldEnum: {
+    id: 'id',
+    meetupId: 'meetupId',
+    personId: 'personId'
+  };
+
+  export type MeetupFollowerOrderByRelevanceFieldEnum = (typeof MeetupFollowerOrderByRelevanceFieldEnum)[keyof typeof MeetupFollowerOrderByRelevanceFieldEnum]
+
+
+  export const CategoryOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type CategoryOrderByRelevanceFieldEnum = (typeof CategoryOrderByRelevanceFieldEnum)[keyof typeof CategoryOrderByRelevanceFieldEnum]
 
 
   export const SubscriptionOrderByRelevanceFieldEnum: {
@@ -22168,6 +23289,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
    * Reference to a field of type 'MeetupStatus'
    */
   export type EnumMeetupStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MeetupStatus'>
@@ -22178,13 +23306,6 @@ export namespace Prisma {
    * Reference to a field of type 'Decimal'
    */
   export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
     
 
 
@@ -22699,7 +23820,9 @@ export namespace Prisma {
     addressId?: StringNullableFilter<"Meetup"> | string | null
     categoryId?: StringFilter<"Meetup"> | string
     creatorId?: StringFilter<"Meetup"> | string
+    certificateModelId?: StringNullableFilter<"Meetup"> | string | null
     image?: StringNullableFilter<"Meetup"> | string | null
+    workload?: IntNullableFilter<"Meetup"> | number | null
     status?: EnumMeetupStatusFilter<"Meetup"> | $Enums.MeetupStatus
     createdAt?: DateTimeFilter<"Meetup"> | Date | string
     updatedAt?: DateTimeFilter<"Meetup"> | Date | string
@@ -22714,6 +23837,7 @@ export namespace Prisma {
     creator?: XOR<PersonScalarRelationFilter, PersonWhereInput>
     followers?: MeetupFollowerListRelationFilter
     inviteSheets?: MeetupInviteSheetListRelationFilter
+    certificateModel?: XOR<CertificateModelNullableScalarRelationFilter, CertificateModelWhereInput> | null
   }
 
   export type MeetupOrderByWithRelationInput = {
@@ -22726,7 +23850,9 @@ export namespace Prisma {
     addressId?: SortOrderInput | SortOrder
     categoryId?: SortOrder
     creatorId?: SortOrder
+    certificateModelId?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
+    workload?: SortOrderInput | SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -22741,11 +23867,13 @@ export namespace Prisma {
     creator?: PersonOrderByWithRelationInput
     followers?: MeetupFollowerOrderByRelationAggregateInput
     inviteSheets?: MeetupInviteSheetOrderByRelationAggregateInput
+    certificateModel?: CertificateModelOrderByWithRelationInput
     _relevance?: MeetupOrderByRelevanceInput
   }
 
   export type MeetupWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    certificateModelId?: string
     AND?: MeetupWhereInput | MeetupWhereInput[]
     OR?: MeetupWhereInput[]
     NOT?: MeetupWhereInput | MeetupWhereInput[]
@@ -22758,6 +23886,7 @@ export namespace Prisma {
     categoryId?: StringFilter<"Meetup"> | string
     creatorId?: StringFilter<"Meetup"> | string
     image?: StringNullableFilter<"Meetup"> | string | null
+    workload?: IntNullableFilter<"Meetup"> | number | null
     status?: EnumMeetupStatusFilter<"Meetup"> | $Enums.MeetupStatus
     createdAt?: DateTimeFilter<"Meetup"> | Date | string
     updatedAt?: DateTimeFilter<"Meetup"> | Date | string
@@ -22772,7 +23901,8 @@ export namespace Prisma {
     creator?: XOR<PersonScalarRelationFilter, PersonWhereInput>
     followers?: MeetupFollowerListRelationFilter
     inviteSheets?: MeetupInviteSheetListRelationFilter
-  }, "id">
+    certificateModel?: XOR<CertificateModelNullableScalarRelationFilter, CertificateModelWhereInput> | null
+  }, "id" | "certificateModelId">
 
   export type MeetupOrderByWithAggregationInput = {
     id?: SortOrder
@@ -22784,13 +23914,17 @@ export namespace Prisma {
     addressId?: SortOrderInput | SortOrder
     categoryId?: SortOrder
     creatorId?: SortOrder
+    certificateModelId?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
+    workload?: SortOrderInput | SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: MeetupCountOrderByAggregateInput
+    _avg?: MeetupAvgOrderByAggregateInput
     _max?: MeetupMaxOrderByAggregateInput
     _min?: MeetupMinOrderByAggregateInput
+    _sum?: MeetupSumOrderByAggregateInput
   }
 
   export type MeetupScalarWhereWithAggregatesInput = {
@@ -22806,10 +23940,63 @@ export namespace Prisma {
     addressId?: StringNullableWithAggregatesFilter<"Meetup"> | string | null
     categoryId?: StringWithAggregatesFilter<"Meetup"> | string
     creatorId?: StringWithAggregatesFilter<"Meetup"> | string
+    certificateModelId?: StringNullableWithAggregatesFilter<"Meetup"> | string | null
     image?: StringNullableWithAggregatesFilter<"Meetup"> | string | null
+    workload?: IntNullableWithAggregatesFilter<"Meetup"> | number | null
     status?: EnumMeetupStatusWithAggregatesFilter<"Meetup"> | $Enums.MeetupStatus
     createdAt?: DateTimeWithAggregatesFilter<"Meetup"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Meetup"> | Date | string
+  }
+
+  export type CertificateModelWhereInput = {
+    AND?: CertificateModelWhereInput | CertificateModelWhereInput[]
+    OR?: CertificateModelWhereInput[]
+    NOT?: CertificateModelWhereInput | CertificateModelWhereInput[]
+    id?: StringFilter<"CertificateModel"> | string
+    imageLink?: StringFilter<"CertificateModel"> | string
+    content?: StringFilter<"CertificateModel"> | string
+    createdAt?: DateTimeFilter<"CertificateModel"> | Date | string
+    meetup?: XOR<MeetupNullableScalarRelationFilter, MeetupWhereInput> | null
+  }
+
+  export type CertificateModelOrderByWithRelationInput = {
+    id?: SortOrder
+    imageLink?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    meetup?: MeetupOrderByWithRelationInput
+    _relevance?: CertificateModelOrderByRelevanceInput
+  }
+
+  export type CertificateModelWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CertificateModelWhereInput | CertificateModelWhereInput[]
+    OR?: CertificateModelWhereInput[]
+    NOT?: CertificateModelWhereInput | CertificateModelWhereInput[]
+    imageLink?: StringFilter<"CertificateModel"> | string
+    content?: StringFilter<"CertificateModel"> | string
+    createdAt?: DateTimeFilter<"CertificateModel"> | Date | string
+    meetup?: XOR<MeetupNullableScalarRelationFilter, MeetupWhereInput> | null
+  }, "id">
+
+  export type CertificateModelOrderByWithAggregationInput = {
+    id?: SortOrder
+    imageLink?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    _count?: CertificateModelCountOrderByAggregateInput
+    _max?: CertificateModelMaxOrderByAggregateInput
+    _min?: CertificateModelMinOrderByAggregateInput
+  }
+
+  export type CertificateModelScalarWhereWithAggregatesInput = {
+    AND?: CertificateModelScalarWhereWithAggregatesInput | CertificateModelScalarWhereWithAggregatesInput[]
+    OR?: CertificateModelScalarWhereWithAggregatesInput[]
+    NOT?: CertificateModelScalarWhereWithAggregatesInput | CertificateModelScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CertificateModel"> | string
+    imageLink?: StringWithAggregatesFilter<"CertificateModel"> | string
+    content?: StringWithAggregatesFilter<"CertificateModel"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"CertificateModel"> | Date | string
   }
 
   export type MeetupInviteSheetWhereInput = {
@@ -22856,112 +24043,6 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"MeetupInviteSheet"> | string
     link?: StringWithAggregatesFilter<"MeetupInviteSheet"> | string
     meetupId?: StringWithAggregatesFilter<"MeetupInviteSheet"> | string
-  }
-
-  export type MeetupFollowerWhereInput = {
-    AND?: MeetupFollowerWhereInput | MeetupFollowerWhereInput[]
-    OR?: MeetupFollowerWhereInput[]
-    NOT?: MeetupFollowerWhereInput | MeetupFollowerWhereInput[]
-    id?: StringFilter<"MeetupFollower"> | string
-    meetupId?: StringFilter<"MeetupFollower"> | string
-    personId?: StringFilter<"MeetupFollower"> | string
-    createdAt?: DateTimeFilter<"MeetupFollower"> | Date | string
-    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
-    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
-  }
-
-  export type MeetupFollowerOrderByWithRelationInput = {
-    id?: SortOrder
-    meetupId?: SortOrder
-    personId?: SortOrder
-    createdAt?: SortOrder
-    meetup?: MeetupOrderByWithRelationInput
-    person?: PersonOrderByWithRelationInput
-    _relevance?: MeetupFollowerOrderByRelevanceInput
-  }
-
-  export type MeetupFollowerWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    meetupId_personId?: MeetupFollowerMeetupIdPersonIdCompoundUniqueInput
-    AND?: MeetupFollowerWhereInput | MeetupFollowerWhereInput[]
-    OR?: MeetupFollowerWhereInput[]
-    NOT?: MeetupFollowerWhereInput | MeetupFollowerWhereInput[]
-    meetupId?: StringFilter<"MeetupFollower"> | string
-    personId?: StringFilter<"MeetupFollower"> | string
-    createdAt?: DateTimeFilter<"MeetupFollower"> | Date | string
-    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
-    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
-  }, "id" | "meetupId_personId">
-
-  export type MeetupFollowerOrderByWithAggregationInput = {
-    id?: SortOrder
-    meetupId?: SortOrder
-    personId?: SortOrder
-    createdAt?: SortOrder
-    _count?: MeetupFollowerCountOrderByAggregateInput
-    _max?: MeetupFollowerMaxOrderByAggregateInput
-    _min?: MeetupFollowerMinOrderByAggregateInput
-  }
-
-  export type MeetupFollowerScalarWhereWithAggregatesInput = {
-    AND?: MeetupFollowerScalarWhereWithAggregatesInput | MeetupFollowerScalarWhereWithAggregatesInput[]
-    OR?: MeetupFollowerScalarWhereWithAggregatesInput[]
-    NOT?: MeetupFollowerScalarWhereWithAggregatesInput | MeetupFollowerScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"MeetupFollower"> | string
-    meetupId?: StringWithAggregatesFilter<"MeetupFollower"> | string
-    personId?: StringWithAggregatesFilter<"MeetupFollower"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"MeetupFollower"> | Date | string
-  }
-
-  export type CategoryWhereInput = {
-    AND?: CategoryWhereInput | CategoryWhereInput[]
-    OR?: CategoryWhereInput[]
-    NOT?: CategoryWhereInput | CategoryWhereInput[]
-    id?: StringFilter<"Category"> | string
-    name?: StringFilter<"Category"> | string
-    createdAt?: DateTimeFilter<"Category"> | Date | string
-    updatedAt?: DateTimeFilter<"Category"> | Date | string
-    meetups?: MeetupListRelationFilter
-  }
-
-  export type CategoryOrderByWithRelationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    meetups?: MeetupOrderByRelationAggregateInput
-    _relevance?: CategoryOrderByRelevanceInput
-  }
-
-  export type CategoryWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: CategoryWhereInput | CategoryWhereInput[]
-    OR?: CategoryWhereInput[]
-    NOT?: CategoryWhereInput | CategoryWhereInput[]
-    name?: StringFilter<"Category"> | string
-    createdAt?: DateTimeFilter<"Category"> | Date | string
-    updatedAt?: DateTimeFilter<"Category"> | Date | string
-    meetups?: MeetupListRelationFilter
-  }, "id">
-
-  export type CategoryOrderByWithAggregationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: CategoryCountOrderByAggregateInput
-    _max?: CategoryMaxOrderByAggregateInput
-    _min?: CategoryMinOrderByAggregateInput
-  }
-
-  export type CategoryScalarWhereWithAggregatesInput = {
-    AND?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
-    OR?: CategoryScalarWhereWithAggregatesInput[]
-    NOT?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Category"> | string
-    name?: StringWithAggregatesFilter<"Category"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
   }
 
   export type MeetupRoleWhereInput = {
@@ -23085,6 +24166,112 @@ export namespace Prisma {
     role?: StringWithAggregatesFilter<"MeetupAdmin"> | string
     createdAt?: DateTimeWithAggregatesFilter<"MeetupAdmin"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"MeetupAdmin"> | Date | string
+  }
+
+  export type MeetupFollowerWhereInput = {
+    AND?: MeetupFollowerWhereInput | MeetupFollowerWhereInput[]
+    OR?: MeetupFollowerWhereInput[]
+    NOT?: MeetupFollowerWhereInput | MeetupFollowerWhereInput[]
+    id?: StringFilter<"MeetupFollower"> | string
+    meetupId?: StringFilter<"MeetupFollower"> | string
+    personId?: StringFilter<"MeetupFollower"> | string
+    createdAt?: DateTimeFilter<"MeetupFollower"> | Date | string
+    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
+    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+  }
+
+  export type MeetupFollowerOrderByWithRelationInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    createdAt?: SortOrder
+    meetup?: MeetupOrderByWithRelationInput
+    person?: PersonOrderByWithRelationInput
+    _relevance?: MeetupFollowerOrderByRelevanceInput
+  }
+
+  export type MeetupFollowerWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    meetupId_personId?: MeetupFollowerMeetupIdPersonIdCompoundUniqueInput
+    AND?: MeetupFollowerWhereInput | MeetupFollowerWhereInput[]
+    OR?: MeetupFollowerWhereInput[]
+    NOT?: MeetupFollowerWhereInput | MeetupFollowerWhereInput[]
+    meetupId?: StringFilter<"MeetupFollower"> | string
+    personId?: StringFilter<"MeetupFollower"> | string
+    createdAt?: DateTimeFilter<"MeetupFollower"> | Date | string
+    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
+    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+  }, "id" | "meetupId_personId">
+
+  export type MeetupFollowerOrderByWithAggregationInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    createdAt?: SortOrder
+    _count?: MeetupFollowerCountOrderByAggregateInput
+    _max?: MeetupFollowerMaxOrderByAggregateInput
+    _min?: MeetupFollowerMinOrderByAggregateInput
+  }
+
+  export type MeetupFollowerScalarWhereWithAggregatesInput = {
+    AND?: MeetupFollowerScalarWhereWithAggregatesInput | MeetupFollowerScalarWhereWithAggregatesInput[]
+    OR?: MeetupFollowerScalarWhereWithAggregatesInput[]
+    NOT?: MeetupFollowerScalarWhereWithAggregatesInput | MeetupFollowerScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MeetupFollower"> | string
+    meetupId?: StringWithAggregatesFilter<"MeetupFollower"> | string
+    personId?: StringWithAggregatesFilter<"MeetupFollower"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"MeetupFollower"> | Date | string
+  }
+
+  export type CategoryWhereInput = {
+    AND?: CategoryWhereInput | CategoryWhereInput[]
+    OR?: CategoryWhereInput[]
+    NOT?: CategoryWhereInput | CategoryWhereInput[]
+    id?: StringFilter<"Category"> | string
+    name?: StringFilter<"Category"> | string
+    createdAt?: DateTimeFilter<"Category"> | Date | string
+    updatedAt?: DateTimeFilter<"Category"> | Date | string
+    meetups?: MeetupListRelationFilter
+  }
+
+  export type CategoryOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    meetups?: MeetupOrderByRelationAggregateInput
+    _relevance?: CategoryOrderByRelevanceInput
+  }
+
+  export type CategoryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CategoryWhereInput | CategoryWhereInput[]
+    OR?: CategoryWhereInput[]
+    NOT?: CategoryWhereInput | CategoryWhereInput[]
+    name?: StringFilter<"Category"> | string
+    createdAt?: DateTimeFilter<"Category"> | Date | string
+    updatedAt?: DateTimeFilter<"Category"> | Date | string
+    meetups?: MeetupListRelationFilter
+  }, "id">
+
+  export type CategoryOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CategoryCountOrderByAggregateInput
+    _max?: CategoryMaxOrderByAggregateInput
+    _min?: CategoryMinOrderByAggregateInput
+  }
+
+  export type CategoryScalarWhereWithAggregatesInput = {
+    AND?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
+    OR?: CategoryScalarWhereWithAggregatesInput[]
+    NOT?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Category"> | string
+    name?: StringWithAggregatesFilter<"Category"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
   }
 
   export type SubscriptionWhereInput = {
@@ -24134,6 +25321,7 @@ export namespace Prisma {
     start?: Date | string | null
     end?: Date | string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -24148,6 +25336,7 @@ export namespace Prisma {
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
+    certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateInput = {
@@ -24160,7 +25349,9 @@ export namespace Prisma {
     addressId?: string | null
     categoryId: string
     creatorId: string
+    certificateModelId?: string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -24182,6 +25373,7 @@ export namespace Prisma {
     start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24196,6 +25388,7 @@ export namespace Prisma {
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
+    certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateInput = {
@@ -24208,7 +25401,9 @@ export namespace Prisma {
     addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
+    certificateModelId?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24232,7 +25427,9 @@ export namespace Prisma {
     addressId?: string | null
     categoryId: string
     creatorId: string
+    certificateModelId?: string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -24246,6 +25443,7 @@ export namespace Prisma {
     start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24261,10 +25459,65 @@ export namespace Prisma {
     addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
+    certificateModelId?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CertificateModelCreateInput = {
+    id?: string
+    imageLink: string
+    content: string
+    createdAt?: Date | string
+    meetup?: MeetupCreateNestedOneWithoutCertificateModelInput
+  }
+
+  export type CertificateModelUncheckedCreateInput = {
+    id?: string
+    imageLink: string
+    content: string
+    createdAt?: Date | string
+    meetup?: MeetupUncheckedCreateNestedOneWithoutCertificateModelInput
+  }
+
+  export type CertificateModelUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    imageLink?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetup?: MeetupUpdateOneWithoutCertificateModelNestedInput
+  }
+
+  export type CertificateModelUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    imageLink?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetup?: MeetupUncheckedUpdateOneWithoutCertificateModelNestedInput
+  }
+
+  export type CertificateModelCreateManyInput = {
+    id?: string
+    imageLink: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type CertificateModelUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    imageLink?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CertificateModelUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    imageLink?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MeetupInviteSheetCreateInput = {
@@ -24306,106 +25559,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     meetupId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type MeetupFollowerCreateInput = {
-    id?: string
-    createdAt?: Date | string
-    meetup: MeetupCreateNestedOneWithoutFollowersInput
-    person: PersonCreateNestedOneWithoutFollowingMeetupsInput
-  }
-
-  export type MeetupFollowerUncheckedCreateInput = {
-    id?: string
-    meetupId: string
-    personId: string
-    createdAt?: Date | string
-  }
-
-  export type MeetupFollowerUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetup?: MeetupUpdateOneRequiredWithoutFollowersNestedInput
-    person?: PersonUpdateOneRequiredWithoutFollowingMeetupsNestedInput
-  }
-
-  export type MeetupFollowerUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    meetupId?: StringFieldUpdateOperationsInput | string
-    personId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type MeetupFollowerCreateManyInput = {
-    id?: string
-    meetupId: string
-    personId: string
-    createdAt?: Date | string
-  }
-
-  export type MeetupFollowerUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type MeetupFollowerUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    meetupId?: StringFieldUpdateOperationsInput | string
-    personId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CategoryCreateInput = {
-    id?: string
-    name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    meetups?: MeetupCreateNestedManyWithoutCategoryInput
-  }
-
-  export type CategoryUncheckedCreateInput = {
-    id?: string
-    name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    meetups?: MeetupUncheckedCreateNestedManyWithoutCategoryInput
-  }
-
-  export type CategoryUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetups?: MeetupUpdateManyWithoutCategoryNestedInput
-  }
-
-  export type CategoryUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetups?: MeetupUncheckedUpdateManyWithoutCategoryNestedInput
-  }
-
-  export type CategoryCreateManyInput = {
-    id?: string
-    name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type CategoryUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CategoryUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MeetupRoleCreateInput = {
@@ -24525,6 +25678,106 @@ export namespace Prisma {
     meetupId?: StringFieldUpdateOperationsInput | string
     personId?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupFollowerCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    meetup: MeetupCreateNestedOneWithoutFollowersInput
+    person: PersonCreateNestedOneWithoutFollowingMeetupsInput
+  }
+
+  export type MeetupFollowerUncheckedCreateInput = {
+    id?: string
+    meetupId: string
+    personId: string
+    createdAt?: Date | string
+  }
+
+  export type MeetupFollowerUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetup?: MeetupUpdateOneRequiredWithoutFollowersNestedInput
+    person?: PersonUpdateOneRequiredWithoutFollowingMeetupsNestedInput
+  }
+
+  export type MeetupFollowerUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupFollowerCreateManyInput = {
+    id?: string
+    meetupId: string
+    personId: string
+    createdAt?: Date | string
+  }
+
+  export type MeetupFollowerUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupFollowerUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategoryCreateInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetups?: MeetupCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryUncheckedCreateInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetups?: MeetupUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetups?: MeetupUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetups?: MeetupUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryCreateManyInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CategoryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CategoryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -25504,6 +26757,17 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type EnumMeetupStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.MeetupStatus | EnumMeetupStatusFieldRefInput<$PrismaModel>
     in?: $Enums.MeetupStatus[]
@@ -25532,6 +26796,11 @@ export namespace Prisma {
     none?: MeetupInviteSheetWhereInput
   }
 
+  export type CertificateModelNullableScalarRelationFilter = {
+    is?: CertificateModelWhereInput | null
+    isNot?: CertificateModelWhereInput | null
+  }
+
   export type MeetupInviteSheetOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -25552,10 +26821,16 @@ export namespace Prisma {
     addressId?: SortOrder
     categoryId?: SortOrder
     creatorId?: SortOrder
+    certificateModelId?: SortOrder
     image?: SortOrder
+    workload?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type MeetupAvgOrderByAggregateInput = {
+    workload?: SortOrder
   }
 
   export type MeetupMaxOrderByAggregateInput = {
@@ -25568,7 +26843,9 @@ export namespace Prisma {
     addressId?: SortOrder
     categoryId?: SortOrder
     creatorId?: SortOrder
+    certificateModelId?: SortOrder
     image?: SortOrder
+    workload?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -25584,10 +26861,32 @@ export namespace Prisma {
     addressId?: SortOrder
     categoryId?: SortOrder
     creatorId?: SortOrder
+    certificateModelId?: SortOrder
     image?: SortOrder
+    workload?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type MeetupSumOrderByAggregateInput = {
+    workload?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type EnumMeetupStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -25598,6 +26897,38 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumMeetupStatusFilter<$PrismaModel>
     _max?: NestedEnumMeetupStatusFilter<$PrismaModel>
+  }
+
+  export type MeetupNullableScalarRelationFilter = {
+    is?: MeetupWhereInput | null
+    isNot?: MeetupWhereInput | null
+  }
+
+  export type CertificateModelOrderByRelevanceInput = {
+    fields: CertificateModelOrderByRelevanceFieldEnum | CertificateModelOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type CertificateModelCountOrderByAggregateInput = {
+    id?: SortOrder
+    imageLink?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CertificateModelMaxOrderByAggregateInput = {
+    id?: SortOrder
+    imageLink?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CertificateModelMinOrderByAggregateInput = {
+    id?: SortOrder
+    imageLink?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type MeetupScalarRelationFilter = {
@@ -25627,65 +26958,6 @@ export namespace Prisma {
     id?: SortOrder
     link?: SortOrder
     meetupId?: SortOrder
-  }
-
-  export type MeetupFollowerOrderByRelevanceInput = {
-    fields: MeetupFollowerOrderByRelevanceFieldEnum | MeetupFollowerOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
-  }
-
-  export type MeetupFollowerMeetupIdPersonIdCompoundUniqueInput = {
-    meetupId: string
-    personId: string
-  }
-
-  export type MeetupFollowerCountOrderByAggregateInput = {
-    id?: SortOrder
-    meetupId?: SortOrder
-    personId?: SortOrder
-    createdAt?: SortOrder
-  }
-
-  export type MeetupFollowerMaxOrderByAggregateInput = {
-    id?: SortOrder
-    meetupId?: SortOrder
-    personId?: SortOrder
-    createdAt?: SortOrder
-  }
-
-  export type MeetupFollowerMinOrderByAggregateInput = {
-    id?: SortOrder
-    meetupId?: SortOrder
-    personId?: SortOrder
-    createdAt?: SortOrder
-  }
-
-  export type CategoryOrderByRelevanceInput = {
-    fields: CategoryOrderByRelevanceFieldEnum | CategoryOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
-  }
-
-  export type CategoryCountOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type CategoryMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type CategoryMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type DecimalFilter<$PrismaModel = never> = {
@@ -25787,6 +27059,65 @@ export namespace Prisma {
     meetupId?: SortOrder
     personId?: SortOrder
     role?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MeetupFollowerOrderByRelevanceInput = {
+    fields: MeetupFollowerOrderByRelevanceFieldEnum | MeetupFollowerOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type MeetupFollowerMeetupIdPersonIdCompoundUniqueInput = {
+    meetupId: string
+    personId: string
+  }
+
+  export type MeetupFollowerCountOrderByAggregateInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MeetupFollowerMaxOrderByAggregateInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MeetupFollowerMinOrderByAggregateInput = {
+    id?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CategoryOrderByRelevanceInput = {
+    fields: CategoryOrderByRelevanceFieldEnum | CategoryOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type CategoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CategoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CategoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -26765,6 +28096,12 @@ export namespace Prisma {
     connect?: MeetupInviteSheetWhereUniqueInput | MeetupInviteSheetWhereUniqueInput[]
   }
 
+  export type CertificateModelCreateNestedOneWithoutMeetupInput = {
+    create?: XOR<CertificateModelCreateWithoutMeetupInput, CertificateModelUncheckedCreateWithoutMeetupInput>
+    connectOrCreate?: CertificateModelCreateOrConnectWithoutMeetupInput
+    connect?: CertificateModelWhereUniqueInput
+  }
+
   export type MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput = {
     create?: XOR<MeetupAdminCreateWithoutMeetupInput, MeetupAdminUncheckedCreateWithoutMeetupInput> | MeetupAdminCreateWithoutMeetupInput[] | MeetupAdminUncheckedCreateWithoutMeetupInput[]
     connectOrCreate?: MeetupAdminCreateOrConnectWithoutMeetupInput | MeetupAdminCreateOrConnectWithoutMeetupInput[]
@@ -26819,6 +28156,14 @@ export namespace Prisma {
     connectOrCreate?: MeetupInviteSheetCreateOrConnectWithoutMeetupInput | MeetupInviteSheetCreateOrConnectWithoutMeetupInput[]
     createMany?: MeetupInviteSheetCreateManyMeetupInputEnvelope
     connect?: MeetupInviteSheetWhereUniqueInput | MeetupInviteSheetWhereUniqueInput[]
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type EnumMeetupStatusFieldUpdateOperationsInput = {
@@ -26963,6 +28308,16 @@ export namespace Prisma {
     deleteMany?: MeetupInviteSheetScalarWhereInput | MeetupInviteSheetScalarWhereInput[]
   }
 
+  export type CertificateModelUpdateOneWithoutMeetupNestedInput = {
+    create?: XOR<CertificateModelCreateWithoutMeetupInput, CertificateModelUncheckedCreateWithoutMeetupInput>
+    connectOrCreate?: CertificateModelCreateOrConnectWithoutMeetupInput
+    upsert?: CertificateModelUpsertWithoutMeetupInput
+    disconnect?: CertificateModelWhereInput | boolean
+    delete?: CertificateModelWhereInput | boolean
+    connect?: CertificateModelWhereUniqueInput
+    update?: XOR<XOR<CertificateModelUpdateToOneWithWhereWithoutMeetupInput, CertificateModelUpdateWithoutMeetupInput>, CertificateModelUncheckedUpdateWithoutMeetupInput>
+  }
+
   export type MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput = {
     create?: XOR<MeetupAdminCreateWithoutMeetupInput, MeetupAdminUncheckedCreateWithoutMeetupInput> | MeetupAdminCreateWithoutMeetupInput[] | MeetupAdminUncheckedCreateWithoutMeetupInput[]
     connectOrCreate?: MeetupAdminCreateOrConnectWithoutMeetupInput | MeetupAdminCreateOrConnectWithoutMeetupInput[]
@@ -27075,6 +28430,38 @@ export namespace Prisma {
     deleteMany?: MeetupInviteSheetScalarWhereInput | MeetupInviteSheetScalarWhereInput[]
   }
 
+  export type MeetupCreateNestedOneWithoutCertificateModelInput = {
+    create?: XOR<MeetupCreateWithoutCertificateModelInput, MeetupUncheckedCreateWithoutCertificateModelInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutCertificateModelInput
+    connect?: MeetupWhereUniqueInput
+  }
+
+  export type MeetupUncheckedCreateNestedOneWithoutCertificateModelInput = {
+    create?: XOR<MeetupCreateWithoutCertificateModelInput, MeetupUncheckedCreateWithoutCertificateModelInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutCertificateModelInput
+    connect?: MeetupWhereUniqueInput
+  }
+
+  export type MeetupUpdateOneWithoutCertificateModelNestedInput = {
+    create?: XOR<MeetupCreateWithoutCertificateModelInput, MeetupUncheckedCreateWithoutCertificateModelInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutCertificateModelInput
+    upsert?: MeetupUpsertWithoutCertificateModelInput
+    disconnect?: MeetupWhereInput | boolean
+    delete?: MeetupWhereInput | boolean
+    connect?: MeetupWhereUniqueInput
+    update?: XOR<XOR<MeetupUpdateToOneWithWhereWithoutCertificateModelInput, MeetupUpdateWithoutCertificateModelInput>, MeetupUncheckedUpdateWithoutCertificateModelInput>
+  }
+
+  export type MeetupUncheckedUpdateOneWithoutCertificateModelNestedInput = {
+    create?: XOR<MeetupCreateWithoutCertificateModelInput, MeetupUncheckedCreateWithoutCertificateModelInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutCertificateModelInput
+    upsert?: MeetupUpsertWithoutCertificateModelInput
+    disconnect?: MeetupWhereInput | boolean
+    delete?: MeetupWhereInput | boolean
+    connect?: MeetupWhereUniqueInput
+    update?: XOR<XOR<MeetupUpdateToOneWithWhereWithoutCertificateModelInput, MeetupUpdateWithoutCertificateModelInput>, MeetupUncheckedUpdateWithoutCertificateModelInput>
+  }
+
   export type MeetupCreateNestedOneWithoutInviteSheetsInput = {
     create?: XOR<MeetupCreateWithoutInviteSheetsInput, MeetupUncheckedCreateWithoutInviteSheetsInput>
     connectOrCreate?: MeetupCreateOrConnectWithoutInviteSheetsInput
@@ -27087,76 +28474,6 @@ export namespace Prisma {
     upsert?: MeetupUpsertWithoutInviteSheetsInput
     connect?: MeetupWhereUniqueInput
     update?: XOR<XOR<MeetupUpdateToOneWithWhereWithoutInviteSheetsInput, MeetupUpdateWithoutInviteSheetsInput>, MeetupUncheckedUpdateWithoutInviteSheetsInput>
-  }
-
-  export type MeetupCreateNestedOneWithoutFollowersInput = {
-    create?: XOR<MeetupCreateWithoutFollowersInput, MeetupUncheckedCreateWithoutFollowersInput>
-    connectOrCreate?: MeetupCreateOrConnectWithoutFollowersInput
-    connect?: MeetupWhereUniqueInput
-  }
-
-  export type PersonCreateNestedOneWithoutFollowingMeetupsInput = {
-    create?: XOR<PersonCreateWithoutFollowingMeetupsInput, PersonUncheckedCreateWithoutFollowingMeetupsInput>
-    connectOrCreate?: PersonCreateOrConnectWithoutFollowingMeetupsInput
-    connect?: PersonWhereUniqueInput
-  }
-
-  export type MeetupUpdateOneRequiredWithoutFollowersNestedInput = {
-    create?: XOR<MeetupCreateWithoutFollowersInput, MeetupUncheckedCreateWithoutFollowersInput>
-    connectOrCreate?: MeetupCreateOrConnectWithoutFollowersInput
-    upsert?: MeetupUpsertWithoutFollowersInput
-    connect?: MeetupWhereUniqueInput
-    update?: XOR<XOR<MeetupUpdateToOneWithWhereWithoutFollowersInput, MeetupUpdateWithoutFollowersInput>, MeetupUncheckedUpdateWithoutFollowersInput>
-  }
-
-  export type PersonUpdateOneRequiredWithoutFollowingMeetupsNestedInput = {
-    create?: XOR<PersonCreateWithoutFollowingMeetupsInput, PersonUncheckedCreateWithoutFollowingMeetupsInput>
-    connectOrCreate?: PersonCreateOrConnectWithoutFollowingMeetupsInput
-    upsert?: PersonUpsertWithoutFollowingMeetupsInput
-    connect?: PersonWhereUniqueInput
-    update?: XOR<XOR<PersonUpdateToOneWithWhereWithoutFollowingMeetupsInput, PersonUpdateWithoutFollowingMeetupsInput>, PersonUncheckedUpdateWithoutFollowingMeetupsInput>
-  }
-
-  export type MeetupCreateNestedManyWithoutCategoryInput = {
-    create?: XOR<MeetupCreateWithoutCategoryInput, MeetupUncheckedCreateWithoutCategoryInput> | MeetupCreateWithoutCategoryInput[] | MeetupUncheckedCreateWithoutCategoryInput[]
-    connectOrCreate?: MeetupCreateOrConnectWithoutCategoryInput | MeetupCreateOrConnectWithoutCategoryInput[]
-    createMany?: MeetupCreateManyCategoryInputEnvelope
-    connect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
-  }
-
-  export type MeetupUncheckedCreateNestedManyWithoutCategoryInput = {
-    create?: XOR<MeetupCreateWithoutCategoryInput, MeetupUncheckedCreateWithoutCategoryInput> | MeetupCreateWithoutCategoryInput[] | MeetupUncheckedCreateWithoutCategoryInput[]
-    connectOrCreate?: MeetupCreateOrConnectWithoutCategoryInput | MeetupCreateOrConnectWithoutCategoryInput[]
-    createMany?: MeetupCreateManyCategoryInputEnvelope
-    connect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
-  }
-
-  export type MeetupUpdateManyWithoutCategoryNestedInput = {
-    create?: XOR<MeetupCreateWithoutCategoryInput, MeetupUncheckedCreateWithoutCategoryInput> | MeetupCreateWithoutCategoryInput[] | MeetupUncheckedCreateWithoutCategoryInput[]
-    connectOrCreate?: MeetupCreateOrConnectWithoutCategoryInput | MeetupCreateOrConnectWithoutCategoryInput[]
-    upsert?: MeetupUpsertWithWhereUniqueWithoutCategoryInput | MeetupUpsertWithWhereUniqueWithoutCategoryInput[]
-    createMany?: MeetupCreateManyCategoryInputEnvelope
-    set?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
-    disconnect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
-    delete?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
-    connect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
-    update?: MeetupUpdateWithWhereUniqueWithoutCategoryInput | MeetupUpdateWithWhereUniqueWithoutCategoryInput[]
-    updateMany?: MeetupUpdateManyWithWhereWithoutCategoryInput | MeetupUpdateManyWithWhereWithoutCategoryInput[]
-    deleteMany?: MeetupScalarWhereInput | MeetupScalarWhereInput[]
-  }
-
-  export type MeetupUncheckedUpdateManyWithoutCategoryNestedInput = {
-    create?: XOR<MeetupCreateWithoutCategoryInput, MeetupUncheckedCreateWithoutCategoryInput> | MeetupCreateWithoutCategoryInput[] | MeetupUncheckedCreateWithoutCategoryInput[]
-    connectOrCreate?: MeetupCreateOrConnectWithoutCategoryInput | MeetupCreateOrConnectWithoutCategoryInput[]
-    upsert?: MeetupUpsertWithWhereUniqueWithoutCategoryInput | MeetupUpsertWithWhereUniqueWithoutCategoryInput[]
-    createMany?: MeetupCreateManyCategoryInputEnvelope
-    set?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
-    disconnect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
-    delete?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
-    connect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
-    update?: MeetupUpdateWithWhereUniqueWithoutCategoryInput | MeetupUpdateWithWhereUniqueWithoutCategoryInput[]
-    updateMany?: MeetupUpdateManyWithWhereWithoutCategoryInput | MeetupUpdateManyWithWhereWithoutCategoryInput[]
-    deleteMany?: MeetupScalarWhereInput | MeetupScalarWhereInput[]
   }
 
   export type SubscriptionCreateNestedManyWithoutMeetupRoleInput = {
@@ -27235,6 +28552,76 @@ export namespace Prisma {
     upsert?: PersonUpsertWithoutMeetupAdminsInput
     connect?: PersonWhereUniqueInput
     update?: XOR<XOR<PersonUpdateToOneWithWhereWithoutMeetupAdminsInput, PersonUpdateWithoutMeetupAdminsInput>, PersonUncheckedUpdateWithoutMeetupAdminsInput>
+  }
+
+  export type MeetupCreateNestedOneWithoutFollowersInput = {
+    create?: XOR<MeetupCreateWithoutFollowersInput, MeetupUncheckedCreateWithoutFollowersInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutFollowersInput
+    connect?: MeetupWhereUniqueInput
+  }
+
+  export type PersonCreateNestedOneWithoutFollowingMeetupsInput = {
+    create?: XOR<PersonCreateWithoutFollowingMeetupsInput, PersonUncheckedCreateWithoutFollowingMeetupsInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutFollowingMeetupsInput
+    connect?: PersonWhereUniqueInput
+  }
+
+  export type MeetupUpdateOneRequiredWithoutFollowersNestedInput = {
+    create?: XOR<MeetupCreateWithoutFollowersInput, MeetupUncheckedCreateWithoutFollowersInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutFollowersInput
+    upsert?: MeetupUpsertWithoutFollowersInput
+    connect?: MeetupWhereUniqueInput
+    update?: XOR<XOR<MeetupUpdateToOneWithWhereWithoutFollowersInput, MeetupUpdateWithoutFollowersInput>, MeetupUncheckedUpdateWithoutFollowersInput>
+  }
+
+  export type PersonUpdateOneRequiredWithoutFollowingMeetupsNestedInput = {
+    create?: XOR<PersonCreateWithoutFollowingMeetupsInput, PersonUncheckedCreateWithoutFollowingMeetupsInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutFollowingMeetupsInput
+    upsert?: PersonUpsertWithoutFollowingMeetupsInput
+    connect?: PersonWhereUniqueInput
+    update?: XOR<XOR<PersonUpdateToOneWithWhereWithoutFollowingMeetupsInput, PersonUpdateWithoutFollowingMeetupsInput>, PersonUncheckedUpdateWithoutFollowingMeetupsInput>
+  }
+
+  export type MeetupCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<MeetupCreateWithoutCategoryInput, MeetupUncheckedCreateWithoutCategoryInput> | MeetupCreateWithoutCategoryInput[] | MeetupUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: MeetupCreateOrConnectWithoutCategoryInput | MeetupCreateOrConnectWithoutCategoryInput[]
+    createMany?: MeetupCreateManyCategoryInputEnvelope
+    connect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+  }
+
+  export type MeetupUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<MeetupCreateWithoutCategoryInput, MeetupUncheckedCreateWithoutCategoryInput> | MeetupCreateWithoutCategoryInput[] | MeetupUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: MeetupCreateOrConnectWithoutCategoryInput | MeetupCreateOrConnectWithoutCategoryInput[]
+    createMany?: MeetupCreateManyCategoryInputEnvelope
+    connect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+  }
+
+  export type MeetupUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<MeetupCreateWithoutCategoryInput, MeetupUncheckedCreateWithoutCategoryInput> | MeetupCreateWithoutCategoryInput[] | MeetupUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: MeetupCreateOrConnectWithoutCategoryInput | MeetupCreateOrConnectWithoutCategoryInput[]
+    upsert?: MeetupUpsertWithWhereUniqueWithoutCategoryInput | MeetupUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: MeetupCreateManyCategoryInputEnvelope
+    set?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    disconnect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    delete?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    connect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    update?: MeetupUpdateWithWhereUniqueWithoutCategoryInput | MeetupUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: MeetupUpdateManyWithWhereWithoutCategoryInput | MeetupUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: MeetupScalarWhereInput | MeetupScalarWhereInput[]
+  }
+
+  export type MeetupUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<MeetupCreateWithoutCategoryInput, MeetupUncheckedCreateWithoutCategoryInput> | MeetupCreateWithoutCategoryInput[] | MeetupUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: MeetupCreateOrConnectWithoutCategoryInput | MeetupCreateOrConnectWithoutCategoryInput[]
+    upsert?: MeetupUpsertWithWhereUniqueWithoutCategoryInput | MeetupUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: MeetupCreateManyCategoryInputEnvelope
+    set?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    disconnect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    delete?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    connect?: MeetupWhereUniqueInput | MeetupWhereUniqueInput[]
+    update?: MeetupUpdateWithWhereUniqueWithoutCategoryInput | MeetupUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: MeetupUpdateManyWithWhereWithoutCategoryInput | MeetupUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: MeetupScalarWhereInput | MeetupScalarWhereInput[]
   }
 
   export type PersonCreateNestedOneWithoutSubscriptionsInput = {
@@ -27671,6 +29058,33 @@ export namespace Prisma {
     in?: $Enums.MeetupStatus[]
     notIn?: $Enums.MeetupStatus[]
     not?: NestedEnumMeetupStatusFilter<$PrismaModel> | $Enums.MeetupStatus
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedEnumMeetupStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -28318,6 +29732,7 @@ export namespace Prisma {
     start?: Date | string | null
     end?: Date | string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28331,6 +29746,7 @@ export namespace Prisma {
     category: CategoryCreateNestedOneWithoutMeetupsInput
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
+    certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutCreatorInput = {
@@ -28342,7 +29758,9 @@ export namespace Prisma {
     end?: Date | string | null
     addressId?: string | null
     categoryId: string
+    certificateModelId?: string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28627,7 +30045,9 @@ export namespace Prisma {
     addressId?: StringNullableFilter<"Meetup"> | string | null
     categoryId?: StringFilter<"Meetup"> | string
     creatorId?: StringFilter<"Meetup"> | string
+    certificateModelId?: StringNullableFilter<"Meetup"> | string | null
     image?: StringNullableFilter<"Meetup"> | string | null
+    workload?: IntNullableFilter<"Meetup"> | number | null
     status?: EnumMeetupStatusFilter<"Meetup"> | $Enums.MeetupStatus
     createdAt?: DateTimeFilter<"Meetup"> | Date | string
     updatedAt?: DateTimeFilter<"Meetup"> | Date | string
@@ -28667,6 +30087,7 @@ export namespace Prisma {
     start?: Date | string | null
     end?: Date | string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28680,6 +30101,7 @@ export namespace Prisma {
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
+    certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutAddressInput = {
@@ -28691,7 +30113,9 @@ export namespace Prisma {
     end?: Date | string | null
     categoryId: string
     creatorId: string
+    certificateModelId?: string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -29042,6 +30466,25 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CertificateModelCreateWithoutMeetupInput = {
+    id?: string
+    imageLink: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type CertificateModelUncheckedCreateWithoutMeetupInput = {
+    id?: string
+    imageLink: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type CertificateModelCreateOrConnectWithoutMeetupInput = {
+    where: CertificateModelWhereUniqueInput
+    create: XOR<CertificateModelCreateWithoutMeetupInput, CertificateModelUncheckedCreateWithoutMeetupInput>
+  }
+
   export type AddressUpsertWithoutMeetupsInput = {
     update: XOR<AddressUpdateWithoutMeetupsInput, AddressUncheckedUpdateWithoutMeetupsInput>
     create: XOR<AddressCreateWithoutMeetupsInput, AddressUncheckedCreateWithoutMeetupsInput>
@@ -29294,7 +30737,32 @@ export namespace Prisma {
     meetupId?: StringFilter<"MeetupInviteSheet"> | string
   }
 
-  export type MeetupCreateWithoutInviteSheetsInput = {
+  export type CertificateModelUpsertWithoutMeetupInput = {
+    update: XOR<CertificateModelUpdateWithoutMeetupInput, CertificateModelUncheckedUpdateWithoutMeetupInput>
+    create: XOR<CertificateModelCreateWithoutMeetupInput, CertificateModelUncheckedCreateWithoutMeetupInput>
+    where?: CertificateModelWhereInput
+  }
+
+  export type CertificateModelUpdateToOneWithWhereWithoutMeetupInput = {
+    where?: CertificateModelWhereInput
+    data: XOR<CertificateModelUpdateWithoutMeetupInput, CertificateModelUncheckedUpdateWithoutMeetupInput>
+  }
+
+  export type CertificateModelUpdateWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    imageLink?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CertificateModelUncheckedUpdateWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    imageLink?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupCreateWithoutCertificateModelInput = {
     id?: string
     title: string
     description?: string | null
@@ -29302,6 +30770,7 @@ export namespace Prisma {
     start?: Date | string | null
     end?: Date | string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -29315,6 +30784,123 @@ export namespace Prisma {
     category: CategoryCreateNestedOneWithoutMeetupsInput
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
+    inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupUncheckedCreateWithoutCertificateModelInput = {
+    id?: string
+    title: string
+    description?: string | null
+    locationName?: string | null
+    start?: Date | string | null
+    end?: Date | string | null
+    addressId?: string | null
+    categoryId: string
+    creatorId: string
+    image?: string | null
+    workload?: number | null
+    status?: $Enums.MeetupStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutMeetupInput
+    invites?: InviteUncheckedCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+    followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
+    inviteSheets?: MeetupInviteSheetUncheckedCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupCreateOrConnectWithoutCertificateModelInput = {
+    where: MeetupWhereUniqueInput
+    create: XOR<MeetupCreateWithoutCertificateModelInput, MeetupUncheckedCreateWithoutCertificateModelInput>
+  }
+
+  export type MeetupUpsertWithoutCertificateModelInput = {
+    update: XOR<MeetupUpdateWithoutCertificateModelInput, MeetupUncheckedUpdateWithoutCertificateModelInput>
+    create: XOR<MeetupCreateWithoutCertificateModelInput, MeetupUncheckedCreateWithoutCertificateModelInput>
+    where?: MeetupWhereInput
+  }
+
+  export type MeetupUpdateToOneWithWhereWithoutCertificateModelInput = {
+    where?: MeetupWhereInput
+    data: XOR<MeetupUpdateWithoutCertificateModelInput, MeetupUncheckedUpdateWithoutCertificateModelInput>
+  }
+
+  export type MeetupUpdateWithoutCertificateModelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: AddressUpdateOneWithoutMeetupsNestedInput
+    meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+    category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
+    creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
+    followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
+    inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type MeetupUncheckedUpdateWithoutCertificateModelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addressId?: NullableStringFieldUpdateOperationsInput | string | null
+    categoryId?: StringFieldUpdateOperationsInput | string
+    creatorId?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+    followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
+    inviteSheets?: MeetupInviteSheetUncheckedUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type MeetupCreateWithoutInviteSheetsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    locationName?: string | null
+    start?: Date | string | null
+    end?: Date | string | null
+    image?: string | null
+    workload?: number | null
+    status?: $Enums.MeetupStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    address?: AddressCreateNestedOneWithoutMeetupsInput
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
+    invites?: InviteCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+    category: CategoryCreateNestedOneWithoutMeetupsInput
+    creator: PersonCreateNestedOneWithoutCreated_meetupsInput
+    followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
+    certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutInviteSheetsInput = {
@@ -29327,7 +30913,9 @@ export namespace Prisma {
     addressId?: string | null
     categoryId: string
     creatorId: string
+    certificateModelId?: string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -29364,6 +30952,7 @@ export namespace Prisma {
     start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29377,6 +30966,7 @@ export namespace Prisma {
     category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
+    certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutInviteSheetsInput = {
@@ -29389,7 +30979,9 @@ export namespace Prisma {
     addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
+    certificateModelId?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29400,282 +30992,6 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
     followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
-  }
-
-  export type MeetupCreateWithoutFollowersInput = {
-    id?: string
-    title: string
-    description?: string | null
-    locationName?: string | null
-    start?: Date | string | null
-    end?: Date | string | null
-    image?: string | null
-    status?: $Enums.MeetupStatus
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    address?: AddressCreateNestedOneWithoutMeetupsInput
-    meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
-    subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
-    invites?: InviteCreateNestedManyWithoutMeetupInput
-    certificates?: CertificateCreateNestedManyWithoutMeetupInput
-    meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
-    guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
-    category: CategoryCreateNestedOneWithoutMeetupsInput
-    creator: PersonCreateNestedOneWithoutCreated_meetupsInput
-    inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
-  }
-
-  export type MeetupUncheckedCreateWithoutFollowersInput = {
-    id?: string
-    title: string
-    description?: string | null
-    locationName?: string | null
-    start?: Date | string | null
-    end?: Date | string | null
-    addressId?: string | null
-    categoryId: string
-    creatorId: string
-    image?: string | null
-    status?: $Enums.MeetupStatus
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
-    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutMeetupInput
-    invites?: InviteUncheckedCreateNestedManyWithoutMeetupInput
-    certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
-    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
-    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
-    inviteSheets?: MeetupInviteSheetUncheckedCreateNestedManyWithoutMeetupInput
-  }
-
-  export type MeetupCreateOrConnectWithoutFollowersInput = {
-    where: MeetupWhereUniqueInput
-    create: XOR<MeetupCreateWithoutFollowersInput, MeetupUncheckedCreateWithoutFollowersInput>
-  }
-
-  export type PersonCreateWithoutFollowingMeetupsInput = {
-    id?: string
-    name: string
-    email: string
-    phone?: string | null
-    gender?: string | null
-    birthdate?: Date | string | null
-    cpf?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    meetupAdmins?: MeetupAdminCreateNestedManyWithoutPersonInput
-    subscriptions?: SubscriptionCreateNestedManyWithoutPersonInput
-    invites?: InviteCreateNestedManyWithoutPersonInput
-    certificates?: CertificateCreateNestedManyWithoutPersonInput
-    meetupMedias?: MeetupMediaCreateNestedManyWithoutPersonInput
-    guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
-    user?: UserCreateNestedOneWithoutPersonInput
-    created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
-  }
-
-  export type PersonUncheckedCreateWithoutFollowingMeetupsInput = {
-    id?: string
-    name: string
-    email: string
-    phone?: string | null
-    gender?: string | null
-    birthdate?: Date | string | null
-    cpf?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    userId?: string | null
-    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutPersonInput
-    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutPersonInput
-    invites?: InviteUncheckedCreateNestedManyWithoutPersonInput
-    certificates?: CertificateUncheckedCreateNestedManyWithoutPersonInput
-    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
-    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
-    created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
-  }
-
-  export type PersonCreateOrConnectWithoutFollowingMeetupsInput = {
-    where: PersonWhereUniqueInput
-    create: XOR<PersonCreateWithoutFollowingMeetupsInput, PersonUncheckedCreateWithoutFollowingMeetupsInput>
-  }
-
-  export type MeetupUpsertWithoutFollowersInput = {
-    update: XOR<MeetupUpdateWithoutFollowersInput, MeetupUncheckedUpdateWithoutFollowersInput>
-    create: XOR<MeetupCreateWithoutFollowersInput, MeetupUncheckedCreateWithoutFollowersInput>
-    where?: MeetupWhereInput
-  }
-
-  export type MeetupUpdateToOneWithWhereWithoutFollowersInput = {
-    where?: MeetupWhereInput
-    data: XOR<MeetupUpdateWithoutFollowersInput, MeetupUncheckedUpdateWithoutFollowersInput>
-  }
-
-  export type MeetupUpdateWithoutFollowersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: AddressUpdateOneWithoutMeetupsNestedInput
-    meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
-    subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
-    invites?: InviteUpdateManyWithoutMeetupNestedInput
-    certificates?: CertificateUpdateManyWithoutMeetupNestedInput
-    meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
-    guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
-    category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
-    creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
-    inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
-  }
-
-  export type MeetupUncheckedUpdateWithoutFollowersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    addressId?: NullableStringFieldUpdateOperationsInput | string | null
-    categoryId?: StringFieldUpdateOperationsInput | string
-    creatorId?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
-    subscriptions?: SubscriptionUncheckedUpdateManyWithoutMeetupNestedInput
-    invites?: InviteUncheckedUpdateManyWithoutMeetupNestedInput
-    certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
-    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
-    guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
-    inviteSheets?: MeetupInviteSheetUncheckedUpdateManyWithoutMeetupNestedInput
-  }
-
-  export type PersonUpsertWithoutFollowingMeetupsInput = {
-    update: XOR<PersonUpdateWithoutFollowingMeetupsInput, PersonUncheckedUpdateWithoutFollowingMeetupsInput>
-    create: XOR<PersonCreateWithoutFollowingMeetupsInput, PersonUncheckedCreateWithoutFollowingMeetupsInput>
-    where?: PersonWhereInput
-  }
-
-  export type PersonUpdateToOneWithWhereWithoutFollowingMeetupsInput = {
-    where?: PersonWhereInput
-    data: XOR<PersonUpdateWithoutFollowingMeetupsInput, PersonUncheckedUpdateWithoutFollowingMeetupsInput>
-  }
-
-  export type PersonUpdateWithoutFollowingMeetupsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    gender?: NullableStringFieldUpdateOperationsInput | string | null
-    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    cpf?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetupAdmins?: MeetupAdminUpdateManyWithoutPersonNestedInput
-    subscriptions?: SubscriptionUpdateManyWithoutPersonNestedInput
-    invites?: InviteUpdateManyWithoutPersonNestedInput
-    certificates?: CertificateUpdateManyWithoutPersonNestedInput
-    meetupMedias?: MeetupMediaUpdateManyWithoutPersonNestedInput
-    guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
-    user?: UserUpdateOneWithoutPersonNestedInput
-    created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
-  }
-
-  export type PersonUncheckedUpdateWithoutFollowingMeetupsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    gender?: NullableStringFieldUpdateOperationsInput | string | null
-    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    cpf?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
-    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutPersonNestedInput
-    subscriptions?: SubscriptionUncheckedUpdateManyWithoutPersonNestedInput
-    invites?: InviteUncheckedUpdateManyWithoutPersonNestedInput
-    certificates?: CertificateUncheckedUpdateManyWithoutPersonNestedInput
-    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
-    guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
-    created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
-  }
-
-  export type MeetupCreateWithoutCategoryInput = {
-    id?: string
-    title: string
-    description?: string | null
-    locationName?: string | null
-    start?: Date | string | null
-    end?: Date | string | null
-    image?: string | null
-    status?: $Enums.MeetupStatus
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    address?: AddressCreateNestedOneWithoutMeetupsInput
-    meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
-    subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
-    invites?: InviteCreateNestedManyWithoutMeetupInput
-    certificates?: CertificateCreateNestedManyWithoutMeetupInput
-    meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
-    guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
-    creator: PersonCreateNestedOneWithoutCreated_meetupsInput
-    followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
-    inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
-  }
-
-  export type MeetupUncheckedCreateWithoutCategoryInput = {
-    id?: string
-    title: string
-    description?: string | null
-    locationName?: string | null
-    start?: Date | string | null
-    end?: Date | string | null
-    addressId?: string | null
-    creatorId: string
-    image?: string | null
-    status?: $Enums.MeetupStatus
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
-    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutMeetupInput
-    invites?: InviteUncheckedCreateNestedManyWithoutMeetupInput
-    certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
-    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
-    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
-    followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
-    inviteSheets?: MeetupInviteSheetUncheckedCreateNestedManyWithoutMeetupInput
-  }
-
-  export type MeetupCreateOrConnectWithoutCategoryInput = {
-    where: MeetupWhereUniqueInput
-    create: XOR<MeetupCreateWithoutCategoryInput, MeetupUncheckedCreateWithoutCategoryInput>
-  }
-
-  export type MeetupCreateManyCategoryInputEnvelope = {
-    data: MeetupCreateManyCategoryInput | MeetupCreateManyCategoryInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type MeetupUpsertWithWhereUniqueWithoutCategoryInput = {
-    where: MeetupWhereUniqueInput
-    update: XOR<MeetupUpdateWithoutCategoryInput, MeetupUncheckedUpdateWithoutCategoryInput>
-    create: XOR<MeetupCreateWithoutCategoryInput, MeetupUncheckedCreateWithoutCategoryInput>
-  }
-
-  export type MeetupUpdateWithWhereUniqueWithoutCategoryInput = {
-    where: MeetupWhereUniqueInput
-    data: XOR<MeetupUpdateWithoutCategoryInput, MeetupUncheckedUpdateWithoutCategoryInput>
-  }
-
-  export type MeetupUpdateManyWithWhereWithoutCategoryInput = {
-    where: MeetupScalarWhereInput
-    data: XOR<MeetupUpdateManyMutationInput, MeetupUncheckedUpdateManyWithoutCategoryInput>
   }
 
   export type SubscriptionCreateWithoutMeetupRoleInput = {
@@ -29734,6 +31050,7 @@ export namespace Prisma {
     start?: Date | string | null
     end?: Date | string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -29747,6 +31064,7 @@ export namespace Prisma {
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
+    certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutMeetupAdminsInput = {
@@ -29759,7 +31077,9 @@ export namespace Prisma {
     addressId?: string | null
     categoryId: string
     creatorId: string
+    certificateModelId?: string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -29841,6 +31161,7 @@ export namespace Prisma {
     start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29854,6 +31175,7 @@ export namespace Prisma {
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
+    certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutMeetupAdminsInput = {
@@ -29866,7 +31188,9 @@ export namespace Prisma {
     addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
+    certificateModelId?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29930,6 +31254,294 @@ export namespace Prisma {
     followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
   }
 
+  export type MeetupCreateWithoutFollowersInput = {
+    id?: string
+    title: string
+    description?: string | null
+    locationName?: string | null
+    start?: Date | string | null
+    end?: Date | string | null
+    image?: string | null
+    workload?: number | null
+    status?: $Enums.MeetupStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    address?: AddressCreateNestedOneWithoutMeetupsInput
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
+    invites?: InviteCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+    category: CategoryCreateNestedOneWithoutMeetupsInput
+    creator: PersonCreateNestedOneWithoutCreated_meetupsInput
+    inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
+    certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
+  }
+
+  export type MeetupUncheckedCreateWithoutFollowersInput = {
+    id?: string
+    title: string
+    description?: string | null
+    locationName?: string | null
+    start?: Date | string | null
+    end?: Date | string | null
+    addressId?: string | null
+    categoryId: string
+    creatorId: string
+    certificateModelId?: string | null
+    image?: string | null
+    workload?: number | null
+    status?: $Enums.MeetupStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutMeetupInput
+    invites?: InviteUncheckedCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+    inviteSheets?: MeetupInviteSheetUncheckedCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupCreateOrConnectWithoutFollowersInput = {
+    where: MeetupWhereUniqueInput
+    create: XOR<MeetupCreateWithoutFollowersInput, MeetupUncheckedCreateWithoutFollowersInput>
+  }
+
+  export type PersonCreateWithoutFollowingMeetupsInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutPersonInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutPersonInput
+    invites?: InviteCreateNestedManyWithoutPersonInput
+    certificates?: CertificateCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
+    user?: UserCreateNestedOneWithoutPersonInput
+    created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
+  }
+
+  export type PersonUncheckedCreateWithoutFollowingMeetupsInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId?: string | null
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutPersonInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutPersonInput
+    invites?: InviteUncheckedCreateNestedManyWithoutPersonInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
+    created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
+  }
+
+  export type PersonCreateOrConnectWithoutFollowingMeetupsInput = {
+    where: PersonWhereUniqueInput
+    create: XOR<PersonCreateWithoutFollowingMeetupsInput, PersonUncheckedCreateWithoutFollowingMeetupsInput>
+  }
+
+  export type MeetupUpsertWithoutFollowersInput = {
+    update: XOR<MeetupUpdateWithoutFollowersInput, MeetupUncheckedUpdateWithoutFollowersInput>
+    create: XOR<MeetupCreateWithoutFollowersInput, MeetupUncheckedCreateWithoutFollowersInput>
+    where?: MeetupWhereInput
+  }
+
+  export type MeetupUpdateToOneWithWhereWithoutFollowersInput = {
+    where?: MeetupWhereInput
+    data: XOR<MeetupUpdateWithoutFollowersInput, MeetupUncheckedUpdateWithoutFollowersInput>
+  }
+
+  export type MeetupUpdateWithoutFollowersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: AddressUpdateOneWithoutMeetupsNestedInput
+    meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+    category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
+    creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
+    inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
+    certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
+  }
+
+  export type MeetupUncheckedUpdateWithoutFollowersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addressId?: NullableStringFieldUpdateOperationsInput | string | null
+    categoryId?: StringFieldUpdateOperationsInput | string
+    creatorId?: StringFieldUpdateOperationsInput | string
+    certificateModelId?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+    inviteSheets?: MeetupInviteSheetUncheckedUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type PersonUpsertWithoutFollowingMeetupsInput = {
+    update: XOR<PersonUpdateWithoutFollowingMeetupsInput, PersonUncheckedUpdateWithoutFollowingMeetupsInput>
+    create: XOR<PersonCreateWithoutFollowingMeetupsInput, PersonUncheckedCreateWithoutFollowingMeetupsInput>
+    where?: PersonWhereInput
+  }
+
+  export type PersonUpdateToOneWithWhereWithoutFollowingMeetupsInput = {
+    where?: PersonWhereInput
+    data: XOR<PersonUpdateWithoutFollowingMeetupsInput, PersonUncheckedUpdateWithoutFollowingMeetupsInput>
+  }
+
+  export type PersonUpdateWithoutFollowingMeetupsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUpdateManyWithoutPersonNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutPersonNestedInput
+    invites?: InviteUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
+    user?: UserUpdateOneWithoutPersonNestedInput
+    created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type PersonUncheckedUpdateWithoutFollowingMeetupsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutPersonNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutPersonNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
+    created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type MeetupCreateWithoutCategoryInput = {
+    id?: string
+    title: string
+    description?: string | null
+    locationName?: string | null
+    start?: Date | string | null
+    end?: Date | string | null
+    image?: string | null
+    workload?: number | null
+    status?: $Enums.MeetupStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    address?: AddressCreateNestedOneWithoutMeetupsInput
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
+    invites?: InviteCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+    creator: PersonCreateNestedOneWithoutCreated_meetupsInput
+    followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
+    inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
+    certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
+  }
+
+  export type MeetupUncheckedCreateWithoutCategoryInput = {
+    id?: string
+    title: string
+    description?: string | null
+    locationName?: string | null
+    start?: Date | string | null
+    end?: Date | string | null
+    addressId?: string | null
+    creatorId: string
+    certificateModelId?: string | null
+    image?: string | null
+    workload?: number | null
+    status?: $Enums.MeetupStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutMeetupInput
+    invites?: InviteUncheckedCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+    followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
+    inviteSheets?: MeetupInviteSheetUncheckedCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupCreateOrConnectWithoutCategoryInput = {
+    where: MeetupWhereUniqueInput
+    create: XOR<MeetupCreateWithoutCategoryInput, MeetupUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type MeetupCreateManyCategoryInputEnvelope = {
+    data: MeetupCreateManyCategoryInput | MeetupCreateManyCategoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MeetupUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: MeetupWhereUniqueInput
+    update: XOR<MeetupUpdateWithoutCategoryInput, MeetupUncheckedUpdateWithoutCategoryInput>
+    create: XOR<MeetupCreateWithoutCategoryInput, MeetupUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type MeetupUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: MeetupWhereUniqueInput
+    data: XOR<MeetupUpdateWithoutCategoryInput, MeetupUncheckedUpdateWithoutCategoryInput>
+  }
+
+  export type MeetupUpdateManyWithWhereWithoutCategoryInput = {
+    where: MeetupScalarWhereInput
+    data: XOR<MeetupUpdateManyMutationInput, MeetupUncheckedUpdateManyWithoutCategoryInput>
+  }
+
   export type PersonCreateWithoutSubscriptionsInput = {
     id?: string
     name: string
@@ -29983,6 +31595,7 @@ export namespace Prisma {
     start?: Date | string | null
     end?: Date | string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -29996,6 +31609,7 @@ export namespace Prisma {
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
+    certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutSubscriptionsInput = {
@@ -30008,7 +31622,9 @@ export namespace Prisma {
     addressId?: string | null
     categoryId: string
     creatorId: string
+    certificateModelId?: string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -30145,6 +31761,7 @@ export namespace Prisma {
     start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30158,6 +31775,7 @@ export namespace Prisma {
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
+    certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutSubscriptionsInput = {
@@ -30170,7 +31788,9 @@ export namespace Prisma {
     addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
+    certificateModelId?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30292,6 +31912,7 @@ export namespace Prisma {
     start?: Date | string | null
     end?: Date | string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -30305,6 +31926,7 @@ export namespace Prisma {
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
+    certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutInvitesInput = {
@@ -30317,7 +31939,9 @@ export namespace Prisma {
     addressId?: string | null
     categoryId: string
     creatorId: string
+    certificateModelId?: string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -30405,6 +32029,7 @@ export namespace Prisma {
     start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30418,6 +32043,7 @@ export namespace Prisma {
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
+    certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutInvitesInput = {
@@ -30430,7 +32056,9 @@ export namespace Prisma {
     addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
+    certificateModelId?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30640,6 +32268,7 @@ export namespace Prisma {
     start?: Date | string | null
     end?: Date | string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -30653,6 +32282,7 @@ export namespace Prisma {
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
+    certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutCertificatesInput = {
@@ -30665,7 +32295,9 @@ export namespace Prisma {
     addressId?: string | null
     categoryId: string
     creatorId: string
+    certificateModelId?: string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -30753,6 +32385,7 @@ export namespace Prisma {
     start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30766,6 +32399,7 @@ export namespace Prisma {
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
+    certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutCertificatesInput = {
@@ -30778,7 +32412,9 @@ export namespace Prisma {
     addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
+    certificateModelId?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30799,6 +32435,7 @@ export namespace Prisma {
     start?: Date | string | null
     end?: Date | string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -30812,6 +32449,7 @@ export namespace Prisma {
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
+    certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutMeetupMediasInput = {
@@ -30824,7 +32462,9 @@ export namespace Prisma {
     addressId?: string | null
     categoryId: string
     creatorId: string
+    certificateModelId?: string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -30906,6 +32546,7 @@ export namespace Prisma {
     start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30919,6 +32560,7 @@ export namespace Prisma {
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
+    certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutMeetupMediasInput = {
@@ -30931,7 +32573,9 @@ export namespace Prisma {
     addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
+    certificateModelId?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31003,6 +32647,7 @@ export namespace Prisma {
     start?: Date | string | null
     end?: Date | string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -31016,6 +32661,7 @@ export namespace Prisma {
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
+    certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutGuestLoadsInput = {
@@ -31028,7 +32674,9 @@ export namespace Prisma {
     addressId?: string | null
     categoryId: string
     creatorId: string
+    certificateModelId?: string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -31110,6 +32758,7 @@ export namespace Prisma {
     start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31123,6 +32772,7 @@ export namespace Prisma {
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
+    certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutGuestLoadsInput = {
@@ -31135,7 +32785,9 @@ export namespace Prisma {
     addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
+    certificateModelId?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31363,7 +33015,9 @@ export namespace Prisma {
     end?: Date | string | null
     addressId?: string | null
     categoryId: string
+    certificateModelId?: string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -31550,6 +33204,7 @@ export namespace Prisma {
     start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31563,6 +33218,7 @@ export namespace Prisma {
     category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
+    certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutCreatorInput = {
@@ -31574,7 +33230,9 @@ export namespace Prisma {
     end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
+    certificateModelId?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31597,7 +33255,9 @@ export namespace Prisma {
     end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     addressId?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
+    certificateModelId?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31630,7 +33290,9 @@ export namespace Prisma {
     end?: Date | string | null
     categoryId: string
     creatorId: string
+    certificateModelId?: string | null
     image?: string | null
+    workload?: number | null
     status?: $Enums.MeetupStatus
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -31644,6 +33306,7 @@ export namespace Prisma {
     start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31657,6 +33320,7 @@ export namespace Prisma {
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
+    certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutAddressInput = {
@@ -31668,7 +33332,9 @@ export namespace Prisma {
     end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
+    certificateModelId?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31691,7 +33357,9 @@ export namespace Prisma {
     end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     categoryId?: StringFieldUpdateOperationsInput | string
     creatorId?: StringFieldUpdateOperationsInput | string
+    certificateModelId?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31963,82 +33631,6 @@ export namespace Prisma {
     link?: StringFieldUpdateOperationsInput | string
   }
 
-  export type MeetupCreateManyCategoryInput = {
-    id?: string
-    title: string
-    description?: string | null
-    locationName?: string | null
-    start?: Date | string | null
-    end?: Date | string | null
-    addressId?: string | null
-    creatorId: string
-    image?: string | null
-    status?: $Enums.MeetupStatus
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type MeetupUpdateWithoutCategoryInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    address?: AddressUpdateOneWithoutMeetupsNestedInput
-    meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
-    subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
-    invites?: InviteUpdateManyWithoutMeetupNestedInput
-    certificates?: CertificateUpdateManyWithoutMeetupNestedInput
-    meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
-    guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
-    creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
-    followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
-    inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
-  }
-
-  export type MeetupUncheckedUpdateWithoutCategoryInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    addressId?: NullableStringFieldUpdateOperationsInput | string | null
-    creatorId?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
-    subscriptions?: SubscriptionUncheckedUpdateManyWithoutMeetupNestedInput
-    invites?: InviteUncheckedUpdateManyWithoutMeetupNestedInput
-    certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
-    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
-    guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
-    followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
-    inviteSheets?: MeetupInviteSheetUncheckedUpdateManyWithoutMeetupNestedInput
-  }
-
-  export type MeetupUncheckedUpdateManyWithoutCategoryInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    locationName?: NullableStringFieldUpdateOperationsInput | string | null
-    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    addressId?: NullableStringFieldUpdateOperationsInput | string | null
-    creatorId?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type SubscriptionCreateManyMeetupRoleInput = {
     id?: string
     personId: string
@@ -32077,6 +33669,90 @@ export namespace Prisma {
     meetupId?: StringFieldUpdateOperationsInput | string
     certificateLink?: NullableStringFieldUpdateOperationsInput | string | null
     presenceConfirmation?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupCreateManyCategoryInput = {
+    id?: string
+    title: string
+    description?: string | null
+    locationName?: string | null
+    start?: Date | string | null
+    end?: Date | string | null
+    addressId?: string | null
+    creatorId: string
+    certificateModelId?: string | null
+    image?: string | null
+    workload?: number | null
+    status?: $Enums.MeetupStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MeetupUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: AddressUpdateOneWithoutMeetupsNestedInput
+    meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+    creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
+    followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
+    inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
+    certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
+  }
+
+  export type MeetupUncheckedUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addressId?: NullableStringFieldUpdateOperationsInput | string | null
+    creatorId?: StringFieldUpdateOperationsInput | string
+    certificateModelId?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+    followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
+    inviteSheets?: MeetupInviteSheetUncheckedUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type MeetupUncheckedUpdateManyWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addressId?: NullableStringFieldUpdateOperationsInput | string | null
+    creatorId?: StringFieldUpdateOperationsInput | string
+    certificateModelId?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

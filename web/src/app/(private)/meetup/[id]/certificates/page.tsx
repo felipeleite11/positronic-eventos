@@ -1,5 +1,6 @@
 'use client'
 
+import { queryClient } from "@/components/Providers";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -8,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { api } from "@/services/api";
 import { Meetup } from "@/types/Meetup";
 import { Subscription } from "@/types/Subscription";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { ArrowLeft, Eye, EyeOff, FileBadge, FileInput } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -37,15 +38,21 @@ export default function Certificates() {
 		enabled: !!roles
 	})
 
-	async function handleEmitCertificate(subscription: Subscription) {
-		try {
+	const { mutate: handleEmitCertificate } = useMutation({
+		mutationFn: async (subscription: Subscription) => {
 			await api.post(`meetup/${id}/certificate/${subscription.person.id}`)
 
 			toast.success('O certificado foi emitido!')
-		} catch (e: any) {
-			toast.error(e.message)
+		},
+		onSuccess: () => {
+			queryClient.invalidateQueries({
+				queryKey: ['get-meetup-by-id']
+			})
+		},
+		onError: error => {
+			toast.error(error?.message || ' Ocorreu um erro ao gerar o certificado.')
 		}
-	}
+	})
 
 	async function handleShowCertificate(subscription: Subscription) {
 		if (!subscription.certificateLink) {

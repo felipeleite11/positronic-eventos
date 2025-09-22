@@ -41,6 +41,11 @@ const meetupSchema = z.object({
 			return `${y}-${M.padStart(2, '0')}-${d.padStart(2, '0')} ${h.padStart(2, '0')}:${m.padStart(2, '0')}:00`
 		}),
 	category_id: z.string(),
+	workload: z.string()
+		.refine(val => /^\d+( horas)$/.test(val), "Use o formato XX horas")
+		.transform(val => {
+			return val.replace(' horas', '')
+		}),
 	image: z.file('Anexe a imagem para o evento')
 })
 
@@ -264,6 +269,12 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 							</SelectContent>
 						</Select>
 					)}
+				/>
+
+				<Input
+					label="Carga horária"
+					placeholder="Ex.: 20 horas"
+					{...register("workload")}
 				/>
 
 				<ul className="flex flex-col leading-loose text-sm text-yellow-500 ml-2">

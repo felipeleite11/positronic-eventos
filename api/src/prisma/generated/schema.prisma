@@ -87,7 +87,7 @@ model Person {
   cpf       String?   @unique
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  userId    String    @unique @map("user_id")
+  userId    String?   @unique @map("user_id")
 
   // Relacionamentos
   meetupAdmins     MeetupAdmin[]
@@ -96,7 +96,7 @@ model Person {
   certificates     Certificate[]
   meetupMedias     MeetupMedia[]
   guestLoads       GuestLoad[]
-  user             User             @relation(fields: [userId], references: [id])
+  user             User?            @relation(fields: [userId], references: [id])
   created_meetups  Meetup[]
   followingMeetups MeetupFollower[]
 
@@ -123,34 +123,47 @@ model Address {
 }
 
 model Meetup {
-  id           String       @id @default(cuid())
-  title        String
-  description  String?      @db.Text
-  locationName String?      @map("location_name")
-  start        DateTime?
-  end          DateTime?
-  addressId    String?      @map("address_id")
-  categoryId   String       @map("category_id")
-  creatorId    String       @map("creator_id")
-  image        String?
-  status       MeetupStatus @default(created)
-  createdAt    DateTime     @default(now())
-  updatedAt    DateTime     @updatedAt
+  id                 String       @id @default(cuid())
+  title              String
+  description        String?      @db.Text
+  locationName       String?      @map("location_name")
+  start              DateTime?
+  end                DateTime?
+  addressId          String?      @map("address_id")
+  categoryId         String       @map("category_id")
+  creatorId          String       @map("creator_id")
+  certificateModelId String?      @unique @map("certificate_model_id")
+  image              String?
+  status             MeetupStatus @default(created)
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
 
   // Relacionamentos
-  address       Address?            @relation(fields: [addressId], references: [id], onDelete: Cascade)
-  meetupAdmins  MeetupAdmin[]
-  subscriptions Subscription[]
-  invites       Invite[]
-  certificates  Certificate[]
-  meetupMedias  MeetupMedia[]
-  guestLoads    GuestLoad[]
-  category      Category            @relation(fields: [categoryId], references: [id])
-  creator       Person              @relation(fields: [creatorId], references: [id])
-  followers     MeetupFollower[]
-  inviteSheets  MeetupInviteSheet[]
+  address          Address?            @relation(fields: [addressId], references: [id], onDelete: Cascade)
+  meetupAdmins     MeetupAdmin[]
+  subscriptions    Subscription[]
+  invites          Invite[]
+  certificates     Certificate[]
+  meetupMedias     MeetupMedia[]
+  guestLoads       GuestLoad[]
+  category         Category            @relation(fields: [categoryId], references: [id])
+  creator          Person              @relation(fields: [creatorId], references: [id])
+  followers        MeetupFollower[]
+  inviteSheets     MeetupInviteSheet[]
+  certificateModel CertificateModel?   @relation(fields: [certificateModelId], references: [id])
 
   @@map("meetup")
+}
+
+model CertificateModel {
+  id        String   @id @default(cuid())
+  imageLink String   @map("image_link")
+  content   String
+  createdAt DateTime @default(now())
+
+  meetup Meetup?
+
+  @@map("meetup_certificate_model")
 }
 
 model MeetupInviteSheet {
@@ -158,35 +171,10 @@ model MeetupInviteSheet {
   link String
 
   // Relacionamentos
-  meetupId String
+  meetupId String @map("meetup_id")
   meetup   Meetup @relation(fields: [meetupId], references: [id])
-}
 
-model MeetupFollower {
-  id        String   @id @default(cuid())
-  meetupId  String   @map("meetup_id")
-  personId  String   @map("person_id")
-  createdAt DateTime @default(now())
-
-  // Relacionamentos
-  meetup Meetup @relation(fields: [meetupId], references: [id], onDelete: Cascade)
-  person Person @relation(fields: [personId], references: [id], onDelete: Cascade)
-
-  // Garantir que uma pessoa não possa seguir o mesmo meetup mais de uma vez
-  @@unique([meetupId, personId])
-  @@map("meetup_follower")
-}
-
-model Category {
-  id        String   @id @default(cuid())
-  name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relacionamento
-  meetups Meetup[]
-
-  @@map("category")
+  @@map("meetup_invite_sheet")
 }
 
 model MeetupRole {
@@ -218,11 +206,39 @@ model MeetupAdmin {
   @@map("meetup_admin")
 }
 
+model MeetupFollower {
+  id        String   @id @default(cuid())
+  meetupId  String   @map("meetup_id")
+  personId  String   @map("person_id")
+  createdAt DateTime @default(now())
+
+  // Relacionamentos
+  meetup Meetup @relation(fields: [meetupId], references: [id], onDelete: Cascade)
+  person Person @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  // Garantir que uma pessoa não possa seguir o mesmo meetup mais de uma vez
+  @@unique([meetupId, personId])
+  @@map("meetup_follower")
+}
+
+model Category {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relacionamento
+  meetups Meetup[]
+
+  @@map("category")
+}
+
 model Subscription {
   id                   String   @id @default(cuid())
   personId             String   @map("person_id")
   meetupId             String   @map("meetup_id")
   meetupRoleId         String   @map("meetup_role_id")
+  certificateLink      String?  @map("certificate_link")
   presenceConfirmation Boolean? @map("presence_confirmation")
   createdAt            DateTime @default(now())
   updatedAt            DateTime @updatedAt

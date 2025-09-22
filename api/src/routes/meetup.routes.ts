@@ -250,6 +250,17 @@ export async function meetupRoutes(app: FastifyInstance) {
 				const meetup = await prisma.meetup.findUniqueOrThrow({
 					where: {
 						id
+					},
+					include: {
+						certificateModel: true,
+						subscriptions: {
+							where: {
+								personId: person_id
+							},
+							include: {
+								meetupRole: true
+							}
+						}
 					}
 				})
 
@@ -270,7 +281,7 @@ export async function meetupRoutes(app: FastifyInstance) {
 
 				if(!subscription.certificateLink) {
 					const buffer = await generateCertificate({
-						meetup,
+						meetup: meetup as any,
 						person
 					})
 
