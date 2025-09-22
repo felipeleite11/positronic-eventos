@@ -1,12 +1,15 @@
-'use client'	
+'use client'
 
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 import { api } from "@/services/api";
 import { Meetup } from "@/types/Meetup";
+import { Subscription } from "@/types/Subscription";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowLeft, ArrowRight, Eye, FileBadge, Search } from "lucide-react";
+import { ArrowLeft, Eye, EyeOff, FileBadge, FileInput } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -39,22 +42,33 @@ export default function Certificates() {
 			await api.post(`meetup/${id}/certificate/${subscription.person.id}`)
 
 			toast.success('O certificado foi emitido!')
-		} catch(e: any) {
+		} catch (e: any) {
 			toast.error(e.message)
 		}
 	}
 
 	async function handleShowCertificate(subscription: Subscription) {
-		if(!subscription.certificateLink) {
+		if (!subscription.certificateLink) {
 			toast.error('Este certificado ainda não foi emitido.')
 
 			return
 		}
 
-		console.log('LINK', subscription.certificateLink)
+		const { data: fileBlob } = await api.get<Blob>(`certificate/${subscription.id}/download`, {
+			responseType: 'blob'
+		})
+
+		const url = URL.createObjectURL(fileBlob)
+		const a = document.createElement("a")
+		a.href = url
+		a.download = 'certificado.pdf'
+		document.body.appendChild(a)
+		a.click()
+		a.remove()
+		URL.revokeObjectURL(url)
 	}
 
-	if(!meetup || !roles) {
+	if (!meetup || !roles) {
 		return null
 	}
 
@@ -74,7 +88,7 @@ export default function Certificates() {
 			<Tabs defaultValue={roles[0].name} className="w-full">
 				<TabsList className="bg-slate-850 mb-2">
 					{roles?.map(role => (
-						<TabsTrigger key={role.id} value={role.name} className="cursor-pointer text-[0.8rem] p-4 capitalize">{role.name}</TabsTrigger>	
+						<TabsTrigger key={role.id} value={role.name} className="cursor-pointer text-[0.8rem] p-4 capitalize">{role.name}</TabsTrigger>
 					))}
 				</TabsList>
 
@@ -86,36 +100,70 @@ export default function Certificates() {
 							<Table>
 								<TableHeader>
 									<TableRow>
-										<TableHead className="w-full">Nome</TableHead>
+										<TableHead className="w-full">Participante</TableHead>
+										<TableHead className="w-full">Função</TableHead>
 										<TableHead>Certificado</TableHead>
 									</TableRow>
 								</TableHeader>
 								<TableBody>
-									{subscriptionsOfRole.map(subs => (
-										<TableRow key={subs.id} className="cursor-pointer">
-											<TableCell>{subs.person.name}</TableCell>
+									{subscriptionsOfRole.map(subs => {
+										const hasCertificateLink = !!subs.certificateLink
 
-											<TableCell className="flex justify-center gap-2">
-												<span 
-													className="text-sm cursor-pointer p-2" 
-													onClick={() => {
-														handleEmitCertificate(subs)
-													}}
-												>
-													<FileBadge size={17}  />
-												</span>
-											
-												<span 
-													className="text-sm cursor-pointer p-2" 
-													onClick={() => {
-														handleShowCertificate(subs)
-													}}
-												>
-													<Search size={17}  />
-												</span>
-											</TableCell>
-										</TableRow>
-									))}
+										console.log(subs)
+
+										return (
+											<TableRow key={subs.id} className="cursor-pointer">
+												<TableCell>{subs.person.name}</TableCell>
+												
+												<TableCell className="capitalize">{subs.meetupRole.name}</TableCell>
+
+												<TableCell className="flex justify-center gap-2">
+													<Tooltip>
+														<TooltipTrigger asChild>
+															<span
+																className="text-sm cursor-pointer p-2"
+																onClick={() => {
+																	handleEmitCertificate(subs)
+																}}
+															>
+																{hasCertificateLink ? <FileInput size={17} /> : <FileBadge size={17} />}
+															</span>
+														</TooltipTrigger>
+														
+														<TooltipContent>
+															{hasCertificateLink ? 'Reenviar certificado' : 'Emitir certificado'}
+														</TooltipContent>
+													</Tooltip>
+
+													<Tooltip>
+														<TooltipTrigger asChild>
+															<span
+																className={cn(
+																	'text-sm cursor-pointer p-2',
+																	{ 'opacity-60 cursor-not-allowed': !hasCertificateLink }
+																)}
+																onClick={() => {
+																	if (hasCertificateLink) {
+																		handleShowCertificate(subs)
+																	}
+																}}
+															>
+																{hasCertificateLink ? (
+																	<Eye size={17} />
+																) : (
+																	<EyeOff size={17} />
+																)}
+															</span>
+														</TooltipTrigger>
+														
+														<TooltipContent>
+															{hasCertificateLink ? 'Visualizar certificado' : 'Certificado não emitido'}
+														</TooltipContent>
+													</Tooltip>
+												</TableCell>
+											</TableRow>
+										)
+									})}
 								</TableBody>
 							</Table>
 						</TabsContent>

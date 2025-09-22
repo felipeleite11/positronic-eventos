@@ -1,6 +1,11 @@
 import { evolution } from "../config/evolution"
 
-export async function invitationSend(data: any) {
+interface WhatsappSendProps {
+	number: string
+	text: string
+}
+
+export async function whatsappSend(data: WhatsappSendProps) {
 	if(!data.number || !data.text) {
 		throw new Error('Erro ao enviar convites.')
 	}

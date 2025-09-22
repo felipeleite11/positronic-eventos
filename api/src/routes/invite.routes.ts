@@ -4,7 +4,6 @@ import { uploadToMinio } from "../config/file-storage"
 import { MultipartFile } from "@fastify/multipart"
 import { readSheet } from "../utils/sheet"
 import { z } from "zod"
-import { evolution } from "../config/evolution"
 import { extractNumbers } from "../utils/string"
 import { publisher } from "../config/queue"
 

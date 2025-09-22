@@ -2,6 +2,25 @@ import { FastifyInstance } from 'fastify'
 import { prisma } from '../lib/prisma'
 
 export async function subscriptionRoutes(app: FastifyInstance) {
+	app.get<{ Params: { id: string } }>(
+		'/:id',
+		async (request, reply) => {
+			const { id } = request.params
+
+			const response = await prisma.subscription.findUnique({
+				where: {
+					id
+				},
+				include: {
+					meetup: true,
+					person: true
+				}
+			})
+
+			return response
+		} 
+	)
+
 	app.get<{Params: { meetup_id: string, person_id: string }}>(
 		'/:meetup_id/confirmation/:person_id',
 		async (request, reply) => {

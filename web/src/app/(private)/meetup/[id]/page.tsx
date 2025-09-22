@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { useMutation, useQuery } from "@tanstack/react-query"
-import { ArrowLeft, ArrowRight, Bell, BellOff, Calendar, Check, CheckCircle, Edit, FileCheck, LogIn, MapPin, Send, UploadCloud, User } from "lucide-react"
+import { ArrowLeft, Bell, BellOff, Calendar, Check, CheckCircle, Edit, FileCheck, LogIn, MapPin, Send, UploadCloud, User } from "lucide-react"
 import Image from "next/image"
 import { useParams, useRouter } from "next/navigation"
 import { toast } from "sonner"
@@ -18,6 +18,7 @@ import { Meetup, MeetupFollowing } from "@/types/Meetup"
 import { formatAddress } from "@/util/format"
 import { format, isBefore } from "date-fns"
 import Link from "next/link"
+import { Subscription } from "@/types/Subscription"
 
 export default function Event() {
 	const { id } = useParams()
@@ -27,8 +28,6 @@ export default function Event() {
 	const { data: session } = useSession()
 
 	const { person } = session?.user!
-
-	const meetupPageLink = `${process.env.NEXT_PUBLIC_WEB_BASE_URL}/meetup/${id}/invite?p=${person.id}`
 
 	const { data: meetup, refetch: refetchMeetup } = useQuery<Meetup | null>({
 		queryKey: ['get-meetup'],
@@ -75,17 +74,6 @@ export default function Event() {
 
 			await api.post(`invite/${id}/send_invitations`)
 
-			// const { data } = await api.get<Meetup>(`meetup/${id}/invitations`)
-
-			// const guestsToNotify = data.invites?.filter(item => item.person.phone && !data.subscriptions?.some(subs => subs.personId === item.personId)) || []
-
-			// for(const guest of guestsToNotify) {
-			// 	notify(
-			// 		`Olá, ${guest.person.name}!\n\nVocê está convidad${guest.person.gender === 'F' ? 'a' : 'o'} para o evento ${meetup?.title}.\n\nConfirme sua presença na página do evento:\n${meetupPageLink}\n\nTe aguardamos lá!`, 
-			// 		`55${extractNumbers(guest.person.phone!)}`
-			// 	)
-			// }
-			
 			toast.success('Os convidados foram notificados!')
 		} catch(e: any) {
 			toast.error(e.message)
@@ -106,7 +94,7 @@ export default function Event() {
 	const isCreator = meetup.creatorId === person.id
 	const isFollowed = meetup.followers?.some(follower => follower.personId === person?.id)
 	const wasStarted = isBefore(new Date(meetup.start), new Date())
-	const wasEnded = isBefore(new Date(), new Date(meetup.end))
+	const wasEnded = isBefore(new Date(meetup.end), new Date())
 
 	return (
 		<div className="flex flex-col">

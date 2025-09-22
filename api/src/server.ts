@@ -17,6 +17,7 @@ import { sessionRoutes } from './routes/session.routes'
 import { subscriptionRoutes } from './routes/subscription.routes'
 import { inviteRoutes } from './routes/invite.routes'
 import { roleRoutes } from './routes/role.routes'
+import { certificateRoutes } from './routes/certificate.routes'
 
 const fastify = Fastify({
 	logger: false
@@ -48,6 +49,7 @@ fastify.register(categoryRoutes, { prefix: '/category' })
 fastify.register(personRoutes, { prefix: '/person' })
 fastify.register(inviteRoutes, { prefix: '/invite' })
 fastify.register(roleRoutes, { prefix: '/role' })
+fastify.register(certificateRoutes, { prefix: '/certificate' })
 
 fastify.listen({ port: +process.env.PORT!, host: '0.0.0.0' }, function (err, address) {
 	if (err) {

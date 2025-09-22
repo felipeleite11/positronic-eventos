@@ -1,7 +1,10 @@
 import { FastifyInstance } from 'fastify'
+import { format, isSameDay } from 'date-fns'
 import { prisma } from '../lib/prisma'
 import { uploadToMinio } from '../config/file-storage'
 import { generateCertificate } from '../routines/generateCertificate'
+import { whatsappSend } from '../routines/whatsappSend'
+import { extractNumbers } from '../utils/string'
 
 interface MeetupProps {
 	title: string
@@ -256,26 +259,55 @@ export async function meetupRoutes(app: FastifyInstance) {
 					}
 				})
 
-				const buffer = await generateCertificate({
-					meetup,
-					person
-				})
-
-				const link = await uploadToMinio(buffer, '.pdf', 'application/pdf')
-
-				await prisma.subscription.update({
+				const subscription = await prisma.subscription.findUniqueOrThrow({
 					where: {
 						personId_meetupId: {
 							meetupId: id,
 							personId: person_id
 						}
-					},
-					data: {
-						certificateLink: link
 					}
 				})
 
-				// ENVIAR O CERTIFICADO POR EMAIL E WHATSAPP
+				if(!subscription.certificateLink) {
+					const buffer = await generateCertificate({
+						meetup,
+						person
+					})
+
+					const certificateMinioLink = await uploadToMinio(buffer, '.pdf', 'application/pdf')
+
+					await prisma.subscription.update({
+						where: {
+							personId_meetupId: {
+								meetupId: id,
+								personId: person_id
+							}
+						},
+						select: {
+							id: true
+						},
+						data: {
+							certificateLink: certificateMinioLink
+						}
+					})
+				}
+
+				let period = ''
+				const pageLink = `${process.env.WEB_URL}/meetup/${meetup.id}/overview`
+				const certificateLink = `${process.env.WEB_URL}/certificate/${subscription.id}`
+
+				if(isSameDay(meetup.start!, meetup.end!)) {
+					period = `Data: *${format(meetup.start!, 'dd/MM/yyyy')}*`
+				} else {
+					period = `Período: de *${format(meetup.start!, 'dd/MM/yyyy')} a ${format(meetup.end!, 'dd/MM/yyyy')}*`
+				}
+
+				if(person.phone) {
+					await whatsappSend({
+						number: `55${extractNumbers(person.phone)}`,
+						text: `Olá, seu certificado já está disponível!\n\nEvento: *${meetup.title}*\n${period}\nPágina do evento: ${pageLink}\n\nBaixe seu certificado abaixo:\n${certificateLink}`
+					})
+				}
 
 				return {
 					message: 'Certificado gerado!'

@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
+import { Subscription } from "@/types/Subscription"
 
 export default function Confirmation() {
 	const { id } = useParams()

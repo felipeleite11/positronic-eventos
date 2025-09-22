@@ -5,6 +5,10 @@ export function normalizeText(text: string) {
 		.toLowerCase()
 }
 
-export function extractNumbers(text: string) {
+export function extractNumbers(text: string | null) {
+	if(!text) {
+		return ''
+	}
+
 	return text.replace(/\D/g, '')
 }

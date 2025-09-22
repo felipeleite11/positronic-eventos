@@ -1,3 +1,5 @@
+import { Meetup } from "./Meetup"
+
 interface Subscription {
 	id: string
 	personId: string
@@ -6,4 +8,5 @@ interface Subscription {
 	presenceConfirmation: boolean
 	person: Person
 	meetupRole?: Role
+	meetup?: Meetup
 }

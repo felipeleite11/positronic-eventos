@@ -1,5 +1,5 @@
 import { Connection } from 'rabbitmq-client'
-import { invitationSend } from '../routines/invitationSend'
+import { whatsappSend } from '../routines/whatsappSend'
 
 const rabbit = new Connection(process.env.AMQP_SERVER!)
 
@@ -36,7 +36,7 @@ const subscriber = rabbit.createConsumer({
 			break
 		
 		case 'invitation_send': 
-			await invitationSend(data)
+			await whatsappSend(data)
 			break
 	}
 
