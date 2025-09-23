@@ -35,55 +35,66 @@ export async function generateCertificate({ meetup, person }: CertificateProps):
 		role: role.name,
 		workload: meetup.workload!
 	})
-	
+
 	const backgroundImageBase64 = await urlToBase64(backgroundImageLink)
-	
+
 	const docDefinition: TDocumentDefinitions = {
 		content: [
 			{
 				text: certificateParts,
 				style: 'text'
 			},
-			[
-				{
-					text: 'Escaneie para validar este certificado:',
-					color: '#424242',
-					fontSize: 11,
-					absolutePosition: { 
-						x: 60,
-						y: 390
-					}
+			{
+				absolutePosition: {
+					x: 60,
+					y: 420
 				},
-				{ 
-					qr: `${process.env.WEB_URL}/certificate/${subscription.id}/validate`, 
-					fit: 70,
-					absolutePosition: { 
-						x: 60,
-						y: 412
-					}
+				table: {
+					widths: [200],
+					body: [
+						[
+							{
+								text: 'Escaneie para validar este certificado:',
+								color: '#424242',
+								fontSize: 11
+							}
+						], 
+						[
+							{
+								qr: `${process.env.WEB_URL}/certificate/${subscription.id}/validate`,
+								fit: 70
+							}
+						],
+						[
+							{
+								fontSize: 11,
+								text: [
+									'ou ',
+									{
+										text: 'CLIQUE AQUI',
+										link: `${process.env.WEB_URL}/certificate/${subscription.id}/validate`,
+									}
+								]
+							}
+						]
+					]
 				},
-				{
-					fontSize: 11,
-					text: [
-						'ou ',
-						{
-							text: 'CLIQUE AQUI',
-							link: `${process.env.WEB_URL}/certificate/${subscription.id}/validate`,
-						}
-					],
-					absolutePosition: { 
-						x: 60,
-						y: 484
-					}
-				}
-			]
-			
+				layout: {
+					hLineWidth: () => 0,
+					vLineWidth: () => 0,
+					paddingLeft: () => 6,
+					paddingRight: () => 6,
+					paddingTop: () => 6,
+					paddingBottom: () => 6
+				},
+				fillColor: '#fff'
+			}
 		],
 		pageSize: 'A4',
-  		pageOrientation: 'landscape',
-		pageMargins: [100, 220, 100, 80],
-		background: function(_, pageSize) {
-			if(!backgroundImageBase64) {
+		pageOrientation: 'landscape',
+		pageMargins: [100, 220, 100, 30],
+		background: function (_, pageSize) {
+			if (!backgroundImageBase64) {
 				return undefined
 			}
 
@@ -110,7 +121,7 @@ export async function generateCertificate({ meetup, person }: CertificateProps):
 			} else {
 				reject(new Error("Falha ao gerar buffer do PDF"))
 			}
-   	 	})
+		})
 	}) as Promise<Buffer<ArrayBufferLike>>
 
 	const pdfBuffer = await buffer

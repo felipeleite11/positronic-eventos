@@ -38,6 +38,10 @@ const subscriber = rabbit.createConsumer({
 		case 'invitation_send': 
 			await whatsappSend(data)
 			break
+
+		case 'notification_send': 
+			await whatsappSend(data)
+			break
 	}
 
 	// The message is automatically acknowledged (BasicAck) when this function ends.

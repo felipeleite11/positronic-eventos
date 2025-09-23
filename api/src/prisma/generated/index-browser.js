@@ -211,6 +211,14 @@ exports.Prisma.MeetupScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.MeetupNotificationScalarFieldEnum = {
+  id: 'id',
+  text: 'text',
+  meetupId: 'meetupId',
+  personId: 'personId',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.CertificateModelScalarFieldEnum = {
   id: 'id',
   imageLink: 'imageLink',
@@ -400,6 +408,13 @@ exports.Prisma.MeetupOrderByRelevanceFieldEnum = {
   image: 'image'
 };
 
+exports.Prisma.MeetupNotificationOrderByRelevanceFieldEnum = {
+  id: 'id',
+  text: 'text',
+  meetupId: 'meetupId',
+  personId: 'personId'
+};
+
 exports.Prisma.CertificateModelOrderByRelevanceFieldEnum = {
   id: 'id',
   imageLink: 'imageLink',
@@ -497,6 +512,7 @@ exports.Prisma.ModelName = {
   Person: 'Person',
   Address: 'Address',
   Meetup: 'Meetup',
+  MeetupNotification: 'MeetupNotification',
   CertificateModel: 'CertificateModel',
   MeetupInviteSheet: 'MeetupInviteSheet',
   MeetupRole: 'MeetupRole',

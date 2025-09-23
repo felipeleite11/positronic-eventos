@@ -2,9 +2,12 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-type TextareaProps = React.ComponentProps<"textarea"> & { label?: string }
+type TextareaProps = React.ComponentProps<"textarea"> & { 
+  label?: string
+  validationMessage?: string
+}
 
-function Textarea({ className, id, label, ...props }: TextareaProps) {
+function Textarea({ className, id, label, validationMessage, ...props }: TextareaProps) {
   return (
     <div className="flex flex-col gap-1 text-xs text-slate-400">
       {label && <label htmlFor={id} className="ml-1">{label}</label>}
@@ -18,6 +21,12 @@ function Textarea({ className, id, label, ...props }: TextareaProps) {
         )}
         {...props}
       />
+
+      {validationMessage && (
+        <span className="text-xs text-yellow-500 mx-1">
+          {validationMessage}
+        </span>
+      )}
     </div>
   )
 }

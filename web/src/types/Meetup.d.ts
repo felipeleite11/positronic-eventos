@@ -9,6 +9,7 @@ export interface Meetup {
 	place: Partial<Place>
 	category?: Category
 	image?: string
+	workload?: string
 	available_subscriptions?: number
 	creator: Person
 	creatorId: string

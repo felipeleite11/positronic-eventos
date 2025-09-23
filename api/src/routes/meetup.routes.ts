@@ -62,13 +62,18 @@ export async function meetupRoutes(app: FastifyInstance) {
 		}
 	)
 
-	app.get(
-		'/search',
+	app.get<{ Params: { person_id: string } }>(
+		'/search/:person_id',
 		async (request, reply) => {
 			const search = (request.query as { q?: string }).q || ''
 
 			const result = await prisma.meetup.findMany({
 				where: {
+					invites: {
+						some: {
+							personId: request.params.person_id
+						}
+					},
 					OR: [
 						{
 							title: {

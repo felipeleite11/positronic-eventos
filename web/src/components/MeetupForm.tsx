@@ -19,13 +19,14 @@ import { Upload, UploadTrigger, UploadViewer } from "./ui/upload"
 import { Image } from "lucide-react"
 import { format } from "date-fns"
 import { urlToFile } from "@/util/file"
+import { AddressForm } from "./AddressForm"
 
 const meetupSchema = z.object({
 	title: z.string().min(1, "Informe o nome do evento"),
-	description: z.string(),
+	description: z.string().optional(),
 	place: z.string().min(1, "Informe o local do evento"),
 	start: z.string()
-		.refine(val => /^\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}$/.test(val), "Use o formato dd/mm/yyyy hh:mm")
+		.refine(val => /^\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}$/.test(val), "Use o formato 'dd/mm/yyyy hh:mm'")
 		.transform(val => {
 			const [date, time] = val.split(' ')
 			const [d, M, y] = date.split('/')
@@ -33,7 +34,7 @@ const meetupSchema = z.object({
 			return `${y}-${M.padStart(2, '0')}-${d.padStart(2, '0')} ${h.padStart(2, '0')}:${m.padStart(2, '0')}:00`
 		}),
 	end: z.string()
-		.refine(val => /^\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}$/.test(val), "Use o formato dd/mm/yyyy hh:mm")
+		.refine(val => /^\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}$/.test(val), "Use o formato 'dd/mm/yyyy hh:mm'")
 		.transform(val => {
 			const [date, time] = val.split(' ')
 			const [d, M, y] = date.split('/')
@@ -42,11 +43,19 @@ const meetupSchema = z.object({
 		}),
 	category_id: z.string(),
 	workload: z.string()
-		.refine(val => /^\d+( horas)$/.test(val), "Use o formato XX horas")
+		.refine(val => /^\d+( horas)$/.test(val), "Use o formato 'XX horas'")
 		.transform(val => {
 			return val.replace(' horas', '')
 		}),
-	image: z.file('Anexe a imagem para o evento')
+	image: z.file('Anexe uma imagem para o evento'),
+	zipcode: z.string()
+		.refine(val => /^\d{5}\-\d{3}$/.test(val), "Use o formato '00000-000'"),
+	state: z.string(),
+	city: z.string(),
+	district: z.string().min(1, 'Informe o bairro onde ocorrerá o evento'),
+	street: z.string().min(1, 'Informe a rua onde ocorrerá o evento'),
+	number: z.string(),
+	complement: z.string()
 })
 
 type MeetupSchema = z.infer<typeof meetupSchema>
@@ -64,15 +73,17 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 
 	const [isWaiting, setIsWaiting] = useState(false)
 
+	const formHandlers = useForm<MeetupSchema>({
+		resolver: zodResolver(meetupSchema)
+	})
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 		control,
 		reset
-	} = useForm<MeetupSchema>({
-		resolver: zodResolver(meetupSchema)
-	})
+	} = formHandlers
 
 	const { data: meetup } = useQuery({
 		queryKey: ['get-meetup-by-id'],
@@ -97,6 +108,8 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 		mutationFn: async (data: MeetupSchema) => {
 			setIsWaiting(true)
 
+			console.log('data create', data)
+
 			const formData = new FormData()
 
 			Object.entries(data).forEach(([key, value]) => {
@@ -107,7 +120,7 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 				}
 			})
 
-			await api.post(`meetup/${session?.user.person_id}`, formData)
+			// await api.post(`meetup/${session?.user.person_id}`, formData)
 		},
 		onSuccess: () => {
 			queryClient.invalidateQueries({
@@ -116,7 +129,7 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 
 			toast.success('Seu evento foi criado!')
 
-			router.replace('/home')
+			// router.replace('/home')
 		},
 		onError: error => {
 			toast.error(error?.message || ' Ocorreu um erro ao cadastrar o torneio.')
@@ -169,7 +182,9 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 			start: format(new Date(meetup.start), 'dd/MM/yyyy hh:mm'),
 			end: format(new Date(meetup.end), 'dd/MM/yyyy hh:mm'),
 			place: 'Auditório Central',
-			image: image || undefined
+			image: image || undefined,
+
+			// TODO: ADICIONAR CAMPOS DE ENDEREÇO PARA EDIÇÃO
 		})
 	}
 
@@ -189,8 +204,6 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 
 	const submitFunction = mode === 'create' ? handleAdd : handleEdit
 
-	const errorMessages = Object.values(errors)
-
 	return (
 		<form className="grid grid-cols-[1fr_2fr] gap-8" onSubmit={handleSubmit(submitFunction)}>
 			<Controller
@@ -198,7 +211,11 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 				control={control}
 				render={({ field }) => (
 					<div className="space-y-2">
-						<Upload id="image" onFileChange={field.onChange}>
+						<Upload 
+							id="image" 
+							onFileChange={field.onChange}
+							validationMessage={errors.image?.message}
+						>
 							{({ id }) => (
 								<>
 									<UploadViewer file={field.value} />
@@ -210,10 +227,6 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 								</>
 							)}
 						</Upload>
-
-						{errors.image && (
-							<p className="text-sm text-red-500">{errors.image.message}</p>
-						)}
 					</div>
 				)}
 			/>
@@ -223,18 +236,21 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 					label="Nome do evento"
 					placeholder="Ex.: Palestra sobre comunicação"
 					{...register("title")}
+					validationMessage={errors.title?.message}
 				/>
 
 				<Textarea
 					label="Detalhes do evento"
 					placeholder="Ex.: A palestra vem este ano recheada de novidades."
 					{...register("description")}
+					validationMessage={errors.description?.message}
 				/>
 
 				<Input
 					label="Nome do local"
 					placeholder="Ex.: Avenida Central, 123"
 					{...register("place")}
+					validationMessage={errors.place?.message}
 				/>
 
 				<div className="flex gap-4">
@@ -242,46 +258,55 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 						label="Data/hora de início"
 						placeholder="Ex.: 01/01/2021 10:00h"
 						{...register("start")}
+						validationMessage={errors.start?.message}
 					/>
+
 					<Input
 						label="Data/hora de término"
 						placeholder="Ex.: 01/01/2021 11:00h"
 						{...register("end")}
+						validationMessage={errors.end?.message}
 					/>
 				</div>
 
-				<Controller
-					name="category_id"
-					control={control}
-					render={({ field }) => (
-						<Select
-							value={field.value}
-							onValueChange={field.onChange}
-						>
-							<SelectTrigger className="w-full" id="category" label="Tipo de evento">
-								<SelectValue placeholder="Selecione o tipo de evento" />
-							</SelectTrigger>
+				<div className="flex gap-4">
+					<Controller
+						name="category_id"
+						control={control}
+						render={({ field }) => (
+							<Select
+								value={field.value}
+								onValueChange={field.onChange}
+							>
+								<SelectTrigger 
+									className="w-full" 
+									id="category" 
+									label="Tipo de evento"
+									validationMessage={errors.category_id?.message ? 'Selecione a categoria' : undefined}
+								>
+									<SelectValue placeholder="Selecione o tipo de evento" />
+								</SelectTrigger>
 
-							<SelectContent>
-								{categories?.map(category => (
-									<SelectItem key={category.id} value={category.id}>{category.name}</SelectItem>
-								))}
-							</SelectContent>
-						</Select>
-					)}
-				/>
+								<SelectContent>
+									{categories?.map(category => (
+										<SelectItem key={category.id} value={category.id}>{category.name}</SelectItem>
+									))}
+								</SelectContent>
+							</Select>
+						)}
+					/>
 
-				<Input
-					label="Carga horária"
-					placeholder="Ex.: 20 horas"
-					{...register("workload")}
-				/>
+					<Input
+						label="Carga horária"
+						placeholder="Ex.: 20 horas"
+						{...register("workload")}
+						validationMessage={errors.workload?.message}
+					/>
+				</div>
 
-				<ul className="flex flex-col leading-loose text-sm text-yellow-500 ml-2">
-					{errorMessages.length > 0 && errorMessages.map(({ message }) => (
-						<li key={message}>{message}</li>
-					))}
-				</ul>
+				<div className="flex gap-4">
+					<AddressForm formHandlers={formHandlers} />
+				</div>
 
 				<Button disabled={isWaiting} type="submit">
 					{mode === 'create' ? 'Criar evento' : 'Atualizar evento'}

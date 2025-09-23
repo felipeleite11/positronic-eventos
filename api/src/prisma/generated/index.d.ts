@@ -49,6 +49,11 @@ export type Address = $Result.DefaultSelection<Prisma.$AddressPayload>
  */
 export type Meetup = $Result.DefaultSelection<Prisma.$MeetupPayload>
 /**
+ * Model MeetupNotification
+ * 
+ */
+export type MeetupNotification = $Result.DefaultSelection<Prisma.$MeetupNotificationPayload>
+/**
  * Model CertificateModel
  * 
  */
@@ -321,6 +326,16 @@ export class PrismaClient<
     * ```
     */
   get meetup(): Prisma.MeetupDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.meetupNotification`: Exposes CRUD operations for the **MeetupNotification** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MeetupNotifications
+    * const meetupNotifications = await prisma.meetupNotification.findMany()
+    * ```
+    */
+  get meetupNotification(): Prisma.MeetupNotificationDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.certificateModel`: Exposes CRUD operations for the **CertificateModel** model.
@@ -898,6 +913,7 @@ export namespace Prisma {
     Person: 'Person',
     Address: 'Address',
     Meetup: 'Meetup',
+    MeetupNotification: 'MeetupNotification',
     CertificateModel: 'CertificateModel',
     MeetupInviteSheet: 'MeetupInviteSheet',
     MeetupRole: 'MeetupRole',
@@ -929,7 +945,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "verification" | "person" | "address" | "meetup" | "certificateModel" | "meetupInviteSheet" | "meetupRole" | "meetupAdmin" | "meetupFollower" | "category" | "subscription" | "invite" | "payment" | "subscriptionPayment" | "certificate" | "meetupMedia" | "guestLoad"
+      modelProps: "user" | "session" | "account" | "verification" | "person" | "address" | "meetup" | "meetupNotification" | "certificateModel" | "meetupInviteSheet" | "meetupRole" | "meetupAdmin" | "meetupFollower" | "category" | "subscription" | "invite" | "payment" | "subscriptionPayment" | "certificate" | "meetupMedia" | "guestLoad"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1392,6 +1408,72 @@ export namespace Prisma {
           count: {
             args: Prisma.MeetupCountArgs<ExtArgs>
             result: $Utils.Optional<MeetupCountAggregateOutputType> | number
+          }
+        }
+      }
+      MeetupNotification: {
+        payload: Prisma.$MeetupNotificationPayload<ExtArgs>
+        fields: Prisma.MeetupNotificationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MeetupNotificationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupNotificationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MeetupNotificationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupNotificationPayload>
+          }
+          findFirst: {
+            args: Prisma.MeetupNotificationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupNotificationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MeetupNotificationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupNotificationPayload>
+          }
+          findMany: {
+            args: Prisma.MeetupNotificationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupNotificationPayload>[]
+          }
+          create: {
+            args: Prisma.MeetupNotificationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupNotificationPayload>
+          }
+          createMany: {
+            args: Prisma.MeetupNotificationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.MeetupNotificationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupNotificationPayload>
+          }
+          update: {
+            args: Prisma.MeetupNotificationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupNotificationPayload>
+          }
+          deleteMany: {
+            args: Prisma.MeetupNotificationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MeetupNotificationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.MeetupNotificationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetupNotificationPayload>
+          }
+          aggregate: {
+            args: Prisma.MeetupNotificationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMeetupNotification>
+          }
+          groupBy: {
+            args: Prisma.MeetupNotificationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MeetupNotificationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MeetupNotificationCountArgs<ExtArgs>
+            result: $Utils.Optional<MeetupNotificationCountAggregateOutputType> | number
           }
         }
       }
@@ -2356,6 +2438,7 @@ export namespace Prisma {
     person?: PersonOmit
     address?: AddressOmit
     meetup?: MeetupOmit
+    meetupNotification?: MeetupNotificationOmit
     certificateModel?: CertificateModelOmit
     meetupInviteSheet?: MeetupInviteSheetOmit
     meetupRole?: MeetupRoleOmit
@@ -2497,6 +2580,7 @@ export namespace Prisma {
     guestLoads: number
     created_meetups: number
     followingMeetups: number
+    notifications: number
   }
 
   export type PersonCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2508,6 +2592,7 @@ export namespace Prisma {
     guestLoads?: boolean | PersonCountOutputTypeCountGuestLoadsArgs
     created_meetups?: boolean | PersonCountOutputTypeCountCreated_meetupsArgs
     followingMeetups?: boolean | PersonCountOutputTypeCountFollowingMeetupsArgs
+    notifications?: boolean | PersonCountOutputTypeCountNotificationsArgs
   }
 
   // Custom InputTypes
@@ -2577,6 +2662,13 @@ export namespace Prisma {
     where?: MeetupFollowerWhereInput
   }
 
+  /**
+   * PersonCountOutputType without action
+   */
+  export type PersonCountOutputTypeCountNotificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetupNotificationWhereInput
+  }
+
 
   /**
    * Count Type AddressCountOutputType
@@ -2622,6 +2714,7 @@ export namespace Prisma {
     guestLoads: number
     followers: number
     inviteSheets: number
+    notifications: number
   }
 
   export type MeetupCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2633,6 +2726,7 @@ export namespace Prisma {
     guestLoads?: boolean | MeetupCountOutputTypeCountGuestLoadsArgs
     followers?: boolean | MeetupCountOutputTypeCountFollowersArgs
     inviteSheets?: boolean | MeetupCountOutputTypeCountInviteSheetsArgs
+    notifications?: boolean | MeetupCountOutputTypeCountNotificationsArgs
   }
 
   // Custom InputTypes
@@ -2700,6 +2794,13 @@ export namespace Prisma {
    */
   export type MeetupCountOutputTypeCountInviteSheetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MeetupInviteSheetWhereInput
+  }
+
+  /**
+   * MeetupCountOutputType without action
+   */
+  export type MeetupCountOutputTypeCountNotificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetupNotificationWhereInput
   }
 
 
@@ -6944,6 +7045,7 @@ export namespace Prisma {
     user?: boolean | Person$userArgs<ExtArgs>
     created_meetups?: boolean | Person$created_meetupsArgs<ExtArgs>
     followingMeetups?: boolean | Person$followingMeetupsArgs<ExtArgs>
+    notifications?: boolean | Person$notificationsArgs<ExtArgs>
     _count?: boolean | PersonCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["person"]>
 
@@ -6973,6 +7075,7 @@ export namespace Prisma {
     user?: boolean | Person$userArgs<ExtArgs>
     created_meetups?: boolean | Person$created_meetupsArgs<ExtArgs>
     followingMeetups?: boolean | Person$followingMeetupsArgs<ExtArgs>
+    notifications?: boolean | Person$notificationsArgs<ExtArgs>
     _count?: boolean | PersonCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -6988,6 +7091,7 @@ export namespace Prisma {
       user: Prisma.$UserPayload<ExtArgs> | null
       created_meetups: Prisma.$MeetupPayload<ExtArgs>[]
       followingMeetups: Prisma.$MeetupFollowerPayload<ExtArgs>[]
+      notifications: Prisma.$MeetupNotificationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7349,6 +7453,7 @@ export namespace Prisma {
     user<T extends Person$userArgs<ExtArgs> = {}>(args?: Subset<T, Person$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     created_meetups<T extends Person$created_meetupsArgs<ExtArgs> = {}>(args?: Subset<T, Person$created_meetupsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     followingMeetups<T extends Person$followingMeetupsArgs<ExtArgs> = {}>(args?: Subset<T, Person$followingMeetupsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    notifications<T extends Person$notificationsArgs<ExtArgs> = {}>(args?: Subset<T, Person$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupNotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7939,6 +8044,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: MeetupFollowerScalarFieldEnum | MeetupFollowerScalarFieldEnum[]
+  }
+
+  /**
+   * Person.notifications
+   */
+  export type Person$notificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupNotification
+     */
+    select?: MeetupNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupNotification
+     */
+    omit?: MeetupNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupNotificationInclude<ExtArgs> | null
+    where?: MeetupNotificationWhereInput
+    orderBy?: MeetupNotificationOrderByWithRelationInput | MeetupNotificationOrderByWithRelationInput[]
+    cursor?: MeetupNotificationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MeetupNotificationScalarFieldEnum | MeetupNotificationScalarFieldEnum[]
   }
 
   /**
@@ -9271,6 +9400,7 @@ export namespace Prisma {
     followers?: boolean | Meetup$followersArgs<ExtArgs>
     inviteSheets?: boolean | Meetup$inviteSheetsArgs<ExtArgs>
     certificateModel?: boolean | Meetup$certificateModelArgs<ExtArgs>
+    notifications?: boolean | Meetup$notificationsArgs<ExtArgs>
     _count?: boolean | MeetupCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["meetup"]>
 
@@ -9308,6 +9438,7 @@ export namespace Prisma {
     followers?: boolean | Meetup$followersArgs<ExtArgs>
     inviteSheets?: boolean | Meetup$inviteSheetsArgs<ExtArgs>
     certificateModel?: boolean | Meetup$certificateModelArgs<ExtArgs>
+    notifications?: boolean | Meetup$notificationsArgs<ExtArgs>
     _count?: boolean | MeetupCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -9326,6 +9457,7 @@ export namespace Prisma {
       followers: Prisma.$MeetupFollowerPayload<ExtArgs>[]
       inviteSheets: Prisma.$MeetupInviteSheetPayload<ExtArgs>[]
       certificateModel: Prisma.$CertificateModelPayload<ExtArgs> | null
+      notifications: Prisma.$MeetupNotificationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -9695,6 +9827,7 @@ export namespace Prisma {
     followers<T extends Meetup$followersArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$followersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupFollowerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     inviteSheets<T extends Meetup$inviteSheetsArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$inviteSheetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupInviteSheetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     certificateModel<T extends Meetup$certificateModelArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$certificateModelArgs<ExtArgs>>): Prisma__CertificateModelClient<$Result.GetResult<Prisma.$CertificateModelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    notifications<T extends Meetup$notificationsArgs<ExtArgs> = {}>(args?: Subset<T, Meetup$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupNotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10312,6 +10445,30 @@ export namespace Prisma {
   }
 
   /**
+   * Meetup.notifications
+   */
+  export type Meetup$notificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupNotification
+     */
+    select?: MeetupNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupNotification
+     */
+    omit?: MeetupNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupNotificationInclude<ExtArgs> | null
+    where?: MeetupNotificationWhereInput
+    orderBy?: MeetupNotificationOrderByWithRelationInput | MeetupNotificationOrderByWithRelationInput[]
+    cursor?: MeetupNotificationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MeetupNotificationScalarFieldEnum | MeetupNotificationScalarFieldEnum[]
+  }
+
+  /**
    * Meetup without action
    */
   export type MeetupDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10327,6 +10484,939 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: MeetupInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MeetupNotification
+   */
+
+  export type AggregateMeetupNotification = {
+    _count: MeetupNotificationCountAggregateOutputType | null
+    _min: MeetupNotificationMinAggregateOutputType | null
+    _max: MeetupNotificationMaxAggregateOutputType | null
+  }
+
+  export type MeetupNotificationMinAggregateOutputType = {
+    id: string | null
+    text: string | null
+    meetupId: string | null
+    personId: string | null
+    createdAt: Date | null
+  }
+
+  export type MeetupNotificationMaxAggregateOutputType = {
+    id: string | null
+    text: string | null
+    meetupId: string | null
+    personId: string | null
+    createdAt: Date | null
+  }
+
+  export type MeetupNotificationCountAggregateOutputType = {
+    id: number
+    text: number
+    meetupId: number
+    personId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type MeetupNotificationMinAggregateInputType = {
+    id?: true
+    text?: true
+    meetupId?: true
+    personId?: true
+    createdAt?: true
+  }
+
+  export type MeetupNotificationMaxAggregateInputType = {
+    id?: true
+    text?: true
+    meetupId?: true
+    personId?: true
+    createdAt?: true
+  }
+
+  export type MeetupNotificationCountAggregateInputType = {
+    id?: true
+    text?: true
+    meetupId?: true
+    personId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type MeetupNotificationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MeetupNotification to aggregate.
+     */
+    where?: MeetupNotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupNotifications to fetch.
+     */
+    orderBy?: MeetupNotificationOrderByWithRelationInput | MeetupNotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MeetupNotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupNotifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupNotifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MeetupNotifications
+    **/
+    _count?: true | MeetupNotificationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MeetupNotificationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MeetupNotificationMaxAggregateInputType
+  }
+
+  export type GetMeetupNotificationAggregateType<T extends MeetupNotificationAggregateArgs> = {
+        [P in keyof T & keyof AggregateMeetupNotification]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMeetupNotification[P]>
+      : GetScalarType<T[P], AggregateMeetupNotification[P]>
+  }
+
+
+
+
+  export type MeetupNotificationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetupNotificationWhereInput
+    orderBy?: MeetupNotificationOrderByWithAggregationInput | MeetupNotificationOrderByWithAggregationInput[]
+    by: MeetupNotificationScalarFieldEnum[] | MeetupNotificationScalarFieldEnum
+    having?: MeetupNotificationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MeetupNotificationCountAggregateInputType | true
+    _min?: MeetupNotificationMinAggregateInputType
+    _max?: MeetupNotificationMaxAggregateInputType
+  }
+
+  export type MeetupNotificationGroupByOutputType = {
+    id: string
+    text: string
+    meetupId: string
+    personId: string
+    createdAt: Date
+    _count: MeetupNotificationCountAggregateOutputType | null
+    _min: MeetupNotificationMinAggregateOutputType | null
+    _max: MeetupNotificationMaxAggregateOutputType | null
+  }
+
+  type GetMeetupNotificationGroupByPayload<T extends MeetupNotificationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MeetupNotificationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MeetupNotificationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MeetupNotificationGroupByOutputType[P]>
+            : GetScalarType<T[P], MeetupNotificationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MeetupNotificationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    text?: boolean
+    meetupId?: boolean
+    personId?: boolean
+    createdAt?: boolean
+    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
+    person?: boolean | PersonDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["meetupNotification"]>
+
+
+
+  export type MeetupNotificationSelectScalar = {
+    id?: boolean
+    text?: boolean
+    meetupId?: boolean
+    personId?: boolean
+    createdAt?: boolean
+  }
+
+  export type MeetupNotificationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "text" | "meetupId" | "personId" | "createdAt", ExtArgs["result"]["meetupNotification"]>
+  export type MeetupNotificationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meetup?: boolean | MeetupDefaultArgs<ExtArgs>
+    person?: boolean | PersonDefaultArgs<ExtArgs>
+  }
+
+  export type $MeetupNotificationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MeetupNotification"
+    objects: {
+      meetup: Prisma.$MeetupPayload<ExtArgs>
+      person: Prisma.$PersonPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      text: string
+      meetupId: string
+      personId: string
+      createdAt: Date
+    }, ExtArgs["result"]["meetupNotification"]>
+    composites: {}
+  }
+
+  type MeetupNotificationGetPayload<S extends boolean | null | undefined | MeetupNotificationDefaultArgs> = $Result.GetResult<Prisma.$MeetupNotificationPayload, S>
+
+  type MeetupNotificationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MeetupNotificationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MeetupNotificationCountAggregateInputType | true
+    }
+
+  export interface MeetupNotificationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MeetupNotification'], meta: { name: 'MeetupNotification' } }
+    /**
+     * Find zero or one MeetupNotification that matches the filter.
+     * @param {MeetupNotificationFindUniqueArgs} args - Arguments to find a MeetupNotification
+     * @example
+     * // Get one MeetupNotification
+     * const meetupNotification = await prisma.meetupNotification.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MeetupNotificationFindUniqueArgs>(args: SelectSubset<T, MeetupNotificationFindUniqueArgs<ExtArgs>>): Prisma__MeetupNotificationClient<$Result.GetResult<Prisma.$MeetupNotificationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MeetupNotification that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MeetupNotificationFindUniqueOrThrowArgs} args - Arguments to find a MeetupNotification
+     * @example
+     * // Get one MeetupNotification
+     * const meetupNotification = await prisma.meetupNotification.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MeetupNotificationFindUniqueOrThrowArgs>(args: SelectSubset<T, MeetupNotificationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MeetupNotificationClient<$Result.GetResult<Prisma.$MeetupNotificationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MeetupNotification that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupNotificationFindFirstArgs} args - Arguments to find a MeetupNotification
+     * @example
+     * // Get one MeetupNotification
+     * const meetupNotification = await prisma.meetupNotification.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MeetupNotificationFindFirstArgs>(args?: SelectSubset<T, MeetupNotificationFindFirstArgs<ExtArgs>>): Prisma__MeetupNotificationClient<$Result.GetResult<Prisma.$MeetupNotificationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MeetupNotification that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupNotificationFindFirstOrThrowArgs} args - Arguments to find a MeetupNotification
+     * @example
+     * // Get one MeetupNotification
+     * const meetupNotification = await prisma.meetupNotification.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MeetupNotificationFindFirstOrThrowArgs>(args?: SelectSubset<T, MeetupNotificationFindFirstOrThrowArgs<ExtArgs>>): Prisma__MeetupNotificationClient<$Result.GetResult<Prisma.$MeetupNotificationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MeetupNotifications that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupNotificationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MeetupNotifications
+     * const meetupNotifications = await prisma.meetupNotification.findMany()
+     * 
+     * // Get first 10 MeetupNotifications
+     * const meetupNotifications = await prisma.meetupNotification.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const meetupNotificationWithIdOnly = await prisma.meetupNotification.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MeetupNotificationFindManyArgs>(args?: SelectSubset<T, MeetupNotificationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetupNotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MeetupNotification.
+     * @param {MeetupNotificationCreateArgs} args - Arguments to create a MeetupNotification.
+     * @example
+     * // Create one MeetupNotification
+     * const MeetupNotification = await prisma.meetupNotification.create({
+     *   data: {
+     *     // ... data to create a MeetupNotification
+     *   }
+     * })
+     * 
+     */
+    create<T extends MeetupNotificationCreateArgs>(args: SelectSubset<T, MeetupNotificationCreateArgs<ExtArgs>>): Prisma__MeetupNotificationClient<$Result.GetResult<Prisma.$MeetupNotificationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MeetupNotifications.
+     * @param {MeetupNotificationCreateManyArgs} args - Arguments to create many MeetupNotifications.
+     * @example
+     * // Create many MeetupNotifications
+     * const meetupNotification = await prisma.meetupNotification.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MeetupNotificationCreateManyArgs>(args?: SelectSubset<T, MeetupNotificationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a MeetupNotification.
+     * @param {MeetupNotificationDeleteArgs} args - Arguments to delete one MeetupNotification.
+     * @example
+     * // Delete one MeetupNotification
+     * const MeetupNotification = await prisma.meetupNotification.delete({
+     *   where: {
+     *     // ... filter to delete one MeetupNotification
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MeetupNotificationDeleteArgs>(args: SelectSubset<T, MeetupNotificationDeleteArgs<ExtArgs>>): Prisma__MeetupNotificationClient<$Result.GetResult<Prisma.$MeetupNotificationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MeetupNotification.
+     * @param {MeetupNotificationUpdateArgs} args - Arguments to update one MeetupNotification.
+     * @example
+     * // Update one MeetupNotification
+     * const meetupNotification = await prisma.meetupNotification.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MeetupNotificationUpdateArgs>(args: SelectSubset<T, MeetupNotificationUpdateArgs<ExtArgs>>): Prisma__MeetupNotificationClient<$Result.GetResult<Prisma.$MeetupNotificationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MeetupNotifications.
+     * @param {MeetupNotificationDeleteManyArgs} args - Arguments to filter MeetupNotifications to delete.
+     * @example
+     * // Delete a few MeetupNotifications
+     * const { count } = await prisma.meetupNotification.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MeetupNotificationDeleteManyArgs>(args?: SelectSubset<T, MeetupNotificationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MeetupNotifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupNotificationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MeetupNotifications
+     * const meetupNotification = await prisma.meetupNotification.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MeetupNotificationUpdateManyArgs>(args: SelectSubset<T, MeetupNotificationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MeetupNotification.
+     * @param {MeetupNotificationUpsertArgs} args - Arguments to update or create a MeetupNotification.
+     * @example
+     * // Update or create a MeetupNotification
+     * const meetupNotification = await prisma.meetupNotification.upsert({
+     *   create: {
+     *     // ... data to create a MeetupNotification
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MeetupNotification we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MeetupNotificationUpsertArgs>(args: SelectSubset<T, MeetupNotificationUpsertArgs<ExtArgs>>): Prisma__MeetupNotificationClient<$Result.GetResult<Prisma.$MeetupNotificationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MeetupNotifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupNotificationCountArgs} args - Arguments to filter MeetupNotifications to count.
+     * @example
+     * // Count the number of MeetupNotifications
+     * const count = await prisma.meetupNotification.count({
+     *   where: {
+     *     // ... the filter for the MeetupNotifications we want to count
+     *   }
+     * })
+    **/
+    count<T extends MeetupNotificationCountArgs>(
+      args?: Subset<T, MeetupNotificationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MeetupNotificationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MeetupNotification.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupNotificationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MeetupNotificationAggregateArgs>(args: Subset<T, MeetupNotificationAggregateArgs>): Prisma.PrismaPromise<GetMeetupNotificationAggregateType<T>>
+
+    /**
+     * Group by MeetupNotification.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MeetupNotificationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MeetupNotificationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MeetupNotificationGroupByArgs['orderBy'] }
+        : { orderBy?: MeetupNotificationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MeetupNotificationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMeetupNotificationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MeetupNotification model
+   */
+  readonly fields: MeetupNotificationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MeetupNotification.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MeetupNotificationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    meetup<T extends MeetupDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MeetupDefaultArgs<ExtArgs>>): Prisma__MeetupClient<$Result.GetResult<Prisma.$MeetupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    person<T extends PersonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PersonDefaultArgs<ExtArgs>>): Prisma__PersonClient<$Result.GetResult<Prisma.$PersonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MeetupNotification model
+   */
+  interface MeetupNotificationFieldRefs {
+    readonly id: FieldRef<"MeetupNotification", 'String'>
+    readonly text: FieldRef<"MeetupNotification", 'String'>
+    readonly meetupId: FieldRef<"MeetupNotification", 'String'>
+    readonly personId: FieldRef<"MeetupNotification", 'String'>
+    readonly createdAt: FieldRef<"MeetupNotification", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MeetupNotification findUnique
+   */
+  export type MeetupNotificationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupNotification
+     */
+    select?: MeetupNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupNotification
+     */
+    omit?: MeetupNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupNotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupNotification to fetch.
+     */
+    where: MeetupNotificationWhereUniqueInput
+  }
+
+  /**
+   * MeetupNotification findUniqueOrThrow
+   */
+  export type MeetupNotificationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupNotification
+     */
+    select?: MeetupNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupNotification
+     */
+    omit?: MeetupNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupNotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupNotification to fetch.
+     */
+    where: MeetupNotificationWhereUniqueInput
+  }
+
+  /**
+   * MeetupNotification findFirst
+   */
+  export type MeetupNotificationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupNotification
+     */
+    select?: MeetupNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupNotification
+     */
+    omit?: MeetupNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupNotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupNotification to fetch.
+     */
+    where?: MeetupNotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupNotifications to fetch.
+     */
+    orderBy?: MeetupNotificationOrderByWithRelationInput | MeetupNotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MeetupNotifications.
+     */
+    cursor?: MeetupNotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupNotifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupNotifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MeetupNotifications.
+     */
+    distinct?: MeetupNotificationScalarFieldEnum | MeetupNotificationScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupNotification findFirstOrThrow
+   */
+  export type MeetupNotificationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupNotification
+     */
+    select?: MeetupNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupNotification
+     */
+    omit?: MeetupNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupNotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupNotification to fetch.
+     */
+    where?: MeetupNotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupNotifications to fetch.
+     */
+    orderBy?: MeetupNotificationOrderByWithRelationInput | MeetupNotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MeetupNotifications.
+     */
+    cursor?: MeetupNotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupNotifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupNotifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MeetupNotifications.
+     */
+    distinct?: MeetupNotificationScalarFieldEnum | MeetupNotificationScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupNotification findMany
+   */
+  export type MeetupNotificationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupNotification
+     */
+    select?: MeetupNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupNotification
+     */
+    omit?: MeetupNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupNotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which MeetupNotifications to fetch.
+     */
+    where?: MeetupNotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MeetupNotifications to fetch.
+     */
+    orderBy?: MeetupNotificationOrderByWithRelationInput | MeetupNotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MeetupNotifications.
+     */
+    cursor?: MeetupNotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MeetupNotifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MeetupNotifications.
+     */
+    skip?: number
+    distinct?: MeetupNotificationScalarFieldEnum | MeetupNotificationScalarFieldEnum[]
+  }
+
+  /**
+   * MeetupNotification create
+   */
+  export type MeetupNotificationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupNotification
+     */
+    select?: MeetupNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupNotification
+     */
+    omit?: MeetupNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupNotificationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MeetupNotification.
+     */
+    data: XOR<MeetupNotificationCreateInput, MeetupNotificationUncheckedCreateInput>
+  }
+
+  /**
+   * MeetupNotification createMany
+   */
+  export type MeetupNotificationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MeetupNotifications.
+     */
+    data: MeetupNotificationCreateManyInput | MeetupNotificationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MeetupNotification update
+   */
+  export type MeetupNotificationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupNotification
+     */
+    select?: MeetupNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupNotification
+     */
+    omit?: MeetupNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupNotificationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MeetupNotification.
+     */
+    data: XOR<MeetupNotificationUpdateInput, MeetupNotificationUncheckedUpdateInput>
+    /**
+     * Choose, which MeetupNotification to update.
+     */
+    where: MeetupNotificationWhereUniqueInput
+  }
+
+  /**
+   * MeetupNotification updateMany
+   */
+  export type MeetupNotificationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MeetupNotifications.
+     */
+    data: XOR<MeetupNotificationUpdateManyMutationInput, MeetupNotificationUncheckedUpdateManyInput>
+    /**
+     * Filter which MeetupNotifications to update
+     */
+    where?: MeetupNotificationWhereInput
+    /**
+     * Limit how many MeetupNotifications to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MeetupNotification upsert
+   */
+  export type MeetupNotificationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupNotification
+     */
+    select?: MeetupNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupNotification
+     */
+    omit?: MeetupNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupNotificationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MeetupNotification to update in case it exists.
+     */
+    where: MeetupNotificationWhereUniqueInput
+    /**
+     * In case the MeetupNotification found by the `where` argument doesn't exist, create a new MeetupNotification with this data.
+     */
+    create: XOR<MeetupNotificationCreateInput, MeetupNotificationUncheckedCreateInput>
+    /**
+     * In case the MeetupNotification was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MeetupNotificationUpdateInput, MeetupNotificationUncheckedUpdateInput>
+  }
+
+  /**
+   * MeetupNotification delete
+   */
+  export type MeetupNotificationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupNotification
+     */
+    select?: MeetupNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupNotification
+     */
+    omit?: MeetupNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupNotificationInclude<ExtArgs> | null
+    /**
+     * Filter which MeetupNotification to delete.
+     */
+    where: MeetupNotificationWhereUniqueInput
+  }
+
+  /**
+   * MeetupNotification deleteMany
+   */
+  export type MeetupNotificationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MeetupNotifications to delete
+     */
+    where?: MeetupNotificationWhereInput
+    /**
+     * Limit how many MeetupNotifications to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MeetupNotification without action
+   */
+  export type MeetupNotificationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MeetupNotification
+     */
+    select?: MeetupNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MeetupNotification
+     */
+    omit?: MeetupNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetupNotificationInclude<ExtArgs> | null
   }
 
 
@@ -22886,6 +23976,17 @@ export namespace Prisma {
   export type MeetupScalarFieldEnum = (typeof MeetupScalarFieldEnum)[keyof typeof MeetupScalarFieldEnum]
 
 
+  export const MeetupNotificationScalarFieldEnum: {
+    id: 'id',
+    text: 'text',
+    meetupId: 'meetupId',
+    personId: 'personId',
+    createdAt: 'createdAt'
+  };
+
+  export type MeetupNotificationScalarFieldEnum = (typeof MeetupNotificationScalarFieldEnum)[keyof typeof MeetupNotificationScalarFieldEnum]
+
+
   export const CertificateModelScalarFieldEnum: {
     id: 'id',
     imageLink: 'imageLink',
@@ -23139,6 +24240,16 @@ export namespace Prisma {
   };
 
   export type MeetupOrderByRelevanceFieldEnum = (typeof MeetupOrderByRelevanceFieldEnum)[keyof typeof MeetupOrderByRelevanceFieldEnum]
+
+
+  export const MeetupNotificationOrderByRelevanceFieldEnum: {
+    id: 'id',
+    text: 'text',
+    meetupId: 'meetupId',
+    personId: 'personId'
+  };
+
+  export type MeetupNotificationOrderByRelevanceFieldEnum = (typeof MeetupNotificationOrderByRelevanceFieldEnum)[keyof typeof MeetupNotificationOrderByRelevanceFieldEnum]
 
 
   export const CertificateModelOrderByRelevanceFieldEnum: {
@@ -23639,6 +24750,7 @@ export namespace Prisma {
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     created_meetups?: MeetupListRelationFilter
     followingMeetups?: MeetupFollowerListRelationFilter
+    notifications?: MeetupNotificationListRelationFilter
   }
 
   export type PersonOrderByWithRelationInput = {
@@ -23661,6 +24773,7 @@ export namespace Prisma {
     user?: UserOrderByWithRelationInput
     created_meetups?: MeetupOrderByRelationAggregateInput
     followingMeetups?: MeetupFollowerOrderByRelationAggregateInput
+    notifications?: MeetupNotificationOrderByRelationAggregateInput
     _relevance?: PersonOrderByRelevanceInput
   }
 
@@ -23687,6 +24800,7 @@ export namespace Prisma {
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     created_meetups?: MeetupListRelationFilter
     followingMeetups?: MeetupFollowerListRelationFilter
+    notifications?: MeetupNotificationListRelationFilter
   }, "id" | "email" | "cpf" | "userId">
 
   export type PersonOrderByWithAggregationInput = {
@@ -23838,6 +24952,7 @@ export namespace Prisma {
     followers?: MeetupFollowerListRelationFilter
     inviteSheets?: MeetupInviteSheetListRelationFilter
     certificateModel?: XOR<CertificateModelNullableScalarRelationFilter, CertificateModelWhereInput> | null
+    notifications?: MeetupNotificationListRelationFilter
   }
 
   export type MeetupOrderByWithRelationInput = {
@@ -23868,6 +24983,7 @@ export namespace Prisma {
     followers?: MeetupFollowerOrderByRelationAggregateInput
     inviteSheets?: MeetupInviteSheetOrderByRelationAggregateInput
     certificateModel?: CertificateModelOrderByWithRelationInput
+    notifications?: MeetupNotificationOrderByRelationAggregateInput
     _relevance?: MeetupOrderByRelevanceInput
   }
 
@@ -23902,6 +25018,7 @@ export namespace Prisma {
     followers?: MeetupFollowerListRelationFilter
     inviteSheets?: MeetupInviteSheetListRelationFilter
     certificateModel?: XOR<CertificateModelNullableScalarRelationFilter, CertificateModelWhereInput> | null
+    notifications?: MeetupNotificationListRelationFilter
   }, "id" | "certificateModelId">
 
   export type MeetupOrderByWithAggregationInput = {
@@ -23946,6 +25063,65 @@ export namespace Prisma {
     status?: EnumMeetupStatusWithAggregatesFilter<"Meetup"> | $Enums.MeetupStatus
     createdAt?: DateTimeWithAggregatesFilter<"Meetup"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Meetup"> | Date | string
+  }
+
+  export type MeetupNotificationWhereInput = {
+    AND?: MeetupNotificationWhereInput | MeetupNotificationWhereInput[]
+    OR?: MeetupNotificationWhereInput[]
+    NOT?: MeetupNotificationWhereInput | MeetupNotificationWhereInput[]
+    id?: StringFilter<"MeetupNotification"> | string
+    text?: StringFilter<"MeetupNotification"> | string
+    meetupId?: StringFilter<"MeetupNotification"> | string
+    personId?: StringFilter<"MeetupNotification"> | string
+    createdAt?: DateTimeFilter<"MeetupNotification"> | Date | string
+    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
+    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+  }
+
+  export type MeetupNotificationOrderByWithRelationInput = {
+    id?: SortOrder
+    text?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    createdAt?: SortOrder
+    meetup?: MeetupOrderByWithRelationInput
+    person?: PersonOrderByWithRelationInput
+    _relevance?: MeetupNotificationOrderByRelevanceInput
+  }
+
+  export type MeetupNotificationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MeetupNotificationWhereInput | MeetupNotificationWhereInput[]
+    OR?: MeetupNotificationWhereInput[]
+    NOT?: MeetupNotificationWhereInput | MeetupNotificationWhereInput[]
+    text?: StringFilter<"MeetupNotification"> | string
+    meetupId?: StringFilter<"MeetupNotification"> | string
+    personId?: StringFilter<"MeetupNotification"> | string
+    createdAt?: DateTimeFilter<"MeetupNotification"> | Date | string
+    meetup?: XOR<MeetupScalarRelationFilter, MeetupWhereInput>
+    person?: XOR<PersonScalarRelationFilter, PersonWhereInput>
+  }, "id">
+
+  export type MeetupNotificationOrderByWithAggregationInput = {
+    id?: SortOrder
+    text?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    createdAt?: SortOrder
+    _count?: MeetupNotificationCountOrderByAggregateInput
+    _max?: MeetupNotificationMaxOrderByAggregateInput
+    _min?: MeetupNotificationMinOrderByAggregateInput
+  }
+
+  export type MeetupNotificationScalarWhereWithAggregatesInput = {
+    AND?: MeetupNotificationScalarWhereWithAggregatesInput | MeetupNotificationScalarWhereWithAggregatesInput[]
+    OR?: MeetupNotificationScalarWhereWithAggregatesInput[]
+    NOT?: MeetupNotificationScalarWhereWithAggregatesInput | MeetupNotificationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MeetupNotification"> | string
+    text?: StringWithAggregatesFilter<"MeetupNotification"> | string
+    meetupId?: StringWithAggregatesFilter<"MeetupNotification"> | string
+    personId?: StringWithAggregatesFilter<"MeetupNotification"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"MeetupNotification"> | Date | string
   }
 
   export type CertificateModelWhereInput = {
@@ -25108,6 +26284,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutPersonInput
     created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
     followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateInput = {
@@ -25129,6 +26306,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
     followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUpdateInput = {
@@ -25150,6 +26328,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutPersonNestedInput
     created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
     followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateInput = {
@@ -25171,6 +26350,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
     followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonCreateManyInput = {
@@ -25337,6 +26517,7 @@ export namespace Prisma {
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
     certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateInput = {
@@ -25363,6 +26544,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
     followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetUncheckedCreateNestedManyWithoutMeetupInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUpdateInput = {
@@ -25389,6 +26571,7 @@ export namespace Prisma {
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
     certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateInput = {
@@ -25415,6 +26598,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
     followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUncheckedUpdateManyWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupCreateManyInput = {
@@ -25465,6 +26649,60 @@ export namespace Prisma {
     status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupNotificationCreateInput = {
+    id?: string
+    text: string
+    createdAt?: Date | string
+    meetup: MeetupCreateNestedOneWithoutNotificationsInput
+    person: PersonCreateNestedOneWithoutNotificationsInput
+  }
+
+  export type MeetupNotificationUncheckedCreateInput = {
+    id?: string
+    text: string
+    meetupId: string
+    personId: string
+    createdAt?: Date | string
+  }
+
+  export type MeetupNotificationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetup?: MeetupUpdateOneRequiredWithoutNotificationsNestedInput
+    person?: PersonUpdateOneRequiredWithoutNotificationsNestedInput
+  }
+
+  export type MeetupNotificationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupNotificationCreateManyInput = {
+    id?: string
+    text: string
+    meetupId: string
+    personId: string
+    createdAt?: Date | string
+  }
+
+  export type MeetupNotificationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupNotificationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CertificateModelCreateInput = {
@@ -26632,6 +27870,12 @@ export namespace Prisma {
     none?: MeetupFollowerWhereInput
   }
 
+  export type MeetupNotificationListRelationFilter = {
+    every?: MeetupNotificationWhereInput
+    some?: MeetupNotificationWhereInput
+    none?: MeetupNotificationWhereInput
+  }
+
   export type MeetupAdminOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -26661,6 +27905,10 @@ export namespace Prisma {
   }
 
   export type MeetupFollowerOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MeetupNotificationOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -26899,6 +28147,41 @@ export namespace Prisma {
     _max?: NestedEnumMeetupStatusFilter<$PrismaModel>
   }
 
+  export type MeetupScalarRelationFilter = {
+    is?: MeetupWhereInput
+    isNot?: MeetupWhereInput
+  }
+
+  export type MeetupNotificationOrderByRelevanceInput = {
+    fields: MeetupNotificationOrderByRelevanceFieldEnum | MeetupNotificationOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type MeetupNotificationCountOrderByAggregateInput = {
+    id?: SortOrder
+    text?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MeetupNotificationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    text?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MeetupNotificationMinOrderByAggregateInput = {
+    id?: SortOrder
+    text?: SortOrder
+    meetupId?: SortOrder
+    personId?: SortOrder
+    createdAt?: SortOrder
+  }
+
   export type MeetupNullableScalarRelationFilter = {
     is?: MeetupWhereInput | null
     isNot?: MeetupWhereInput | null
@@ -26929,11 +28212,6 @@ export namespace Prisma {
     imageLink?: SortOrder
     content?: SortOrder
     createdAt?: SortOrder
-  }
-
-  export type MeetupScalarRelationFilter = {
-    is?: MeetupWhereInput
-    isNot?: MeetupWhereInput
   }
 
   export type MeetupInviteSheetOrderByRelevanceInput = {
@@ -27690,6 +28968,13 @@ export namespace Prisma {
     connect?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
   }
 
+  export type MeetupNotificationCreateNestedManyWithoutPersonInput = {
+    create?: XOR<MeetupNotificationCreateWithoutPersonInput, MeetupNotificationUncheckedCreateWithoutPersonInput> | MeetupNotificationCreateWithoutPersonInput[] | MeetupNotificationUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: MeetupNotificationCreateOrConnectWithoutPersonInput | MeetupNotificationCreateOrConnectWithoutPersonInput[]
+    createMany?: MeetupNotificationCreateManyPersonInputEnvelope
+    connect?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
+  }
+
   export type MeetupAdminUncheckedCreateNestedManyWithoutPersonInput = {
     create?: XOR<MeetupAdminCreateWithoutPersonInput, MeetupAdminUncheckedCreateWithoutPersonInput> | MeetupAdminCreateWithoutPersonInput[] | MeetupAdminUncheckedCreateWithoutPersonInput[]
     connectOrCreate?: MeetupAdminCreateOrConnectWithoutPersonInput | MeetupAdminCreateOrConnectWithoutPersonInput[]
@@ -27744,6 +29029,13 @@ export namespace Prisma {
     connectOrCreate?: MeetupFollowerCreateOrConnectWithoutPersonInput | MeetupFollowerCreateOrConnectWithoutPersonInput[]
     createMany?: MeetupFollowerCreateManyPersonInputEnvelope
     connect?: MeetupFollowerWhereUniqueInput | MeetupFollowerWhereUniqueInput[]
+  }
+
+  export type MeetupNotificationUncheckedCreateNestedManyWithoutPersonInput = {
+    create?: XOR<MeetupNotificationCreateWithoutPersonInput, MeetupNotificationUncheckedCreateWithoutPersonInput> | MeetupNotificationCreateWithoutPersonInput[] | MeetupNotificationUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: MeetupNotificationCreateOrConnectWithoutPersonInput | MeetupNotificationCreateOrConnectWithoutPersonInput[]
+    createMany?: MeetupNotificationCreateManyPersonInputEnvelope
+    connect?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
   }
 
   export type MeetupAdminUpdateManyWithoutPersonNestedInput = {
@@ -27868,6 +29160,20 @@ export namespace Prisma {
     deleteMany?: MeetupFollowerScalarWhereInput | MeetupFollowerScalarWhereInput[]
   }
 
+  export type MeetupNotificationUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<MeetupNotificationCreateWithoutPersonInput, MeetupNotificationUncheckedCreateWithoutPersonInput> | MeetupNotificationCreateWithoutPersonInput[] | MeetupNotificationUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: MeetupNotificationCreateOrConnectWithoutPersonInput | MeetupNotificationCreateOrConnectWithoutPersonInput[]
+    upsert?: MeetupNotificationUpsertWithWhereUniqueWithoutPersonInput | MeetupNotificationUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: MeetupNotificationCreateManyPersonInputEnvelope
+    set?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
+    disconnect?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
+    delete?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
+    connect?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
+    update?: MeetupNotificationUpdateWithWhereUniqueWithoutPersonInput | MeetupNotificationUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: MeetupNotificationUpdateManyWithWhereWithoutPersonInput | MeetupNotificationUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: MeetupNotificationScalarWhereInput | MeetupNotificationScalarWhereInput[]
+  }
+
   export type MeetupAdminUncheckedUpdateManyWithoutPersonNestedInput = {
     create?: XOR<MeetupAdminCreateWithoutPersonInput, MeetupAdminUncheckedCreateWithoutPersonInput> | MeetupAdminCreateWithoutPersonInput[] | MeetupAdminUncheckedCreateWithoutPersonInput[]
     connectOrCreate?: MeetupAdminCreateOrConnectWithoutPersonInput | MeetupAdminCreateOrConnectWithoutPersonInput[]
@@ -27978,6 +29284,20 @@ export namespace Prisma {
     update?: MeetupFollowerUpdateWithWhereUniqueWithoutPersonInput | MeetupFollowerUpdateWithWhereUniqueWithoutPersonInput[]
     updateMany?: MeetupFollowerUpdateManyWithWhereWithoutPersonInput | MeetupFollowerUpdateManyWithWhereWithoutPersonInput[]
     deleteMany?: MeetupFollowerScalarWhereInput | MeetupFollowerScalarWhereInput[]
+  }
+
+  export type MeetupNotificationUncheckedUpdateManyWithoutPersonNestedInput = {
+    create?: XOR<MeetupNotificationCreateWithoutPersonInput, MeetupNotificationUncheckedCreateWithoutPersonInput> | MeetupNotificationCreateWithoutPersonInput[] | MeetupNotificationUncheckedCreateWithoutPersonInput[]
+    connectOrCreate?: MeetupNotificationCreateOrConnectWithoutPersonInput | MeetupNotificationCreateOrConnectWithoutPersonInput[]
+    upsert?: MeetupNotificationUpsertWithWhereUniqueWithoutPersonInput | MeetupNotificationUpsertWithWhereUniqueWithoutPersonInput[]
+    createMany?: MeetupNotificationCreateManyPersonInputEnvelope
+    set?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
+    disconnect?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
+    delete?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
+    connect?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
+    update?: MeetupNotificationUpdateWithWhereUniqueWithoutPersonInput | MeetupNotificationUpdateWithWhereUniqueWithoutPersonInput[]
+    updateMany?: MeetupNotificationUpdateManyWithWhereWithoutPersonInput | MeetupNotificationUpdateManyWithWhereWithoutPersonInput[]
+    deleteMany?: MeetupNotificationScalarWhereInput | MeetupNotificationScalarWhereInput[]
   }
 
   export type MeetupCreateNestedManyWithoutAddressInput = {
@@ -28102,6 +29422,13 @@ export namespace Prisma {
     connect?: CertificateModelWhereUniqueInput
   }
 
+  export type MeetupNotificationCreateNestedManyWithoutMeetupInput = {
+    create?: XOR<MeetupNotificationCreateWithoutMeetupInput, MeetupNotificationUncheckedCreateWithoutMeetupInput> | MeetupNotificationCreateWithoutMeetupInput[] | MeetupNotificationUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: MeetupNotificationCreateOrConnectWithoutMeetupInput | MeetupNotificationCreateOrConnectWithoutMeetupInput[]
+    createMany?: MeetupNotificationCreateManyMeetupInputEnvelope
+    connect?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
+  }
+
   export type MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput = {
     create?: XOR<MeetupAdminCreateWithoutMeetupInput, MeetupAdminUncheckedCreateWithoutMeetupInput> | MeetupAdminCreateWithoutMeetupInput[] | MeetupAdminUncheckedCreateWithoutMeetupInput[]
     connectOrCreate?: MeetupAdminCreateOrConnectWithoutMeetupInput | MeetupAdminCreateOrConnectWithoutMeetupInput[]
@@ -28156,6 +29483,13 @@ export namespace Prisma {
     connectOrCreate?: MeetupInviteSheetCreateOrConnectWithoutMeetupInput | MeetupInviteSheetCreateOrConnectWithoutMeetupInput[]
     createMany?: MeetupInviteSheetCreateManyMeetupInputEnvelope
     connect?: MeetupInviteSheetWhereUniqueInput | MeetupInviteSheetWhereUniqueInput[]
+  }
+
+  export type MeetupNotificationUncheckedCreateNestedManyWithoutMeetupInput = {
+    create?: XOR<MeetupNotificationCreateWithoutMeetupInput, MeetupNotificationUncheckedCreateWithoutMeetupInput> | MeetupNotificationCreateWithoutMeetupInput[] | MeetupNotificationUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: MeetupNotificationCreateOrConnectWithoutMeetupInput | MeetupNotificationCreateOrConnectWithoutMeetupInput[]
+    createMany?: MeetupNotificationCreateManyMeetupInputEnvelope
+    connect?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -28318,6 +29652,20 @@ export namespace Prisma {
     update?: XOR<XOR<CertificateModelUpdateToOneWithWhereWithoutMeetupInput, CertificateModelUpdateWithoutMeetupInput>, CertificateModelUncheckedUpdateWithoutMeetupInput>
   }
 
+  export type MeetupNotificationUpdateManyWithoutMeetupNestedInput = {
+    create?: XOR<MeetupNotificationCreateWithoutMeetupInput, MeetupNotificationUncheckedCreateWithoutMeetupInput> | MeetupNotificationCreateWithoutMeetupInput[] | MeetupNotificationUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: MeetupNotificationCreateOrConnectWithoutMeetupInput | MeetupNotificationCreateOrConnectWithoutMeetupInput[]
+    upsert?: MeetupNotificationUpsertWithWhereUniqueWithoutMeetupInput | MeetupNotificationUpsertWithWhereUniqueWithoutMeetupInput[]
+    createMany?: MeetupNotificationCreateManyMeetupInputEnvelope
+    set?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
+    disconnect?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
+    delete?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
+    connect?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
+    update?: MeetupNotificationUpdateWithWhereUniqueWithoutMeetupInput | MeetupNotificationUpdateWithWhereUniqueWithoutMeetupInput[]
+    updateMany?: MeetupNotificationUpdateManyWithWhereWithoutMeetupInput | MeetupNotificationUpdateManyWithWhereWithoutMeetupInput[]
+    deleteMany?: MeetupNotificationScalarWhereInput | MeetupNotificationScalarWhereInput[]
+  }
+
   export type MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput = {
     create?: XOR<MeetupAdminCreateWithoutMeetupInput, MeetupAdminUncheckedCreateWithoutMeetupInput> | MeetupAdminCreateWithoutMeetupInput[] | MeetupAdminUncheckedCreateWithoutMeetupInput[]
     connectOrCreate?: MeetupAdminCreateOrConnectWithoutMeetupInput | MeetupAdminCreateOrConnectWithoutMeetupInput[]
@@ -28428,6 +29776,48 @@ export namespace Prisma {
     update?: MeetupInviteSheetUpdateWithWhereUniqueWithoutMeetupInput | MeetupInviteSheetUpdateWithWhereUniqueWithoutMeetupInput[]
     updateMany?: MeetupInviteSheetUpdateManyWithWhereWithoutMeetupInput | MeetupInviteSheetUpdateManyWithWhereWithoutMeetupInput[]
     deleteMany?: MeetupInviteSheetScalarWhereInput | MeetupInviteSheetScalarWhereInput[]
+  }
+
+  export type MeetupNotificationUncheckedUpdateManyWithoutMeetupNestedInput = {
+    create?: XOR<MeetupNotificationCreateWithoutMeetupInput, MeetupNotificationUncheckedCreateWithoutMeetupInput> | MeetupNotificationCreateWithoutMeetupInput[] | MeetupNotificationUncheckedCreateWithoutMeetupInput[]
+    connectOrCreate?: MeetupNotificationCreateOrConnectWithoutMeetupInput | MeetupNotificationCreateOrConnectWithoutMeetupInput[]
+    upsert?: MeetupNotificationUpsertWithWhereUniqueWithoutMeetupInput | MeetupNotificationUpsertWithWhereUniqueWithoutMeetupInput[]
+    createMany?: MeetupNotificationCreateManyMeetupInputEnvelope
+    set?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
+    disconnect?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
+    delete?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
+    connect?: MeetupNotificationWhereUniqueInput | MeetupNotificationWhereUniqueInput[]
+    update?: MeetupNotificationUpdateWithWhereUniqueWithoutMeetupInput | MeetupNotificationUpdateWithWhereUniqueWithoutMeetupInput[]
+    updateMany?: MeetupNotificationUpdateManyWithWhereWithoutMeetupInput | MeetupNotificationUpdateManyWithWhereWithoutMeetupInput[]
+    deleteMany?: MeetupNotificationScalarWhereInput | MeetupNotificationScalarWhereInput[]
+  }
+
+  export type MeetupCreateNestedOneWithoutNotificationsInput = {
+    create?: XOR<MeetupCreateWithoutNotificationsInput, MeetupUncheckedCreateWithoutNotificationsInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutNotificationsInput
+    connect?: MeetupWhereUniqueInput
+  }
+
+  export type PersonCreateNestedOneWithoutNotificationsInput = {
+    create?: XOR<PersonCreateWithoutNotificationsInput, PersonUncheckedCreateWithoutNotificationsInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutNotificationsInput
+    connect?: PersonWhereUniqueInput
+  }
+
+  export type MeetupUpdateOneRequiredWithoutNotificationsNestedInput = {
+    create?: XOR<MeetupCreateWithoutNotificationsInput, MeetupUncheckedCreateWithoutNotificationsInput>
+    connectOrCreate?: MeetupCreateOrConnectWithoutNotificationsInput
+    upsert?: MeetupUpsertWithoutNotificationsInput
+    connect?: MeetupWhereUniqueInput
+    update?: XOR<XOR<MeetupUpdateToOneWithWhereWithoutNotificationsInput, MeetupUpdateWithoutNotificationsInput>, MeetupUncheckedUpdateWithoutNotificationsInput>
+  }
+
+  export type PersonUpdateOneRequiredWithoutNotificationsNestedInput = {
+    create?: XOR<PersonCreateWithoutNotificationsInput, PersonUncheckedCreateWithoutNotificationsInput>
+    connectOrCreate?: PersonCreateOrConnectWithoutNotificationsInput
+    upsert?: PersonUpsertWithoutNotificationsInput
+    connect?: PersonWhereUniqueInput
+    update?: XOR<XOR<PersonUpdateToOneWithWhereWithoutNotificationsInput, PersonUpdateWithoutNotificationsInput>, PersonUncheckedUpdateWithoutNotificationsInput>
   }
 
   export type MeetupCreateNestedOneWithoutCertificateModelInput = {
@@ -29252,6 +30642,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
     followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateWithoutUserInput = {
@@ -29272,6 +30663,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
     followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonCreateOrConnectWithoutUserInput = {
@@ -29373,6 +30765,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
     followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateWithoutUserInput = {
@@ -29393,6 +30786,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
     followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type UserCreateWithoutSessionsInput = {
@@ -29747,6 +31141,7 @@ export namespace Prisma {
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
     certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutCreatorInput = {
@@ -29772,6 +31167,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
     followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetUncheckedCreateNestedManyWithoutMeetupInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutCreatorInput = {
@@ -29803,6 +31199,30 @@ export namespace Prisma {
 
   export type MeetupFollowerCreateManyPersonInputEnvelope = {
     data: MeetupFollowerCreateManyPersonInput | MeetupFollowerCreateManyPersonInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MeetupNotificationCreateWithoutPersonInput = {
+    id?: string
+    text: string
+    createdAt?: Date | string
+    meetup: MeetupCreateNestedOneWithoutNotificationsInput
+  }
+
+  export type MeetupNotificationUncheckedCreateWithoutPersonInput = {
+    id?: string
+    text: string
+    meetupId: string
+    createdAt?: Date | string
+  }
+
+  export type MeetupNotificationCreateOrConnectWithoutPersonInput = {
+    where: MeetupNotificationWhereUniqueInput
+    create: XOR<MeetupNotificationCreateWithoutPersonInput, MeetupNotificationUncheckedCreateWithoutPersonInput>
+  }
+
+  export type MeetupNotificationCreateManyPersonInputEnvelope = {
+    data: MeetupNotificationCreateManyPersonInput | MeetupNotificationCreateManyPersonInput[]
     skipDuplicates?: boolean
   }
 
@@ -30079,6 +31499,33 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"MeetupFollower"> | Date | string
   }
 
+  export type MeetupNotificationUpsertWithWhereUniqueWithoutPersonInput = {
+    where: MeetupNotificationWhereUniqueInput
+    update: XOR<MeetupNotificationUpdateWithoutPersonInput, MeetupNotificationUncheckedUpdateWithoutPersonInput>
+    create: XOR<MeetupNotificationCreateWithoutPersonInput, MeetupNotificationUncheckedCreateWithoutPersonInput>
+  }
+
+  export type MeetupNotificationUpdateWithWhereUniqueWithoutPersonInput = {
+    where: MeetupNotificationWhereUniqueInput
+    data: XOR<MeetupNotificationUpdateWithoutPersonInput, MeetupNotificationUncheckedUpdateWithoutPersonInput>
+  }
+
+  export type MeetupNotificationUpdateManyWithWhereWithoutPersonInput = {
+    where: MeetupNotificationScalarWhereInput
+    data: XOR<MeetupNotificationUpdateManyMutationInput, MeetupNotificationUncheckedUpdateManyWithoutPersonInput>
+  }
+
+  export type MeetupNotificationScalarWhereInput = {
+    AND?: MeetupNotificationScalarWhereInput | MeetupNotificationScalarWhereInput[]
+    OR?: MeetupNotificationScalarWhereInput[]
+    NOT?: MeetupNotificationScalarWhereInput | MeetupNotificationScalarWhereInput[]
+    id?: StringFilter<"MeetupNotification"> | string
+    text?: StringFilter<"MeetupNotification"> | string
+    meetupId?: StringFilter<"MeetupNotification"> | string
+    personId?: StringFilter<"MeetupNotification"> | string
+    createdAt?: DateTimeFilter<"MeetupNotification"> | Date | string
+  }
+
   export type MeetupCreateWithoutAddressInput = {
     id?: string
     title: string
@@ -30102,6 +31549,7 @@ export namespace Prisma {
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
     certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutAddressInput = {
@@ -30127,6 +31575,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
     followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetUncheckedCreateNestedManyWithoutMeetupInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutAddressInput = {
@@ -30397,6 +31846,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
     user?: UserCreateNestedOneWithoutPersonInput
     followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateWithoutCreated_meetupsInput = {
@@ -30417,6 +31867,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
     followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonCreateOrConnectWithoutCreated_meetupsInput = {
@@ -30483,6 +31934,30 @@ export namespace Prisma {
   export type CertificateModelCreateOrConnectWithoutMeetupInput = {
     where: CertificateModelWhereUniqueInput
     create: XOR<CertificateModelCreateWithoutMeetupInput, CertificateModelUncheckedCreateWithoutMeetupInput>
+  }
+
+  export type MeetupNotificationCreateWithoutMeetupInput = {
+    id?: string
+    text: string
+    createdAt?: Date | string
+    person: PersonCreateNestedOneWithoutNotificationsInput
+  }
+
+  export type MeetupNotificationUncheckedCreateWithoutMeetupInput = {
+    id?: string
+    text: string
+    personId: string
+    createdAt?: Date | string
+  }
+
+  export type MeetupNotificationCreateOrConnectWithoutMeetupInput = {
+    where: MeetupNotificationWhereUniqueInput
+    create: XOR<MeetupNotificationCreateWithoutMeetupInput, MeetupNotificationUncheckedCreateWithoutMeetupInput>
+  }
+
+  export type MeetupNotificationCreateManyMeetupInputEnvelope = {
+    data: MeetupNotificationCreateManyMeetupInput | MeetupNotificationCreateManyMeetupInput[]
+    skipDuplicates?: boolean
   }
 
   export type AddressUpsertWithoutMeetupsInput = {
@@ -30674,6 +32149,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
     user?: UserUpdateOneWithoutPersonNestedInput
     followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateWithoutCreated_meetupsInput = {
@@ -30694,6 +32170,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
     followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type MeetupFollowerUpsertWithWhereUniqueWithoutMeetupInput = {
@@ -30762,6 +32239,242 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type MeetupNotificationUpsertWithWhereUniqueWithoutMeetupInput = {
+    where: MeetupNotificationWhereUniqueInput
+    update: XOR<MeetupNotificationUpdateWithoutMeetupInput, MeetupNotificationUncheckedUpdateWithoutMeetupInput>
+    create: XOR<MeetupNotificationCreateWithoutMeetupInput, MeetupNotificationUncheckedCreateWithoutMeetupInput>
+  }
+
+  export type MeetupNotificationUpdateWithWhereUniqueWithoutMeetupInput = {
+    where: MeetupNotificationWhereUniqueInput
+    data: XOR<MeetupNotificationUpdateWithoutMeetupInput, MeetupNotificationUncheckedUpdateWithoutMeetupInput>
+  }
+
+  export type MeetupNotificationUpdateManyWithWhereWithoutMeetupInput = {
+    where: MeetupNotificationScalarWhereInput
+    data: XOR<MeetupNotificationUpdateManyMutationInput, MeetupNotificationUncheckedUpdateManyWithoutMeetupInput>
+  }
+
+  export type MeetupCreateWithoutNotificationsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    locationName?: string | null
+    start?: Date | string | null
+    end?: Date | string | null
+    image?: string | null
+    workload?: number | null
+    status?: $Enums.MeetupStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    address?: AddressCreateNestedOneWithoutMeetupsInput
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutMeetupInput
+    invites?: InviteCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutMeetupInput
+    category: CategoryCreateNestedOneWithoutMeetupsInput
+    creator: PersonCreateNestedOneWithoutCreated_meetupsInput
+    followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
+    inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
+    certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
+  }
+
+  export type MeetupUncheckedCreateWithoutNotificationsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    locationName?: string | null
+    start?: Date | string | null
+    end?: Date | string | null
+    addressId?: string | null
+    categoryId: string
+    creatorId: string
+    certificateModelId?: string | null
+    image?: string | null
+    workload?: number | null
+    status?: $Enums.MeetupStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutMeetupInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutMeetupInput
+    invites?: InviteUncheckedCreateNestedManyWithoutMeetupInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutMeetupInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
+    followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
+    inviteSheets?: MeetupInviteSheetUncheckedCreateNestedManyWithoutMeetupInput
+  }
+
+  export type MeetupCreateOrConnectWithoutNotificationsInput = {
+    where: MeetupWhereUniqueInput
+    create: XOR<MeetupCreateWithoutNotificationsInput, MeetupUncheckedCreateWithoutNotificationsInput>
+  }
+
+  export type PersonCreateWithoutNotificationsInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meetupAdmins?: MeetupAdminCreateNestedManyWithoutPersonInput
+    subscriptions?: SubscriptionCreateNestedManyWithoutPersonInput
+    invites?: InviteCreateNestedManyWithoutPersonInput
+    certificates?: CertificateCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
+    user?: UserCreateNestedOneWithoutPersonInput
+    created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
+    followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
+  }
+
+  export type PersonUncheckedCreateWithoutNotificationsInput = {
+    id?: string
+    name: string
+    email: string
+    phone?: string | null
+    gender?: string | null
+    birthdate?: Date | string | null
+    cpf?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId?: string | null
+    meetupAdmins?: MeetupAdminUncheckedCreateNestedManyWithoutPersonInput
+    subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutPersonInput
+    invites?: InviteUncheckedCreateNestedManyWithoutPersonInput
+    certificates?: CertificateUncheckedCreateNestedManyWithoutPersonInput
+    meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
+    guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
+    created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
+    followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
+  }
+
+  export type PersonCreateOrConnectWithoutNotificationsInput = {
+    where: PersonWhereUniqueInput
+    create: XOR<PersonCreateWithoutNotificationsInput, PersonUncheckedCreateWithoutNotificationsInput>
+  }
+
+  export type MeetupUpsertWithoutNotificationsInput = {
+    update: XOR<MeetupUpdateWithoutNotificationsInput, MeetupUncheckedUpdateWithoutNotificationsInput>
+    create: XOR<MeetupCreateWithoutNotificationsInput, MeetupUncheckedCreateWithoutNotificationsInput>
+    where?: MeetupWhereInput
+  }
+
+  export type MeetupUpdateToOneWithWhereWithoutNotificationsInput = {
+    where?: MeetupWhereInput
+    data: XOR<MeetupUpdateWithoutNotificationsInput, MeetupUncheckedUpdateWithoutNotificationsInput>
+  }
+
+  export type MeetupUpdateWithoutNotificationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    address?: AddressUpdateOneWithoutMeetupsNestedInput
+    meetupAdmins?: MeetupAdminUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutMeetupNestedInput
+    category?: CategoryUpdateOneRequiredWithoutMeetupsNestedInput
+    creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
+    followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
+    inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
+    certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
+  }
+
+  export type MeetupUncheckedUpdateWithoutNotificationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
+    start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    addressId?: NullableStringFieldUpdateOperationsInput | string | null
+    categoryId?: StringFieldUpdateOperationsInput | string
+    creatorId?: StringFieldUpdateOperationsInput | string
+    certificateModelId?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    workload?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumMeetupStatusFieldUpdateOperationsInput | $Enums.MeetupStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutMeetupNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutMeetupNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutMeetupNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutMeetupNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
+    followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
+    inviteSheets?: MeetupInviteSheetUncheckedUpdateManyWithoutMeetupNestedInput
+  }
+
+  export type PersonUpsertWithoutNotificationsInput = {
+    update: XOR<PersonUpdateWithoutNotificationsInput, PersonUncheckedUpdateWithoutNotificationsInput>
+    create: XOR<PersonCreateWithoutNotificationsInput, PersonUncheckedCreateWithoutNotificationsInput>
+    where?: PersonWhereInput
+  }
+
+  export type PersonUpdateToOneWithWhereWithoutNotificationsInput = {
+    where?: PersonWhereInput
+    data: XOR<PersonUpdateWithoutNotificationsInput, PersonUncheckedUpdateWithoutNotificationsInput>
+  }
+
+  export type PersonUpdateWithoutNotificationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetupAdmins?: MeetupAdminUpdateManyWithoutPersonNestedInput
+    subscriptions?: SubscriptionUpdateManyWithoutPersonNestedInput
+    invites?: InviteUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
+    user?: UserUpdateOneWithoutPersonNestedInput
+    created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
+    followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
+  }
+
+  export type PersonUncheckedUpdateWithoutNotificationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    meetupAdmins?: MeetupAdminUncheckedUpdateManyWithoutPersonNestedInput
+    subscriptions?: SubscriptionUncheckedUpdateManyWithoutPersonNestedInput
+    invites?: InviteUncheckedUpdateManyWithoutPersonNestedInput
+    certificates?: CertificateUncheckedUpdateManyWithoutPersonNestedInput
+    meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
+    guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
+    created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
+    followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
+  }
+
   export type MeetupCreateWithoutCertificateModelInput = {
     id?: string
     title: string
@@ -30785,6 +32498,7 @@ export namespace Prisma {
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutCertificateModelInput = {
@@ -30810,6 +32524,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
     followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetUncheckedCreateNestedManyWithoutMeetupInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutCertificateModelInput = {
@@ -30851,6 +32566,7 @@ export namespace Prisma {
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutCertificateModelInput = {
@@ -30876,6 +32592,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
     followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUncheckedUpdateManyWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupCreateWithoutInviteSheetsInput = {
@@ -30901,6 +32618,7 @@ export namespace Prisma {
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutInviteSheetsInput = {
@@ -30926,6 +32644,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
     followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutInviteSheetsInput = {
@@ -30967,6 +32686,7 @@ export namespace Prisma {
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutInviteSheetsInput = {
@@ -30992,6 +32712,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
     followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type SubscriptionCreateWithoutMeetupRoleInput = {
@@ -31065,6 +32786,7 @@ export namespace Prisma {
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
     certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutMeetupAdminsInput = {
@@ -31090,6 +32812,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
     followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetUncheckedCreateNestedManyWithoutMeetupInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutMeetupAdminsInput = {
@@ -31115,6 +32838,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutPersonInput
     created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
     followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateWithoutMeetupAdminsInput = {
@@ -31135,6 +32859,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
     followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonCreateOrConnectWithoutMeetupAdminsInput = {
@@ -31176,6 +32901,7 @@ export namespace Prisma {
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
     certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutMeetupAdminsInput = {
@@ -31201,6 +32927,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
     followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUncheckedUpdateManyWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type PersonUpsertWithoutMeetupAdminsInput = {
@@ -31232,6 +32959,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutPersonNestedInput
     created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
     followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateWithoutMeetupAdminsInput = {
@@ -31252,6 +32980,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
     followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type MeetupCreateWithoutFollowersInput = {
@@ -31277,6 +33006,7 @@ export namespace Prisma {
     creator: PersonCreateNestedOneWithoutCreated_meetupsInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
     certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutFollowersInput = {
@@ -31302,6 +33032,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetUncheckedCreateNestedManyWithoutMeetupInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutFollowersInput = {
@@ -31327,6 +33058,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadCreateNestedManyWithoutPersonInput
     user?: UserCreateNestedOneWithoutPersonInput
     created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateWithoutFollowingMeetupsInput = {
@@ -31347,6 +33079,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonCreateOrConnectWithoutFollowingMeetupsInput = {
@@ -31388,6 +33121,7 @@ export namespace Prisma {
     creator?: PersonUpdateOneRequiredWithoutCreated_meetupsNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
     certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutFollowersInput = {
@@ -31413,6 +33147,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUncheckedUpdateManyWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type PersonUpsertWithoutFollowingMeetupsInput = {
@@ -31444,6 +33179,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUpdateManyWithoutPersonNestedInput
     user?: UserUpdateOneWithoutPersonNestedInput
     created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateWithoutFollowingMeetupsInput = {
@@ -31464,6 +33200,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type MeetupCreateWithoutCategoryInput = {
@@ -31489,6 +33226,7 @@ export namespace Prisma {
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
     certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutCategoryInput = {
@@ -31514,6 +33252,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
     followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetUncheckedCreateNestedManyWithoutMeetupInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutCategoryInput = {
@@ -31560,6 +33299,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutPersonInput
     created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
     followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateWithoutSubscriptionsInput = {
@@ -31580,6 +33320,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
     followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonCreateOrConnectWithoutSubscriptionsInput = {
@@ -31610,6 +33351,7 @@ export namespace Prisma {
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
     certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutSubscriptionsInput = {
@@ -31635,6 +33377,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
     followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetUncheckedCreateNestedManyWithoutMeetupInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutSubscriptionsInput = {
@@ -31720,6 +33463,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutPersonNestedInput
     created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
     followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateWithoutSubscriptionsInput = {
@@ -31740,6 +33484,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
     followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type MeetupUpsertWithoutSubscriptionsInput = {
@@ -31776,6 +33521,7 @@ export namespace Prisma {
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
     certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutSubscriptionsInput = {
@@ -31801,6 +33547,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
     followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUncheckedUpdateManyWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupRoleUpsertWithoutSubscriptionsInput = {
@@ -31877,6 +33624,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutPersonInput
     created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
     followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateWithoutInvitesInput = {
@@ -31897,6 +33645,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
     followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonCreateOrConnectWithoutInvitesInput = {
@@ -31927,6 +33676,7 @@ export namespace Prisma {
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
     certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutInvitesInput = {
@@ -31952,6 +33702,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
     followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetUncheckedCreateNestedManyWithoutMeetupInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutInvitesInput = {
@@ -31988,6 +33739,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutPersonNestedInput
     created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
     followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateWithoutInvitesInput = {
@@ -32008,6 +33760,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
     followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type MeetupUpsertWithoutInvitesInput = {
@@ -32044,6 +33797,7 @@ export namespace Prisma {
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
     certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutInvitesInput = {
@@ -32069,6 +33823,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
     followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUncheckedUpdateManyWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type SubscriptionPaymentCreateWithoutPaymentInput = {
@@ -32233,6 +33988,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutPersonInput
     created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
     followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateWithoutCertificatesInput = {
@@ -32253,6 +34009,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
     followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonCreateOrConnectWithoutCertificatesInput = {
@@ -32283,6 +34040,7 @@ export namespace Prisma {
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
     certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutCertificatesInput = {
@@ -32308,6 +34066,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
     followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetUncheckedCreateNestedManyWithoutMeetupInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutCertificatesInput = {
@@ -32344,6 +34103,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutPersonNestedInput
     created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
     followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateWithoutCertificatesInput = {
@@ -32364,6 +34124,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
     followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type MeetupUpsertWithoutCertificatesInput = {
@@ -32400,6 +34161,7 @@ export namespace Prisma {
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
     certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutCertificatesInput = {
@@ -32425,6 +34187,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
     followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUncheckedUpdateManyWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupCreateWithoutMeetupMediasInput = {
@@ -32450,6 +34213,7 @@ export namespace Prisma {
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
     certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutMeetupMediasInput = {
@@ -32475,6 +34239,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutMeetupInput
     followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetUncheckedCreateNestedManyWithoutMeetupInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutMeetupMediasInput = {
@@ -32500,6 +34265,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutPersonInput
     created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
     followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateWithoutMeetupMediasInput = {
@@ -32520,6 +34286,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
     followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonCreateOrConnectWithoutMeetupMediasInput = {
@@ -32561,6 +34328,7 @@ export namespace Prisma {
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
     certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutMeetupMediasInput = {
@@ -32586,6 +34354,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
     followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUncheckedUpdateManyWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type PersonUpsertWithoutMeetupMediasInput = {
@@ -32617,6 +34386,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutPersonNestedInput
     created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
     followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateWithoutMeetupMediasInput = {
@@ -32637,6 +34407,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
     followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type MeetupCreateWithoutGuestLoadsInput = {
@@ -32662,6 +34433,7 @@ export namespace Prisma {
     followers?: MeetupFollowerCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetCreateNestedManyWithoutMeetupInput
     certificateModel?: CertificateModelCreateNestedOneWithoutMeetupInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupUncheckedCreateWithoutGuestLoadsInput = {
@@ -32687,6 +34459,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutMeetupInput
     followers?: MeetupFollowerUncheckedCreateNestedManyWithoutMeetupInput
     inviteSheets?: MeetupInviteSheetUncheckedCreateNestedManyWithoutMeetupInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutMeetupInput
   }
 
   export type MeetupCreateOrConnectWithoutGuestLoadsInput = {
@@ -32712,6 +34485,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutPersonInput
     created_meetups?: MeetupCreateNestedManyWithoutCreatorInput
     followingMeetups?: MeetupFollowerCreateNestedManyWithoutPersonInput
+    notifications?: MeetupNotificationCreateNestedManyWithoutPersonInput
   }
 
   export type PersonUncheckedCreateWithoutGuestLoadsInput = {
@@ -32732,6 +34506,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedCreateNestedManyWithoutPersonInput
     created_meetups?: MeetupUncheckedCreateNestedManyWithoutCreatorInput
     followingMeetups?: MeetupFollowerUncheckedCreateNestedManyWithoutPersonInput
+    notifications?: MeetupNotificationUncheckedCreateNestedManyWithoutPersonInput
   }
 
   export type PersonCreateOrConnectWithoutGuestLoadsInput = {
@@ -32773,6 +34548,7 @@ export namespace Prisma {
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
     certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutGuestLoadsInput = {
@@ -32798,6 +34574,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutMeetupNestedInput
     followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUncheckedUpdateManyWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type PersonUpsertWithoutGuestLoadsInput = {
@@ -32829,6 +34606,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutPersonNestedInput
     created_meetups?: MeetupUpdateManyWithoutCreatorNestedInput
     followingMeetups?: MeetupFollowerUpdateManyWithoutPersonNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutPersonNestedInput
   }
 
   export type PersonUncheckedUpdateWithoutGuestLoadsInput = {
@@ -32849,6 +34627,7 @@ export namespace Prisma {
     meetupMedias?: MeetupMediaUncheckedUpdateManyWithoutPersonNestedInput
     created_meetups?: MeetupUncheckedUpdateManyWithoutCreatorNestedInput
     followingMeetups?: MeetupFollowerUncheckedUpdateManyWithoutPersonNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutPersonNestedInput
   }
 
   export type SessionCreateManyUserInput = {
@@ -33025,6 +34804,13 @@ export namespace Prisma {
 
   export type MeetupFollowerCreateManyPersonInput = {
     id?: string
+    meetupId: string
+    createdAt?: Date | string
+  }
+
+  export type MeetupNotificationCreateManyPersonInput = {
+    id?: string
+    text: string
     meetupId: string
     createdAt?: Date | string
   }
@@ -33219,6 +35005,7 @@ export namespace Prisma {
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
     certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutCreatorInput = {
@@ -33244,6 +35031,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
     followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUncheckedUpdateManyWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateManyWithoutCreatorInput = {
@@ -33277,6 +35065,27 @@ export namespace Prisma {
 
   export type MeetupFollowerUncheckedUpdateManyWithoutPersonInput = {
     id?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupNotificationUpdateWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meetup?: MeetupUpdateOneRequiredWithoutNotificationsNestedInput
+  }
+
+  export type MeetupNotificationUncheckedUpdateWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    meetupId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupNotificationUncheckedUpdateManyWithoutPersonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
     meetupId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -33321,6 +35130,7 @@ export namespace Prisma {
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
     certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutAddressInput = {
@@ -33346,6 +35156,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
     followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUncheckedUpdateManyWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateManyWithoutAddressInput = {
@@ -33429,6 +35240,13 @@ export namespace Prisma {
   export type MeetupInviteSheetCreateManyMeetupInput = {
     id?: string
     link: string
+  }
+
+  export type MeetupNotificationCreateManyMeetupInput = {
+    id?: string
+    text: string
+    personId: string
+    createdAt?: Date | string
   }
 
   export type MeetupAdminUpdateWithoutMeetupInput = {
@@ -33631,6 +35449,27 @@ export namespace Prisma {
     link?: StringFieldUpdateOperationsInput | string
   }
 
+  export type MeetupNotificationUpdateWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    person?: PersonUpdateOneRequiredWithoutNotificationsNestedInput
+  }
+
+  export type MeetupNotificationUncheckedUpdateWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MeetupNotificationUncheckedUpdateManyWithoutMeetupInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    personId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type SubscriptionCreateManyMeetupRoleInput = {
     id?: string
     personId: string
@@ -33713,6 +35552,7 @@ export namespace Prisma {
     followers?: MeetupFollowerUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUpdateManyWithoutMeetupNestedInput
     certificateModel?: CertificateModelUpdateOneWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateWithoutCategoryInput = {
@@ -33738,6 +35578,7 @@ export namespace Prisma {
     guestLoads?: GuestLoadUncheckedUpdateManyWithoutMeetupNestedInput
     followers?: MeetupFollowerUncheckedUpdateManyWithoutMeetupNestedInput
     inviteSheets?: MeetupInviteSheetUncheckedUpdateManyWithoutMeetupNestedInput
+    notifications?: MeetupNotificationUncheckedUpdateManyWithoutMeetupNestedInput
   }
 
   export type MeetupUncheckedUpdateManyWithoutCategoryInput = {

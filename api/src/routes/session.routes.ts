@@ -1,4 +1,4 @@
-import { FastifyInstance, FastifyRequest } from 'fastify'
+import { FastifyInstance } from 'fastify'
 import { prisma } from '../lib/prisma'
 
 interface SessionRequestBody {
@@ -7,9 +7,9 @@ interface SessionRequestBody {
 }
 
 export async function sessionRoutes(app: FastifyInstance) {
-	app.post(
+	app.post<{ Body: SessionRequestBody }>(
 		'/', 
-		async (request: FastifyRequest<{ Body: SessionRequestBody }>, reply) => {
+		async (request, reply) => {
 			try {
 				const { email, password } = request.body
 

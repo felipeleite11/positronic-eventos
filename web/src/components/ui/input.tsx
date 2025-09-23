@@ -2,9 +2,12 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-type InputProps = React.ComponentProps<"input"> & { label?: string }
+type InputProps = React.ComponentProps<"input"> & { 
+  label?: string
+  validationMessage?: string
+}
 
-function Input({ className, type, label, id, ...props }: InputProps) {
+function Input({ className, type, label, id, validationMessage, ...props }: InputProps) {
   return (
     <div className="flex flex-col gap-1 text-xs text-slate-400">
       {label && <label htmlFor={id} className="ml-1">{label}</label>}
@@ -21,6 +24,12 @@ function Input({ className, type, label, id, ...props }: InputProps) {
         id={props.name}
         {...props}
       />
+
+      {validationMessage && (
+        <span className="text-xs text-yellow-500 mx-1">
+          {validationMessage}
+        </span>
+      )}
     </div>
   )
 }

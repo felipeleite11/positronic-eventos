@@ -38,7 +38,7 @@ export default function Certificates() {
 		enabled: !!roles
 	})
 
-	const { mutate: handleEmitCertificate } = useMutation({
+	const { mutate: handleEmitCertificate, isPending: isIssuingCertificate } = useMutation({
 		mutationFn: async (subscription: Subscription) => {
 			await api.post(`meetup/${id}/certificate/${subscription.person.id}`)
 
@@ -128,9 +128,14 @@ export default function Certificates() {
 													<Tooltip>
 														<TooltipTrigger asChild>
 															<span
-																className="text-sm cursor-pointer p-2"
+																className={cn(
+																	'text-sm cursor-pointer p-2',
+																	{ 'opacity-60 cursor-wait': isIssuingCertificate }
+																)}
 																onClick={() => {
-																	handleEmitCertificate(subs)
+																	if(!isIssuingCertificate) {
+																		handleEmitCertificate(subs)
+																	}
 																}}
 															>
 																{hasCertificateLink ? <FileInput size={17} /> : <FileBadge size={17} />}

@@ -27,6 +27,7 @@ function SelectValue({
 type SelectTriggerProps = React.ComponentProps<typeof SelectPrimitive.Trigger> & {
   size?: "sm" | "default"
   label?: string
+  validationMessage?: string
 }
 
 function SelectTrigger({
@@ -34,6 +35,7 @@ function SelectTrigger({
   size = "default",
   children,
   label,
+  validationMessage,
   ...props
 }: SelectTriggerProps) {
   return (
@@ -55,6 +57,12 @@ function SelectTrigger({
           <ChevronDownIcon className="size-4 opacity-50" />
         </SelectPrimitive.Icon>
       </SelectPrimitive.Trigger>
+
+      {validationMessage && (
+        <span className="text-xs text-yellow-500 mx-1">
+          {validationMessage}
+        </span>
+      )}
     </div>
   )
 }

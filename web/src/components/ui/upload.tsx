@@ -15,30 +15,39 @@ type UploadProps = Omit<React.ComponentProps<"div">, "children"> &
 			id: string
 		}) => ReactNode
 		onFileChange?: (file: File | null) => void
+		validationMessage?: string
 	}
 
-function Upload({ className, children, id, onFileChange, ...props }: UploadProps) {
+function Upload({ className, children, id, onFileChange, validationMessage, ...props }: UploadProps) {
 	const [image, setImage] = React.useState<null | File>(null)
 
 	return (
-		<div
-			className={cn('flex flex-col items-center w-full h-80 relative', className) }
-			{...props}
-		>
-			{children({ id })}
+		<>
+			<div
+				className={cn('flex flex-col items-center w-full h-80 relative', className) }
+				{...props}
+			>
+				{children({ id })}
 
-			<input 
-				id={id}
-				name={id} 
-				type="file" 
-				className="hidden" 
-				onChange={e => {
-					setImage(e.target.files?.[0] || null)
+				<input 
+					id={id}
+					name={id} 
+					type="file" 
+					className="hidden" 
+					onChange={e => {
+						setImage(e.target.files?.[0] || null)
 
-					onFileChange?.(e.target.files?.[0] || null)
-				}} 
-			/>
-		</div>
+						onFileChange?.(e.target.files?.[0] || null)
+					}} 
+				/>
+			</div>
+		
+			{validationMessage && (
+				<span className="text-xs text-yellow-500 mx-1">
+					{validationMessage}
+				</span>
+			)}
+		</>
 	)
 }
 

@@ -14,6 +14,7 @@ import { Meetup } from "@/types/Meetup";
 import { api } from "@/services/api";
 import { format } from "date-fns";
 import { useQueryState } from "nuqs"
+import { useSession } from "next-auth/react";
 
 interface SearchProps {
 	search: string
@@ -21,6 +22,8 @@ interface SearchProps {
 
 export default function Search() {
 	const router = useRouter()
+
+	const { data: session } = useSession()
 
 	const [isSearching, setIsSearching] = useState(false)
 	const [searchResult, setSearchResult] = useState<null | Meetup[]>(null)
@@ -41,7 +44,7 @@ export default function Search() {
 		try {
 			setIsSearching(true)
 
-			let { data: meetupList } = await api.get<Meetup[]>('meetup/search', {
+			let { data: meetupList } = await api.get<Meetup[]>(`meetup/search/${session?.user.person_id}`, {
 				params: {
 					q: data.search
 				}
