@@ -111,7 +111,7 @@ model Address {
   city       String
   district   String
   street     String
-  number     String
+  number     String?
   complement String?
   zipcode    String
   createdAt  DateTime @default(now())

@@ -8265,7 +8265,7 @@ export namespace Prisma {
     city: string
     district: string
     street: string
-    number: string
+    number: string | null
     complement: string | null
     zipcode: string
     createdAt: Date
@@ -8339,7 +8339,7 @@ export namespace Prisma {
       city: string
       district: string
       street: string
-      number: string
+      number: string | null
       complement: string | null
       zipcode: string
       createdAt: Date
@@ -24845,7 +24845,7 @@ export namespace Prisma {
     city?: StringFilter<"Address"> | string
     district?: StringFilter<"Address"> | string
     street?: StringFilter<"Address"> | string
-    number?: StringFilter<"Address"> | string
+    number?: StringNullableFilter<"Address"> | string | null
     complement?: StringNullableFilter<"Address"> | string | null
     zipcode?: StringFilter<"Address"> | string
     createdAt?: DateTimeFilter<"Address"> | Date | string
@@ -24860,7 +24860,7 @@ export namespace Prisma {
     city?: SortOrder
     district?: SortOrder
     street?: SortOrder
-    number?: SortOrder
+    number?: SortOrderInput | SortOrder
     complement?: SortOrderInput | SortOrder
     zipcode?: SortOrder
     createdAt?: SortOrder
@@ -24879,7 +24879,7 @@ export namespace Prisma {
     city?: StringFilter<"Address"> | string
     district?: StringFilter<"Address"> | string
     street?: StringFilter<"Address"> | string
-    number?: StringFilter<"Address"> | string
+    number?: StringNullableFilter<"Address"> | string | null
     complement?: StringNullableFilter<"Address"> | string | null
     zipcode?: StringFilter<"Address"> | string
     createdAt?: DateTimeFilter<"Address"> | Date | string
@@ -24894,7 +24894,7 @@ export namespace Prisma {
     city?: SortOrder
     district?: SortOrder
     street?: SortOrder
-    number?: SortOrder
+    number?: SortOrderInput | SortOrder
     complement?: SortOrderInput | SortOrder
     zipcode?: SortOrder
     createdAt?: SortOrder
@@ -24914,7 +24914,7 @@ export namespace Prisma {
     city?: StringWithAggregatesFilter<"Address"> | string
     district?: StringWithAggregatesFilter<"Address"> | string
     street?: StringWithAggregatesFilter<"Address"> | string
-    number?: StringWithAggregatesFilter<"Address"> | string
+    number?: StringNullableWithAggregatesFilter<"Address"> | string | null
     complement?: StringNullableWithAggregatesFilter<"Address"> | string | null
     zipcode?: StringWithAggregatesFilter<"Address"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Address"> | Date | string
@@ -26398,7 +26398,7 @@ export namespace Prisma {
     city: string
     district: string
     street: string
-    number: string
+    number?: string | null
     complement?: string | null
     zipcode: string
     createdAt?: Date | string
@@ -26413,7 +26413,7 @@ export namespace Prisma {
     city: string
     district: string
     street: string
-    number: string
+    number?: string | null
     complement?: string | null
     zipcode: string
     createdAt?: Date | string
@@ -26428,7 +26428,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
     street?: StringFieldUpdateOperationsInput | string
-    number?: StringFieldUpdateOperationsInput | string
+    number?: NullableStringFieldUpdateOperationsInput | string | null
     complement?: NullableStringFieldUpdateOperationsInput | string | null
     zipcode?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26443,7 +26443,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
     street?: StringFieldUpdateOperationsInput | string
-    number?: StringFieldUpdateOperationsInput | string
+    number?: NullableStringFieldUpdateOperationsInput | string | null
     complement?: NullableStringFieldUpdateOperationsInput | string | null
     zipcode?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26458,7 +26458,7 @@ export namespace Prisma {
     city: string
     district: string
     street: string
-    number: string
+    number?: string | null
     complement?: string | null
     zipcode: string
     createdAt?: Date | string
@@ -26472,7 +26472,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
     street?: StringFieldUpdateOperationsInput | string
-    number?: StringFieldUpdateOperationsInput | string
+    number?: NullableStringFieldUpdateOperationsInput | string | null
     complement?: NullableStringFieldUpdateOperationsInput | string | null
     zipcode?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26486,7 +26486,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
     street?: StringFieldUpdateOperationsInput | string
-    number?: StringFieldUpdateOperationsInput | string
+    number?: NullableStringFieldUpdateOperationsInput | string | null
     complement?: NullableStringFieldUpdateOperationsInput | string | null
     zipcode?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31611,7 +31611,7 @@ export namespace Prisma {
     city: string
     district: string
     street: string
-    number: string
+    number?: string | null
     complement?: string | null
     zipcode: string
     createdAt?: Date | string
@@ -31625,7 +31625,7 @@ export namespace Prisma {
     city: string
     district: string
     street: string
-    number: string
+    number?: string | null
     complement?: string | null
     zipcode: string
     createdAt?: Date | string
@@ -31978,7 +31978,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
     street?: StringFieldUpdateOperationsInput | string
-    number?: StringFieldUpdateOperationsInput | string
+    number?: NullableStringFieldUpdateOperationsInput | string | null
     complement?: NullableStringFieldUpdateOperationsInput | string | null
     zipcode?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31992,7 +31992,7 @@ export namespace Prisma {
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
     street?: StringFieldUpdateOperationsInput | string
-    number?: StringFieldUpdateOperationsInput | string
+    number?: NullableStringFieldUpdateOperationsInput | string | null
     complement?: NullableStringFieldUpdateOperationsInput | string | null
     zipcode?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

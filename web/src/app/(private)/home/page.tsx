@@ -70,10 +70,12 @@ export default function Home() {
 				</TabsContent>
 
 				<TabsContent value="subscribed" className="flex flex-col gap-6 pt-4">
+					{/* Fazer o menu de contexto para esta lista, conforme feito em ManagedMeetups */}
 					<SubscribedMeetups meetups={meetups.subscribedEvents} />
 				</TabsContent>
 
 				<TabsContent value="followed" className="flex flex-col gap-6 pt-4">
+					{/* Fazer o menu de contexto para esta lista, conforme feito em ManagedMeetups */}
 					<FollowedMeetups meetups={meetups.followingEvents} />
 				</TabsContent>
 			</Tabs>

@@ -5,6 +5,7 @@ import { uploadToMinio } from '../config/file-storage'
 import { generateCertificate } from '../routines/generateCertificate'
 import { whatsappSend } from '../routines/whatsappSend'
 import { extractNumbers } from '../utils/string'
+import { create } from 'domain'
 
 interface MeetupProps {
 	title: string
@@ -15,11 +16,20 @@ interface MeetupProps {
 	start: string
 	end: string
 	place: string
+	workload: string
+
+	zipcode: string
+	state: string
+	city: string
+	district: string
+	street: string
+	number: string
+	complement: string
 }
 
 export async function meetupRoutes(app: FastifyInstance) {
 	app.get<{ Headers: { auth: string } }>(
-		'/', 
+		'/',
 		async (request, reply) => {
 			const meetups = await prisma.meetup.findMany({
 				include: {
@@ -41,8 +51,8 @@ export async function meetupRoutes(app: FastifyInstance) {
 		}
 	)
 
-	app.get<{Params: { id: string }}>(
-		'/:id/invitations', 
+	app.get<{ Params: { id: string } }>(
+		'/:id/invitations',
 		async (request, reply) => {
 			const meetups = await prisma.meetup.findUnique({
 				where: {
@@ -96,8 +106,8 @@ export async function meetupRoutes(app: FastifyInstance) {
 		}
 	)
 
-	app.get<{Params: { id: string }}>(
-		'/:id', 
+	app.get<{ Params: { id: string } }>(
+		'/:id',
 		async (request, reply) => {
 			try {
 				const meetup = await prisma.meetup.findUnique({
@@ -119,12 +129,12 @@ export async function meetupRoutes(app: FastifyInstance) {
 					}
 				})
 
-				if(!meetup) {
+				if (!meetup) {
 					throw new Error('Evento não encontrado.')
 				}
 
 				return meetup
-			} catch(e: any) {
+			} catch (e: any) {
 				return {
 					message: e.message || 'Error: Cannot get the meetup.'
 				}
@@ -132,7 +142,7 @@ export async function meetupRoutes(app: FastifyInstance) {
 		}
 	)
 
-	app.get<{Params: { id: string, person_id: string }}>(
+	app.get<{ Params: { id: string, person_id: string } }>(
 		'/:id/confirmation/:person_id',
 		async (request, reply) => {
 			const { id, person_id } = request.params
@@ -150,7 +160,7 @@ export async function meetupRoutes(app: FastifyInstance) {
 		}
 	)
 
-	app.get<{Params: { id: string, person_id: string }}>(
+	app.get<{ Params: { id: string, person_id: string } }>(
 		'/:id/invitation/:person_id',
 		async (request, reply) => {
 			const { id, person_id } = request.params
@@ -170,7 +180,7 @@ export async function meetupRoutes(app: FastifyInstance) {
 		}
 	)
 
-	app.post<{Params: { id: string, person_id: string }}>(
+	app.post<{ Params: { id: string, person_id: string } }>(
 		'/:id/subscribe/:person_id',
 		async (request, reply) => {
 			const { id, person_id } = request.params
@@ -187,7 +197,7 @@ export async function meetupRoutes(app: FastifyInstance) {
 		}
 	)
 
-	app.patch<{Params: { id: string, person_id: string }}>(
+	app.patch<{ Params: { id: string, person_id: string } }>(
 		'/:id/confirmation/:person_id',
 		async (request, reply) => {
 			const { id, person_id } = request.params
@@ -208,8 +218,8 @@ export async function meetupRoutes(app: FastifyInstance) {
 		}
 	)
 
-	app.patch<{Params: { id: string, person_id: string }}>(
-		'/:id/following_toggle/:person_id', 
+	app.patch<{ Params: { id: string, person_id: string } }>(
+		'/:id/following_toggle/:person_id',
 		async (request, reply) => {
 			const { id, person_id } = request.params
 
@@ -222,7 +232,7 @@ export async function meetupRoutes(app: FastifyInstance) {
 				}
 			})
 
-			if(!meetupFollower) {
+			if (!meetupFollower) {
 				const response = await prisma.meetupFollower.create({
 					data: {
 						meetupId: id,
@@ -246,8 +256,8 @@ export async function meetupRoutes(app: FastifyInstance) {
 		}
 	)
 
-	app.post<{Params: { id: string, person_id: string }}>(
-		'/:id/certificate/:person_id', 
+	app.post<{ Params: { id: string, person_id: string } }>(
+		'/:id/certificate/:person_id',
 		async (request, reply) => {
 			const { id, person_id } = request.params
 
@@ -284,7 +294,7 @@ export async function meetupRoutes(app: FastifyInstance) {
 					}
 				})
 
-				if(!subscription.certificateLink) {
+				if (!subscription.certificateLink) {
 					const buffer = await generateCertificate({
 						meetup: meetup as any,
 						person
@@ -312,13 +322,13 @@ export async function meetupRoutes(app: FastifyInstance) {
 				const pageLink = `${process.env.WEB_URL}/meetup/${meetup.id}/overview`
 				const certificateLink = `${process.env.WEB_URL}/certificate/${subscription.id}`
 
-				if(isSameDay(meetup.start!, meetup.end!)) {
+				if (isSameDay(meetup.start!, meetup.end!)) {
 					period = `Data: *${format(meetup.start!, 'dd/MM/yyyy')}*`
 				} else {
 					period = `Período: de *${format(meetup.start!, 'dd/MM/yyyy')} a ${format(meetup.end!, 'dd/MM/yyyy')}*`
 				}
 
-				if(person.phone) {
+				if (person.phone) {
 					await whatsappSend({
 						number: `55${extractNumbers(person.phone)}`,
 						text: `Olá, seu certificado já está disponível!\n\nEvento: *${meetup.title}*\n${period}\nPágina do evento: ${pageLink}\n\nBaixe seu certificado abaixo:\n${certificateLink}`
@@ -328,7 +338,7 @@ export async function meetupRoutes(app: FastifyInstance) {
 				return {
 					message: 'Certificado gerado!'
 				}
-			} catch(e: any) {
+			} catch (e: any) {
 				console.log(e)
 
 				return {
@@ -338,8 +348,8 @@ export async function meetupRoutes(app: FastifyInstance) {
 		}
 	)
 
-	app.post<{Params: { person_id: string }}>(
-		'/:person_id', 
+	app.post<{ Params: { person_id: string } }>(
+		'/:person_id',
 		async (request, reply) => {
 			try {
 				const parts = request.parts()
@@ -355,34 +365,40 @@ export async function meetupRoutes(app: FastifyInstance) {
 						data[part.fieldname as keyof MeetupProps] = part.value as any
 					}
 				}
-				
-				// const address = await prisma.address.create({
-				// 	data: {
-				// 		street: data.place!,
-				// 		city: data.place!,
-				// 		district: data.place!,
-				// 		number: data.place!,
-				// 		state: data.place!,
-				// 		zipcode: data.place!
-				// 	}
-				// })
 
-				const meetup = await prisma.meetup.create({
-					data: {
-						title: data.title!,
-						description: data.description,
-						start: new Date(data.start!),
-						end: new Date(data.end!),
-						categoryId: data.category_id!,
-						image: data.image,
-						// addressId: address.id,
-						creatorId: request.params.person_id,
-						locationName: data.place
-					}
+				const response = await prisma.$transaction(async tx => {
+					const address = await tx.address.create({
+						data: {
+							zipcode: data.zipcode!,
+							state: data.state!,
+							city: data.city!,
+							district: data.district!,
+							street: data.street!,
+							number: data.number,
+							complement: data.complement,
+						}
+					})
+	
+					const meetup = await tx.meetup.create({
+						data: {
+							title: data.title!,
+							description: data.description,
+							start: new Date(data.start!),
+							end: new Date(data.end!),
+							categoryId: data.category_id!,
+							image: data.image,
+							workload: +data.workload!,
+							creatorId: request.params.person_id,
+							locationName: data.place,
+							addressId: address.id
+						}
+					})
+
+					return meetup
 				})
-
-				return meetup
-			} catch(e: any) {
+				
+				return response
+			} catch (e: any) {
 				return {
 					message: `Error: ${e.message}`
 				}
@@ -390,7 +406,7 @@ export async function meetupRoutes(app: FastifyInstance) {
 		}
 	)
 
-	app.put<{Params: { id: String, person_id: string }}>(
+	app.put<{ Params: { id: String, person_id: string } }>(
 		'/:id/:person_id',
 		async (request, reply) => {
 			try {
@@ -409,27 +425,52 @@ export async function meetupRoutes(app: FastifyInstance) {
 					}
 				}
 
-				const response = await prisma.meetup.update({
-					data: {
-						title: data.title!,
-						description: data.description,
-						start: new Date(data.start!),
-						end: new Date(data.end!),
-						categoryId: data.category_id!,
-						image: data.image,
-						// addressId: address.id,
-						creatorId: request.params.person_id,
-						locationName: data.place
-					},
-					where: {
-						id: id.toString()
+				const response = await prisma.$transaction(async tx => {
+					const meetup = await tx.meetup.findUnique({
+						where: {
+							id: String(id)
+						}
+					})
+
+					if (meetup?.addressId) {
+						await tx.address.update({
+							data: {
+								street: data.street,
+								city: data.city,
+								district: data.district,
+								number: data.number,
+								state: data.state,
+								zipcode: data.zipcode,
+								complement: data.complement
+							},
+							where: {
+								id: meetup.addressId
+							}
+						})
 					}
+
+					const updatedMeetup = await tx.meetup.update({
+						data: {
+							title: data.title!,
+							description: data.description,
+							start: new Date(data.start!),
+							end: new Date(data.end!),
+							workload: +data.workload!,
+							categoryId: data.category_id!,
+							image: data.image,
+							creatorId: request.params.person_id,
+							locationName: data.place
+						},
+						where: {
+							id: id.toString()
+						}
+					})
+
+					return updatedMeetup
 				})
 
-				console.log('meetup atualizado:', response)
-
 				return response
-			} catch(e: any) {
+			} catch (e: any) {
 				return {
 					message: `Error: ${e.message}`
 				}

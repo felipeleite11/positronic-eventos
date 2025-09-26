@@ -1,4 +1,4 @@
-import { MeetupForm } from "@/components/MeetupForm";
+import { MeetupForm } from "@/components/MeetupForm"
 
 export default function MeetupEdit() {
 	return (

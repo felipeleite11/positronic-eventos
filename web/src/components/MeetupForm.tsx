@@ -42,14 +42,13 @@ const meetupSchema = z.object({
 			return `${y}-${M.padStart(2, '0')}-${d.padStart(2, '0')} ${h.padStart(2, '0')}:${m.padStart(2, '0')}:00`
 		}),
 	category_id: z.string(),
-	workload: z.string()
-		.refine(val => /^\d+( horas)$/.test(val), "Use o formato 'XX horas'")
-		.transform(val => {
-			return val.replace(' horas', '')
+	workload: z.coerce.number<number>()
+		.refine(val => !isNaN(val), {
+			message: 'Digite apenas o número de horas'
 		}),
 	image: z.file('Anexe uma imagem para o evento'),
 	zipcode: z.string()
-		.refine(val => /^\d{5}\-\d{3}$/.test(val), "Use o formato '00000-000'"),
+		.refine(val => /^\d{8}$/.test(val), "Use o formato '00000000'"),
 	state: z.string(),
 	city: z.string(),
 	district: z.string().min(1, 'Informe o bairro onde ocorrerá o evento'),
@@ -71,7 +70,9 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 
 	const router = useRouter()
 
+	const [meetup, setMeetup] = useState<Meetup | null>(null)
 	const [isWaiting, setIsWaiting] = useState(false)
+	const [dataToEdit, setDataToEdit] = useState<Partial<MeetupSchema> | null>(null)
 
 	const formHandlers = useForm<MeetupSchema>({
 		resolver: zodResolver(meetupSchema)
@@ -82,18 +83,9 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 		handleSubmit,
 		formState: { errors },
 		control,
-		reset
+		reset,
+		getValues
 	} = formHandlers
-
-	const { data: meetup } = useQuery({
-		queryKey: ['get-meetup-by-id'],
-		queryFn: async () => {
-			const { data } = await api.get<Meetup>(`meetup/${id}`)
-
-			return data
-		},
-		enabled: !!id
-	})
 
 	const { data: categories } = useQuery<Category[]>({
 		queryKey: ['get-categories'],
@@ -108,19 +100,19 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 		mutationFn: async (data: MeetupSchema) => {
 			setIsWaiting(true)
 
-			console.log('data create', data)
-
 			const formData = new FormData()
 
 			Object.entries(data).forEach(([key, value]) => {
 				if (key !== 'image') {
-					formData.append(key, value)
+					formData.append(key, String(value))
 				} else if (value instanceof File) {
 					formData.append(key, value, value.name)
 				}
 			})
 
-			// await api.post(`meetup/${session?.user.person_id}`, formData)
+			const { data: createdMeetup } = await api.post<Meetup>(`meetup/${session?.user.person_id}`, formData)
+
+			router.replace(`/meetup/${createdMeetup.id}`)
 		},
 		onSuccess: () => {
 			queryClient.invalidateQueries({
@@ -129,7 +121,7 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 
 			toast.success('Seu evento foi criado!')
 
-			// router.replace('/home')
+			setDataToEdit(null)
 		},
 		onError: error => {
 			toast.error(error?.message || ' Ocorreu um erro ao cadastrar o torneio.')
@@ -147,7 +139,7 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 
 			Object.entries(data).forEach(([key, value]) => {
 				if (key !== 'image') {
-					formData.append(key, value)
+					formData.append(key, String(value))
 				} else if (value instanceof File) {
 					formData.append(key, value, value.name)
 				}
@@ -163,6 +155,8 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 			toast.success('Seu evento foi atualizado!')
 
 			router.replace(`/meetup/${id}`)
+
+			setDataToEdit(null)
 		},
 		onError: error => {
 			toast.error(error?.message || ' Ocorreu um erro ao cadastrar o torneio.')
@@ -172,27 +166,52 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 		}
 	})
 
+	async function loadMeetup(id: string) {
+		const { data } = await api.get<Meetup>(`meetup/${id}`)
+
+		setMeetup(data)
+	}
+
 	async function fillFormData(meetup: Meetup) {
 		const image = await urlToFile(meetup.image)
 
-		reset({
+		setDataToEdit({
 			title: meetup.title,
 			category_id: meetup.category?.id,
 			description: meetup.description,
 			start: format(new Date(meetup.start), 'dd/MM/yyyy hh:mm'),
 			end: format(new Date(meetup.end), 'dd/MM/yyyy hh:mm'),
-			place: 'Auditório Central',
+			place: meetup.locationName!,
 			image: image || undefined,
+			workload: meetup.workload ? +meetup.workload : undefined,
 
-			// TODO: ADICIONAR CAMPOS DE ENDEREÇO PARA EDIÇÃO
+			zipcode: meetup.address?.zipcode,
+			state: meetup.address?.state,
+			city: meetup.address?.city,
+			district: meetup.address?.district,
+			street: meetup.address?.street,
+			number: meetup.address?.number,
+			complement: meetup.address?.complement
 		})
 	}
 
 	useEffect(() => {
-		if (meetup) {
+		if(id) {
+			loadMeetup(id as string)
+		}
+	}, [id])
+
+	useEffect(() => {
+		if(categories && dataToEdit) {
+			reset(dataToEdit)
+		}
+	}, [categories, dataToEdit])
+
+	useEffect(() => {
+		if (meetup && categories) {
 			fillFormData(meetup)
 		}
-	}, [meetup])
+	}, [meetup, categories])
 
 	async function handleAdd(values: MeetupSchema) {
 		handleCreate(values)
@@ -205,7 +224,7 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 	const submitFunction = mode === 'create' ? handleAdd : handleEdit
 
 	return (
-		<form className="grid grid-cols-[1fr_2fr] gap-8" onSubmit={handleSubmit(submitFunction)}>
+		<form className="flex flex-col gap-6 xl:gap-8 xl:grid xl:grid-cols-[1fr_2fr]" onSubmit={handleSubmit(submitFunction)}>
 			<Controller
 				name="image"
 				control={control}
@@ -253,7 +272,7 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 					validationMessage={errors.place?.message}
 				/>
 
-				<div className="flex gap-4">
+				<div className="flex flex-col lg:flex-row gap-4">
 					<Input
 						label="Data/hora de início"
 						placeholder="Ex.: 01/01/2021 10:00h"
@@ -269,7 +288,7 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 					/>
 				</div>
 
-				<div className="flex gap-4">
+				<div className="flex flex-col lg:flex-row gap-4">
 					<Controller
 						name="category_id"
 						control={control}
@@ -298,15 +317,23 @@ export function MeetupForm({ mode }: MeetupFormProps) {
 
 					<Input
 						label="Carga horária"
-						placeholder="Ex.: 20 horas"
+						placeholder="Ex.: 20"
 						{...register("workload")}
 						validationMessage={errors.workload?.message}
 					/>
 				</div>
 
-				<div className="flex gap-4">
-					<AddressForm formHandlers={formHandlers} />
-				</div>
+				<AddressForm
+					formHandlers={formHandlers} 
+					onCitiesReady={() => {
+						reset({
+							...getValues(),
+							category_id: meetup?.category?.id,
+							state: meetup?.address?.state,
+							city: meetup?.address?.city
+						})
+					}}
+				/>
 
 				<Button disabled={isWaiting} type="submit">
 					{mode === 'create' ? 'Criar evento' : 'Atualizar evento'}

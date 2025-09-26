@@ -96,9 +96,10 @@ model Person {
   certificates     Certificate[]
   meetupMedias     MeetupMedia[]
   guestLoads       GuestLoad[]
-  user             User?            @relation(fields: [userId], references: [id])
+  user             User?                @relation(fields: [userId], references: [id])
   created_meetups  Meetup[]
   followingMeetups MeetupFollower[]
+  notifications    MeetupNotification[]
 
   @@map("person")
 }
@@ -110,7 +111,7 @@ model Address {
   city       String
   district   String
   street     String
-  number     String
+  number     String?
   complement String?
   zipcode    String
   createdAt  DateTime @default(now())
@@ -134,25 +135,41 @@ model Meetup {
   creatorId          String       @map("creator_id")
   certificateModelId String?      @unique @map("certificate_model_id")
   image              String?
+  workload           Int?
   status             MeetupStatus @default(created)
   createdAt          DateTime     @default(now())
   updatedAt          DateTime     @updatedAt
 
   // Relacionamentos
-  address          Address?            @relation(fields: [addressId], references: [id], onDelete: Cascade)
+  address          Address?             @relation(fields: [addressId], references: [id], onDelete: Cascade)
   meetupAdmins     MeetupAdmin[]
   subscriptions    Subscription[]
   invites          Invite[]
   certificates     Certificate[]
   meetupMedias     MeetupMedia[]
   guestLoads       GuestLoad[]
-  category         Category            @relation(fields: [categoryId], references: [id])
-  creator          Person              @relation(fields: [creatorId], references: [id])
+  category         Category             @relation(fields: [categoryId], references: [id])
+  creator          Person               @relation(fields: [creatorId], references: [id])
   followers        MeetupFollower[]
   inviteSheets     MeetupInviteSheet[]
-  certificateModel CertificateModel?   @relation(fields: [certificateModelId], references: [id])
+  certificateModel CertificateModel?    @relation(fields: [certificateModelId], references: [id])
+  notifications    MeetupNotification[]
 
   @@map("meetup")
+}
+
+model MeetupNotification {
+  id        String   @id @default(cuid())
+  text      String   @db.Text
+  meetupId  String   @map("meetup_id")
+  personId  String   @map("person_id")
+  createdAt DateTime @default(now())
+
+  // Relacionamentos
+  meetup Meetup @relation(fields: [meetupId], references: [id], onDelete: Cascade)
+  person Person @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@map("meetup_notification")
 }
 
 model CertificateModel {

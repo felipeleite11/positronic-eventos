@@ -26,8 +26,6 @@ export async function uploadToMinio(content: MultipartFile | Buffer, extension?:
 
 	// Assinatura 1
 	if('file' in content && 'filename' in content) {
-		console.log('assinatura 1')
-
 		const extension = extname(content.filename)
 		const buffer = await content.toBuffer()
 		const mimetype = content.mimetype

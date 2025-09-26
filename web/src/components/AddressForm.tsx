@@ -5,15 +5,26 @@ import { Input } from "./ui/input"
 import { useQuery } from "@tanstack/react-query"
 import { ibge } from "@/services/ibge"
 import { Controller } from "react-hook-form"
+import cep, { CEP } from 'cep-promise'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
+import { toast } from "sonner"
 
-export function AddressForm<T>({ formHandlers }: any) {
-	const { register, formState: { errors }, control } = formHandlers
+interface AddressFormProps {
+	formHandlers: any
+	onStatesReady?: (states: string[]) => void
+	onCitiesReady?: (cities: string[]) => void
+}
+
+export function AddressForm({ formHandlers, onStatesReady, onCitiesReady }: AddressFormProps) {
+	const { register, formState: { errors }, getValues, control, reset } = formHandlers
+
+	const preselectedState = getValues('state') as string
 
 	const [selectedUF, setSelectedUF] = useState<string | null>(null)
+	const [addressData, setAddressData] = useState<Partial<CEP> | null>(null)
 
-	const { data: ufs } = useQuery<string[]>({
-		queryKey: ['get-ufs'],
+	const { data: states } = useQuery<string[]>({
+		queryKey: ['get-states'],
 		queryFn: async () => {
 			const { data: response } = await ibge.get<{ sigla: string }[]>('estados')
 
@@ -21,8 +32,8 @@ export function AddressForm<T>({ formHandlers }: any) {
 		}
 	})
 
-	const { data: cities, refetch: refetchCities } = useQuery<string[]>({
-		queryKey: ['get-cities-by-uf'],
+	const { data: cities } = useQuery<string[]>({
+		queryKey: ['get-cities-by-uf', selectedUF],
 		queryFn: async () => {
 			const { data: response } = await ibge.get<{ nome: string }[]>(`estados/${selectedUF}/municipios`)
 
@@ -31,18 +42,86 @@ export function AddressForm<T>({ formHandlers }: any) {
 		enabled: !!selectedUF
 	})
 
-	useEffect(() => {
-		if(selectedUF) {
-			refetchCities()
+	async function handleSearchByZipcode(zipcode: string) {
+		try {
+			const response = await cep(zipcode)
+
+			setAddressData(response)
+
+			setSelectedUF(response.state)
+
+			// setAddressData({
+			// 	neighborhood: 'Guamá', 
+			// 	street: 'Rua X', 
+			// 	state: 'PA', 
+			// 	city: 'Belém'
+			// })
+
+			// setSelectedUF('PA')
+		} catch(e: any) {
+			toast.error('Houve um erro ao buscar os dados a partir do CEP. Por favor, preencha o endereço manualmente.')
 		}
-	}, [selectedUF])
+	}
+
+	useEffect(() => {
+		if(addressData && cities) {
+			const { neighborhood, street, state, city, cep } = addressData
+
+			setTimeout(() => {
+				reset({
+					...getValues(),
+					zipcode: cep,
+					state,
+					city,
+					district: neighborhood,
+					street
+				})
+			}, 80)
+		}
+	}, [addressData, cities])
+
+	useEffect(() => {
+		if(states) {
+			onStatesReady?.(states)
+		}
+	}, [states])
+
+	useEffect(() => {
+		if(cities) {
+			onCitiesReady?.(cities)
+		}
+	}, [cities])
+
+	useEffect(() => {
+		if(preselectedState) {
+			setSelectedUF(preselectedState)
+		}
+	}, [preselectedState])
 
 	return (
 		<div className="flex flex-col gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 w-full">
 			<Input
 				label="CEP"
-				placeholder="00000-000"
+				placeholder="00000000"
 				{...register("zipcode")}
+				onChange={e => {
+					const zipcode = e.target.value
+
+					if(zipcode.length === 8) {
+						handleSearchByZipcode(zipcode)
+					} else {
+						reset({
+							...getValues(),
+							zipcode,
+							state: '',
+							city: '',
+							street: '',
+							district: '',
+							number: '',
+							complement: ''
+						})
+					}
+				}}
 				validationMessage={errors.zipcode?.message}
 			/>
 
@@ -68,8 +147,8 @@ export function AddressForm<T>({ formHandlers }: any) {
 						</SelectTrigger>
 
 						<SelectContent>
-							{ufs?.map(uf => (
-								<SelectItem key={uf} value={uf}>{uf}</SelectItem>
+							{states?.map(state => (
+								<SelectItem key={state} value={state}>{state}</SelectItem>
 							))}
 						</SelectContent>
 					</Select>

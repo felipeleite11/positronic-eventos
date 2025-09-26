@@ -9,6 +9,7 @@ import { format } from "date-fns"
 import { Calendar, Check, MapPin, User } from "lucide-react"
 import Image from "next/image"
 import { useParams, useSearchParams, useRouter } from "next/navigation"
+import { useEffect } from "react"
 import { toast } from "sonner"
 
 export default function Invite() {
@@ -18,12 +19,6 @@ export default function Invite() {
 	const router = useRouter()
 
 	const personId = searchParams.get('p')
-
-	if(!personId) {
-		router.push('/signin')
-		
-		return null
-	}
 
 	const { data: invitation } = useQuery<Invite | null>({
 		queryKey: ['check-is-invited'],
@@ -37,7 +32,8 @@ export default function Invite() {
 			}
 
 			return data
-		}
+		},
+		enabled: !!personId
 	})
 
 	const { data: meetup, refetch: refetchMeetup } = useQuery<Meetup>({
@@ -60,7 +56,7 @@ export default function Invite() {
 
 			return data
 		},
-		enabled: !!invitation
+		enabled: !!personId && !!invitation
 	})
 
 	async function handleSubscribe() {
@@ -76,6 +72,12 @@ export default function Invite() {
 			}
 		}
 	}
+
+	useEffect(() => {
+		if(!personId) {
+			router.replace('/signin')
+		}
+	}, [personId])
 
 	if(invitation && invitation?.personId !== personId) {
 		router.replace('/signin')

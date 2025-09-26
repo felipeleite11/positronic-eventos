@@ -21,6 +21,10 @@ export function formatAddress(address: Address | undefined) {
 		output += ` - ${address.zipcode}`
 	}
 
+	if(address.complement) {
+		output += ` - ${address.complement}`
+	}
+
 	return output
 }
 
