@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { useMutation, useQuery } from "@tanstack/react-query"
-import { AlertTriangle, ArrowLeft, Bell, BellOff, Calendar, Check, CheckCircle, Edit, FileCheck, LogIn, MapPin, Send, UploadCloud, User } from "lucide-react"
+import { AlertTriangle, ArrowLeft, Bell, BellOff, Calendar, Check, CheckCircle, Edit, FileCheck, LogIn, MapPin, Send, UploadCloud, User, Users } from "lucide-react"
 import Image from "next/image"
 import { useParams, useRouter } from "next/navigation"
 import { toast } from "sonner"
@@ -161,6 +161,13 @@ export default function Event() {
 							<Link href={`/meetup/${meetup.id}/sheet`}>
 								Carregar convidados
 								<UploadCloud size={16} />
+							</Link>
+						</Button>
+
+						<Button asChild className="bg-sky-700 hover:bg-sky-600 text-white rounded-none border-x border-sky-500">
+							<Link href={`/meetup/${meetup.id}/invitations`}>
+								Gerenciar convidados
+								<Users size={16} />
 							</Link>
 						</Button>
 

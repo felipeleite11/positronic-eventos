@@ -229,6 +229,9 @@ exports.Prisma.CertificateModelScalarFieldEnum = {
 exports.Prisma.MeetupInviteSheetScalarFieldEnum = {
   id: 'id',
   link: 'link',
+  quantity: 'quantity',
+  personId: 'personId',
+  createdAt: 'createdAt',
   meetupId: 'meetupId'
 };
 
@@ -316,17 +319,6 @@ exports.Prisma.MeetupMediaScalarFieldEnum = {
   personId: 'personId',
   link: 'link',
   datetime: 'datetime',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.GuestLoadScalarFieldEnum = {
-  id: 'id',
-  link: 'link',
-  meetupId: 'meetupId',
-  personId: 'personId',
-  datetime: 'datetime',
-  count: 'count',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -424,6 +416,7 @@ exports.Prisma.CertificateModelOrderByRelevanceFieldEnum = {
 exports.Prisma.MeetupInviteSheetOrderByRelevanceFieldEnum = {
   id: 'id',
   link: 'link',
+  personId: 'personId',
   meetupId: 'meetupId'
 };
 
@@ -489,13 +482,6 @@ exports.Prisma.MeetupMediaOrderByRelevanceFieldEnum = {
   personId: 'personId',
   link: 'link'
 };
-
-exports.Prisma.GuestLoadOrderByRelevanceFieldEnum = {
-  id: 'id',
-  link: 'link',
-  meetupId: 'meetupId',
-  personId: 'personId'
-};
 exports.MeetupStatus = exports.$Enums.MeetupStatus = {
   created: 'created',
   in_subscription: 'in_subscription',
@@ -524,8 +510,7 @@ exports.Prisma.ModelName = {
   Payment: 'Payment',
   SubscriptionPayment: 'SubscriptionPayment',
   Certificate: 'Certificate',
-  MeetupMedia: 'MeetupMedia',
-  GuestLoad: 'GuestLoad'
+  MeetupMedia: 'MeetupMedia'
 };
 
 /**

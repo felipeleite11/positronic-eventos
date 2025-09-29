@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `meetup_invite_sheet` ADD COLUMN `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3);

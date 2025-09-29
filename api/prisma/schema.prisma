@@ -95,11 +95,11 @@ model Person {
   invites          Invite[]
   certificates     Certificate[]
   meetupMedias     MeetupMedia[]
-  guestLoads       GuestLoad[]
   user             User?                @relation(fields: [userId], references: [id])
   created_meetups  Meetup[]
   followingMeetups MeetupFollower[]
   notifications    MeetupNotification[]
+  inviteSheets     MeetupInviteSheet[]
 
   @@map("person")
 }
@@ -147,7 +147,6 @@ model Meetup {
   invites          Invite[]
   certificates     Certificate[]
   meetupMedias     MeetupMedia[]
-  guestLoads       GuestLoad[]
   category         Category             @relation(fields: [categoryId], references: [id])
   creator          Person               @relation(fields: [creatorId], references: [id])
   followers        MeetupFollower[]
@@ -184,12 +183,16 @@ model CertificateModel {
 }
 
 model MeetupInviteSheet {
-  id   String @id @default(cuid())
-  link String
+  id        String   @id @default(cuid())
+  link      String
+  quantity  Int
+  personId  String   @map("person_id")
+  createdAt DateTime @default(now())
 
   // Relacionamentos
   meetupId String @map("meetup_id")
   meetup   Meetup @relation(fields: [meetupId], references: [id])
+  person   Person @relation(fields: [personId], references: [id])
 
   @@map("meetup_invite_sheet")
 }
@@ -346,21 +349,4 @@ model MeetupMedia {
   person Person @relation(fields: [personId], references: [id], onDelete: Cascade)
 
   @@map("meetup_media")
-}
-
-model GuestLoad {
-  id        String   @id @default(cuid())
-  link      String
-  meetupId  String   @map("meetup_id")
-  personId  String   @map("person_id")
-  datetime  DateTime
-  count     Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relacionamentos
-  meetup Meetup @relation(fields: [meetupId], references: [id], onDelete: Cascade)
-  person Person @relation(fields: [personId], references: [id], onDelete: Cascade)
-
-  @@map("guest_load")
 }

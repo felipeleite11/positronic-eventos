@@ -25,6 +25,7 @@ const personSchema = z.object({
 })
 
 export async function inviteRoutes(app: FastifyInstance) {
+	// Recebe a planilha como anexo, lê e retorna seus dados
 	app.post(
 		'/sheet_data',
 		async (request, reply) => {
@@ -70,20 +71,25 @@ export async function inviteRoutes(app: FastifyInstance) {
 		}
 	)
 
-	app.post<{ Params: { meetup_id: string } }>(
-		'/:meetup_id',
+	// Recebe os dados da planilha lida e persiste os convites
+	app.post<{ Params: { meetup_id: string, person_id: string } }>(
+		'/:meetup_id/:person_id',
 		async (request, reply) => {
 			try {
-				const { meetup_id } = request.params
+				const { meetup_id, person_id } = request.params
 				const { data, link } = request.body as { data: SheetDataProps[], link: string }
 
 				const response = await prisma.$transaction(async tx => {
 					await tx.meetupInviteSheet.create({
 						data: {
 							link,
-							meetupId: meetup_id
+							meetupId: meetup_id,
+							personId: person_id,
+							quantity: data.length
 						}
 					})
+
+					// TODO: não permitir pessoas com mesmo email ou whatsapp
 
 					await tx.person.createMany({
 						data: data.map(item => ({
@@ -125,6 +131,7 @@ export async function inviteRoutes(app: FastifyInstance) {
 		}
 	)
 
+	// Envia os convites para as pessoas que já foram carregadas
 	app.post<{ Params: { meetup_id: string } }>(
 		'/:meetup_id/send_invitations',
 		async (request, reply) => {
@@ -177,6 +184,67 @@ export async function inviteRoutes(app: FastifyInstance) {
 				}
 			} catch(e: any) {
 				console.log(e)
+
+				return {
+					message: `Error: ${e.message}`
+				}
+			}
+		}
+	)
+
+	app.delete<{ Params: { meetup_id: string, person_id: string } }>(
+		'/:meetup_id/:person_id',
+		async (request, reply) => {
+			try {
+				const { meetup_id, person_id } = request.params
+
+				await prisma.invite.delete({
+					where: {
+						personId_meetupId: {
+							meetupId: meetup_id,
+							personId: person_id
+						}
+					}
+				})
+
+				return {
+					message: 'Invite was revoked.'
+				}
+			} catch(e: any) {
+				console.log('Revogação de convite:', e)
+
+				return {
+					message: `Error: ${e.message}`
+				}
+			}
+		}
+	)
+
+	app.patch<{ Params: { meetup_id: string }, Body: { invitations: string[] } }>(
+		'/:meetup_id/revoke',
+		async (request, reply) => {
+			try {
+				const { invitations } = request.body
+
+				console.log(request.body)
+
+				if(!invitations) {
+					throw new Error('Lista de convites não foi informada.')
+				}
+
+				await prisma.invite.deleteMany({
+					where: {
+						id: {
+							in: invitations
+						}
+					}
+				})
+
+				return {
+					message: 'Invites were revoked.'
+				}
+			} catch(e: any) {
+				console.log('Revogação de convites em massa:', e)
 
 				return {
 					message: `Error: ${e.message}`

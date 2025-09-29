@@ -15,12 +15,7 @@ export interface Meetup {
 	creatorId: string
 	address?: Address
 	subscriptions?: Subscription[]
-	invites?: {
-		person: Person
-		personId: string
-		meetupId: string
-		link: string
-	}[]
+	invites?: Invite[]
 	followers?: MeetupFollowing[]
 }
 

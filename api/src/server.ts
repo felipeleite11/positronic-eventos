@@ -19,6 +19,7 @@ import { inviteRoutes } from './routes/invite.routes'
 import { roleRoutes } from './routes/role.routes'
 import { certificateRoutes } from './routes/certificate.routes'
 import { meetupNotificationRoutes } from './routes/meetupNotification.routes'
+import { meetupInviteSheetRoutes } from './routes/meetupInviteSheet.routes'
 
 const fastify = Fastify({
 	logger: false
@@ -52,6 +53,7 @@ fastify.register(inviteRoutes, { prefix: '/invite' })
 fastify.register(roleRoutes, { prefix: '/role' })
 fastify.register(certificateRoutes, { prefix: '/certificate' })
 fastify.register(meetupNotificationRoutes, { prefix: '/notification' })
+fastify.register(meetupInviteSheetRoutes, { prefix: '/invite_sheet' })
 
 fastify.listen({ port: +process.env.PORT!, host: '0.0.0.0' }, function (err, address) {
 	if (err) {

@@ -9,7 +9,9 @@ import { api } from "@/services/api"
 import { Meetup } from "@/types/Meetup"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useQuery } from "@tanstack/react-query"
-import { Check, File, UploadCloud } from "lucide-react"
+import { format } from "date-fns"
+import { ArrowLeft, Check, DownloadCloud, File, SheetIcon, UploadCloud } from "lucide-react"
+import { useSession } from "next-auth/react"
 import Image from "next/image"
 import { useParams, useRouter } from "next/navigation"
 import { useState } from "react"
@@ -39,6 +41,7 @@ interface SheetDataProps {
 
 export default function Sheet() {
 	const { id } = useParams()
+	const { data: session } = useSession()
 
 	const router = useRouter()
 
@@ -49,6 +52,15 @@ export default function Sheet() {
 		queryKey: ['get-meetup-by-id'],
 		queryFn: async () => {
 			const { data } = await api.get<Meetup>(`meetup/${id}`)
+
+			return data
+		}
+	})
+
+	const { data: loadedSheets } = useQuery<InviteSheet[]>({
+		queryKey: ['get-invite-sheets-by-meetup'],
+		queryFn: async () => {
+			const { data } = await api.get<InviteSheet[]>(`invite_sheet/${id}`)
 
 			return data
 		}
@@ -83,7 +95,7 @@ export default function Sheet() {
 	async function handleSendInvitations() {
 		try {
 			if(sheetData) {
-				await api.post(`invite/${id}`, {
+				await api.post(`invite/${id}/${session?.user.person_id}`, {
 					data: sheetData?.data,
 					link: sheetData.link
 				})
@@ -100,11 +112,31 @@ export default function Sheet() {
 	const hasErrors = !!sheetData?.errors.length
 
 	return (
-		<div className="flex flex-col items-center gap-4">
+		<div className="flex flex-col gap-4">
+			<div>
+				<Button 
+					variant="ghost" 
+					onClick={() => router.back()} 
+					className="text-sm text-slate-600 dark:text-slate-400 hover:opacity-70 transition-opacity"
+				>
+					<ArrowLeft size={15} />
+					Voltar
+				</Button>
+			</div>
+
 			<h1 className="text-xl font-semibold self-start">{meetup?.title}</h1>
 			<h2 className="text-sm font-normal self-start">Carga de convidados</h2>
 
-			<form className="flex flex-col max-w-96 w-full gap-6 mb-8" onSubmit={handleSubmit(handleSendSheet)}>
+			<a 
+				href={process.env.NEXT_PUBLIC_PLANILHA_MODELO_CARGA_URL} 
+				target="_blank" 
+				className="text-sm underline underline-offset-2 self-start flex gap-2 items-center mb-4"
+			>
+				<DownloadCloud size={18} />
+				Faça o download do modelo de planilha para carga
+			</a>
+
+			<form className="flex flex-col max-w-96 w-full gap-6 mb-8 self-center" onSubmit={handleSubmit(handleSendSheet)}>
 				<Controller
 					name="sheet"
 					control={control}
@@ -136,14 +168,12 @@ export default function Sheet() {
 				</Button>
 			</form>
 
-			{isAnalyzingData && (
+			{isAnalyzingData ? (
 				<div className="w-full flex justify-center items-center flex-col gap-4 text-slate-300 text-sm mt-6">
 					<Image alt="" src="/images/positronic.png" width={700} height={200} className="w-48 animation-jump" />
 					Estamos analizando sua planilha. Um momento...
 				</div>
-			)}
-
-			{sheetData && (
+			) : sheetData ? (
 				<>
 					<h2 className="text-md font-semibold self-start">Convidados a carregar</h2>
 					<div className="text-sm self-start">Fizemos a leitura da sua planilha e detectamos os convidados abaixo. Confirme se as informações estão correta a conclua sua carga clicando em <span className="font-semibold">Finalizar</span>.</div>
@@ -201,7 +231,45 @@ export default function Sheet() {
 						</TableBody>
 					</Table>
 				</>
-			)}
+			) : !!loadedSheets?.length ? (
+				<Table>
+					<TableHeader>
+						<TableRow>
+							<TableHead>Carregado por</TableHead>
+							<TableHead className="w-32 text-center">Data da carga</TableHead>
+							<TableHead className="w-24 text-center">Quantidade</TableHead>
+							<TableHead className="w-24 text-center">Visualizar</TableHead>
+						</TableRow>
+					</TableHeader>
+					<TableBody>
+						{loadedSheets.map(item => {
+							return (
+								<TableRow key={item.id} className="cursor-pointer">
+									<TableCell>{item.person.name}</TableCell>
+									<TableCell className="text-center">{format(new Date(item.createdAt), 'dd/MM/yyyy HH:mm\'h\'')}</TableCell>
+									<TableCell className="text-center">{item.quantity}</TableCell>
+									<TableCell className="flex justify-center">
+										<Tooltip>
+											<TooltipTrigger asChild>
+												<SheetIcon 
+													size={16} 
+													onClick={() => {
+														window.open(item.link, '_blank')
+													}}
+												/>
+											</TooltipTrigger>
+											
+											<TooltipContent>
+												<p>Visualizar planilha</p>
+											</TooltipContent>
+										</Tooltip>
+									</TableCell>
+								</TableRow>
+							)
+						})}
+					</TableBody>
+				</Table>
+			) : null}
 		</div>
 	)
 }
