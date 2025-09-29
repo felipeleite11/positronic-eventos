@@ -74,7 +74,7 @@ export default function Invitations() {
 			</div>
 
 			<h1 className="text-xl font-semibold self-start">{meetup?.title}</h1>
-			<h2 className="text-sm font-normal self-start">Gerenciamento de convidados</h2>
+			<h2 className="font-semibold text-lg self-start">Gerenciamento de convidados</h2>
 
 			<div className="flex justify-end gap-3">
 				<Button 

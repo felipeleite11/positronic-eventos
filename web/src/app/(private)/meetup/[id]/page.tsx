@@ -3,15 +3,10 @@
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { useMutation, useQuery } from "@tanstack/react-query"
-import { AlertTriangle, ArrowLeft, Bell, BellOff, Calendar, Check, CheckCircle, Edit, FileCheck, LogIn, MapPin, Send, UploadCloud, User, Users } from "lucide-react"
+import { AlertTriangle, ArrowLeft, Bell, BellOff, Calendar, Check, CheckCircle, Cog, Edit, FileCheck, LogIn, MapPin, Send, UploadCloud, User, Users } from "lucide-react"
 import Image from "next/image"
 import { useParams, useRouter } from "next/navigation"
 import { toast } from "sonner"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
 import { useSession } from "next-auth/react"
 import { api } from "@/services/api"
 import { Meetup, MeetupFollowing } from "@/types/Meetup"
@@ -19,6 +14,7 @@ import { formatAddress } from "@/util/format"
 import { format, isBefore } from "date-fns"
 import Link from "next/link"
 import { Subscription } from "@/types/Subscription"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 export default function Event() {
 	const { id } = useParams()
@@ -95,23 +91,102 @@ export default function Event() {
 	const isFollowed = meetup.followers?.some(follower => follower.personId === person?.id)
 	const wasStarted = isBefore(new Date(meetup.start), new Date())
 	const wasEnded = isBefore(new Date(meetup.end), new Date())
+	const isCurrent = wasStarted && !wasEnded
 
 	return (
-		<div className="flex flex-col">
-			<div className="flex justify-between gap-8 mb-6">
+		<div className="flex flex-col gap-6">
+			<div className="flex justify-between gap-8">
 				<Button variant="ghost" onClick={() => router.back()} className="text-sm text-slate-600 dark:text-slate-400 hover:opacity-70 transition-opacity">
 					<ArrowLeft size={15} />
 					Voltar
 				</Button>
 
-				{isCreator && (
-					<Button asChild variant="ghost" className="text-sm text-slate-600 dark:text-slate-400 hover:opacity-70 transition-opacity">
-						<Link href={`/meetup/${id}/edit`} className="flex gap-2 items-center">
-							Editar
-							<Edit size={16} />
-						</Link>
-					</Button>
-				)}
+				<div className="flex gap-2 items-center">
+					<DropdownMenu>
+						<DropdownMenuTrigger asChild>
+							<Button variant="ghost" className="text-sm text-slate-600 dark:text-slate-400 hover:opacity-70 transition-opacity">
+								Opções
+								<Cog size={16} />
+							</Button>
+						</DropdownMenuTrigger>
+
+						<DropdownMenuContent>
+							{!isCreator ? (
+								<DropdownMenuItem asChild>
+									<Button
+										className="cursor-pointer"
+										variant="ghost"
+										onClick={() => handleToggleFollowing()}
+									>
+										{isFollowed ? 'Remover acompanhamento' : 'Acompanhar'}
+										{isFollowed ? <BellOff size={16} /> : <Bell size={16} />}
+									</Button>
+								</DropdownMenuItem>
+							) : (
+								<>
+									{!wasEnded && (
+										<>
+											<DropdownMenuItem asChild>
+												<Link href={`/meetup/${meetup.id}/sheet`} className="cursor-pointer flex justify-between">
+													Carregar convidados
+													<UploadCloud size={16} />
+												</Link>
+											</DropdownMenuItem>
+				
+											<DropdownMenuItem asChild>
+												<Link href={`/meetup/${meetup.id}/invitations`} className="cursor-pointer flex justify-between">
+													Gerenciar convidados
+													<Users size={16} />
+												</Link>
+											</DropdownMenuItem>
+								
+											<DropdownMenuItem asChild>
+												<span onClick={handleSendInvitations} className="px-0 font-normal w-full flex justify-between cursor-pointer">
+													Enviar convites
+													<Send size={16} />
+												</span>
+											</DropdownMenuItem>
+										</>
+									)}
+
+									{isCurrent && (
+										<DropdownMenuItem asChild>
+											<Link href={`/meetup/${id}/confirmation`} className="flex items-center gap-2 cursor-pointer justify-between">
+												Confirmar presenças
+												<CheckCircle size={16} />
+											</Link>
+										</DropdownMenuItem>
+									)}
+
+									{wasEnded && (
+										<DropdownMenuItem asChild>
+											<Link href={`/meetup/${id}/certificates`} className="flex items-center gap-2 cursor-pointer justify-between">
+												Emitir certificados
+												<FileCheck size={16} />
+											</Link>
+										</DropdownMenuItem>
+									)}
+
+									<DropdownMenuItem asChild>
+										<Link href={`/meetup/${id}/messages`} className="flex items-center gap-2 justify-between cursor-pointer">
+											Avisos
+											<AlertTriangle size={16} />
+										</Link>
+									</DropdownMenuItem>
+								</>
+							)}
+						</DropdownMenuContent>
+					</DropdownMenu>
+
+					{isCreator && !wasEnded && (
+						<Button asChild variant="ghost" className="text-sm text-slate-600 dark:text-slate-400 hover:opacity-70 transition-opacity">
+							<Link href={`/meetup/${id}/edit`} className="flex gap-2 items-center">
+								Editar
+								<Edit size={16} />
+							</Link>
+						</Button>
+					)}
+				</div>
 			</div>
 
 			<div className="grid grid-cols-[24rem_auto] gap-8">
@@ -139,7 +214,7 @@ export default function Event() {
 				</div>
 			</div>
 
-			<div className="flex my-6">
+			{/* <div className="flex my-6">
 				{!isCreator ? (
 					<Tooltip>
 						<TooltipTrigger asChild>
@@ -210,6 +285,20 @@ export default function Event() {
 					</Button>
 				) : (
 					<Button onClick={handleSubscribe} className="bg-sky-700 text-white hover:bg-sky-600 rounded-l-none border-l border-sky-500">							
+						Inscrever-se
+						<LogIn size={16} />
+					</Button>
+				)}
+			</div> */}
+
+			<div className="flex justify-end gap-3 items-center">
+				{isSubscribed ? (
+					<Button onClick={() => {}} disabled={isSubscribed} className="bg-emerald-600 hover:bg-emerald-600 text-white w-fit">
+						Você já está inscrito
+						<Check size={16} />
+					</Button>
+				) : (
+					<Button onClick={handleSubscribe} className="bg-sky-700 text-white hover:bg-sky-600 w-fit">							
 						Inscrever-se
 						<LogIn size={16} />
 					</Button>

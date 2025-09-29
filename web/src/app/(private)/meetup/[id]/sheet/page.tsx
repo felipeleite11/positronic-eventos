@@ -125,7 +125,7 @@ export default function Sheet() {
 			</div>
 
 			<h1 className="text-xl font-semibold self-start">{meetup?.title}</h1>
-			<h2 className="text-sm font-normal self-start">Carga de convidados</h2>
+			<h2 className="self-start font-semibold text-lg">Carga de convidados</h2>
 
 			<a 
 				href={process.env.NEXT_PUBLIC_PLANILHA_MODELO_CARGA_URL} 
